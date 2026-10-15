@@ -108,11 +108,11 @@ const T: Record<string, Record<string, string>> = {
 
 // ── Facility type colors ──
 const TYPE_COLORS: Record<string, string> = {
-  hospital: '#DC2626',
-  clinic: '#D63384',
-  doctor: '#3B82F6',
-  pharmacy: '#16A34A',
-  laboratory: '#8B5CF6',
+  hospital: '#B41F18',
+  clinic: '#B5246E',
+  doctor: '#1D4ED8',
+  pharmacy: '#15803D',
+  laboratory: '#6D28D9',
 };
 
 const TYPE_ICONS: Record<string, string> = {
@@ -412,7 +412,7 @@ export default function DoctorsPage() {
       el.style.width = '32px';
       el.style.height = '32px';
       el.style.borderRadius = '50%';
-      el.style.background = TYPE_COLORS[fac.type] || '#D63384';
+      el.style.background = TYPE_COLORS[fac.type] || '#B5246E';
       el.style.border = '3px solid white';
       el.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
       el.style.display = 'flex';
@@ -427,9 +427,9 @@ export default function DoctorsPage() {
         <div style="padding:8px;font-family:inherit;min-width:180px">
           <strong style="font-size:14px;color:#2D1F2D">${fac.name}</strong><br/>
           <span style="font-size:11px;color:${TYPE_COLORS[fac.type]};font-weight:600">${TYPE_ICONS[fac.type]} ${fac.type}${fac.specialty ? ' — ' + fac.specialty : ''}</span><br/>
-          <span style="font-size:11px;color:#888">${fac.distance} ${t('km')}</span>
+          <span style="font-size:11px;color:#7A6473">${fac.distance} ${t('km')}</span>
           ${fac.address ? `<br/><span style="font-size:11px;color:#666">📍 ${fac.address}</span>` : ''}
-          ${fac.phone ? `<br/><a href="tel:${fac.phone}" style="font-size:12px;color:#D63384;font-weight:600">📞 ${fac.phone}</a>` : ''}
+          ${fac.phone ? `<br/><a href="tel:${fac.phone}" style="font-size:12px;color:#B5246E;font-weight:600">📞 ${fac.phone}</a>` : ''}
         </div>
       `);
 
@@ -476,10 +476,10 @@ export default function DoctorsPage() {
   return (
     <div style={{ padding: '24px 16px 100px', maxWidth: 1200, margin: '0 auto' }}>
       {/* Header */}
-      <h1 style={{ fontSize: 26, fontWeight: 700, color: '#D63384', textAlign: 'center', marginBottom: 4 }}>
+      <h1 style={{ fontSize: 26, fontWeight: 700, color: '#B5246E', textAlign: 'center', marginBottom: 4 }}>
         🩺 {t('title')}
       </h1>
-      <p style={{ textAlign: 'center', color: '#888', marginBottom: 20, fontSize: 14 }}>
+      <p style={{ textAlign: 'center', color: '#7A6473', marginBottom: 20, fontSize: 14 }}>
         {t('subtitle')}
       </p>
 
@@ -496,7 +496,7 @@ export default function DoctorsPage() {
           type="button"
           onClick={detectLocation}
           style={{
-            background: '#D63384', color: 'white', border: 'none',
+            background: '#B5246E', color: 'white', border: 'none',
             borderRadius: 12, padding: '10px 16px', fontSize: 13,
             fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
             whiteSpace: 'nowrap',
@@ -515,7 +515,7 @@ export default function DoctorsPage() {
               aria-label={t('searchPlaceholder')}
               style={{
                 flex: 1, padding: '10px 14px', borderRadius: '12px 0 0 12px',
-                border: '2px solid #E0E0E0', fontSize: 13, outline: 'none',
+                border: '2px solid #9A7F8F', fontSize: 13, outline: 'none',
                 fontFamily: 'inherit',
               }}
             />
@@ -524,7 +524,7 @@ export default function DoctorsPage() {
               onClick={handleCitySearch}
               aria-label={t('searchPlaceholder')}
               style={{
-                background: '#F0F0F0', border: '2px solid #E0E0E0', borderLeft: 'none',
+                background: '#F0F0F0', border: '2px solid #9A7F8F', borderLeft: 'none',
                 borderRadius: '0 12px 12px 0', padding: '10px 14px', cursor: 'pointer',
                 fontSize: 16,
               }}
@@ -540,7 +540,7 @@ export default function DoctorsPage() {
               background: 'white', borderRadius: '0 0 12px 12px',
               boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
               zIndex: 100, maxHeight: 300, overflowY: 'auto',
-              border: '1px solid #E0E0E0', borderTop: 'none',
+              border: '1px solid #9A7F8F', borderTop: 'none',
             }}>
               {suggestions.map((s, i) => {
                 const parts = s.display_name.split(',');
@@ -565,10 +565,10 @@ export default function DoctorsPage() {
                       <div style={{ fontSize: 14, fontWeight: 600, color: '#2D1F2D' }}>
                         📍 {mainName}
                       </div>
-                      <div style={{ fontSize: 11, color: '#888' }}>{subName}</div>
+                      <div style={{ fontSize: 11, color: '#7A6473' }}>{subName}</div>
                     </div>
                     {dist !== null && (
-                      <span style={{ fontSize: 11, color: '#D63384', fontWeight: 600, flexShrink: 0 }}>
+                      <span style={{ fontSize: 11, color: '#B5246E', fontWeight: 600, flexShrink: 0 }}>
                         ~{dist} {t('km')}
                       </span>
                     )}
@@ -587,16 +587,16 @@ export default function DoctorsPage() {
             📍 {cityName} — {filteredFacilities.length} {t('found')}
           </span>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ fontSize: 12, color: '#888' }}>{t('radius')}:</span>
+            <span style={{ fontSize: 12, color: '#7A6473' }}>{t('radius')}:</span>
             {[5, 10, 20, 50].map((rad) => (
               <button
                 type="button"
                 key={rad}
                 onClick={() => handleRadiusChange(rad)}
                 style={{
-                  background: radius === rad ? '#D63384' : 'white',
+                  background: radius === rad ? '#B5246E' : 'white',
                   color: radius === rad ? 'white' : '#666',
-                  border: radius === rad ? 'none' : '1px solid #E0E0E0',
+                  border: radius === rad ? 'none' : '1px solid #9A7F8F',
                   borderRadius: 8, padding: '4px 10px', fontSize: 12,
                   fontWeight: 600, cursor: 'pointer',
                 }}
@@ -616,9 +616,9 @@ export default function DoctorsPage() {
             key={f.key}
             onClick={() => setActiveFilter(f.key)}
             style={{
-              background: activeFilter === f.key ? '#D63384' : 'white',
+              background: activeFilter === f.key ? '#B5246E' : 'white',
               color: activeFilter === f.key ? 'white' : '#666',
-              border: activeFilter === f.key ? 'none' : '1px solid #E0E0E0',
+              border: activeFilter === f.key ? 'none' : '1px solid #9A7F8F',
               borderRadius: 20, padding: '8px 16px', fontSize: 12,
               fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap',
               fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 4,
@@ -631,14 +631,14 @@ export default function DoctorsPage() {
 
       {/* Error */}
       {locationError && (
-        <div style={{ background: '#FFF5F5', border: '1px solid #FED7D7', borderRadius: 12, padding: '10px 16px', marginBottom: 12, color: '#DC2626', fontSize: 13 }}>
+        <div style={{ background: '#FDECEA', border: '1px solid #F5C6C6', borderRadius: 12, padding: '10px 16px', marginBottom: 12, color: '#B41F18', fontSize: 13 }}>
           {locationError}
         </div>
       )}
 
       {/* Loading */}
       {loading && (
-        <div style={{ textAlign: 'center', padding: 20, color: '#D63384', fontSize: 14 }}>
+        <div style={{ textAlign: 'center', padding: 20, color: '#B5246E', fontSize: 14 }}>
           {t('loading')}
         </div>
       )}
@@ -657,7 +657,7 @@ export default function DoctorsPage() {
 
       {/* No results */}
       {!loading && facilities.length === 0 && userLocation && (
-        <div style={{ textAlign: 'center', padding: 24, color: '#888', fontSize: 14 }}>
+        <div style={{ textAlign: 'center', padding: 24, color: '#7A6473', fontSize: 14 }}>
           {t('noResults')}
         </div>
       )}
@@ -675,7 +675,7 @@ export default function DoctorsPage() {
               display: 'flex', alignItems: 'center', gap: 14,
               background: selectedFacility?.id === fac.id ? '#FFF0F5' : 'white',
               borderRadius: 16, padding: '14px 16px',
-              border: selectedFacility?.id === fac.id ? '2px solid #D63384' : '1px solid #F0E0EC',
+              border: selectedFacility?.id === fac.id ? '2px solid #B5246E' : '1px solid #F0E0EC',
               cursor: 'pointer', boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
               transition: 'all 0.2s',
             }}
@@ -683,7 +683,7 @@ export default function DoctorsPage() {
             {/* Type icon */}
             <div style={{
               width: 44, height: 44, borderRadius: '50%',
-              background: (TYPE_COLORS[fac.type] || '#D63384') + '15',
+              background: (TYPE_COLORS[fac.type] || '#B5246E') + '15',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontSize: 22, flexShrink: 0,
             }}>
@@ -699,13 +699,13 @@ export default function DoctorsPage() {
                 {fac.type}{fac.specialty ? ' — ' + fac.specialty : ''}
               </div>
               {fac.address && (
-                <div style={{ fontSize: 11, color: '#888', marginTop: 2 }}>📍 {fac.address}</div>
+                <div style={{ fontSize: 11, color: '#7A6473', marginTop: 2 }}>📍 {fac.address}</div>
               )}
             </div>
 
             {/* Distance + call */}
             <div style={{ textAlign: 'center', flexShrink: 0 }}>
-              <div style={{ fontSize: 14, fontWeight: 700, color: '#D63384' }}>
+              <div style={{ fontSize: 14, fontWeight: 700, color: '#B5246E' }}>
                 {fac.distance} {t('km')}
               </div>
               {fac.phone && (
@@ -713,7 +713,7 @@ export default function DoctorsPage() {
                   href={`tel:${fac.phone}`}
                   onClick={(e) => e.stopPropagation()}
                   style={{
-                    fontSize: 11, color: '#16A34A', fontWeight: 600,
+                    fontSize: 11, color: '#15803D', fontWeight: 600,
                     textDecoration: 'none', display: 'block', marginTop: 4,
                   }}
                 >
