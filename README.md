@@ -8,11 +8,11 @@
 
 Early detection saves lives. Brafie makes it accessible, private, and easy to understand, in clear, everyday English.
 
-> **Ghanaian adaptation and localisation by [LordScientist].** Based on the original open-source **Sahtek** project and distributed under the **MIT License**.
+> **Ghanaian adaptation and localisation by [LordScientist].** Based on the original open-source **Sahtek** project by **Anas Lahraoui**, and distributed under the **MIT License**.
 
 <br/>
 
-[![Adapted for Ghana](https://img.shields.io/badge/Adapted_for-Ghana_🇬🇭-006B3F?style=for-the-badge)](https://github.com/)
+[![Adapted for Ghana](https://img.shields.io/badge/Adapted_for-Ghana_🇬🇭-006B3F?style=for-the-badge)](https://github.com/LordScientist/breast-cancer-project)
 &nbsp;
 [![License: MIT](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](./LICENSE)
 
@@ -23,10 +23,10 @@ Early detection saves lives. Brafie makes it accessible, private, and easy to un
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat-square&logo=framer&logoColor=white)
-![Groq](https://img.shields.io/badge/Groq_·_Llama_3.3_70B-F55036?style=flat-square&logo=meta&logoColor=white)
+![MapLibre](https://img.shields.io/badge/MapLibre_GL-396CB2?style=flat-square&logo=maplibre&logoColor=white)
 ![PWA](https://img.shields.io/badge/PWA-Installable-5A0FC8?style=flat-square&logo=pwa&logoColor=white)
+![Privacy first](https://img.shields.io/badge/Privacy-on--device-D63384?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-22C55E?style=flat-square)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-D63384?style=flat-square)
 
 <br/>
 
@@ -50,7 +50,7 @@ Early detection saves lives. Brafie makes it accessible, private, and easy to un
 - [Getting Started](#-getting-started)
 - [What Makes Brafie Different](#-what-makes-brafie-different)
 - [Roadmap](#-roadmap)
-- [Team](#-team)
+- [Author](#-author)
 - [Acknowledgments](#-acknowledgments)
 - [License](#-license)
 
@@ -62,7 +62,7 @@ Early detection saves lives. Brafie makes it accessible, private, and easy to un
 
 Breast cancer is the **most common cancer among women worldwide**, and too many cases in Ghana and across the region are found late, when treatment is harder and survival drops.
 
-> ⚠️ **Ghana-specific figures are still being verified.** The original project documented Morocco's national figures (~12,000 new cases a year, ~60% diagnosed late, average diagnosis age ~48). Those are **not** Ghanaian statistics and have been removed from the interface. No Ghana-specific numbers are shown until a verified source is confirmed; see [`docs/GHANA_LOCALISATION.md`](./docs/GHANA_LOCALISATION.md).
+> ⚠️ **Ghana-specific figures are still being verified.** The original project documented Morocco's national figures (~12,000 new cases a year, ~60% diagnosed late, average diagnosis age ~48). Those are **not** Ghanaian statistics and have been removed from the interface. The English stats lead with a **regional (Africa) figure** and keep the `1 in 8` / `99%` figures clearly labelled as **global** context. No Ghana-specific numbers are shown until a verified source is confirmed; see [`docs/GHANA_LOCALISATION.md`](./docs/GHANA_LOCALISATION.md).
 
 What is universal: the gap is rarely medicine: it is **awareness, access, and comfort**. Many women lack clear information, feel embarrassed to seek help, or simply do not know how to check themselves.
 
@@ -73,7 +73,7 @@ What is universal: the gap is rarely medicine: it is **awareness, access, and co
 ### Why It Matters
 
 - 🤝 **Culturally sensitive**: a warm, respectful tone, never clinical or shaming.
-- 🔒 **Privacy by design**: **no camera, no photos, no accounts, no sensitive data leaves the device.** Everything lives in the browser.
+- 🔒 **Privacy by design**: **no camera, no photos, no accounts, no sensitive data leaves the device.** The chat assistant, risk scoring, self-check progress and reminders all run in the browser.
 - 📱 **Meets women where they are**: on the phone, in their language, on their terms.
 
 > Brafie isn't a diagnosis tool. It's an **awareness and empowerment** tool, and it always points to a real doctor.
@@ -86,12 +86,12 @@ What is universal: the gap is rarely medicine: it is **awareness, access, and co
 |:---:|---|---|
 | 🌐 | **English-first, Ghana-ready** | Ships in clear, everyday English. The i18n layer is structured so Ghanaian languages (Twi, Ga, Ewe, Dagbani…) can be added one at a time, once each is fully translated and medically reviewed, never machine-translated. |
 | 📚 | **Educational Hub** | Overview, symptoms, prevention, and a **30-myth** infinite-scroll flip-card wall that busts misconceptions one tap at a time. |
-| 🩺 | **Guided Self-Check** | Interactive **5-step** monthly self-exam with per-step timers and **voice guidance** in every language. |
+| 🩺 | **Guided Self-Check** | Interactive **5-step** monthly self-exam with per-step timers and **voice guidance** (`SpeechSynthesis`). Progress resumes within 24 hours if she leaves and returns. |
 | 👩 | **Interactive Body Map** | Clickable symptom zones that explain what to look and feel for, visually, without a single photo. |
-| 📊 | **AI Risk Assessment** | Weighted local scoring + a **personalized AI summary & recommendations**, exportable as a **branded PDF or JSON** report. |
-| 🤖 | **Context-Aware AI Chatbot** | Powered by **Llama 3.3 70B**, and aware of *your* journey (did you finish the self-check? set a reminder? take the risk test?) for genuinely personal answers. |
-| 🗺️ | **Worldwide Doctor Finder** | Real-time map with autocomplete location search and live distance calculation: find oncologists & clinics anywhere. |
-| 💬 | **Real Reminders** | Monthly **WhatsApp** reminders in the user's language **+** browser push notifications, so a self-check never gets forgotten. |
+| 📊 | **Risk Assessment** | A **10-question, weighted, on-device** awareness score with tailored recommendations, exportable as a **branded PDF or JSON** report. It is an awareness score, **not** a probability of disease. |
+| 🤖 | **Private On-Device Assistant** | A keyword-matched breast-health assistant that answers from a **bundled knowledge base**. No API key, no LLM, and **nothing she types leaves the device**. Voice input is consent-gated and explained before the mic ever opens. |
+| 🗺️ | **Worldwide Doctor Finder** | Live **OpenStreetMap** map with autocomplete location search and real distance calculation: find hospitals, clinics and pharmacies nearby. |
+| 💬 | **Reminders** | A monthly **calendar reminder** (`.ics`, the one method that fires when the app is closed) plus **in-app browser notifications** while Brafie is open. Email and WhatsApp are shown as *coming soon*, not promised. |
 | 📱 | **Progressive Web App** | Installable to the home screen and works **offline**, no app store required. |
 | 🎗️ | **Prevention Tracker** | Habit checklist with an animated progress ring, a protection score, and a monthly challenge to build lasting habits. |
 
@@ -110,12 +110,12 @@ What is universal: the gap is rarely medicine: it is **awareness, access, and co
 - Framer Motion (animations)
 - Zustand (state management)
 - React Router (navigation)
-- jsPDF (branded report export)
+- jsPDF (branded report export, lazy-loaded)
 
-**🤖 AI**
-- Groq API: **Llama 3.3 70B** (`llama-3.3-70b-versatile`)
-- Powers the chatbot **and** risk analysis
-- Graceful local knowledge-base fallback
+**🧠 On-device intelligence**
+- Keyword-matched knowledge base (chat)
+- Weighted local scoring (risk)
+- No external AI provider in the shipped build
 
 </td>
 <td valign="top" width="50%">
@@ -127,13 +127,13 @@ What is universal: the gap is rarely medicine: it is **awareness, access, and co
 - Nominatim (geocoding & search)
 
 **🔔 Notifications**
-- Browser Push API
-- WhatsApp via OpenWA gateway
+- Calendar (`.ics` download)
+- Browser Notification API (in-app only)
 
 **🗣️ Voice & Platform**
-- Web Speech API (`SpeechSynthesis`)
+- Web Speech API (`SpeechSynthesis` + `SpeechRecognition`)
 - PWA: installable & offline
-- Deployed on **Vercel**
+- Static build, deployable to any static host
 
 </td>
 </tr>
@@ -148,8 +148,7 @@ What is universal: the gap is rarely medicine: it is **awareness, access, and co
 ![Zustand](https://img.shields.io/badge/Zustand-443E38?style=flat-square)
 ![MapLibre](https://img.shields.io/badge/MapLibre_GL-396CB2?style=flat-square&logo=maplibre&logoColor=white)
 ![OpenStreetMap](https://img.shields.io/badge/OpenStreetMap-7EBC6F?style=flat-square&logo=openstreetmap&logoColor=white)
-![Groq](https://img.shields.io/badge/Groq-F55036?style=flat-square)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+![jsPDF](https://img.shields.io/badge/jsPDF-F7DF1E?style=flat-square)
 
 </div>
 
@@ -162,14 +161,14 @@ What is universal: the gap is rarely medicine: it is **awareness, access, and co
 | Home | Learn & Myths | Self-Check |
 |:---:|:---:|:---:|
 | ![Home](./screenshots/home.png) | ![Learn](./screenshots/learn.png) | ![Self-Check](./screenshots/self-check.png) |
-| **Risk Assessment** | **Doctor Map** | **AI Chat** |
+| **Risk Assessment** | **Doctor Map** | **Assistant** |
 | ![Risk](./screenshots/risk.png) | ![Doctors](./screenshots/doctors.png) | ![Chat](./screenshots/chat.png) |
 
 ---
 
 ## 🏗 Architecture
 
-Brafie is **client-first**: a fast React PWA that talks directly to free, open, and best-in-class services, keeping the user's data on their device and the stack lightweight.
+Brafie is **client-first**: a fast React PWA whose intelligence runs **on the device**, keeping the user's data on her phone and the stack lightweight.
 
 ```mermaid
 flowchart TD
@@ -177,22 +176,26 @@ flowchart TD
 
     APP --> STATE["🗃️ Local State & Storage<br/>Zustand + localStorage<br/>(chat, risk, self-check, reminders)"]
 
-    APP -->|chat + risk analysis| GROQ["🤖 Groq API<br/>Llama 3.3 70B"]
+    APP -->|chat, answered on-device| KB["🧠 Bundled Knowledge Base<br/>keyword-matched · no network"]
+    APP -->|weighted scoring, on-device| SCORE["📊 Local Risk Scoring<br/>no network"]
     APP -->|map + search + places| GEO["🗺️ OpenStreetMap<br/>MapLibre · Overpass · Nominatim"]
-    APP -->|monthly reminders| WA["💬 WhatsApp<br/>OpenWA Gateway"]
-    APP -->|voice + alerts| BROWSER["🔊 Browser APIs<br/>SpeechSynthesis · Push"]
+    APP -->|voice + alerts| BROWSER["🔊 Browser APIs<br/>SpeechSynthesis · SpeechRecognition · Notification"]
 
-    APP -.optional backend.-> API["🧩 Backend Service<br/>content · reminders persistence"]
+    APP -. not wired in the shipped build .-> API["🧩 Optional .NET 8 Backend<br/>content · reminders · risk · chat proxy"]
 
     style APP fill:#D63384,stroke:#D63384,color:#fff
-    style GROQ fill:#F55036,stroke:#F55036,color:#fff
+    style KB fill:#22C55E,stroke:#22C55E,color:#fff
+    style SCORE fill:#22C55E,stroke:#22C55E,color:#fff
     style U fill:#FFF5F7,stroke:#D63384,color:#2D1F2D
 ```
 
 **Design principles**
-- 🔐 Sensitive state (risk answers, chat history, progress) **never leaves the browser**; it lives in `localStorage`.
-- 🧠 The AI layer **degrades gracefully**: if Groq is unreachable, a built-in multilingual knowledge base answers instead, the app never breaks.
-- 🪶 Heavy dependencies (like the PDF engine) are **lazy-loaded** on demand to keep the initial bundle lean for slow connections.
+- 🔐 Sensitive state (risk answers, chat history, progress, reminders) **never leaves the browser**; it lives in `localStorage`.
+- 🧠 The intelligence layer is **local**: chat answers come from a bundled knowledge base and risk is scored by a deterministic weighted algorithm. No message, answer or API key is shipped to a third party.
+- 🪶 Heavy dependencies (like the PDF engine and the map) are **lazy-loaded** on demand to keep the initial bundle lean for slow connections.
+- 🧩 An optional **.NET 8 backend** (`backend/`) exists for content, reminders, risk and a chat proxy. It is **not called by the shipped frontend**; the app is fully functional without it.
+
+> A full, evidence-based walkthrough of the codebase (routes, data flows, diagrams, limitations) lives in [`docs/architecture/BRAFIE_COMPLETE_PROJECT_GUIDE.md`](./docs/architecture/BRAFIE_COMPLETE_PROJECT_GUIDE.md).
 
 ---
 
@@ -202,23 +205,20 @@ flowchart TD
 
 - **Node.js** ≥ 18
 - **npm** ≥ 9
-- A free **Groq API key** → [console.groq.com/keys](https://console.groq.com/keys)
+
+No API key is required: the shipped app has no external AI or backend dependency.
 
 ### Installation
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/brafie.git
-cd brafie
+git clone https://github.com/LordScientist/breast-cancer-project.git
+cd breast-cancer-project
 
 # 2. Install dependencies
 npm install
 
-# 3. Configure environment variables
-cp .env.example .env
-#   → open .env and paste your Groq API key
-
-# 4. Start the dev server
+# 3. Start the dev server
 npm run dev
 ```
 
@@ -227,19 +227,24 @@ Then open **http://localhost:5173** 🎉
 ### Build for production
 
 ```bash
-npm run build      # type-check + production bundle → dist/
+npm run build      # type-check + production bundle + SEO shells -> dist/
 npm run preview    # preview the production build locally
+npm run lint       # eslint, zero warnings allowed
 ```
 
 ### Environment Variables
 
+All are optional; the app runs correctly with none set.
+
 | Variable | Required | Description |
 |---|:---:|---|
-| `VITE_GROQ_API_KEY` | ✅ | Groq API key (starts with `gsk_`), powers the AI chat & risk analysis. |
-| `VITE_API_URL` | ⬜ | Optional backend base URL for content/reminder persistence. |
-| `VITE_USE_MOCK` | ⬜ | `true` to force the local mock/knowledge-base layer (offline demo). |
+| `VITE_SITE_ORIGIN` | ⬜ | Canonical/OG/JSON-LD origin at runtime. Defaults to the original `https://sahtek.tech`; **set this to the real domain before launch.** |
+| `SITE_ORIGIN` | ⬜ | The same origin for the post-build SEO script (`scripts/generate-seo.mjs`). Set both. |
+| `VITE_API_URL` | ⬜ | Optional backend base URL. Not used by the shipped UI. |
 
-> ⚠️ **Production note:** `VITE_`-prefixed variables are inlined into the client bundle. For a real production deployment, proxy the Groq key through a backend so it's never shipped to the browser.
+### Deploying
+
+`npm run build` produces a static `dist/` plus one real HTML file per route for link previews. Serve it from any static host (Netlify, Vercel, Cloudflare Pages, nginx `try_files`) so exact files are served before the SPA fallback.
 
 ---
 
@@ -275,14 +280,14 @@ A full **PWA**: installable to the home screen and functional without a connecti
 </td>
 <td width="33%" valign="top">
 
-### 🔗 Real Integrations
-Live **WhatsApp** reminders, real **maps & clinic data**, and a real **LLM**, not mockups.
+### 🗺️ Real, Open Data
+Live **OpenStreetMap** map with nearby facilities and distance, no mock-ups and no hard-coded providers.
 
 </td>
 <td width="33%" valign="top">
 
-### 🧠 Context-Aware AI
-The chatbot knows *your* progress and personalizes its guidance, a small detail that feels genuinely human.
+### 🧠 Honest by Design
+The assistant says what it is not, the risk score is framed as awareness (not a diagnosis), and unreviewed or unverified claims are left out rather than invented.
 
 </td>
 </tr>
@@ -297,7 +302,7 @@ The chatbot knows *your* progress and personalizes its guidance, a small detail 
 - [ ] Ghanaian-language translations (Twi, Ga, Ewe, Dagbani…), each fully translated and medically reviewed
 - [ ] Mammography centre directory with appointment booking
 - [ ] Survivor stories & anonymous community support
-- [ ] SMS reminders for users without WhatsApp
+- [ ] Email and WhatsApp reminders (server-side proxy)
 - [ ] Native mobile apps (iOS / Android)
 - [ ] Expansion to other women's health topics
 - [ ] Offline AI (on-device small model) for zero-connectivity regions
@@ -311,20 +316,19 @@ See the [open issues](../../issues) for the full list of proposed features and k
 **Ghanaian adaptation and localisation by LordScientist.**
 
 This release restructures and localises the interface, language and content for
-users in Ghana. It is built on the original open-source **Sahtek** project, and
-the work is distributed under the **MIT License** (see below). Any remaining
-Morocco-specific references in the non-English locale files are retained from the
-original project for historical reference and are not shown in the Ghanaian
-English interface.
+users in Ghana. It is built on the original open-source **Sahtek** project by
+**Anas Lahraoui**, and the work is distributed under the **MIT License** (see
+below). Any remaining Morocco-specific references in the non-English locale files
+are retained from the original project for historical reference and are not shown
+in the Ghanaian English interface.
 
 ---
 
 ## 🙏 Acknowledgments
 
-- 💗 **The original Sahtek project and its contributors**: for the open-source foundation this Ghanaian adaptation builds on.
+- 💗 **The original Sahtek project and its author, Anas Lahraoui**: for the open-source foundation this Ghanaian adaptation builds on.
 - 💗 **The open-source community**: Brafie stands on the shoulders of:
   - [React](https://react.dev), [Vite](https://vitejs.dev), [Tailwind CSS](https://tailwindcss.com), [Framer Motion](https://www.framer.com/motion/)
-  - [Groq](https://groq.com) & [Meta Llama](https://llama.meta.com)
   - [MapLibre](https://maplibre.org), [OpenStreetMap](https://www.openstreetmap.org), [Overpass API](https://overpass-api.de), [Nominatim](https://nominatim.org)
   - [Lucide Icons](https://lucide.dev), [jsPDF](https://github.com/parallax/jsPDF)
 
@@ -342,6 +346,6 @@ Distributed under the **MIT License**. See [`LICENSE`](./LICENSE) for details.
 
 **Your health is a trust** 🎀
 
-*Ghanaian adaptation and localisation by **LordScientist** · MIT License.*
+*Ghanaian adaptation and localisation by **LordScientist** · Original Sahtek project by **Anas Lahraoui** · MIT License.*
 
 </div>
