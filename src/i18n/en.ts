@@ -524,15 +524,21 @@ export const en = {
     mythsProgress: 'You revealed {n}/{total} truths',
     mythsComplete: '🏆 Congratulations! You know all the facts',
     stats: [
-      { value: '99%', caption: 'five-year survival reported when breast cancer is found at the earliest stage.' },
+      { value: '~198k', caption: 'new breast cancer cases were recorded across Africa in 2022 (GLOBOCAN), which is why early detection matters.' },
+      { value: '99%', caption: 'five-year survival reported worldwide when breast cancer is found at the earliest stage.' },
       { value: '5 min', caption: 'a month is enough for a simple self-check habit.' },
       { value: '2 weeks', caption: 'is how long a change should last before you book a doctor’s appointment.' },
     ],
     overviewStats: [
       {
+        stat: '~198k',
+        text: 'New breast cancer cases were recorded across Africa in 2022 (GLOBOCAN). Many are found late, when treatment is harder.',
+        statLabel: 'About 198,000 new breast cancer cases in Africa in 2022',
+      },
+      {
         stat: '1 in 8',
-        text: 'An approximate lifetime cumulative risk, which is why prevention and early detection matter so much.',
-        statLabel: 'Approximate risk: one woman in eight over a lifetime',
+        text: 'A global, approximate lifetime risk: about one woman in eight, which is why prevention and early detection matter so much.',
+        statLabel: 'Global approximate risk: one woman in eight over a lifetime',
       },
       {
         stat: '+90%',
@@ -642,9 +648,10 @@ export const en = {
       whatBody:
         'Breast cancer happens when cells in the breast start to grow out of control and form a lump or a change. It is the most common cancer among women, but when it is found early it is very often treatable. Knowing what is normal for your body helps you notice changes quickly.',
       whatStats: [
+        { value: '~198k', label: 'new breast cancer cases in Africa in 2022 (GLOBOCAN)' },
         { value: '#1', label: 'most common cancer among women worldwide' },
-        { value: '1 in 8', label: 'women may face breast cancer in their lifetime' },
-        { value: '99%', label: 'five-year survival when found at the earliest stage' },
+        { value: '1 in 8', label: 'women worldwide may face breast cancer in their lifetime' },
+        { value: '99%', label: 'five-year survival reported worldwide when found at the earliest stage' },
       ],
       earlyTitle: 'Why early detection matters',
       earlyNote: 'Survival rate by the stage at which it is found',
