@@ -13,7 +13,7 @@ import { useLanguage } from '@/hooks/useLanguage';
  * The principles are `home.credibility.points` and `home.credibility.method`,
  * reused. This page makes no new claim about who we are: every line of it is
  * something already enforced in the codebase (no diagnosis copy, no analytics,
- * Darija authored first). An About page is the easiest place on a health site to
+ * clear English authored first). An About page is the easiest place on a health site to
  * start overclaiming, and reusing the checkable claims is how we avoid it.
  */
 export function AboutPage() {
@@ -79,6 +79,25 @@ export function AboutPage() {
         </div>
 
         <Disclaimer full withTitle className="mt-6" />
+      </section>
+
+      {/* ── CREDITS ──────────────────────────────────────────────────────────
+          Attribution for the Ghanaian adaptation. Kept as plain English here
+          (not routed through i18n) because it is a proper-noun credit rather
+          than interface copy, and the app currently ships English only. */}
+      <section className="py-8">
+        <SectionHeading as="h2" size="h2" title="Credits" accent />
+        <div className="mt-6 max-w-prose rounded-3xl border border-line bg-card p-6 shadow-petal">
+          <p className="text-body-sm text-muted">
+            Ghanaian adaptation and localisation by{' '}
+            <span className="font-bold text-ink">LordScientist</span>.
+          </p>
+          <p className="mt-3 text-body-sm text-muted">
+            Built on the open-source <span className="font-semibold text-ink">Sahtek</span> project. This
+            adaptation restructures and localises the interface and content for users in Ghana, and is
+            distributed under the MIT License.
+          </p>
+        </div>
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────────────────── */}

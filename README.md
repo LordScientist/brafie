@@ -1,18 +1,20 @@
 <div align="center">
 
-# 🎀 صحّتك · Sahtek
+# 🎀 Brafie — Breast Health Ghana
 
-### *"Your Health"* — in Moroccan Darija
+### *Breast-cancer awareness and a guided self-check, adapted for Ghana*
 
-**An AI-powered breast cancer self-check & awareness platform, built for Moroccan women.**
+**A private, caring breast-health awareness companion, localised for women in Ghana.**
 
-Early detection saves lives. Sahtek makes it accessible, private, and culturally at home — in the language women actually speak.
+Early detection saves lives. Brafie makes it accessible, private, and easy to understand — in clear, everyday English.
+
+> **Ghanaian adaptation and localisation by [LordScientist].** Based on the original open-source **Sahtek** project and distributed under the **MIT License**.
 
 <br/>
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-sahtek.tech-D63384?style=for-the-badge&logoColor=white)](https://sahtek.tech)
+[![Adapted for Ghana](https://img.shields.io/badge/Adapted_for-Ghana_🇬🇭-006B3F?style=for-the-badge)](https://github.com/)
 &nbsp;
-[![Made in Morocco](https://img.shields.io/badge/Made_in-Morocco_🇲🇦-C1272D?style=for-the-badge)](https://sahtek.tech)
+[![License: MIT](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](./LICENSE)
 
 <br/>
 
@@ -28,11 +30,11 @@ Early detection saves lives. Sahtek makes it accessible, private, and culturally
 
 <br/>
 
-**[🚀 Live Demo](https://sahtek.tech)** · **[🐛 Report Bug](../../issues)** · **[✨ Request Feature](../../issues)**
+**[🐛 Report Bug](../../issues)** · **[✨ Request Feature](../../issues)**
 
 <br/>
 
-*Built with 💗 for the **Vibe Coding Hackathon 2026** — Polydisciplinary Faculty of Khouribga (FPK)*
+*Ghanaian adaptation of the open-source Sahtek project · Made with 💗 for women in Ghana*
 
 </div>
 
@@ -46,7 +48,7 @@ Early detection saves lives. Sahtek makes it accessible, private, and culturally
 - [Screenshots](#-screenshots)
 - [Architecture](#-architecture)
 - [Getting Started](#-getting-started)
-- [What Makes Sahtek Different](#-what-makes-sahtek-different)
+- [What Makes Brafie Different](#-what-makes-brafie-different)
 - [Roadmap](#-roadmap)
 - [Team](#-team)
 - [Acknowledgments](#-acknowledgments)
@@ -58,28 +60,23 @@ Early detection saves lives. Sahtek makes it accessible, private, and culturally
 
 ### The Problem
 
-Breast cancer is the **most common cancer among women in Morocco** — yet awareness and early detection remain critically low.
+Breast cancer is the **most common cancer among women worldwide**, and too many cases in Ghana and across the region are found late — when treatment is harder and survival drops.
 
-| 📊 The reality in Morocco | |
-|---|---|
-| 🔴 **~12,000** new cases every year | The leading cancer diagnosis in women |
-| 🔴 **~60%** diagnosed **late** | When treatment is harder and survival drops |
-| 🟢 **Up to 99%** survival | *when* caught early — detection is everything |
-| ⚕️ Average diagnosis age **~48** | Younger than in many countries |
+> ⚠️ **Ghana-specific figures are still being verified.** The original project documented Morocco's national figures (~12,000 new cases a year, ~60% diagnosed late, average diagnosis age ~48). Those are **not** Ghanaian statistics and have been removed from the interface. No Ghana-specific numbers are shown until a verified source is confirmed — see [`docs/GHANA_LOCALISATION.md`](./docs/GHANA_LOCALISATION.md).
 
-The gap isn't medicine — it's **awareness, access, and comfort**. Many women lack information in their own language, feel embarrassed to seek help, or simply don't know how to check themselves.
+What is universal: the gap is rarely medicine — it is **awareness, access, and comfort**. Many women lack clear information, feel embarrassed to seek help, or simply do not know how to check themselves.
 
 ### Our Solution
 
-**Sahtek** turns a smartphone into a private, judgment-free health companion. It teaches women how to perform a monthly self-check, understand their risk, separate myth from fact, find a nearby doctor, and stay consistent — all in **Moroccan Darija first**, with six more languages.
+**Brafie** turns a smartphone into a private, judgement-free health companion. It teaches women how to perform a monthly self-check, understand their risk, separate myth from fact, find a nearby doctor, and stay consistent — in **clear, everyday English**, with a structure ready for Ghanaian languages.
 
 ### Why It Matters
 
-- 🕌 **Culturally sensitive** — Darija-first tone, warm and respectful, never clinical or shaming.
+- 🤝 **Culturally sensitive** — a warm, respectful tone, never clinical or shaming.
 - 🔒 **Privacy by design** — **no camera, no photos, no accounts, no sensitive data leaves the device.** Everything lives in the browser.
-- 🤝 **Meets women where they are** — on the phone, in their language, on their terms.
+- 📱 **Meets women where they are** — on the phone, in their language, on their terms.
 
-> Sahtek isn't a diagnosis tool. It's an **awareness and empowerment** tool — and it always points to a real doctor.
+> Brafie isn't a diagnosis tool. It's an **awareness and empowerment** tool — and it always points to a real doctor.
 
 ---
 
@@ -87,7 +84,7 @@ The gap isn't medicine — it's **awareness, access, and comfort**. Many women l
 
 | | Feature | Description |
 |:---:|---|---|
-| 🌐 | **7 Languages + RTL** | Darija 🇲🇦, French, English, Spanish, German, Russian & Portuguese — with full right-to-left layout for Arabic. |
+| 🌐 | **English-first, Ghana-ready** | Ships in clear, everyday English. The i18n layer is structured so Ghanaian languages (Twi, Ga, Ewe, Dagbani…) can be added one at a time, once each is fully translated and medically reviewed — never machine-translated. |
 | 📚 | **Educational Hub** | Overview, symptoms, prevention, and a **30-myth** infinite-scroll flip-card wall that busts misconceptions one tap at a time. |
 | 🩺 | **Guided Self-Check** | Interactive **5-step** monthly self-exam with per-step timers and **voice guidance** in every language. |
 | 👩 | **Interactive Body Map** | Clickable symptom zones that explain what to look and feel for — visually, without a single photo. |
@@ -172,11 +169,11 @@ The gap isn't medicine — it's **awareness, access, and comfort**. Many women l
 
 ## 🏗 Architecture
 
-Sahtek is **client-first**: a fast React PWA that talks directly to free, open, and best-in-class services — keeping the user's data on their device and the stack lightweight.
+Brafie is **client-first**: a fast React PWA that talks directly to free, open, and best-in-class services — keeping the user's data on their device and the stack lightweight.
 
 ```mermaid
 flowchart TD
-    U["👩 User · Browser / PWA"] --> APP["⚛️ Sahtek React App<br/>(TypeScript · Vite · Tailwind)"]
+    U["👩 User · Browser / PWA"] --> APP["⚛️ Brafie React App<br/>(TypeScript · Vite · Tailwind)"]
 
     APP --> STATE["🗃️ Local State & Storage<br/>Zustand + localStorage<br/>(chat, risk, self-check, reminders)"]
 
@@ -211,8 +208,8 @@ flowchart TD
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/sahtek.git
-cd sahtek
+git clone https://github.com/your-username/brafie.git
+cd brafie
 
 # 2. Install dependencies
 npm install
@@ -246,7 +243,7 @@ npm run preview    # preview the production build locally
 
 ---
 
-## 🌟 What Makes Sahtek Different
+## 🌟 What Makes Brafie Different
 
 <table>
 <tr>
@@ -258,14 +255,14 @@ No camera. No photos. No accounts. No personal data ever leaves the device — a
 </td>
 <td width="33%" valign="top">
 
-### 🕌 Culturally Adapted
-**Darija-first**, warm, and non-judgmental. Written for the Moroccan context, not translated into it.
+### 🇬🇭 Adapted for Ghana
+Warm and non-judgmental, in **clear, everyday English** — written for the Ghanaian context, not translated into it.
 
 </td>
 <td width="33%" valign="top">
 
-### 🌐 Genuinely Multilingual
-**7 languages** with true **RTL** support — not a language switcher bolted on as an afterthought.
+### 🌐 Ready for Local Languages
+Ships in English today, with an i18n layer structured to add reviewed **Ghanaian languages** (Twi, Ga, Ewe, Dagbani…) — not a language switcher bolted on as an afterthought.
 
 </td>
 </tr>
@@ -296,8 +293,9 @@ The chatbot knows *your* progress and personalizes its guidance — a small deta
 ## 🗺 Roadmap
 
 - [ ] User accounts with encrypted cloud sync (opt-in)
-- [ ] Verified partnerships with Moroccan hospitals & NGOs
-- [ ] Mammography center directory with appointment booking
+- [ ] Verified partnerships with Ghanaian hospitals & NGOs
+- [ ] Ghanaian-language translations (Twi, Ga, Ewe, Dagbani…), each fully translated and medically reviewed
+- [ ] Mammography centre directory with appointment booking
 - [ ] Survivor stories & anonymous community support
 - [ ] SMS reminders for users without WhatsApp
 - [ ] Native mobile apps (iOS / Android)
@@ -308,23 +306,23 @@ See the [open issues](../../issues) for the full list of proposed features and k
 
 ---
 
-## 👥 Team
+## 👤 Author
 
-Built by two students at the **Polydisciplinary Faculty of Khouribga (FPK)** for the Vibe Coding Hackathon 2026.
+**Ghanaian adaptation and localisation by LordScientist.**
 
-| | Role | Responsibilities |
-|---|---|---|
-| **Khalid Morjan** · [LinkedIn](https://linkedin.com/in/your-profile) | 🎨 **Frontend** | UI/UX, React app, multilingual i18n & RTL, AI chat integration, maps, PWA, animations. |
-| **Anas Ait Hsain** · [LinkedIn](https://linkedin.com/in/your-profile) | ⚙️ **Backend** | API services, content & reminder infrastructure, integrations, deployment. |
+This release restructures and localises the interface, language and content for
+users in Ghana. It is built on the original open-source **Sahtek** project, and
+the work is distributed under the **MIT License** (see below). Any remaining
+Morocco-specific references in the non-English locale files are retained from the
+original project for historical reference and are not shown in the Ghanaian
+English interface.
 
 ---
 
 ## 🙏 Acknowledgments
 
-- 🎓 **Polydisciplinary Faculty of Khouribga (FPK)** — for hosting and supporting the hackathon.
-- 👩‍🏫 **Pr. Ibtissam Bakkouri** — for mentorship and guidance.
-- 🏆 **The Vibe Coding Hackathon 2026 organizers** — for the challenge and the platform.
-- 💗 **The open-source community** — Sahtek stands on the shoulders of:
+- 💗 **The original Sahtek project and its contributors** — for the open-source foundation this Ghanaian adaptation builds on.
+- 💗 **The open-source community** — Brafie stands on the shoulders of:
   - [React](https://react.dev), [Vite](https://vitejs.dev), [Tailwind CSS](https://tailwindcss.com), [Framer Motion](https://www.framer.com/motion/)
   - [Groq](https://groq.com) & [Meta Llama](https://llama.meta.com)
   - [MapLibre](https://maplibre.org), [OpenStreetMap](https://www.openstreetmap.org), [Overpass API](https://overpass-api.de), [Nominatim](https://nominatim.org)
@@ -342,10 +340,8 @@ Distributed under the **MIT License**. See [`LICENSE`](./LICENSE) for details.
 
 <br/>
 
-**صحّتك أمانة · Your health is a trust** 🎀
+**Your health is a trust** 🎀
 
-*If Sahtek helped you or someone you love, give it a ⭐ — and share it with a woman who should see it.*
-
-[![Live Demo](https://img.shields.io/badge/Visit-sahtek.tech-D63384?style=for-the-badge)](https://sahtek.tech)
+*Ghanaian adaptation and localisation by **LordScientist** · MIT License.*
 
 </div>

@@ -141,11 +141,21 @@ export function Footer() {
         <div className="hairline mt-10" />
 
         <div className="mt-6 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1.5">
             <p className="text-caption text-muted">
               © {year} {APP.latinName}. {t.footer.rights}
             </p>
             <p className="text-caption text-muted">{t.footer.madeIn}</p>
+            {/* A single, restrained Ghana accent — not a flag pattern. */}
+            <span aria-hidden className="flex h-1 w-14 overflow-hidden rounded-full">
+              <span className="h-full flex-1 bg-[#CE1126]" />
+              <span className="h-full flex-1 bg-[#FCD116]" />
+              <span className="h-full flex-1 bg-[#006B3F]" />
+            </span>
+            <p className="text-caption text-muted">
+              Ghanaian adaptation &amp; localisation by{' '}
+              <span className="font-semibold text-ink">LordScientist</span> · MIT License
+            </p>
           </div>
           <LanguageSwitch variant="inline" className="justify-start sm:justify-end" />
         </div>

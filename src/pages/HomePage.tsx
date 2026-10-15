@@ -42,7 +42,7 @@ const HERO_TRUST_ICONS = [ShieldCheck, EyeOff, LockKeyhole];
 /* The trust bar, in i18n order. `tone` is presentational only. */
 const TRUST_BAR_TONES = ['calm', 'brand', 'calm', 'gold', 'brand'] as const;
 
-/* "What Sahtek helps you do", in i18n order. The six cards trace the four verbs
+/* "What Brafie helps you do", in i18n order. The six cards trace the four verbs
    of the positioning line: recognize → learn → act earlier → know the next step. */
 const HELPS = [
   { icon: LibraryBig, to: '/learn', tone: 'brand' },

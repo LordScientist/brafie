@@ -77,9 +77,9 @@ export function MythsWall() {
   const learn = t.learn;
 
   /* The 30 myths used to live in this file as a 7-language record — a second
-     copy store outside src/i18n, which meant the Darija could not be edited by
-     anyone who edits Darija. They are now `learn.mythsCards`; this only slices
-     them into the three marquee rows. */
+     copy store outside src/i18n, which meant the copy could not be edited by
+     anyone who edits the translations. They are now `learn.mythsCards`; this
+     only slices them into the three marquee rows. */
   const cards = learn.mythsCards;
   const rows = [cards.slice(0, 10), cards.slice(10, 20), cards.slice(20, 30)];
   const total = cards.length;

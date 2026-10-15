@@ -26,7 +26,7 @@ const STYLES: Record<Variant, { wrap: string; icon: typeof ShieldCheck; iconClas
 };
 
 /**
- * The safety block. Sahtek gives awareness and guidance — never a diagnosis —
+ * The safety block. Brafie gives awareness and guidance — never a diagnosis —
  * so a note like this appears on every page that educates, scores, guides or
  * answers (CLAUDE.md HARD RULE 2).
  *

@@ -16,7 +16,7 @@ const POINT_ICONS: LucideIcon[] = [ShieldCheck, LockKeyhole, Languages];
  * There are no testimonials here and no clinician photos, because we have
  * neither. What we do have is a method, and the method is checkable: every
  * claim in `points` is enforced somewhere in this codebase (no diagnosis
- * copy, no analytics bundle, Darija authored first).
+ * copy, no analytics bundle, clear English authored first).
  *
  * The medical-review credit and the source list render ONLY when
  * `MEDICAL_REVIEW` / `EVIDENCE_SOURCES` are filled in — the same convention the
