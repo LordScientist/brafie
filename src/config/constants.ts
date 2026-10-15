@@ -1,14 +1,29 @@
 import type { Language } from '@/types/api';
 
 export const APP = {
-  name: 'صحّتك',
-  latinName: 'Sahtek',
+  name: 'Brafie',
+  latinName: 'Brafie',
   version: '1.0.0',
-  email: 'hello@sahtek.ma',
+  /**
+   * Public contact address. Left empty on purpose for the Ghanaian adaptation:
+   * no verified Ghana support inbox exists yet, and the footer hides the contact
+   * link rather than shipping the original project's Morocco address. Fill this
+   * in once a real, monitored address is available.
+   */
+  email: '',
 } as const;
 
-export const SUPPORTED_LANGUAGES: Language[] = ['ar', 'fr', 'en', 'es', 'de', 'ru', 'pt'];
-export const DEFAULT_LANGUAGE: Language = 'ar';
+/**
+ * Languages offered in the UI.
+ *
+ * The Ghanaian adaptation currently ships English only. English is the official
+ * language of Ghana, and we never machine-translate medical content — so Twi, Ga,
+ * Ewe, Dagbani and other Ghanaian languages will be added one at a time, only
+ * once each can be fully translated and reviewed. `LanguageSwitch` hides itself
+ * while this list holds a single entry.
+ */
+export const SUPPORTED_LANGUAGES: Language[] = ['en'];
+export const DEFAULT_LANGUAGE: Language = 'en';
 
 export const STORAGE_KEYS = {
   language: 'sahtek:lang',
@@ -44,7 +59,7 @@ export const FOOTER_LINKS: { key: 'about' | 'privacy' | 'terms' | 'contact'; to?
   { key: 'about', to: '' },
   { key: 'privacy', to: '' },
   { key: 'terms', to: '' },
-  { key: 'contact', href: `mailto:${APP.email}` },
+  { key: 'contact', href: APP.email ? `mailto:${APP.email}` : '' },
 ];
 
 /**
@@ -68,7 +83,7 @@ export const EVIDENCE_SOURCES: { label: string; url: string }[] = [];
 export const LANGUAGE_META: Record<Language, { label: string; native: string; flag: string }> = {
   ar: { label: 'Darija', native: 'الدارجة', flag: 'MA' },
   fr: { label: 'Francais', native: 'Francais', flag: 'FR' },
-  en: { label: 'English', native: 'English', flag: 'EN' },
+  en: { label: 'English', native: 'English', flag: 'GH' },
   es: { label: 'Spanish', native: 'Espanol', flag: 'ES' },
   de: { label: 'German', native: 'Deutsch', flag: 'DE' },
   ru: { label: 'Russian', native: 'Русский', flag: 'RU' },

@@ -1,7 +1,5 @@
 import { create } from 'zustand';
 import type { Language } from '@/types/api';
-import { ar } from './ar';
-import { fr } from './fr';
 import { en, type Translation } from './en';
 
 export type { Translation };
@@ -9,27 +7,19 @@ export type { Translation };
 /**
  * Locale loading.
  *
- * All seven locales used to be statically imported here, which put 381 KB of
- * source — every string in every language — into the main bundle so that one of
- * them could be used. On a Moroccan 3G phone that is bytes she pays for and
- * never reads.
+ * The Ghanaian adaptation ships English only (see SUPPORTED_LANGUAGES in
+ * `config/constants.ts`), so English is the sole eager locale: it must paint
+ * instantly, with no wrong-language flash.
  *
- * The three the product is FOR (Darija, French, English — the same three we ask
- * Google to index) stay eager: they must paint instantly, with no wrong-language
- * flash and no RTL/LTR flip on load.
- *
- * The four legacy locales (es/de/ru/pt — "keep working, never prioritize" per
- * CLAUDE.md) are code-split and fetched on demand. Until one arrives the UI
- * shows English, which is the documented fallback for unknown locales anyway.
+ * Ghanaian languages (Twi, Ga, Ewe, Dagbani, …) are added to the lazy map below
+ * as they are authored and medically reviewed — never machine-translated. Each
+ * new locale is a `<code>.ts` file implementing the `Translation` type, plus one
+ * line here, plus an entry in SUPPORTED_LANGUAGES. Until a lazy locale arrives
+ * the UI shows English, which is the documented fallback for unknown locales.
  */
-const EAGER: Partial<Record<Language, Translation>> = { ar, fr, en };
+const EAGER: Partial<Record<Language, Translation>> = { en };
 
-const LAZY: Partial<Record<Language, () => Promise<{ default?: Translation } & Record<string, unknown>>>> = {
-  es: () => import('./es'),
-  de: () => import('./de'),
-  ru: () => import('./ru'),
-  pt: () => import('./pt'),
-};
+const LAZY: Partial<Record<Language, () => Promise<{ default?: Translation } & Record<string, unknown>>>> = {};
 
 interface LocaleState {
   loaded: Partial<Record<Language, Translation>>;

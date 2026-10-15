@@ -1,7 +1,7 @@
 export const en = {
   app: {
-    name: 'Sahtek',
-    latinName: 'Sahtek',
+    name: 'Brafie',
+    latinName: 'Brafie',
     tagline: 'Your gentle AI companion for breast health awareness',
   },
   nav: {
@@ -32,7 +32,7 @@ export const en = {
     copy: 'Copy',
     copied: 'Copied',
     you: 'You',
-    assistant: 'Sahtek AI',
+    assistant: 'Brafie AI',
     of: 'of',
     step: 'Step',
     optional: 'optional',
@@ -48,23 +48,23 @@ export const en = {
   footer: {
     explore: 'Explore',
     legal: 'Legal',
-    about: 'About Sahtek',
+    about: 'About Brafie',
     privacy: 'Privacy',
     terms: 'Terms',
     contact: 'Contact',
     privacyNote: 'Your answers stay on your device. No account, no tracking.',
     rights: 'All rights reserved.',
-    madeIn: 'Made with care in Morocco',
+    madeIn: 'Made with care for Ghana',
     followUs: 'Follow us',
   },
   disclaimer: {
     title: 'Medical disclaimer',
     short: 'Educational support only. This is not a diagnosis. Please consult a doctor for medical advice.',
-    full: 'Sahtek provides educational information about breast health. It does not replace professional medical advice, diagnosis or treatment. If you notice any new change, book a medical consultation as soon as possible.',
+    full: 'Brafie provides educational information about breast health. It does not replace professional medical advice, diagnosis or treatment. If you notice any new change, book a medical consultation as soon as possible.',
   },
   onboarding: {
     slides: [
-      { title: 'Knowledge protects', desc: 'Learn the signs in Darija, French or English.' },
+      { title: 'Knowledge protects', desc: 'Learn the signs in clear, simple English.' },
       { title: 'Five minutes a month', desc: 'A calm guided self-check with a circular timer.' },
       { title: 'Never alone', desc: 'Ask a caring AI assistant when you need reassurance.' },
     ],
@@ -75,23 +75,23 @@ export const en = {
     heroTitle: 'Know the signs.',
     heroHighlight: 'Feel steady in your own body.',
     heroSubtitle:
-      'Sahtek walks with you, step by step: notice changes, follow a guided self-check, and know what to do next. No account, no tracking — your answers stay on your device.',
+      'Brafie walks with you, step by step: notice changes, follow a guided self-check, and know what to do next. No account, no tracking — your answers stay on your device.',
     ctaPrimary: 'Start the guided self-check',
     ctaSecondary: 'Learn the signs',
     /* The three signals under the hero. Each one is literally true today:
        no auth exists, no analytics ship, and health state never leaves
        localStorage (`sahtek:*`). Do not add a fourth that we cannot prove. */
     heroTrust: ['No account', 'No tracking', 'Your answers stay on your device'],
-    previewAlt: 'A preview of the Sahtek app, showing the guided self-check screen.',
-    trustBarLabel: 'What Sahtek promises',
+    previewAlt: 'A preview of the Brafie app, showing the guided self-check screen.',
+    trustBarLabel: 'What Brafie promises',
     trustBar: [
       'Private and respectful',
       'Awareness first, never a diagnosis',
       'Easy guided checks',
-      'Darija, French and English',
-      'Made for women in Morocco',
+      'Clear, plain English',
+      'Made for women in Ghana',
     ],
-    helpsTitle: 'What Sahtek helps you do',
+    helpsTitle: 'What Brafie helps you do',
     helpsSubtitle: 'Six calm ways to know your body better — and to act early, with confidence.',
     helps: [
       { title: 'Learn the signs', desc: 'The changes worth noticing, in plain, unhurried language.' },
@@ -160,23 +160,23 @@ export const en = {
     selfCheckPreview: {
       eyebrow: 'The self-check',
       title: 'Five minutes, on your own, calmly',
-      subtitle: 'Sahtek walks you through it, step by step. No photos, no account, nothing sent anywhere.',
+      subtitle: 'Brafie walks you through it, step by step. No photos, no account, nothing sent anywhere.',
       cta: 'Start the guided self-check',
       steps: [
         {
           title: 'Find a calm moment',
           desc: 'The best time is 3 to 5 days after your period ends. Choose a place where you feel comfortable.',
-          imageAlt: 'A Sahtek screen: starting the self-check and choosing the right time.',
+          imageAlt: 'A Brafie screen: starting the self-check and choosing the right time.',
         },
         {
           title: 'Follow the steps',
           desc: 'Five guided steps, one at a time, with a soft timer and no hurry.',
-          imageAlt: 'A Sahtek screen: one step of the self-check with the timer running.',
+          imageAlt: 'A Brafie screen: one step of the self-check with the timer running.',
         },
         {
           title: 'Log it, and remind yourself',
           desc: 'Log your check and set a reminder for next month. Everything stays on your device.',
-          imageAlt: 'A Sahtek screen: confirming the check and setting a monthly reminder.',
+          imageAlt: 'A Brafie screen: confirming the check and setting a monthly reminder.',
         },
       ],
     },
@@ -189,7 +189,7 @@ export const en = {
       eyebrow: 'Your companion',
       title: 'Ask without embarrassment, without judgement',
       subtitle:
-        'The Sahtek assistant is not a doctor, and it will never give you a diagnosis. It explains, it reassures, and it tells you when to see someone.',
+        'The Brafie assistant is not a doctor, and it will never give you a diagnosis. It explains, it reassures, and it tells you when to see someone.',
       helpsWithTitle: 'What it helps with',
       helpsWith: [
         'Explains medical words in plain language',
@@ -200,7 +200,7 @@ export const en = {
       safetyNote:
         'Not a doctor, and not a diagnosis. The assistant offers educational information only — medical decisions stay with your doctor.',
       privacyNote:
-        'Answers come from Sahtek itself, on your device. Your questions are not sent anywhere.',
+        'Answers come from Brafie itself, on your device. Your questions are not sent anywhere.',
       cta: 'Open the chat',
       mock: {
         question: 'I found a small lump. Should I be scared?',
@@ -249,13 +249,13 @@ export const en = {
       title: 'Trust is built by being clear',
       subtitle: 'No invented credentials, no made-up reviews. Just what we do, and what we refuse to do.',
       points: [
-        { title: 'Awareness, not diagnosis', desc: 'Sahtek never says “you have” or “you are fine”. It explains, and it tells you when to see a doctor.' },
+        { title: 'Awareness, not diagnosis', desc: 'Brafie never says “you have” or “you are fine”. It explains, and it tells you when to see a doctor.' },
         { title: 'Private by design', desc: 'No account, no tracking, no analytics. Your answers stay in your browser.' },
-        { title: 'Darija first', desc: 'The words are written in Darija first, not machine-translated from English.' },
+        { title: 'Plain English first', desc: 'Written in clear, everyday English — not machine-translated or needlessly clinical.' },
       ],
       methodTitle: 'Our method',
       method: [
-        'We write in Darija first, then adapt to French and English.',
+        'We write in clear, plain English that is easy to read on a phone.',
         'We avoid clinical imagery and language designed to frighten.',
         'We say “what to notice” and “what to do” — never “what you have”.',
         'Every page that gives guidance carries a visible medical disclaimer.',
@@ -263,10 +263,10 @@ export const en = {
       reviewTitle: 'Medical review',
       reviewPendingTitle: 'Not yet reviewed by a named clinician',
       reviewPendingBody:
-        'This content follows the editorial rules above, but no named clinician has reviewed it yet. We would rather say so plainly than display an “expert-reviewed” badge we have not earned. If you are a clinician in Morocco and would like to review it, get in touch.',
+        'This content follows the editorial rules above, but no named clinician has reviewed it yet. We would rather say so plainly than display an “expert-reviewed” badge we have not earned. If you are a clinician in Ghana and would like to review it, get in touch.',
       sourcesTitle: 'Sources',
       sourcesPending: 'We have not published a source list yet. Until we do, treat this as awareness material and nothing more.',
-      methodImageAlt: 'An illustration: the stages of writing and reviewing Sahtek’s content.',
+      methodImageAlt: 'An illustration: the stages of writing and reviewing Brafie’s content.',
     },
     faq: {
       eyebrow: 'Questions',
@@ -274,15 +274,15 @@ export const en = {
       items: [
         {
           q: 'Is this a diagnosis tool?',
-          a: 'No. Sahtek gives awareness and guidance. It never diagnoses and never tells you whether you have a condition. Only a doctor can do that.',
+          a: 'No. Brafie gives awareness and guidance. It never diagnoses and never tells you whether you have a condition. Only a doctor can do that.',
         },
         {
           q: 'Is my data private?',
           a: 'Yes. There is no account, no tracking and no analytics. Your self-check and risk answers are stored in your own browser, and even the chat answers from inside the app — your questions are not sent anywhere.',
         },
         {
-          q: 'Can I use it in Darija?',
-          a: 'Yes, and Darija is our first language. French and English are available too, along with several other languages.',
+          q: 'What language is it in?',
+          a: 'Brafie is written in clear, everyday English. We do not machine-translate medical content, and we plan to add Ghanaian languages such as Twi, Ga and Ewe once they can be fully translated and reviewed.',
         },
         {
           q: 'When should I talk to a doctor?',
@@ -290,7 +290,7 @@ export const en = {
         },
         {
           q: 'Can I use it without an account?',
-          a: 'Yes. Sahtek works with no account and no sign-up. We never ask for your name or your email to use it.',
+          a: 'Yes. Brafie works with no account and no sign-up. We never ask for your name or your email to use it.',
         },
       ],
     },
@@ -323,7 +323,7 @@ export const en = {
     ctaSelfCheck: 'Start the guided self-check',
     ctaHelp: 'When to seek help',
     imageAltTemplate: 'A calm illustration of the sign: {label}',
-    ogAlt: 'Sahtek — 12 breast changes worth knowing.',
+    ogAlt: 'Brafie — 12 breast changes worth knowing.',
   },
   riskFactorsPage: {
     eyebrow: 'Risk factors',
@@ -401,17 +401,17 @@ export const en = {
      (the browser's SpeechRecognition ships audio to a third party). Saying
      "nothing ever leaves your device" would be a lie about the mic. */
   companionPage: {
-    eyebrow: 'The Sahtek assistant',
+    eyebrow: 'The Brafie assistant',
     title: 'A companion that explains — not a doctor that diagnoses',
     intro:
-      'The Sahtek assistant helps you understand breast health in plain language, without embarrassment and without judgement. But you should know exactly what it can do — and what it will never do — before you start.',
+      'The Brafie assistant helps you understand breast health in plain language, without embarrassment and without judgement. But you should know exactly what it can do — and what it will never do — before you start.',
     canTitle: 'What it can do',
     can: [
       'Explain medical words in plain language',
       'Clarify what is worth noticing on your body',
       'Answer the questions that feel hard to ask a person',
       'Tell you when to book an appointment with a doctor',
-      'Talk with you in Darija, French or English',
+      'Answer in clear, everyday English',
     ],
     cannotTitle: 'What it will never do',
     cannot: [
@@ -438,9 +438,9 @@ export const en = {
     privacyTitle: 'Where your questions go',
     typedLabel: 'Typing',
     privacyTyped:
-      'When you type: the answers come from inside Sahtek, on your device. Your questions are not sent to any server.',
+      'When you type: the answers come from inside Brafie, on your device. Your questions are not sent to any server.',
     privacyVoice:
-      'When you use the microphone: the browser sends your voice to a speech-recognition service to turn it into text. Sahtek never receives the recording, and you can always type instead of speaking.',
+      'When you use the microphone: the browser sends your voice to a speech-recognition service to turn it into text. Brafie never receives the recording, and you can always type instead of speaking.',
     cta: 'Open the chat',
     ctaSecondary: 'Learn the signs',
     mock: {
@@ -492,13 +492,13 @@ export const en = {
     ctaSelfCheck: 'Start the guided self-check',
   },
   aboutPage: {
-    eyebrow: 'Why Sahtek',
+    eyebrow: 'Why Brafie',
     title: 'Know your body, and act early',
     intro:
-      'Sahtek is a Moroccan companion for breast-health awareness. It explains, it teaches, and it tells you when to see a doctor — without fear, without embarrassment, and in your own language.',
+      'Brafie is a breast-health awareness companion adapted for Ghana. It explains, it teaches, and it tells you when to see a doctor — without fear, without embarrassment, and in clear, everyday language.',
     missionTitle: 'Our mission',
     mission:
-      'In Morocco, most breast cancers are found late. Not because women do not care, but because the information usually arrives in a language they do not read, or in a tone that frightens them. We write in Darija, calmly, with no clinical imagery — so that knowing arrives before illness does.',
+      'Breast cancer affects women in Ghana, as it does all over the world. Too often it is found late — not because women do not care, but because clear information can be hard to find and fear can delay a visit. Brafie is here to make that first step easier: plain English, a calm tone and no clinical imagery, so that knowing arrives before illness does.',
     principlesTitle: 'Our principles',
     ctaPrimary: 'Start the guided self-check',
     ctaSecondary: 'See the 12 signs',
@@ -526,7 +526,7 @@ export const en = {
     stats: [
       { value: '99%', caption: 'five-year survival reported when breast cancer is found at the earliest stage.' },
       { value: '5 min', caption: 'a month is enough for a simple self-check habit.' },
-      { value: '48', caption: 'average diagnosis age reported in Morocco awareness campaigns.' },
+      { value: '2 weeks', caption: 'is how long a change should last before you book a doctor’s appointment.' },
     ],
     overviewStats: [
       {
@@ -597,7 +597,7 @@ export const en = {
       shareCopied: 'Result copied — paste it anywhere ✅',
       shareCardLine1: 'I protect myself from breast cancer ✅',
       shareCardLine2: '6/6 healthy habits 🎀',
-      shareText: 'I protect myself from breast cancer ✅ 6/6 healthy habits 🎀 sahtek.tech',
+      shareText: 'I protect myself from breast cancer ✅ 6/6 healthy habits 🎀',
       challengeTitle: 'Challenge of the month 🗓️',
       challengeDesc: 'Confirm your habits each day and watch your month fill up.',
       confirmTodayBtn: 'Confirm today ✅',
@@ -628,7 +628,7 @@ export const en = {
       { m: 'Mammograms detect everything', t: 'They detect most cases but not 100%' },
       { m: 'Smaller breasts = lower risk', t: 'Breast size has no link to risk' },
       { m: 'Pregnancy fully protects', t: 'It lowers risk but not 100%' },
-      { m: 'Disease of rich countries', t: 'Affects women everywhere including Morocco' },
+      { m: 'Disease of rich countries', t: 'Affects women everywhere, including across Ghana and Africa' },
       { m: 'Stress directly causes cancer', t: 'Affects health but not a direct cause' },
       { m: 'Diagnosis always means removal', t: 'Options: partial surgery, chemo, radiotherapy' },
       { m: 'Cosmetic surgery prevents mammograms', t: 'Can still be done with special techniques' },
@@ -642,9 +642,9 @@ export const en = {
       whatBody:
         'Breast cancer happens when cells in the breast start to grow out of control and form a lump or a change. It is the most common cancer among women, but when it is found early it is very often treatable. Knowing what is normal for your body helps you notice changes quickly.',
       whatStats: [
-        { value: '#1', label: 'most common cancer among women in Morocco' },
-        { value: '~12,000', label: 'new cases every year in Morocco' },
-        { value: '60%', label: 'are still diagnosed at a late stage' },
+        { value: '#1', label: 'most common cancer among women worldwide' },
+        { value: '1 in 8', label: 'women may face breast cancer in their lifetime' },
+        { value: '99%', label: 'five-year survival when found at the earliest stage' },
       ],
       earlyTitle: 'Why early detection matters',
       earlyNote: 'Survival rate by the stage at which it is found',
@@ -681,7 +681,7 @@ export const en = {
         'Just 5 minutes a month for a self-check can save your life.',
         'Breastfeeding lowers a woman’s risk of breast cancer.',
         'Regular physical activity can lower the risk by about 25%.',
-        'Morocco offers free mammography programs for women aged 45 to 69.',
+        'If you are not sure where to go, a district hospital or health centre is a good place to start.',
       ],
     },
     bodyMap: {
@@ -748,7 +748,7 @@ export const en = {
     },
   },
   selfCheck: {
-    title: 'Monthly self-check',
+    title: 'Breast self-check',
     subtitle: 'Five calm steps, five minutes, guided with care.',
     bestTime: 'Best time',
     duration: 'Duration',
@@ -762,15 +762,15 @@ export const en = {
     prevStep: 'Previous',
     finishBtn: 'Finish',
     timerSkip: 'Skip timer',
-    audioSoon: 'Darija audio guide coming soon',
+    audioSoon: 'Audio guide coming soon',
     completeTitle: 'You did it',
-    completeText: 'You completed this month self-check. This does not replace medical screening, but it builds awareness.',
+    completeText: 'You finished this month’s self-check. It does not replace medical screening, but it builds awareness.',
     logBtn: 'I checked this month',
     logged: 'Logged for this month',
     restart: 'Start again',
     importantNote:
       'A self-check is not a diagnosis or a replacement for a clinical exam. If you notice a change, consult a doctor.',
-    celebrateTitle: 'Mabrouk! You finished your self-check 💪',
+    celebrateTitle: 'Well done! You finished your self-check 💪',
     doctorsCtaTitle: '👩‍⚕️ Want to find a doctor near you?',
     doctorsCtaBtn: '🗺️ See nearby doctors',
     reminderCtaTitle: '🔔 Want a reminder for next month?',
@@ -848,26 +848,26 @@ export const en = {
     locationDenied: 'Location is off. Type your city below to search.',
     locationError: 'We could not detect your location. Try typing your city.',
     geocodeError: 'City not found. Check the spelling and try again.',
-    fallbackNote: 'Showing major cancer and care centers across Morocco.',
+    fallbackNote: 'Showing major cancer and care centres across Ghana.',
     attribution: 'Map data © OpenStreetMap contributors',
     you: 'You are here',
-    notVerified: 'These places come from public map data (OpenStreetMap). Sahtek does not verify or endorse them — please confirm the details before you travel.',
+    notVerified: 'These places come from public map data (OpenStreetMap). Brafie does not verify or endorse them — please confirm the details before you travel.',
   },
   chat: {
-    title: 'Sahtek Assistant',
+    title: 'Brafie Assistant',
     subtitle: 'Ask about breast health, self-checks or next steps.',
     online: 'Answers on your device',
     placeholder: 'Write your question...',
     disclaimer: 'Educational information only. Not a diagnosis.',
     quickRepliesTitle: 'Try asking',
     quickReplies: ['What symptoms matter?', 'How do I self-check?', 'I am scared', 'Does family history matter?'],
-    typing: 'Sahtek is typing...',
+    typing: 'Brafie is typing...',
     voiceLabel: 'Voice input',
     listening: 'Listening...',
     voiceUnsupported: 'Voice recognition is not supported in this browser.',
     micNoticeTitle: 'Before you use the microphone',
     micNoticeBody:
-      'Voice typing does not happen on your device. Your browser records what you say and sends the audio to Google’s speech service to turn it into text. Sahtek never receives the recording, and you can always type instead.',
+      'Voice typing does not happen on your device. Your browser records what you say and sends the audio to Google’s speech service to turn it into text. Brafie never receives the recording, and you can always type instead.',
     micNoticeAccept: 'I understand — use the microphone',
     micNoticeDecline: 'No thanks, I’ll type',
     clear: 'Clear chat',

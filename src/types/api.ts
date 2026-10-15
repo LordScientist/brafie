@@ -84,6 +84,11 @@ export interface Statistics {
     most_common_cancer_women: boolean;
     new_cases_yearly: string;
   };
+  /**
+   * Regional figures. The key keeps its original name because this type mirrors
+   * the unchanged backend contract. For the Ghanaian adaptation the values are
+   * intentionally not surfaced — see docs/GHANA_LOCALISATION.md.
+   */
   morocco: {
     new_cases_yearly: string;
     average_diagnosis_age: number;
