@@ -75,7 +75,7 @@ export const en = {
     heroTitle: 'Know the signs.',
     heroHighlight: 'Feel steady in your own body.',
     heroSubtitle:
-      'Brafie walks with you, step by step: notice changes, follow a guided self-check, and know what to do next. No account, no tracking — your answers stay on your device.',
+      'Brafie walks with you, step by step: notice changes, follow a guided self-check, and know what to do next. No account, no tracking. Your answers stay on your device.',
     ctaPrimary: 'Start the guided self-check',
     ctaSecondary: 'Learn the signs',
     /* The three signals under the hero. Each one is literally true today:
@@ -92,12 +92,12 @@ export const en = {
       'Made for women in Ghana',
     ],
     helpsTitle: 'What Brafie helps you do',
-    helpsSubtitle: 'Six calm ways to know your body better — and to act early, with confidence.',
+    helpsSubtitle: 'Six calm ways to know your body better, and to act early, with confidence.',
     helps: [
       { title: 'Learn the signs', desc: 'The changes worth noticing, in plain, unhurried language.' },
       { title: 'Follow a guided self-check', desc: 'Five gentle steps. Five minutes, once a month.' },
       { title: 'Understand breast changes', desc: 'Most changes are not cancer. Learn which ones deserve a visit.' },
-      { title: 'Explore risk factors', desc: 'Awareness of risk factors — never a verdict on your body.' },
+      { title: 'Explore risk factors', desc: 'Awareness of risk factors, never a verdict on your body.' },
       { title: 'Ask the assistant', desc: 'Calm answers to the questions that feel hard to ask.' },
       { title: 'Know the next step', desc: 'When to see a doctor, and how to find one near you.' },
     ],
@@ -120,7 +120,7 @@ export const en = {
         { label: 'Swelling in part of the breast', detail: 'Part of the breast looks swollen or fuller, even if you cannot feel a distinct lump.' },
         { label: 'Dimpling of the skin', detail: 'The skin develops small dimples, like the peel of an orange, or pulls inward when you raise your arm.' },
         { label: 'Redness or warmth', detail: 'The skin turns red or feels warm for no clear reason, and stays that way for days.' },
-        { label: 'A change in size or shape', detail: 'One breast becomes newly and visibly different from the other. A natural difference between them is normal — what is new is what matters.' },
+        { label: 'A change in size or shape', detail: 'One breast becomes newly and visibly different from the other. A natural difference between them is normal. What is new is what matters.' },
         { label: 'A nipple turning inward', detail: 'The nipple starts to pull inward when it used to point out. If it has always been that way, that is normal for you.' },
         { label: 'Discharge from the nipple', detail: 'Discharge when you are not breastfeeding, especially if it is bloody or comes from one side only.' },
         { label: 'Flaking or itching', detail: 'The skin around the nipple flakes, itches or thickens, and does not heal.' },
@@ -198,7 +198,7 @@ export const en = {
       ],
       sampleTitle: 'Try asking',
       safetyNote:
-        'Not a doctor, and not a diagnosis. The assistant offers educational information only — medical decisions stay with your doctor.',
+        'Not a doctor, and not a diagnosis. The assistant offers educational information only. Medical decisions stay with your doctor.',
       privacyNote:
         'Answers come from Brafie itself, on your device. Your questions are not sent anywhere.',
       cta: 'Open the chat',
@@ -226,18 +226,18 @@ export const en = {
         },
         {
           state: 'A minor change',
-          meaning: 'Something feels a little different — tenderness that follows your cycle, for example.',
+          meaning: 'Something feels a little different: tenderness that follows your cycle, for example.',
           action: 'Watch it for two weeks and write down the day you noticed it. If it passes, good. If it stays, book an appointment.',
         },
         {
           state: 'A change that lasted two weeks',
           meaning: 'The change has not gone away, or it has become clearer.',
-          action: 'Book an appointment with a doctor. This is not an emergency — but do not wait any longer.',
+          action: 'Book an appointment with a doctor. This is not an emergency, but do not wait any longer.',
         },
         {
           state: 'A sign that needs prompt care',
           meaning: 'Such as bloody discharge, a hard fixed lump, or a clear change in the skin or the nipple.',
-          action: 'See a doctor soon. Most of these turn out not to be serious — but they should be looked at now.',
+          action: 'See a doctor soon. Most of these turn out not to be serious, but they should be looked at now.',
         },
       ],
       ctaDoctors: 'Find a doctor near you',
@@ -251,13 +251,13 @@ export const en = {
       points: [
         { title: 'Awareness, not diagnosis', desc: 'Brafie never says “you have” or “you are fine”. It explains, and it tells you when to see a doctor.' },
         { title: 'Private by design', desc: 'No account, no tracking, no analytics. Your answers stay in your browser.' },
-        { title: 'Plain English first', desc: 'Written in clear, everyday English — not machine-translated or needlessly clinical.' },
+        { title: 'Plain English first', desc: 'Written in clear, everyday English, not machine-translated or needlessly clinical.' },
       ],
       methodTitle: 'Our method',
       method: [
         'We write in clear, plain English that is easy to read on a phone.',
         'We avoid clinical imagery and language designed to frighten.',
-        'We say “what to notice” and “what to do” — never “what you have”.',
+        'We say “what to notice” and “what to do”, never “what you have”.',
         'Every page that gives guidance carries a visible medical disclaimer.',
       ],
       reviewTitle: 'Medical review',
@@ -278,7 +278,7 @@ export const en = {
         },
         {
           q: 'Is my data private?',
-          a: 'Yes. There is no account, no tracking and no analytics. Your self-check and risk answers are stored in your own browser, and even the chat answers from inside the app — your questions are not sent anywhere.',
+          a: 'Yes. There is no account, no tracking and no analytics. Your self-check and risk answers are stored in your own browser, and even the chat answers from inside the app. Your questions are not sent anywhere.',
         },
         {
           q: 'What language is it in?',
@@ -313,7 +313,7 @@ export const en = {
     eyebrow: '12 signs',
     title: 'The changes worth knowing',
     intro:
-      'Not to frighten you. This page helps you learn what is normal for your body, so you notice quickly if something changes. Most of these changes are not cancer — but each one deserves a look.',
+      'Not to frighten you. This page helps you learn what is normal for your body, so you notice quickly if something changes. Most of these changes are not cancer, but each one deserves a look.',
     jumpTitle: 'Jump to a sign',
     shareCta: 'Share this page',
     shareCopied: 'Link copied ✅',
@@ -329,7 +329,7 @@ export const en = {
     eyebrow: 'Risk factors',
     title: 'Know the risk factors, without fearing them',
     intro:
-      'A risk factor slightly raises a probability — it is not a verdict and it is not a prediction. Many women have several and never develop breast cancer, and many women who are diagnosed had none at all. This page exists to help you understand, not to worry you.',
+      'A risk factor slightly raises a probability. It is not a verdict and it is not a prediction. Many women have several and never develop breast cancer, and many women who are diagnosed had none at all. This page exists to help you understand, not to worry you.',
     changeableLabel: 'You can influence this',
     notChangeableLabel: 'Not something you can change',
     keyNote:
@@ -432,9 +432,9 @@ export const en = {
     ],
     safetyTitle: 'Its limits',
     safetyNote:
-      'If you ask it whether you have cancer, it will not answer — and that is deliberate. Only a doctor can diagnose, after a real examination. The assistant points you to one; it does not take their place.',
+      'If you ask it whether you have cancer, it will not answer, and that is deliberate. Only a doctor can diagnose, after a real examination. The assistant points you to one; it does not take their place.',
     emergencyNote:
-      'If this is an emergency, or you need help right now, do not rely on the app — contact a doctor or emergency services.',
+      'If this is an emergency, or you need help right now, do not rely on the app. Contact a doctor or emergency services.',
     privacyTitle: 'Where your questions go',
     typedLabel: 'Typing',
     privacyTyped:
@@ -446,7 +446,7 @@ export const en = {
     mock: {
       question: 'Is this cancer?',
       answer:
-        'I cannot answer that — only a doctor can diagnose, after an examination. What I can do: explain what is worth noticing, and tell you when to book an appointment.',
+        'I cannot answer that. Only a doctor can diagnose, after an examination. What I can do: explain what is worth noticing, and tell you when to book an appointment.',
     },
   },
   /* The urgency levels themselves are `home.nextSteps.cards` — one set of words,
@@ -456,9 +456,9 @@ export const en = {
     eyebrow: 'When to seek help',
     title: 'When to see a doctor',
     intro:
-      'Most breast changes are not cancer — that is a fact, not a consolation. But some changes should not be ignored. This page tells you plainly what to watch, what to do, and how soon.',
+      'Most breast changes are not cancer. That is a fact, not a consolation. But some changes should not be ignored. This page tells you plainly what to watch, what to do, and how soon.',
     reassureNote:
-      'Booking an appointment is not admitting that something is wrong. It is simply the only way to know — and most of the time, it reassures.',
+      'Booking an appointment is not admitting that something is wrong. It is simply the only way to know, and most of the time it reassures.',
     urgencyTitle: 'Simple levels, without fear',
     timeframes: [
       'Keep the monthly habit',
@@ -486,7 +486,7 @@ export const en = {
       'Note which side, and whether it has changed since',
       'Say whether it changes with your cycle',
       'Bring any previous scans or test results',
-      'You do not need to photograph yourself — the doctor will examine you',
+      'You do not need to photograph yourself. The doctor will examine you',
     ],
     ctaDoctors: 'Find a doctor near you',
     ctaSelfCheck: 'Start the guided self-check',
@@ -495,10 +495,10 @@ export const en = {
     eyebrow: 'Why Brafie',
     title: 'Know your body, and act early',
     intro:
-      'Brafie is a breast-health awareness companion adapted for Ghana. It explains, it teaches, and it tells you when to see a doctor — without fear, without embarrassment, and in clear, everyday language.',
+      'Brafie is a breast-health awareness companion adapted for Ghana. It explains, it teaches, and it tells you when to see a doctor, without fear, without embarrassment, and in clear, everyday language.',
     missionTitle: 'Our mission',
     mission:
-      'Breast cancer affects women in Ghana, as it does all over the world. Too often it is found late — not because women do not care, but because clear information can be hard to find and fear can delay a visit. Brafie is here to make that first step easier: plain English, a calm tone and no clinical imagery, so that knowing arrives before illness does.',
+      'Breast cancer affects women in Ghana, as it does all over the world. Too often it is found late, not because women do not care, but because clear information can be hard to find and fear can delay a visit. Brafie is here to make that first step easier: plain English, a calm tone and no clinical imagery, so that knowing arrives before illness does.',
     principlesTitle: 'Our principles',
     ctaPrimary: 'Start the guided self-check',
     ctaSecondary: 'See the 12 signs',
@@ -594,7 +594,7 @@ export const en = {
       tipCtaGuide: 'See the guide',
       tipCtaReminder: 'Book a reminder',
       shareBtn: 'Share my result',
-      shareCopied: 'Result copied — paste it anywhere ✅',
+      shareCopied: 'Result copied. Paste it anywhere ✅',
       shareCardLine1: 'I protect myself from breast cancer ✅',
       shareCardLine2: '6/6 healthy habits 🎀',
       shareText: 'I protect myself from breast cancer ✅ 6/6 healthy habits 🎀',
@@ -657,7 +657,7 @@ export const en = {
       earlyMessage: 'The earlier you detect, the stronger your chances.',
       riskTitle: 'Who is at risk?',
       riskIntro:
-        'Having a risk factor does not mean you will get breast cancer — it just means awareness matters even more.',
+        'Having a risk factor does not mean you will get breast cancer. It just means awareness matters even more.',
       riskFactors: [
         { title: 'Age 50 and over', desc: 'Risk rises with age, but it can happen at any age.' },
         { title: 'Family history', desc: 'A mother, sister or daughter who had breast cancer.' },
@@ -677,7 +677,7 @@ export const en = {
       didYouKnowTitle: 'Did you know?',
       facts: [
         '85% of women with breast cancer have no family history of it.',
-        'Men can get breast cancer too — it is rare, under 1% of cases.',
+        'Men can get breast cancer too. It is rare, under 1% of cases.',
         'Just 5 minutes a month for a self-check can save your life.',
         'Breastfeeding lowers a woman’s risk of breast cancer.',
         'Regular physical activity can lower the risk by about 25%.',
@@ -806,7 +806,7 @@ export const en = {
     yourScore: 'Awareness score',
     riskLevelLabel: 'Awareness band',
     scoreCaption: 'awareness points out of 100',
-    notAProbability: 'This is not a probability of developing breast cancer. It reflects only the factors you selected — it is not a verdict on your body.',
+    notAProbability: 'This is not a probability of developing breast cancer. It reflects only the factors you selected. It is not a verdict on your body.',
     privacyNote: 'Your answers stay on this device. Nothing is sent anywhere.',
     levelLow: 'Low',
     levelModerate: 'Moderate',
@@ -851,7 +851,7 @@ export const en = {
     fallbackNote: 'Showing major cancer and care centres across Ghana.',
     attribution: 'Map data © OpenStreetMap contributors',
     you: 'You are here',
-    notVerified: 'These places come from public map data (OpenStreetMap). Brafie does not verify or endorse them — please confirm the details before you travel.',
+    notVerified: 'These places come from public map data (OpenStreetMap). Brafie does not verify or endorse them. Please confirm the details before you travel.',
   },
   chat: {
     title: 'Brafie Assistant',
