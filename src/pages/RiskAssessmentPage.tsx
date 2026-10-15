@@ -99,7 +99,7 @@ export function RiskAssessmentPage() {
       {risk.stage === 'quiz' && risk.current && (
         <section className="mx-auto max-w-2xl">
           <div className="mb-4 h-3 overflow-hidden rounded-full bg-primary-100">
-            <motion.div className="h-full bg-rose-gradient" animate={{ width: `${((risk.index + 1) / risk.total) * 100}%` }} />
+            <motion.div className="h-full bg-brand-cta" animate={{ width: `${((risk.index + 1) / risk.total) * 100}%` }} />
           </div>
           <motion.div key={risk.current.id} initial={{ opacity: 0, x: 20 * risk.direction }} animate={{ opacity: 1, x: 0 }} className="rounded-[2rem] border border-white/70 bg-card/85 p-6 shadow-petal-xl">
             <p className="font-black text-primary-700">{interpolate(t.risk.questionOf, { n: risk.index + 1, total: risk.total })}</p>

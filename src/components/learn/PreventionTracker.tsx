@@ -200,7 +200,7 @@ export function PreventionTracker() {
                 aria-pressed={active}
                 className={cn(
                   'flex w-full min-h-14 items-center gap-3 rounded-2xl border p-4 text-start font-bold transition',
-                  active ? 'border-accent-teal bg-accent-teal/10 text-ink' : 'border-line bg-white/55 text-muted',
+                  active ? 'border-calm-text bg-accent-teal/10 text-ink' : 'border-line bg-white/55 text-muted',
                 )}
               >
                 <motion.span
@@ -210,12 +210,12 @@ export function PreventionTracker() {
                   transition={{ duration: 0.35, ease: 'easeOut' }}
                   className={cn(
                     'grid h-8 w-8 shrink-0 place-items-center rounded-full border-2 transition-colors',
-                    active ? 'border-accent-teal bg-accent-teal text-white' : 'border-line text-transparent',
+                    active ? 'border-calm-text bg-calm-text text-white' : 'border-line text-transparent',
                   )}
                 >
                   <Check size={18} />
                 </motion.span>
-                <Icon size={20} className={active ? 'text-accent-teal' : 'text-primary-400'} />
+                <Icon size={20} className={active ? 'text-calm-text' : 'text-primary-400'} />
                 <span className="flex-1">{habit.label}</span>
               </button>
 
@@ -299,7 +299,7 @@ export function PreventionTracker() {
       <section className="rounded-3xl border border-white/70 bg-card/85 p-5 shadow-petal">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h3 className="text-lg font-black text-ink">{p.challengeTitle}</h3>
-          <span className="rounded-full bg-accent-teal/10 px-3 py-1 text-sm font-black text-accent-teal tabular-nums">
+          <span className="rounded-full bg-accent-teal/10 px-3 py-1 text-sm font-black text-calm-text tabular-nums">
             🔥 {streak} {p.streakLabel}
           </span>
         </div>
@@ -314,7 +314,7 @@ export function PreventionTracker() {
                 aria-hidden
                 className={cn(
                   'aspect-square rounded-full transition-colors',
-                  done ? 'bg-accent-teal' : 'bg-line/50',
+                  done ? 'bg-calm-text' : 'bg-line/50',
                   isToday && 'ring-2 ring-primary-400 ring-offset-1 ring-offset-card',
                 )}
               />

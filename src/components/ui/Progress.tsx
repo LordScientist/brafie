@@ -16,7 +16,9 @@ interface ProgressProps {
 }
 
 const TONE_FILL: Record<NonNullable<ProgressProps['tone']>, string> = {
-  primary: 'bg-rose-gradient',
+  /* brand-cta, not rose-gradient: the decorative gradient's light end is only
+     1.6:1 against the --line track, below the 3:1 the indicator needs. */
+  primary: 'bg-brand-cta',
   low: 'bg-risk-low',
   moderate: 'bg-risk-moderate',
   high: 'bg-risk-high',

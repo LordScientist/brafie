@@ -45,8 +45,12 @@
   --card: 255 255 255; /* default surface                    */
   --elevated: 255 255 255; /* modals, popovers, floating panels  */
   --sunken: 250 241 244; /* wells, inset areas                 */
-  --line: 243 220 230; /* hairline borders                   */
+  --line: 243 220 230; /* decorative hairline borders        */
   --line-strong: 229 211 219;
+  /* Interactive control boundary — form fields, selects. WCAG 1.4.11 needs
+     3:1 for the shape that identifies a control; --line (1.2:1) is far too
+     faint, so inputs use this instead. 3.6:1 on white, 3.4:1 on canvas. */
+  --line-control: 154 127 143;
 
   /* -- Semantic text ------------------------------------------------ */
   --ink: 45 31 45; /* 15.6:1 [AAA] — primary            */
@@ -129,6 +133,10 @@
   --gradient-aurora:
     radial-gradient(60% 40% at 85% 0%, rgb(214 51 132 / 0.1), transparent 70%),
     radial-gradient(50% 35% at 0% 100%, rgb(255 92 149 / 0.1), transparent 70%);
+  /* Text gradient (`.text-gradient`). Unlike --gradient-brand — whose light
+     end is only 1.9:1 on the canvas — every stop here clears 4.5:1 on both
+     --canvas and --card (4.9:1 → 6.9:1), so a highlighted word stays legible. */
+  --gradient-text: linear-gradient(135deg, #c42c79 0%, #a81f63 100%);
 
   /* -- Typography ---------------------------------------------------- */
   --font-display: 'Plus Jakarta Sans', 'Noto Sans', system-ui, sans-serif;
@@ -195,6 +203,7 @@
   --sunken: 22 13 27;
   --line: 61 43 68;
   --line-strong: 79 57 88;
+  --line-control: 138 115 132; /* 3.7:1 on --card — control boundaries */
 
   --ink: 251 238 244; /* 15.2:1 on --card [AAA] */
   --muted: 201 169 190; /*  7.8:1 on --card [AA]  */
@@ -204,7 +213,10 @@
   --accent: 214 51 132;
   --accent-hover: 255 92 149;
   --accent-text: 255 148 186; /* 8.0:1 on --card [AA] */
-  --accent-soft: 214 51 132;
+  /* A dark tinted chip, NOT the full brand-500 fill: brand-300 text on
+     brand-500 measured only 2.2:1 (a real WCAG failure on active nav/tabs).
+     brand-800 keeps the brand-300 text at 5.7:1. */
+  --accent-soft: 107 19 63;
 
   --calm-text: 94 234 212;
   --warn-text: 252 211 77;
@@ -230,6 +242,8 @@
   --ring-brand: 0 0 0 4px rgb(255 92 149 / 0.16);
 
   --gradient-soft: linear-gradient(135deg, #2e0719 0%, #4a0d2c 100%);
+  /* Light pink stops so highlighted text stays legible on the dark canvas. */
+  --gradient-text: linear-gradient(135deg, #ff94ba 0%, #ff5c95 100%);
   --gradient-aurora:
     radial-gradient(60% 40% at 85% 0%, rgb(214 51 132 / 0.22), transparent 70%),
     radial-gradient(50% 35% at 0% 100%, rgb(140 26 85 / 0.3), transparent 70%);

@@ -477,7 +477,7 @@ export function ReminderPage() {
                         value={draft}
                         onChange={(e) => setDraft(e.target.value)}
                         placeholder={r.emailPlaceholder}
-                        className="min-h-11 w-full rounded-xl border border-line bg-white px-3 font-bold text-ink outline-none focus:border-primary-300"
+                        className="min-h-11 w-full rounded-xl border border-line-control bg-white px-3 font-bold text-ink outline-none focus:border-primary-500"
                       />
                       <div className="mt-2 flex gap-2">
                         <button
@@ -516,7 +516,7 @@ export function ReminderPage() {
                 <div className="rounded-2xl bg-primary-50 px-4 py-3">
                   {editingField === 'whatsapp' ? (
                     <div>
-                      <div className="flex min-h-11 items-center overflow-hidden rounded-xl border border-line bg-white focus-within:border-primary-300" dir="ltr">
+                      <div className="flex min-h-11 items-center overflow-hidden rounded-xl border border-line-control bg-white focus-within:border-primary-500" dir="ltr">
                         <span className="grid h-11 place-items-center bg-primary-100 px-3 font-black text-primary-700">+233</span>
                         <input
                           type="tel"
@@ -729,11 +729,11 @@ export function ReminderPage() {
               <button
                 type="button"
                 disabled
-                className="relative mt-2 flex min-h-[88px] w-full cursor-not-allowed flex-col items-center justify-center gap-1 rounded-2xl border-2 border-line bg-gray-100 p-4 text-center text-base font-black text-gray-400 opacity-60"
+                className="relative mt-2 flex min-h-[88px] w-full cursor-not-allowed flex-col items-center justify-center gap-1 rounded-2xl border-2 border-line bg-sunken p-4 text-center text-base font-black text-muted"
               >
                 <span className="text-3xl" aria-hidden>📧</span>
                 {tr(EMAIL_LABEL, lang)}
-                <span className="text-xs font-bold text-gray-400">{tr(SOON_LABEL, lang)}</span>
+                <span className="text-xs font-bold text-muted">{tr(SOON_LABEL, lang)}</span>
               </button>
 
               {/* Bottom row: WhatsApp (full width, slightly bigger). Disabled when unavailable. */}
@@ -745,7 +745,7 @@ export function ReminderPage() {
                 className={cn(
                   'relative mt-2 flex min-h-[104px] w-full flex-col items-center justify-center gap-1 rounded-2xl border-2 p-4 text-center text-base font-black transition',
                   !whatsappAvailable
-                    ? 'cursor-not-allowed border-line bg-gray-100 text-gray-400 opacity-60'
+                    ? 'cursor-not-allowed border-line bg-sunken text-muted'
                     : methods.includes('whatsapp')
                       ? 'border-primary-500 bg-primary-50 text-primary-700'
                       : 'border-line bg-white/55 text-muted',
@@ -757,7 +757,7 @@ export function ReminderPage() {
                 <span className="text-3xl" aria-hidden>💬</span>
                 {tr(WA_LABEL, lang)}
                 {!whatsappAvailable && (
-                  <span className="text-xs font-bold text-gray-400">{tr(WA_UNAVAILABLE, lang)}</span>
+                  <span className="text-xs font-bold text-muted">{tr(WA_UNAVAILABLE, lang)}</span>
                 )}
               </button>
 
@@ -775,7 +775,7 @@ export function ReminderPage() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder={r.emailPlaceholder}
-                        className="mt-2 min-h-12 w-full rounded-2xl border border-line bg-white/70 px-4 font-bold text-ink outline-none focus:border-primary-300"
+                        className="mt-2 min-h-12 w-full rounded-2xl border border-line-control bg-white/70 px-4 font-bold text-ink outline-none focus:border-primary-500"
                       />
                       {!emailOk && email.length > 0 && <p className="mt-1.5 text-sm font-bold text-risk-high">{r.emailInvalid}</p>}
                     </div>
@@ -789,7 +789,7 @@ export function ReminderPage() {
                   <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
                     <div className="mt-4">
                       <label htmlFor="reminder-wa" className="text-sm font-black text-muted">{r.phoneLabel}</label>
-                      <div className="mt-2 flex min-h-12 items-center overflow-hidden rounded-2xl border border-line bg-white/70 focus-within:border-primary-300" dir="ltr">
+                      <div className="mt-2 flex min-h-12 items-center overflow-hidden rounded-2xl border border-line-control bg-white/70 focus-within:border-primary-500" dir="ltr">
                         <span className="grid h-12 place-items-center bg-primary-50 px-3 font-black text-primary-700">+233</span>
                         <input
                           id="reminder-wa"

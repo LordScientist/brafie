@@ -66,6 +66,7 @@ export default {
         sunken: rgb('--sunken'),
         line: rgb('--line'),
         'line-strong': rgb('--line-strong'),
+        'line-control': rgb('--line-control'),
         ink: rgb('--ink'),
         muted: rgb('--muted'),
         faint: rgb('--faint'),

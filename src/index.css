@@ -59,6 +59,13 @@ h3 {
   color: rgb(var(--ink));
 }
 
+/* Placeholders are a real text colour, not decoration: give them the AA-safe
+   muted tone everywhere (5.4:1 on white) instead of each browser's default. */
+::placeholder {
+  color: rgb(var(--muted));
+  opacity: 1;
+}
+
 /* -- Scrollbars ------------------------------------------------------ */
 ::-webkit-scrollbar {
   width: 10px;
@@ -140,7 +147,9 @@ h3 {
   }
   @supports (background-clip: text) or (-webkit-background-clip: text) {
     .text-gradient {
-      background: var(--gradient-brand);
+      /* --gradient-text, not --gradient-brand: the decorative gradient's light
+         end (1.9:1 on canvas) is unreadable behind text. This one is AA-safe. */
+      background: var(--gradient-text);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;

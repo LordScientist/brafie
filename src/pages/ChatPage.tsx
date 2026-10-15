@@ -201,7 +201,7 @@ export function ChatPage() {
                   {formatTime(message.timestamp, lang)}
                 </p>
               </div>
-              {message.role === 'user' && <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent-teal/15 text-accent-teal"><UserRound size={16} /></span>}
+              {message.role === 'user' && <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent-teal/15 text-calm-text"><UserRound size={16} /></span>}
             </div>
           ))}
           {typing && <div className="rounded-full bg-white/80 px-4 py-3 text-sm font-bold text-muted shadow-petal">{t.chat.typing}</div>}
@@ -217,7 +217,7 @@ export function ChatPage() {
               {t.chat.listening}
             </div>
           )}
-          <div className="flex gap-2 rounded-full bg-white/80 p-2 shadow-inner">
+          <div className="flex gap-2 rounded-full border border-line-control bg-white/80 p-2 shadow-inner">
             <input
               value={text}
               onChange={(e) => setText(e.target.value)}

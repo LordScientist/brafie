@@ -20,7 +20,9 @@ interface IconCardProps {
    background that clears 3:1 with white — never the decorative gradient. */
 const TILES: Record<Tone, string> = {
   brand: 'bg-brand-cta text-white',
-  calm: 'bg-calm text-white',
+  /* calm-text, not --calm: white on #14b8a6 is only 2.5:1, below the 3:1 a
+     white glyph needs. calm-text (#0f766e) clears it at 5.5:1. */
+  calm: 'bg-calm-text text-white',
   gold: 'bg-gold text-sand-900',
   info: 'bg-info text-white',
 };

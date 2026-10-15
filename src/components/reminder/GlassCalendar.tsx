@@ -89,12 +89,12 @@ export function GlassCalendar({ selectedDate, onDateSelect, isRTL, months, weekd
               className={cn(
                 'relative flex w-14 shrink-0 snap-center flex-col items-center gap-1 rounded-2xl py-3 transition',
                 selected
-                  ? 'bg-gradient-to-br from-primary-500 to-pink-400 text-white shadow-petal-lg'
+                  ? 'bg-brand-cta text-white shadow-petal-lg'
                   : 'bg-primary-50 text-ink hover:bg-primary-100',
                 readOnly && 'cursor-default',
               )}
             >
-              <span className={cn('text-[11px] font-bold', selected ? 'text-white/80' : 'text-muted')}>
+              <span className={cn('text-[11px] font-bold', selected ? 'text-white' : 'text-muted')}>
                 {weekdays[date.getDay()]}
               </span>
               <motion.span animate={{ scale: selected ? 1.12 : 1 }} className="text-lg font-black tabular-nums">
