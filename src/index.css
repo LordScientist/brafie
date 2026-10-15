@@ -1,0 +1,223 @@
+@import './styles/fonts.css';
+@import './styles/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --------------------------------------------------------------------
+   Sahtek global styles. All values come from src/styles/tokens.css —
+   if you need a new colour, shadow or radius, add it there first.
+   -------------------------------------------------------------------- */
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(var(--canvas));
+  color: rgb(var(--ink));
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Ambient rose blooms — air, not decoration. */
+  background-image: var(--gradient-aurora);
+  background-attachment: fixed;
+}
+
+/* -- Typographic rhythm --------------------------------------------- */
+h1,
+h2,
+h3 {
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+/* Arabic needs more vertical room and zero letter-spacing — tracking on
+   Arabic script breaks the joins between letters. */
+[dir='rtl'] body {
+  font-family: var(--font-arabic);
+  line-height: 1.85;
+}
+
+[dir='rtl'] :is(h1, h2, h3, h4) {
+  letter-spacing: 0 !important;
+  line-height: 1.45;
+}
+
+::selection {
+  background: rgb(var(--brand-500) / 0.22);
+  color: rgb(var(--ink));
+}
+
+/* -- Scrollbars ------------------------------------------------------ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--brand-500) / 0.28);
+  border-radius: var(--radius-pill);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--brand-500) / 0.5);
+  background-clip: padding-box;
+}
+
+/* -- Reusable component layer ---------------------------------------- */
+@layer components {
+  /* GLASS — selective and tasteful. Navbars, one floating panel, a single
+     hero card. Never stack glass on glass: it turns muddy and destroys
+     contrast. Always pair with an opaque text colour (ink/muted). */
+  .glass {
+    background-color: rgb(var(--glass-tint) / var(--glass-alpha));
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    border: 1px solid rgb(var(--glass-border) / var(--glass-border-alpha));
+  }
+
+  /* A denser variant for glass that sits over busy imagery or gradients. */
+  .glass-strong {
+    background-color: rgb(var(--glass-tint) / calc(var(--glass-alpha) + 0.18));
+    backdrop-filter: blur(calc(var(--glass-blur) + 8px)) saturate(150%);
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) + 8px)) saturate(150%);
+    border: 1px solid rgb(var(--glass-border) / var(--glass-border-alpha));
+  }
+
+  /* The full frosted panel: glass + soft radius + elevation. */
+  .glass-panel {
+    background-color: rgb(var(--glass-tint) / var(--glass-alpha));
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    border: 1px solid rgb(var(--glass-border) / var(--glass-border-alpha));
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-3);
+  }
+
+  /* Graceful degradation where backdrop-filter is unsupported. */
+  @supports not (backdrop-filter: blur(1px)) {
+    .glass,
+    .glass-strong,
+    .glass-panel {
+      background-color: rgb(var(--card) / 0.96);
+    }
+  }
+
+  /* GLOW — a soft bloom, not a neon ring. One per view, at most. */
+  .glow-brand {
+    box-shadow: var(--glow-brand);
+  }
+  .glow-calm {
+    box-shadow: var(--glow-calm);
+  }
+
+  /* SOFT GRADIENT BACKGROUND — for hero sections and page wells. */
+  .bg-aurora {
+    background-image: var(--gradient-aurora);
+  }
+  .bg-soft {
+    background-image: var(--gradient-soft);
+  }
+
+  /* Gradient text for a single highlighted word. Falls back to a solid
+     AA-safe brand tone where background-clip is unsupported. */
+  .text-gradient {
+    color: rgb(var(--accent-text));
+  }
+  @supports (background-clip: text) or (-webkit-background-clip: text) {
+    .text-gradient {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  }
+
+  /* Hairline divider — warm, never a grey rule. */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgb(var(--line-strong)) 20%,
+      rgb(var(--line-strong)) 80%,
+      transparent
+    );
+  }
+
+  .focus-ring:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 3px rgb(var(--canvas)),
+      0 0 0 5px rgb(var(--accent-ring) / 0.55);
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* -- MapLibre map (Find a Doctor) ------------------------------------ */
+.maplibregl-popup-content {
+  font-family: inherit;
+  font-weight: 600;
+  color: rgb(var(--ink));
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-2);
+}
+.maplibregl-popup-content a {
+  color: rgb(var(--accent-text));
+  font-weight: 800;
+}
+
+/* -- Honour reduced-motion preference --------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* -- Print: clean self-check guide hand-out --------------------------- */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+}

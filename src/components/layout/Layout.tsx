@@ -1,0 +1,94 @@
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Volume2 } from 'lucide-react';
+import { BottomNav } from './BottomNav';
+import { Footer } from './Footer';
+import { Navbar } from './Navbar';
+import { NavArrows } from './NavArrows';
+import { ToastViewport } from '@/components/ui/Toast';
+import { useLanguage } from '@/hooks/useLanguage';
+import { useDocumentMeta, useLanguageFromUrl } from '@/hooks/useDocumentMeta';
+import { useSpeech } from '@/hooks/useSpeech';
+
+export function Layout() {
+  // lang/dir are no longer read here — useDocumentMeta() owns <html lang|dir>.
+  const { t, fontClass } = useLanguage();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Narration keeps playing across navigation (see useSpeech), so surface a
+  // global Stop control whenever something is speaking — no matter the page.
+  const { isSpeaking, stop } = useSpeech();
+  const stopAudioLabel = t.common.stopAudio;
+
+  /* Owns <title>, the meta description, og:*, and <html lang|dir> — all of them
+     following the active language and route. This replaces the lang/dir effect
+     that used to live here. */
+  /* ?lang=fr makes the French variant a real, shareable URL — which is what
+     hreflang needs to point at. */
+  useLanguageFromUrl();
+  useDocumentMeta();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
+  // Sequential page flow shown as fixed corner arrows. The Learn page owns its
+  // own hybrid tab+page arrows, so the global ones step aside there.
+  const pageOrder = [
+    { path: '/', label: t.nav.home },
+    { path: '/signs', label: t.nav.signs },
+    { path: '/learn', label: t.nav.learn },
+    { path: '/self-check', label: t.nav.selfCheck },
+    { path: '/risk', label: t.nav.risk },
+    { path: '/chat', label: t.nav.chat },
+    { path: '/doctors', label: t.nav.doctors },
+    { path: '/reminder', label: t.nav.reminder },
+  ];
+  const currentIndex = pageOrder.findIndex((p) => p.path === location.pathname);
+  const isKnownPage = currentIndex !== -1;
+  const isLearn = location.pathname === '/learn';
+  const prevPage = currentIndex > 0 ? pageOrder[currentIndex - 1] : null;
+  const nextPage = currentIndex < pageOrder.length - 1 ? pageOrder[currentIndex + 1] : null;
+
+  const go = (path: string) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const showGlobalArrows = isKnownPage && !isLearn;
+
+  return (
+    <div className={`min-h-full overflow-x-hidden ${fontClass}`}>
+      <div className="pointer-events-none fixed inset-0 -z-10">
+        <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-primary-200/40 blur-3xl" />
+        <div className="absolute bottom-20 right-[-20%] h-80 w-80 rounded-full bg-accent-teal/15 blur-3xl" />
+      </div>
+      <Navbar />
+      {/* ToastViewport was written but never mounted, so every toast() call in
+          the app (Chat, Reminder, Self-check) raised a toast into the void. */}
+      <ToastViewport />
+      <Outlet />
+      <Footer />
+      {showGlobalArrows && (
+        <NavArrows
+          transitionKey={location.pathname}
+          prev={prevPage ? { label: prevPage.label, aria: t.common.previous, onActivate: () => go(prevPage.path) } : null}
+          next={nextPage ? { label: nextPage.label, aria: t.common.next, onActivate: () => go(nextPage.path) } : null}
+        />
+      )}
+      {isSpeaking && (
+        <button
+          type="button"
+          onClick={stop}
+          aria-label={stopAudioLabel}
+          className="fixed bottom-[140px] left-1/2 z-[200] flex -translate-x-1/2 items-center gap-2 rounded-full bg-brand-cta px-5 py-2.5 text-sm font-bold text-white shadow-petal-lg transition active:scale-95"
+        >
+          <Volume2 size={16} />
+          {stopAudioLabel}
+        </button>
+      )}
+      <BottomNav />
+    </div>
+  );
+}
