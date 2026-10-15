@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
-import { AppScreenshot } from '@/components/ui/BrandImage';
+import { PreviewScreen, type PreviewVariant } from '@/components/home/PreviewScreen';
 import { PhoneMockup } from '@/components/ui/PhoneMockup';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useLanguage } from '@/hooks/useLanguage';
@@ -14,9 +14,9 @@ import { useLanguage } from '@/hooks/useLanguage';
  * not a physical one, so the alternation survives the RTL flip untouched —
  * no `lg:left-*` anywhere.
  */
-/* Real screens, in the order of `home.selfCheckPreview.steps`:
+/* Live mock screens (English JSX), in the order of `home.selfCheckPreview.steps`:
    find a calm moment -> follow the steps -> log it and set a reminder. */
-const PREVIEW_SCREENS = ['self-check-intro', 'self-check-step', 'reminder'];
+const PREVIEW_SCREENS: PreviewVariant[] = ['intro', 'step', 'reminder'];
 
 export function SelfCheckPreview() {
   const { t, isRTL } = useLanguage();
@@ -56,7 +56,7 @@ export function SelfCheckPreview() {
 
               <div className={deviceFirst ? 'lg:order-1' : undefined}>
                 <PhoneMockup glow>
-                  <AppScreenshot name={PREVIEW_SCREENS[i]} alt={step.imageAlt} />
+                  <PreviewScreen variant={PREVIEW_SCREENS[i]} />
                 </PhoneMockup>
               </div>
             </motion.li>

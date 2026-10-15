@@ -19,13 +19,13 @@ import { FinalCta } from '@/components/home/FinalCta';
 import { HowItWorks } from '@/components/home/HowItWorks';
 import { NextSteps } from '@/components/home/NextSteps';
 import { RiskFactors } from '@/components/home/RiskFactors';
+import { PreviewScreen } from '@/components/home/PreviewScreen';
 import { SelfCheckPreview } from '@/components/home/SelfCheckPreview';
 import { TwelveSigns } from '@/components/home/TwelveSigns';
 import { PageTransition } from '@/components/layout/PageTransition';
 import { Button } from '@/components/ui/Button';
 import { Disclaimer } from '@/components/ui/Disclaimer';
 import { IconCard } from '@/components/ui/IconCard';
-import { AppScreenshot } from '@/components/ui/BrandImage';
 import { PhoneMockup } from '@/components/ui/PhoneMockup';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { TrustPill } from '@/components/ui/TrustPill';
@@ -144,11 +144,9 @@ export function HomePage() {
           transition={{ duration: 0.5, delay: 0.15 }}
         >
           <PhoneMockup floating glow>
-            {/* A real screenshot of the real guided self-check, captured from the
-                running build — so it can never drift from what she actually
-                sees, and it is already in her language and direction.
-                `priority`: this is the only above-the-fold image on the site. */}
-            <AppScreenshot name="self-check-step" alt={t.home.previewAlt} priority />
+            {/* A live English mock of the guided self-check, drawn from the app's
+                own tokens and copy — never a stale, wrong-language bitmap. */}
+            <PreviewScreen variant="step" />
           </PhoneMockup>
         </motion.div>
       </section>

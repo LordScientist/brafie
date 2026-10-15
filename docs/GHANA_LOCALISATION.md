@@ -43,7 +43,7 @@ replaced with guesses.
 | 4 | **Public contact email** | **Empty on purpose.** `APP.email` is `''`, so the footer hides the Contact link instead of shipping the original Morocco address. Add a monitored address to restore it. | Footer |
 | 5 | **Canonical site origin / deployed domain** | **Still the original `https://sahtek.tech`.** Set `VITE_SITE_ORIGIN` (see `src/hooks/useDocumentMeta.ts`) or `SITE_ORIGIN` for the SEO build script, and the `whatsappService` / `calendarReminder` URLs, to the real Brafie origin before launch. | SEO tags, sitemap, WhatsApp + calendar links |
 | 6 | **Ghana health-service claims** | The Morocco "free mammography programme" line was **removed**, not replaced. No Ghanaian screening-coverage claim is made. | Learn → Overview facts |
-| 7 | **Screenshots with embedded Arabic** | **Not replaced.** See section 4 — the capture tooling (`scripts/capture-screens.mjs`) does not exist in this repo, so the screenshots cannot be regenerated here. | Home hero + self-check preview |
+| 7 | **Screenshots with embedded Arabic** | **Resolved.** The Arabic raster captures were deleted and replaced with live English JSX mock screens. See section 4. | Home hero + self-check preview |
 
 ---
 
@@ -79,17 +79,18 @@ would change an API contract or risk data loss:
 
 Per the brief, images are **not** edited to paint over embedded text. Instead:
 
-- **Screenshots (Arabic interface text baked in — needs replacement):**
-  `public/assets/screens/self-check-intro.{avif,webp,png}`,
-  `public/assets/screens/self-check-step.{avif,webp,png}`,
-  `public/assets/screens/reminder.{avif,webp,png}`. These show the original
-  Arabic UI (header «صحّتك», «الخطوة 1 من 5», Arabic step copy, Arabic bottom nav)
-  and are used in the active English home page (`HomePage.tsx` hero and
-  `SelfCheckPreview.tsx`). **Editable replacement:** yes, in principle — they are
-  real captures, so re-running a capture from the English build produces correct
-  ones — **but the capture script is missing from this repo and the capture
-  tooling (Puppeteer/Playwright) is not installed here**, so this needs a human or
-  a CI step. Until then the English home page shows Arabic screenshots.
+- **Phone screenshots — replaced by live English JSX.**
+  The Arabic raster captures (`public/assets/screens/self-check-intro.*`,
+  `self-check-step.*`, `reminder.*`, which showed the header «صحّتك»,
+  «الخطوة 1 من 5», Arabic step copy and Arabic bottom nav) have been **deleted**.
+  The home hero and self-check preview now render
+  `src/components/home/PreviewScreen.tsx` — an English mini-UI drawn from the
+  app's own design tokens, inside the existing `PhoneMockup` (which was always
+  documented to accept live JSX). This avoids shipping screenshots in the wrong
+  language and cannot drift the way a bitmap does; the mock is decorative and
+  `aria-hidden`. The obsolete `AppScreenshot` helper was removed from
+  `src/components/ui/BrandImage.tsx`. A future capture pipeline (Puppeteer/
+  Playwright) could restore real captures, but none is required for correctness.
 - **The `ZelligeAccent` motif** (`src/components/ui/ZelligeAccent.tsx`): the
   eight-point Moroccan *khatam* tile, used as ambient decoration on the home,
   about, footer, FAQ, companion and design-system surfaces. It contains **no
@@ -123,6 +124,10 @@ Per the brief, images are **not** edited to paint over embedded text. Instead:
 - `src/pages/ReminderPage.tsx`, `src/services/whatsappService.ts` — Ghana `+233`
   phone formatting and Brafie branding.
 - `src/utils/formatters.ts` — `en-GH` date/number formatting.
+- `src/components/home/PreviewScreen.tsx` — new: English live mock phone screens.
+- `src/components/home/SelfCheckPreview.tsx`, `src/pages/HomePage.tsx` — use the
+  live mock instead of Arabic screenshots; removed `public/assets/screens/`.
+- `src/components/ui/BrandImage.tsx` — removed the obsolete `AppScreenshot`.
 - `src/pages/AboutPage.tsx`, `src/components/layout/Footer.tsx` — LordScientist
   attribution and a restrained Ghana accent.
 - `src/utils/reportGenerator.ts`, `src/components/learn/PreventionTracker.tsx` —

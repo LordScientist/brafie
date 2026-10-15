@@ -44,41 +44,7 @@ export function BrandImage({ name, alt, width, height, priority, className }: Br
   );
 }
 
-interface AppScreenshotProps {
-  /** File stem in /public/assets/screens. */
-  name: string;
-  alt: string;
-  priority?: boolean;
-  className?: string;
-}
-
-/**
- * A real screenshot of the real app, inside a PhoneMockup.
- *
- * These are captured from the running product (scripts/capture-screens.mjs), not
- * mocked up in a design tool — so they cannot drift from what she actually sees,
- * and they are already in the right language and direction.
- *
- * AVIF first, WebP next, PNG last: a UI screenshot is flat colour and large
- * areas, which is exactly where AVIF wins hardest.
- */
-export function AppScreenshot({ name, alt, priority, className }: AppScreenshotProps) {
-  const base = `/assets/screens/${name}`;
-  return (
-    <picture>
-      <source type="image/avif" srcSet={`${base}.avif`} />
-      <source type="image/webp" srcSet={`${base}.webp`} />
-      <img
-        src={`${base}.png`}
-        alt={alt}
-        width={1170}
-        height={2532}
-        loading={priority ? 'eager' : 'lazy'}
-        decoding={priority ? 'sync' : 'async'}
-        fetchPriority={priority ? 'high' : undefined}
-        className={cn('block h-full w-full object-cover', className)}
-        draggable={false}
-      />
-    </picture>
-  );
-}
+/* The former `AppScreenshot` (raster captures of the app) is gone: the only
+   captures available were of the original Arabic UI, and the capture tooling
+   is not part of this repo. Phone previews are now live English JSX — see
+   `src/components/home/PreviewScreen.tsx`. */
