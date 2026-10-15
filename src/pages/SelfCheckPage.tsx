@@ -33,7 +33,7 @@ import type { SelfCheckStep } from '@/types/api';
 
 /* Language-independent metadata. The WORDS live in `selfCheck.steps` in i18n —
    they used to be a hardcoded per-language map in this file, which meant the
-   Darija copy could not be edited by anyone who edits Darija copy. */
+   copy could not be edited by anyone who edits the translations. */
 const STEP_META = [
   { step_number: 1, icon: 'mirror', duration_seconds: 60 },
   { step_number: 2, icon: 'arms', duration_seconds: 45 },
@@ -178,11 +178,12 @@ export function SelfCheckPage() {
       {/* ── ACTIVE ───────────────────────────────────────────────────────── */}
       {check.stage === 'active' && check.current && (
         <section className="mx-auto max-w-2xl">
-          {/* The progress indicator is about the JOURNEY (step 3 of 5), not the
-              countdown. The ring below is the timer; conflating the two left her
-              with no idea how much of the check was left. */}
+          {/* The page title, then the progress indicator about the JOURNEY
+              (step 3 of 5) — not the countdown. The ring below is the timer;
+              conflating the two left her with no idea how much was left. */}
           <div className="mb-6">
-            <p className="mb-2 text-caption font-bold text-muted">{stepProgressLabel}</p>
+            <h1 className="text-overline uppercase text-accent-text">{t.selfCheck.title}</h1>
+            <p className="mb-2 mt-1 text-caption font-bold text-muted">{stepProgressLabel}</p>
             {/* The screen reader hears the same sentence the sighted user reads,
                 rather than a nameless "progress bar, 20%". */}
             <Progress
@@ -198,7 +199,7 @@ export function SelfCheckPage() {
               transition={{ duration: reduceMotion ? 0.15 : 0.3, ease: 'easeOut' }}
               className="rounded-[2rem] border border-line bg-card p-5 text-center shadow-petal-xl sm:p-7"
             >
-              <h1 className="text-h2 text-ink">{check.current.title}</h1>
+              <h2 className="text-h2 text-ink">{check.current.title}</h2>
 
               {/* The gentle illustration for this step. */}
               <div className="mx-auto mt-5 max-w-sm overflow-hidden rounded-2xl border border-line">

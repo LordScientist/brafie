@@ -13,6 +13,18 @@ const items = [
   { to: '/reminder', key: 'reminder', icon: Bell },
 ] as const;
 
+/**
+ * Shorter labels for the seven-up mobile bar.
+ *
+ * On a ~360px phone each column is ~48px wide, so the full names ("Self-check",
+ * "Reminder") truncate to an ellipsis. These fit comfortably; the full name is
+ * still announced via `aria-label` so nothing is lost to screen readers.
+ */
+const SHORT: Partial<Record<(typeof items)[number]['key'], string>> = {
+  selfCheck: 'Check',
+  reminder: 'Remind',
+};
+
 export function BottomNav() {
   const { t } = useLanguage();
 
@@ -23,6 +35,7 @@ export function BottomNav() {
           <NavLink
             key={to}
             to={to}
+            aria-label={t.nav[key]}
             className={({ isActive }) =>
               cn(
                 'flex min-h-16 flex-col items-center justify-center gap-1 rounded-2xl text-[10px] font-bold text-muted transition',
@@ -30,8 +43,8 @@ export function BottomNav() {
               )
             }
           >
-            <Icon size={20} strokeWidth={2.4} />
-            <span className="max-w-full truncate">{t.nav[key]}</span>
+            <Icon size={20} strokeWidth={2.4} aria-hidden />
+            <span className="max-w-full truncate">{SHORT[key] ?? t.nav[key]}</span>
           </NavLink>
         ))}
       </div>
