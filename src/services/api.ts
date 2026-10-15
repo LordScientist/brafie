@@ -17,7 +17,7 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     console.warn(
-      '[Sahtek] Live API request failed.',
+      '[Brafie] Live API request failed.',
       error?.message ?? error,
     );
     return Promise.reject(error);

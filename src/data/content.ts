@@ -31,11 +31,11 @@ export const overviewFacts: Record<Language, OverviewFact[]> = {
     { icon: '🩺', stat: '5 min', title: 'Un examen simple', text: 'L’auto-examen prend 5 minutes par mois. Une petite habitude, une grande protection.' },
   ],
   en: [
-    { icon: '🎀', stat: '#1', title: 'Most common', text: 'Breast cancer is the most common cancer among women, worldwide and in Morocco.' },
+    { icon: '🎀', stat: '#1', title: 'Most common', text: 'Breast cancer is the most common cancer among women worldwide.' },
     { icon: '💪', stat: '99%', title: 'Highly treatable', text: 'Found early, survival reaches 99%. Early detection saves lives.' },
     { icon: '🧬', stat: '85%', title: 'No family history', text: '85% of affected women have no family history. Prevention is for everyone.' },
-    { icon: '👩', stat: '48', title: 'Average age', text: 'In Morocco the average age at diagnosis is 48 - but it can occur at any age.' },
-    { icon: '⏰', stat: '60%', title: 'Late diagnosis', text: '60% of cases in Morocco are diagnosed late. Regular checks change everything.' },
+    { icon: '🌍', stat: '1 in 8', title: 'A common cancer', text: 'About one woman in eight may face breast cancer in her lifetime — at any age.' },
+    { icon: '⏰', stat: '2 wks', title: 'Do not wait it out', text: 'If a change lasts longer than two weeks, book a visit. Regular checks change everything.' },
     { icon: '🩺', stat: '5 min', title: 'A simple exam', text: 'A self-check takes 5 minutes a month. A small habit, a big protection.' },
   ],
   es: [
@@ -969,7 +969,7 @@ export const statistics: Record<Language, Statistics> = {
       new_cases_yearly: '~12,000',
       average_diagnosis_age: 48,
       late_diagnosis_percentage: 60,
-      awareness_note: '60% of cases in Morocco are diagnosed late. Early screening saves lives.',
+      awareness_note: 'Early detection saves lives. If you notice a change, speak to a healthcare professional.',
     },
     key_facts: [
       { stat: '85%', description: 'of affected women have no family history' },

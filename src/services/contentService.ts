@@ -24,7 +24,7 @@ export async function getSelfCheckGuide(language: Language): Promise<SelfCheckGu
   return data;
 }
 
-/** GET /statistics — Morocco + global figures. */
+/** GET /statistics — regional + global figures (see docs/GHANA_LOCALISATION.md). */
 export async function getStatistics(language: Language): Promise<Statistics> {
   const { data } = await api.get<Statistics>('/statistics', { params: { language } });
   return data;
