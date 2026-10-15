@@ -59,7 +59,11 @@ export function Layout() {
   const showGlobalArrows = isKnownPage && !isLearn;
 
   return (
-    <div className={`min-h-full overflow-x-hidden ${fontClass}`}>
+    /* overflow-x-clip, NOT overflow-x-hidden: `hidden` turns this wrapper into a
+       scroll container, which hijacks `position: sticky` on the Navbar so it
+       scrolls away. `clip` trims the decorative blooms horizontally without
+       creating a scroll container, so the header stays pinned to the viewport. */
+    <div className={`min-h-full overflow-x-clip ${fontClass}`}>
       <div className="pointer-events-none fixed inset-0 -z-10">
         <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-primary-200/40 blur-3xl" />
         <div className="absolute bottom-20 right-[-20%] h-80 w-80 rounded-full bg-accent-teal/15 blur-3xl" />
