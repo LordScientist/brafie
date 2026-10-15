@@ -6,7 +6,7 @@ image; just no image).
 
 | File | Size | Used by | Alt text |
 |---|---|---|---|
-| `sahtek-og.png` | 1200 × 630 | Every route's default card | `signsPage.ogAlt` in `src/i18n/*` |
+| `brafie-og.png` | 1200 × 630 | Every route's default card | `signsPage.ogAlt` in `src/i18n/*` |
 | `signs-og.png` | 1200 × 630 | **`/signs` — the shareable 12 Signs visual** | `signsPage.ogAlt` |
 
 `signs-og.png` is the one that matters most: `/signs` is the page built to be shared,
@@ -24,12 +24,11 @@ Same rules as the rest of the product (`CLAUDE.md` §4, HARD RULES 3–6):
   no fruit-grid.**
 - Readable at thumbnail size: one short line of type, high contrast. Most people
   see this at ~250px wide in a WhatsApp bubble.
-- Set the type in Plus Jakarta Sans / IBM Plex Sans Arabic; the numeral accent is
-  Fraunces.
+- Set the type in Plus Jakarta Sans; the numeral accent is Fraunces.
 
 ## Per-route cards: SOLVED (read this before changing the build)
 
-Sahtek is a client-rendered SPA, and the crawlers that build link previews —
+Brafie is a client-rendered SPA, and the crawlers that build link previews —
 Facebook, WhatsApp, LinkedIn, iMessage, Slack — **do not execute JavaScript.**
 Anything React sets at runtime is invisible to them.
 

@@ -137,17 +137,17 @@ export function seoRouteFor(pathname: string): SeoRoute {
 /**
  * The locales we ask search engines to index.
  *
- * Only the three the product is actually for. es/de/ru/pt still WORK in the UI
- * (CLAUDE.md keeps them alive) but they are not authored, not maintained, and
- * asking Google to index seven half-tended locales invites thin-content
- * penalties and buries the Darija we actually care about.
+ * The Ghanaian adaptation is English-only for now, so this mirrors
+ * SUPPORTED_LANGUAGES. Add a Ghanaian locale here at the same time it is added
+ * to the loader and the language switch — not before, or the sitemap will point
+ * crawlers at pages that render English.
  */
-export const INDEXED_LOCALES = ['ar', 'fr', 'en'] as const;
+export const INDEXED_LOCALES = ['en'] as const;
 
 /** x-default: the locale a crawler should show when it has no better match. */
-export const DEFAULT_LOCALE = 'ar';
+export const DEFAULT_LOCALE = 'en';
 
-/** hreflang value for a locale. Darija is Moroccan Arabic — say so. */
+/** hreflang value for a locale. English is served for Ghana — say so. */
 export function hreflangFor(locale: string): string {
-  return locale === 'ar' ? 'ar-MA' : locale;
+  return locale === 'en' ? 'en-GH' : locale;
 }

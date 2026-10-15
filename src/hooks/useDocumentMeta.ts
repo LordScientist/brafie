@@ -9,7 +9,15 @@ import type { Language } from '@/types/api';
 /** Longest a description should be before search engines truncate it. */
 const MAX_DESCRIPTION = 155;
 
-const SITE_ORIGIN = 'https://sahtek.tech';
+/**
+ * Canonical site origin for canonical URLs, Open Graph and JSON-LD.
+ *
+ * Configurable so the Ghanaian deployment can point SEO at its own domain
+ * without a code change. The fallback is the original project's domain and must
+ * be replaced with the real Ghanaian origin before launch (see
+ * docs/GHANA_LOCALISATION.md).
+ */
+const SITE_ORIGIN = import.meta.env.VITE_SITE_ORIGIN ?? 'https://sahtek.tech';
 
 function setMeta(key: string, content: string, attr: 'name' | 'property' = 'name') {
   let tag = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
@@ -66,7 +74,7 @@ export function useDocumentMeta() {
 
     /* The canonical carries ?lang for every non-default locale, because that is
        what makes the locales distinct URLs — and hreflang is meaningless without
-       distinct URLs. The Darija default is the bare path. */
+       distinct URLs. The English default is the bare path. */
     const suffix = lang === DEFAULT_LOCALE ? '' : `?lang=${lang}`;
     const url = `${SITE_ORIGIN}${pathname}${suffix}`;
 
@@ -85,14 +93,14 @@ export function useDocumentMeta() {
     setLink('alternate', `${SITE_ORIGIN}${pathname}`, 'x-default');
 
     // ── Open Graph / Twitter ───────────────────────────────────────────────
-    const ogImage = `${SITE_ORIGIN}${route.ogImage ?? '/og/sahtek-og.png'}`;
+    const ogImage = `${SITE_ORIGIN}${route.ogImage ?? '/og/brafie-og.png'}`;
     setMeta('og:type', pathname === '/' ? 'website' : 'article', 'property');
     setMeta('og:site_name', APP.latinName, 'property');
     setMeta('og:title', fullTitle, 'property');
     setMeta('og:description', description, 'property');
     setMeta('og:url', url, 'property');
     setMeta('og:image', ogImage, 'property');
-    setMeta('og:locale', lang === 'ar' ? 'ar_MA' : lang, 'property');
+    setMeta('og:locale', lang === 'en' ? 'en_GH' : lang, 'property');
     setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', fullTitle);
     setMeta('twitter:description', description);
@@ -124,9 +132,9 @@ export function useDocumentMeta() {
 /**
  * Makes the language addressable: `/signs?lang=fr` renders French.
  *
- * Without this the seven locales share one URL, which means hreflang has nothing
- * to point at and Google can only ever index the Darija. Reading the param is
- * what turns "a site with a language switch" into "a site with language
+ * Without this the supported locales share one URL, which means hreflang has
+ * nothing to point at and Google can only ever index one language. Reading the
+ * param is what turns "a site with a language switch" into "a site with language
  * variants".
  *
  * STRICTLY ONE-WAY: url -> store. It does NOT write the URL back.
@@ -149,15 +157,15 @@ export function useLanguageFromUrl() {
   useEffect(() => {
     /* `?lang` is an OVERRIDE, not the sole source of truth.
      *
-     * The absence of the param must NOT mean "reset to Darija". Internal links
-     * are plain `/faq`, so treating a missing param as the default threw an
-     * English reader back into Darija on every click inside the app — a far
-     * worse bug than the one it was meant to fix.
+     * The absence of the param must NOT mean "reset to the default language".
+     * Internal links are plain `/faq`, so treating a missing param as the
+     * default threw a reader back into the default on every click inside the
+     * app — a far worse bug than the one it was meant to fix.
      *
      * So: a valid param wins (deep links, hreflang alternates, Back onto a
      * `?lang=` entry). No param means "carry on in whatever she chose", which is
      * held in the persisted store. A crawler has no store, so it always gets the
-     * Darija default — which is exactly what the canonical and x-default say.
+     * default — which is exactly what the canonical and x-default say.
      */
     if (requested && SUPPORTED_LANGUAGES.includes(requested) && requested !== lang) {
       setLang(requested);
@@ -172,7 +180,7 @@ export function useLanguageFromUrl() {
  * never call `setLang` directly from UI, or the address bar will drift out of
  * step with the page and the link she shares will open in the wrong language.
  *
- * The default locale drops the param rather than carrying `?lang=ar` around.
+ * The default locale drops the param rather than carrying `?lang=en` around.
  * `replace: true` keeps a language switch out of the history stack: it is a
  * preference, not a place, and Back should return to the previous *page*.
  */

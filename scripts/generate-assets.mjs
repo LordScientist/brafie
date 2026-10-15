@@ -430,7 +430,7 @@ async function main() {
 
   // OG cards must be raster — no crawler renders SVG.
   await emit('signs-og', signsOg(), OG, [1200]); n++;
-  await emit('sahtek-og', signsOg(), OG, [1200]); n++;
+  await emit('brafie-og', signsOg(), OG, [1200]); n++;
 
   console.log(`  generated ${n} brand assets (SVG${''}, + PNG for the 2 OG cards)`);
 }

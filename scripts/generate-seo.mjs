@@ -2,7 +2,7 @@
  * Post-build SEO generator.
  *
  * WHY THIS EXISTS
- * Sahtek is a client-rendered SPA. Google runs JavaScript and sees everything
+ * Brafie is a client-rendered SPA. Google runs JavaScript and sees everything
  * `useDocumentMeta` sets at runtime — but the crawlers that build LINK PREVIEWS
  * (WhatsApp, Facebook, iMessage, Slack, LinkedIn) do NOT run JS. They read the
  * HTML the server returns, which for an SPA is always the same `index.html`.
@@ -30,9 +30,9 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = join(ROOT, 'dist');
 
 const SITE = process.env.SITE_ORIGIN ?? 'https://sahtek.tech';
-const INDEXED = ['ar', 'fr', 'en'];
-const DEFAULT_LOCALE = 'ar';
-const hreflang = (l) => (l === 'ar' ? 'ar-MA' : l);
+const INDEXED = ['en'];
+const DEFAULT_LOCALE = 'en';
+const hreflang = (l) => (l === 'en' ? 'en-GH' : l);
 
 // Routes + how to get their copy. Mirrors src/seo/routes.ts. Kept as data rather
 // than imported because the TS there compiles for the browser, not for node.
@@ -135,7 +135,7 @@ function headFor(route, t, locale) {
   const description = clamp(route.desc(t));
   const suffix = locale === DEFAULT_LOCALE ? '' : `?lang=${locale}`;
   const url = `${SITE}${route.path}${suffix}`;
-  const ogImage = `${SITE}${route.ogImage ?? '/og/sahtek-og.png'}`;
+  const ogImage = `${SITE}${route.ogImage ?? '/og/brafie-og.png'}`;
 
   const alternates = INDEXED.map((l) => {
     const href = l === DEFAULT_LOCALE ? `${SITE}${route.path}` : `${SITE}${route.path}?lang=${l}`;
@@ -157,7 +157,7 @@ ${alternates}
     <meta property="og:image" content="${esc(ogImage)}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="${locale === 'ar' ? 'ar_MA' : locale}" />
+    <meta property="og:locale" content="${locale === 'en' ? 'en_GH' : locale}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${esc(fullTitle)}" />
     <meta name="twitter:description" content="${esc(description)}" />
@@ -217,7 +217,7 @@ ${urls}
   // ── robots.txt ───────────────────────────────────────────────────────────
   await writeFile(
     join(DIST, 'robots.txt'),
-    `# Sahtek — breast-health awareness. Educational content, freely crawlable.
+    `# Brafie — breast-health awareness. Educational content, freely crawlable.
 User-agent: *
 Allow: /
 
