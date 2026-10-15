@@ -19,7 +19,7 @@ const HOUR_OF_DAY: Record<string, number> = { morning: 8, afternoon: 14, evening
 const SUMMARY: Record<string, string> = {
   ar: '🎀 صحّتك — وقت الفحص الذاتي',
   fr: '🎀 Sahtek — Heure de l’auto-examen',
-  en: '🎀 Sahtek — Time for your self-check',
+  en: '🎀 Brafie — Time for your self-check',
   es: '🎀 Sahtek — Hora del autoexamen',
   de: '🎀 Sahtek — Zeit für die Selbstuntersuchung',
   ru: '🎀 Sahtek — Время самообследования',
@@ -91,8 +91,8 @@ function utcStamp(date: Date): string {
  * Build the .ics for a monthly reminder on `day` at `time`.
  *
  * DTSTART is a *floating* local time (no Z, no TZID) on purpose: it means
- * "08:00 wherever she is", which survives her travelling and Morocco's Ramadan
- * clock shift. A UTC stamp would drift by an hour.
+ * "08:00 wherever she is", which survives her travelling and any local clock
+ * shift. A UTC stamp would drift by an hour.
  *
  * Days 29–31 are deliberately not special-cased — the ReminderPage already
  * caps the choice at 28 so the event exists in every month.
@@ -110,7 +110,7 @@ export function buildReminderIcs(day: number, time: string, lang: string): strin
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Sahtek//Self-check reminder//EN',
+    'PRODID:-//Brafie//Self-check reminder//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
@@ -143,7 +143,7 @@ export function downloadReminderIcs(day: number, time: string, lang: string): vo
 
   const link = document.createElement('a');
   link.href = url;
-  link.download = 'sahtek-self-check.ics';
+  link.download = 'brafie-self-check.ics';
   document.body.appendChild(link);
   link.click();
   link.remove();

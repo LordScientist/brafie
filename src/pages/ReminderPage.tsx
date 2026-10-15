@@ -40,7 +40,7 @@ const NOTIF_BADGE: Record<'granted' | 'denied' | 'unsupported', Record<string, s
   granted: {
     ar: '🔔 الإشعارات مفعّلة — غير فاش التطبيق محلول',
     fr: '🔔 Notifications activées — seulement si Sahtek est ouvert',
-    en: '🔔 Notifications on — only while Sahtek is open',
+    en: '🔔 Notifications on — only while Brafie is open',
     es: '🔔 Notificaciones activadas — solo si Sahtek está abierto',
     de: '🔔 Benachrichtigungen aktiv — nur wenn Sahtek geöffnet ist',
     ru: '🔔 Уведомления включены — только когда Sahtek открыт',
@@ -125,7 +125,7 @@ const CAL_REDOWNLOAD: Record<string, string> = {
 const PUSH_HINT: Record<string, string> = {
   ar: 'غير فاش صحّتك محلولة فالمتصفح',
   fr: 'Seulement si Sahtek est ouvert',
-  en: 'Only while Sahtek is open',
+  en: 'Only while Brafie is open',
   es: 'Solo si Sahtek está abierto',
   de: 'Nur wenn Sahtek geöffnet ist',
   ru: 'Только когда Sahtek открыт',
@@ -223,7 +223,7 @@ function loadSettings(): ReminderSettings | null {
       methods: saved.filter((m) => m === 'calendar' || m === 'push'),
       email: s.email ?? '',
       whatsappNumber: s.whatsappNumber ?? s.phone ?? '',
-      lang: s.lang ?? 'ar',
+      lang: s.lang ?? 'en',
       isActive: !!s.isActive,
     };
   } catch {
@@ -517,14 +517,14 @@ export function ReminderPage() {
                   {editingField === 'whatsapp' ? (
                     <div>
                       <div className="flex min-h-11 items-center overflow-hidden rounded-xl border border-line bg-white focus-within:border-primary-300" dir="ltr">
-                        <span className="grid h-11 place-items-center bg-primary-100 px-3 font-black text-primary-700">+212</span>
+                        <span className="grid h-11 place-items-center bg-primary-100 px-3 font-black text-primary-700">+233</span>
                         <input
                           type="tel"
                           inputMode="tel"
                           autoComplete="tel"
                           value={draft}
                           onChange={(e) => setDraft(e.target.value.replace(/[^0-9]/g, ''))}
-                          placeholder="6 00 00 00 00"
+                          placeholder="24 000 0000"
                           className="min-w-0 flex-1 bg-transparent px-3 font-bold text-ink outline-none"
                         />
                       </div>
@@ -549,7 +549,7 @@ export function ReminderPage() {
                   ) : (
                     <div className="flex items-center justify-between gap-2">
                       <span className="min-w-0 truncate font-bold text-primary-800" dir="ltr">
-                        💬 +212 {whatsappNumber}
+                        💬 +233 {whatsappNumber}
                       </span>
                       <button
                         type="button"
@@ -790,7 +790,7 @@ export function ReminderPage() {
                     <div className="mt-4">
                       <label htmlFor="reminder-wa" className="text-sm font-black text-muted">{r.phoneLabel}</label>
                       <div className="mt-2 flex min-h-12 items-center overflow-hidden rounded-2xl border border-line bg-white/70 focus-within:border-primary-300" dir="ltr">
-                        <span className="grid h-12 place-items-center bg-primary-50 px-3 font-black text-primary-700">+212</span>
+                        <span className="grid h-12 place-items-center bg-primary-50 px-3 font-black text-primary-700">+233</span>
                         <input
                           id="reminder-wa"
                           type="tel"
@@ -798,7 +798,7 @@ export function ReminderPage() {
                           autoComplete="tel"
                           value={whatsappNumber}
                           onChange={(e) => setWhatsappNumber(e.target.value.replace(/[^0-9]/g, ''))}
-                          placeholder="6 00 00 00 00"
+                          placeholder="24 000 0000"
                           className="min-w-0 flex-1 bg-transparent px-3 font-bold text-ink outline-none"
                         />
                       </div>

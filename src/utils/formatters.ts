@@ -3,7 +3,7 @@ import type { Language } from '@/types/api';
 const LOCALES: Record<Language, string> = {
   ar: 'ar-MA',
   fr: 'fr-FR',
-  en: 'en-US',
+  en: 'en-GH',
   es: 'es-ES',
   de: 'de-DE',
   ru: 'ru-RU',

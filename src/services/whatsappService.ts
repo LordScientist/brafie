@@ -54,7 +54,7 @@ export function getConfirmationMessage(day: number, time: string, lang: string):
 
     fr: `🎀 *Sahtek — Confirmation du rappel*\n\nBienvenue ! Votre rappel a été activé avec succès ✅\n\n📅 *Jour :* le ${day} de chaque mois\n⏰ *Heure :* ${timeLabel}\n\nNous vous rappellerons l'auto-examen mammaire chaque mois. L'examen ne prend que 5 minutes et vous aide à préserver votre santé.\n\n🩺 *Pour commencer l'examen :*\nhttps://sahtek.tech/self-check\n\nVotre santé est précieuse, nous sommes avec vous 💗`,
 
-    en: `🎀 *Sahtek — Reminder Confirmation*\n\nWelcome! Your reminder has been activated successfully ✅\n\n📅 *Day:* ${day}th of every month\n⏰ *Time:* ${timeLabel}\n\nWe will remind you about your monthly breast self-examination. The exam takes only 5 minutes and helps you protect your health.\n\n🩺 *To start your exam:*\nhttps://sahtek.tech/self-check\n\nYour health matters, we are with you 💗`,
+    en: `🎀 *Brafie — Reminder Confirmation*\n\nWelcome! Your reminder has been activated successfully ✅\n\n📅 *Day:* ${day}th of every month\n⏰ *Time:* ${timeLabel}\n\nWe will remind you about your monthly breast self-examination. The exam takes only 5 minutes and helps you protect your health.\n\n🩺 *To start your exam:*\nhttps://sahtek.tech/self-check\n\nYour health matters, we are with you 💗`,
 
     es: `🎀 *Sahtek — Confirmación del recordatorio*\n\nBienvenida! Su recordatorio ha sido activado con éxito ✅\n\n📅 *Día:* ${day} de cada mes\n⏰ *Hora:* ${timeLabel}\n\nLe recordaremos el autoexamen mamario cada mes. El examen solo toma 5 minutos y le ayuda a cuidar su salud.\n\n🩺 *Para comenzar el examen:*\nhttps://sahtek.tech/self-check\n\nSu salud es valiosa, estamos con usted 💗`,
 
@@ -75,7 +75,7 @@ export function getMonthlyReminderMessage(lang: string): string {
 
     fr: `🎀 *Sahtek — Rappel d'auto-examen*\n\nBonjour ! Ce mois-ci, n'oubliez pas votre auto-examen mammaire 🩺\n\nL'examen ne prend que *5 minutes* et peut sauver votre vie.\n\n*Les étapes :*\n1️⃣ Observez devant le miroir\n2️⃣ Levez les bras\n3️⃣ Examinez debout\n4️⃣ Examinez allongée\n5️⃣ Vérifiez le mamelon\n\n🩺 *Commencez maintenant :*\nhttps://sahtek.tech/self-check\n\nVotre santé entre vos mains 💗`,
 
-    en: `🎀 *Sahtek — Self-Exam Reminder*\n\nHello! This month, don't forget your breast self-examination 🩺\n\nThe exam takes only *5 minutes* and can save your life.\n\n*The steps:*\n1️⃣ Observe in the mirror\n2️⃣ Raise your arms\n3️⃣ Examine standing\n4️⃣ Examine lying down\n5️⃣ Check the nipple\n\n🩺 *Start your exam now:*\nhttps://sahtek.tech/self-check\n\nYour health is in your hands 💗`,
+    en: `🎀 *Brafie — Self-Exam Reminder*\n\nHello! This month, don't forget your breast self-examination 🩺\n\nThe exam takes only *5 minutes* and can save your life.\n\n*The steps:*\n1️⃣ Observe in the mirror\n2️⃣ Raise your arms\n3️⃣ Examine standing\n4️⃣ Examine lying down\n5️⃣ Check the nipple\n\n🩺 *Start your exam now:*\nhttps://sahtek.tech/self-check\n\nYour health is in your hands 💗`,
 
     es: `🎀 *Sahtek — Recordatorio de autoexamen*\n\nHola! Este mes, no olvides tu autoexamen mamario 🩺\n\nEl examen toma solo *5 minutos* y puede salvar tu vida.\n\n*Los pasos:*\n1️⃣ Observa frente al espejo\n2️⃣ Levanta los brazos\n3️⃣ Examina de pie\n4️⃣ Examina acostada\n5️⃣ Revisa el pezón\n\n🩺 *Comienza ahora:*\nhttps://sahtek.tech/self-check\n\nTu salud está en tus manos 💗`,
 
@@ -89,11 +89,11 @@ export function getMonthlyReminderMessage(lang: string): string {
   return messages[lang] || messages.en;
 }
 
-/** Normalises a Moroccan number to the gateway's chat-id form. Kept for the proxy. */
+/** Normalises a Ghanaian number to the gateway's chat-id form. Kept for the proxy. */
 export function formatPhoneNumber(phone: string): string {
   let num = phone.replace(/[\s\-()+]/g, '');
-  if (num.startsWith('0')) num = '212' + num.slice(1);
-  if (!num.startsWith('212')) num = '212' + num;
+  if (num.startsWith('0')) num = '233' + num.slice(1);
+  if (!num.startsWith('233')) num = '233' + num;
   return num + '@c.us';
 }
 

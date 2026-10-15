@@ -57,13 +57,13 @@ export function downloadJSON(data: RiskReportData, lang: string) {
     [L('riskFactors', lang)]: data.riskFactors,
     [L('protectiveFactors', lang)]: data.protectiveFactors,
     disclaimer: L('disclaimer', lang),
-    source: 'sahtek.tech',
+    source: 'Brafie',
   };
   const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `sahtek-report-${lang}-${Date.now()}.json`;
+  a.download = `brafie-report-${lang}-${Date.now()}.json`;
   a.click();
   URL.revokeObjectURL(url);
 }
@@ -89,12 +89,12 @@ export function downloadPDF(data: RiskReportData, lang: string) {
   doc.setTextColor(255, 255, 255);
   doc.setFontSize(24);
   doc.setFont('helvetica', 'bold');
-  doc.text('Sahtek', M + 22, 20);
+  doc.text('Brafie', M + 22, 20);
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.text('Breast Cancer Awareness', M + 22, 28);
   doc.setFontSize(8);
-  doc.text('sahtek.tech', M + 22, 35);
+  doc.text('Breast Health Awareness · Ghana', M + 22, 35);
 
   // Title
   y = 58;
@@ -197,5 +197,5 @@ export function downloadPDF(data: RiskReportData, lang: string) {
   const dLines = doc.splitTextToSize(L('disclaimer', lang), W - M * 2);
   doc.text(dLines, W / 2, fy, { align: 'center' });
 
-  doc.save(`sahtek-report-${lang}-${Date.now()}.pdf`);
+  doc.save(`brafie-report-${lang}-${Date.now()}.pdf`);
 }

@@ -286,7 +286,7 @@ export function PreventionTracker() {
               <p className="mt-3 text-lg font-black">{p.shareCardLine1}</p>
               <p className="mt-1 text-2xl font-black">{p.shareCardLine2}</p>
               {/* Solid white, not white/80: any transparency drops below 4.5:1 on the gradient. */}
-              <p className="mt-3 text-sm font-bold text-white">sahtek.tech</p>
+              <p className="mt-3 text-sm font-bold text-white">Brafie</p>
             </div>
             <Button fullWidth leftIcon={<Share2 size={18} />} onClick={share}>
               {p.shareBtn}

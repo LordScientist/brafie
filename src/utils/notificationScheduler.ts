@@ -88,7 +88,7 @@ export function showNotification(lang?: string) {
   const titles: Record<string, string> = {
     ar: '🎀 صحّتك — وقت الفحص الذاتي',
     fr: '🎀 Sahtek — Heure de l\'auto-examen',
-    en: '🎀 Sahtek — Time for self-check',
+    en: '🎀 Brafie — Time for self-check',
     es: '🎀 Sahtek — Hora del autoexamen',
     de: '🎀 Sahtek — Zeit zur Selbstuntersuchung',
     ru: '🎀 Sahtek — Время самообследования',
