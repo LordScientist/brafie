@@ -17,8 +17,12 @@ interface LanguageSwitchProps {
 }
 
 /**
- * Language switch. Darija first, then French, then English — the order comes
- * from SUPPORTED_LANGUAGES, which encodes the product's language priority.
+ * Language switch. The order of options comes from SUPPORTED_LANGUAGES, which
+ * encodes the product's language priority (English first for the Ghana release).
+ *
+ * It renders NOTHING while only one language is supported — a single-option
+ * picker is noise. It re-appears automatically the moment a second language is
+ * added to SUPPORTED_LANGUAGES.
  *
  * Changing language flips `dir` app-wide (handled in Layout), so the menu is
  * built with logical properties and needs no RTL special-casing.
@@ -54,6 +58,9 @@ export function LanguageSwitch({ variant = 'menu', className }: LanguageSwitchPr
     setLang(code);
     setOpen(false);
   };
+
+  // Nothing to choose between yet — a one-item language picker is pure noise.
+  if (SUPPORTED_LANGUAGES.length < 2) return null;
 
   if (variant === 'inline') {
     return (
