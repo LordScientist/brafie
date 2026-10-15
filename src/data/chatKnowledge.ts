@@ -2,7 +2,8 @@ import type { Language } from '@/types/api';
 import type { ChatCategory } from '@/types/chat';
 
 // ════════════════════════════════════════════════════════════════════
-//  DEMO-MODE chat brain — keyword-matched, empathetic, trilingual.
+//  DEMO-MODE chat brain — keyword-matched, empathetic, multilingual
+//  (7 locales bundled; English is the only locale shipped).
 //  Used by mockService when no backend is connected.
 // ════════════════════════════════════════════════════════════════════
 

@@ -1,7 +1,10 @@
 import type { Language, ContentResponse, SelfCheckGuide, Statistics } from '@/types/api';
 
 // ════════════════════════════════════════════════════════════════════
-//  Static educational content - trilingual, medically reviewed copy.
+//  Static educational content - 7 locales are bundled, but English is the
+//  only locale shipped (see SUPPORTED_LANGUAGES in config/constants.ts).
+//  This copy is NOT medically reviewed: MEDICAL_REVIEW / EVIDENCE_SOURCES
+//  in config/constants.ts are intentionally empty.
 //  Mirrors the GET /content, /self-check-guide and /statistics shapes.
 // ════════════════════════════════════════════════════════════════════
 
