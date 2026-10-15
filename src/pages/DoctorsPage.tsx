@@ -20,6 +20,20 @@ interface MedicalFacility {
   distance: number; // km
 }
 
+interface OverpassElement {
+  id: number;
+  lat?: number;
+  lon?: number;
+  center?: { lat: number; lon: number };
+  tags?: Record<string, string>;
+}
+
+interface NominatimResult {
+  display_name: string;
+  lat: string;
+  lon: string;
+}
+
 // ── Translations ──
 const T: Record<string, Record<string, string>> = {
   title: {
@@ -155,8 +169,8 @@ async function searchMedicalFacilities(
   const data = await res.json();
 
   return (data.elements ?? [])
-    .filter((el: any) => (el.lat && el.lon) || el.center)
-    .map((el: any) => {
+    .filter((el: OverpassElement) => (el.lat && el.lon) || el.center)
+    .map((el: OverpassElement) => {
       const elLat = el.lat || el.center?.lat;
       const elLng = el.lon || el.center?.lon;
       const amenity = el.tags?.amenity || el.tags?.healthcare || 'doctor';
@@ -170,7 +184,7 @@ async function searchMedicalFacilities(
       const specialty = el.tags?.['healthcare:speciality'] ||
                         el.tags?.['medical_system:specialty'] || '';
 
-      const dist = haversineDistance(lat, lng, elLat, elLng);
+      const dist = haversineDistance(lat, lng, elLat!, elLng!);
 
       return {
         id: el.id,
@@ -374,7 +388,7 @@ export default function DoctorsPage() {
         const data = await res.json();
         const sorted = userLocation
           ? [...data].sort(
-              (a: any, b: any) =>
+              (a: NominatimResult, b: NominatimResult) =>
                 haversineDistance(userLocation.lat, userLocation.lng, parseFloat(a.lat), parseFloat(a.lon)) -
                 haversineDistance(userLocation.lat, userLocation.lng, parseFloat(b.lat), parseFloat(b.lon)),
             )
@@ -387,7 +401,7 @@ export default function DoctorsPage() {
     }, 300);
   };
 
-  const selectSuggestion = async (s: { display_name: string; lat: string; lon: string }) => {
+  const selectSuggestion = async (s: NominatimResult) => {
     const lat = parseFloat(s.lat);
     const lng = parseFloat(s.lon);
     const label = s.display_name.split(',').slice(0, 2).join(',').trim();
