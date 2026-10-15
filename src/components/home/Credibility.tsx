@@ -106,7 +106,7 @@ export function Credibility() {
           {MEDICAL_REVIEW ? (
             <>
               <p className="mt-1.5 text-body-sm text-ink">
-                {MEDICAL_REVIEW.name} — {MEDICAL_REVIEW.credential}
+                {MEDICAL_REVIEW.name} · {MEDICAL_REVIEW.credential}
               </p>
               <p className="text-caption text-muted">{MEDICAL_REVIEW.reviewedOn}</p>
             </>

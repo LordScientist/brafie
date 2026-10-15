@@ -108,12 +108,12 @@ export const en = {
       eyebrow: 'The signs',
       title: '12 changes worth knowing',
       subtitle:
-        'Not to frighten you — to help you know what is normal for your body, so you notice quickly if something changes.',
+        'Not to frighten you: to help you know what is normal for your body, so you notice quickly if something changes.',
       cardCta: 'Learn more',
       whatToNotice: 'What to notice',
       nextStepTitle: 'The next step',
       nextStepText:
-        'Most of these changes are not cancer. But if you notice a new change and it lasts more than two weeks, book an appointment with a doctor — not to worry, just to know.',
+        'Most of these changes are not cancer. But if you notice a new change and it lasts more than two weeks, book an appointment with a doctor, not to worry, just to know.',
       allCta: 'See all 12 signs in detail',
       items: [
         { label: 'A new lump', detail: 'A new lump or firmness in the breast, often painless. A lump that does not hurt deserves the same attention as one that does.' },
@@ -286,7 +286,7 @@ export const en = {
         },
         {
           q: 'When should I talk to a doctor?',
-          a: 'If you notice a new change that lasts more than two weeks, or if you have bloody discharge, a hard lump, or a clear change in the skin or the nipple — book an appointment. And if you are simply worried, that is reason enough.',
+          a: 'If you notice a new change that lasts more than two weeks, or if you have bloody discharge, a hard lump, or a clear change in the skin or the nipple, book an appointment. And if you are simply worried, that is reason enough.',
         },
         {
           q: 'Can I use it without an account?',
@@ -323,7 +323,7 @@ export const en = {
     ctaSelfCheck: 'Start the guided self-check',
     ctaHelp: 'When to seek help',
     imageAltTemplate: 'A calm illustration of the sign: {label}',
-    ogAlt: 'Brafie — 12 breast changes worth knowing.',
+    ogAlt: 'Brafie · 12 breast changes worth knowing.',
   },
   riskFactorsPage: {
     eyebrow: 'Risk factors',
@@ -402,9 +402,9 @@ export const en = {
      "nothing ever leaves your device" would be a lie about the mic. */
   companionPage: {
     eyebrow: 'The Brafie assistant',
-    title: 'A companion that explains — not a doctor that diagnoses',
+    title: 'A companion that explains, not a doctor that diagnoses',
     intro:
-      'The Brafie assistant helps you understand breast health in plain language, without embarrassment and without judgement. But you should know exactly what it can do — and what it will never do — before you start.',
+      'The Brafie assistant helps you understand breast health in plain language, without embarrassment and without judgement. But you should know exactly what it can do, and what it will never do, before you start.',
     canTitle: 'What it can do',
     can: [
       'Explain medical words in plain language',
@@ -425,7 +425,7 @@ export const en = {
     examples: [
       'What signs should I watch for?',
       'How do I do a self-check?',
-      'I found a small lump — what now?',
+      'I found a small lump: what now?',
       'Does family history matter?',
       'What is a mammogram?',
       'I am scared, help me',
@@ -609,7 +609,7 @@ export const en = {
       { m: 'Breast cancer only affects older women', t: 'It can affect anyone at any age, even before 30' },
       { m: 'No family history means no risk', t: '85% of cases have no family history' },
       { m: 'Any lump means cancer', t: 'Most lumps are benign, but always get checked' },
-      { m: 'Self-exam replaces mammogram', t: 'Self-exam complements, doesn\'t replace — need both' },
+      { m: 'Self-exam replaces mammogram', t: 'Self-exam complements, doesn\'t replace, need both' },
       { m: 'Mammograms cause cancer', t: 'Radiation dose is very low and not harmful' },
       { m: 'Men can\'t get breast cancer', t: 'Men can get it too, in under 1% of cases' },
       { m: 'Tight bras cause cancer', t: 'No scientific evidence for this' },
@@ -618,7 +618,7 @@ export const en = {
       { m: 'Only white women get breast cancer', t: 'It affects all women regardless of ethnicity' },
       { m: 'A blow to the breast causes cancer', t: 'Injuries don\'t cause cancer but may reveal a lump' },
       { m: 'Breast cancer is always fatal', t: 'Most cases found early are treatable, and survival is very high' },
-      { m: 'No symptoms = no problem', t: 'Early cancer has no symptoms — regular checks essential' },
+      { m: 'No symptoms = no problem', t: 'Early cancer has no symptoms, regular checks essential' },
       { m: 'Sugar feeds cancer', t: 'No proof, but healthy eating helps' },
       { m: 'Phone near chest causes cancer', t: 'No study has ever proven this' },
       { m: 'Biopsy spreads cancer', t: 'Biopsy is safe and needed for diagnosis' },
@@ -672,7 +672,7 @@ export const en = {
       defenseSteps: [
         { title: 'Monthly self-exam', age: 'From age 20', desc: 'Five calm minutes once a month to learn what is normal for you.', cta: 'Start self-check' },
         { title: 'Annual clinical exam', age: 'From age 25', desc: 'A yearly check by a doctor or nurse who knows what to look for.', cta: 'Set a reminder' },
-        { title: 'Mammography every 2 years', age: 'From age 40', desc: 'An X-ray that can spot changes before you feel them — earlier if you have risk factors.', cta: 'Check your risk' },
+        { title: 'Mammography every 2 years', age: 'From age 40', desc: 'An X-ray that can spot changes before you feel them, earlier if you have risk factors.', cta: 'Check your risk' },
       ],
       didYouKnowTitle: 'Did you know?',
       facts: [
@@ -868,7 +868,7 @@ export const en = {
     micNoticeTitle: 'Before you use the microphone',
     micNoticeBody:
       'Voice typing does not happen on your device. Your browser records what you say and sends the audio to Google’s speech service to turn it into text. Brafie never receives the recording, and you can always type instead.',
-    micNoticeAccept: 'I understand — use the microphone',
+    micNoticeAccept: 'I understand, use the microphone',
     micNoticeDecline: 'No thanks, I’ll type',
     clear: 'Clear chat',
     relatedTopics: 'Related topics',

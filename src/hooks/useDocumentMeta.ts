@@ -66,7 +66,7 @@ export function useDocumentMeta() {
     const brand = lang === 'ar' ? APP.name : APP.latinName;
 
     const title = route.title(t);
-    const fullTitle = pathname === '/' ? `${brand} — ${title}` : `${title} · ${brand}`;
+    const fullTitle = pathname === '/' ? `${brand} · ${title}` : `${title} · ${brand}`;
 
     const raw = route.description(t);
     const description =

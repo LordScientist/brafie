@@ -141,7 +141,7 @@ export const RISK_SUMMARY: Record<Language, Record<RiskLevel, string>> = {
   },
   en: {
     low:
-      'Few of the factors we asked about apply to you. That is not a guarantee: most women who are diagnosed had no clear risk factor at all. Keep the monthly self-check, and if you notice a new change, see a doctor — whatever this result says.',
+      'Few of the factors we asked about apply to you. That is not a guarantee: most women who are diagnosed had no clear risk factor at all. Keep the monthly self-check, and if you notice a new change, see a doctor, whatever this result says.',
     moderate:
       'Some of the factors we asked about apply to you. A factor is not a prediction; it is something worth discussing. Raise them with a doctor at your next appointment, and keep the self-check.',
     high:
@@ -264,7 +264,7 @@ export const RECOMMENDATIONS: Record<Language, Record<RecommendationKey, RiskRec
     self_check: { priority: 'high', icon: '🩺', action: 'Do a self-check every month' },
     doctor_yearly: { priority: 'medium', icon: '👩‍⚕️', action: 'See a doctor once a year' },
     doctor_soon: { priority: 'high', icon: '🏥', action: 'Book a doctor’s appointment soon for a clinical exam' },
-    exercise: { priority: 'medium', icon: '🏃‍♀️', action: 'Increase physical activity — 30 minutes a day' },
+    exercise: { priority: 'medium', icon: '🏃‍♀️', action: 'Increase physical activity: 30 minutes a day' },
     diet: { priority: 'medium', icon: '🥗', action: 'Adopt a balanced diet rich in vegetables' },
     weight: { priority: 'medium', icon: '⚖️', action: 'Work towards a healthy weight' },
     quit: { priority: 'high', icon: '🚭', action: 'Avoid tobacco and alcohol' },

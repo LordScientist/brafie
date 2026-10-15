@@ -53,7 +53,7 @@ export function RiskAssessmentPage() {
        this app had calculated. It now states what the number is and what it is
        not, and carries the disclaimer. */
     await navigator.clipboard?.writeText(
-      `${t.risk.yourScore}: ${pct} — ${t.risk.scoreCaption}. ${t.risk.riskLevelLabel}: ${levelLabel}.\n${t.risk.notAProbability}\n${t.disclaimer.short}`,
+      `${t.risk.yourScore}: ${pct} · ${t.risk.scoreCaption}. ${t.risk.riskLevelLabel}: ${levelLabel}.\n${t.risk.notAProbability}\n${t.disclaimer.short}`,
     );
     setCopied(true);
   };

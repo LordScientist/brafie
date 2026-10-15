@@ -19,7 +19,7 @@ const HOUR_OF_DAY: Record<string, number> = { morning: 8, afternoon: 14, evening
 const SUMMARY: Record<string, string> = {
   ar: '🎀 صحّتك — وقت الفحص الذاتي',
   fr: '🎀 Sahtek — Heure de l’auto-examen',
-  en: '🎀 Brafie — Time for your self-check',
+  en: '🎀 Brafie · Time for your self-check',
   es: '🎀 Sahtek — Hora del autoexamen',
   de: '🎀 Sahtek — Zeit für die Selbstuntersuchung',
   ru: '🎀 Sahtek — Время самообследования',

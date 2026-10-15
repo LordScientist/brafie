@@ -440,7 +440,7 @@ export default function DoctorsPage() {
       const popup = new Popup({ offset: 20, closeButton: false }).setHTML(`
         <div style="padding:8px;font-family:inherit;min-width:180px">
           <strong style="font-size:14px;color:#2D1F2D">${fac.name}</strong><br/>
-          <span style="font-size:11px;color:${TYPE_COLORS[fac.type]};font-weight:600">${TYPE_ICONS[fac.type]} ${fac.type}${fac.specialty ? ' — ' + fac.specialty : ''}</span><br/>
+          <span style="font-size:11px;color:${TYPE_COLORS[fac.type]};font-weight:600">${TYPE_ICONS[fac.type]} ${fac.type}${fac.specialty ? ' · ' + fac.specialty : ''}</span><br/>
           <span style="font-size:11px;color:#7A6473">${fac.distance} ${t('km')}</span>
           ${fac.address ? `<br/><span style="font-size:11px;color:#666">📍 ${fac.address}</span>` : ''}
           ${fac.phone ? `<br/><a href="tel:${fac.phone}" style="font-size:12px;color:#B5246E;font-weight:600">📞 ${fac.phone}</a>` : ''}
@@ -598,7 +598,7 @@ export default function DoctorsPage() {
       {cityName && (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 8 }}>
           <span style={{ fontSize: 15, fontWeight: 600, color: '#2D1F2D' }}>
-            📍 {cityName} — {filteredFacilities.length} {t('found')}
+            📍 {cityName} · {filteredFacilities.length} {t('found')}
           </span>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontSize: 12, color: '#7A6473' }}>{t('radius')}:</span>
@@ -710,7 +710,7 @@ export default function DoctorsPage() {
                 {fac.name}
               </div>
               <div style={{ fontSize: 11, color: TYPE_COLORS[fac.type], fontWeight: 600 }}>
-                {fac.type}{fac.specialty ? ' — ' + fac.specialty : ''}
+                {fac.type}{fac.specialty ? ' · ' + fac.specialty : ''}
               </div>
               {fac.address && (
                 <div style={{ fontSize: 11, color: '#7A6473', marginTop: 2 }}>📍 {fac.address}</div>

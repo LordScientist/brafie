@@ -1,12 +1,12 @@
 <div align="center">
 
-# 🎀 Brafie — Breast Health Ghana
+# 🎀 Brafie · Breast Health Ghana
 
 ### *Breast-cancer awareness and a guided self-check, adapted for Ghana*
 
 **A private, caring breast-health awareness companion, localised for women in Ghana.**
 
-Early detection saves lives. Brafie makes it accessible, private, and easy to understand — in clear, everyday English.
+Early detection saves lives. Brafie makes it accessible, private, and easy to understand, in clear, everyday English.
 
 > **Ghanaian adaptation and localisation by [LordScientist].** Based on the original open-source **Sahtek** project and distributed under the **MIT License**.
 
@@ -60,23 +60,23 @@ Early detection saves lives. Brafie makes it accessible, private, and easy to un
 
 ### The Problem
 
-Breast cancer is the **most common cancer among women worldwide**, and too many cases in Ghana and across the region are found late — when treatment is harder and survival drops.
+Breast cancer is the **most common cancer among women worldwide**, and too many cases in Ghana and across the region are found late, when treatment is harder and survival drops.
 
-> ⚠️ **Ghana-specific figures are still being verified.** The original project documented Morocco's national figures (~12,000 new cases a year, ~60% diagnosed late, average diagnosis age ~48). Those are **not** Ghanaian statistics and have been removed from the interface. No Ghana-specific numbers are shown until a verified source is confirmed — see [`docs/GHANA_LOCALISATION.md`](./docs/GHANA_LOCALISATION.md).
+> ⚠️ **Ghana-specific figures are still being verified.** The original project documented Morocco's national figures (~12,000 new cases a year, ~60% diagnosed late, average diagnosis age ~48). Those are **not** Ghanaian statistics and have been removed from the interface. No Ghana-specific numbers are shown until a verified source is confirmed; see [`docs/GHANA_LOCALISATION.md`](./docs/GHANA_LOCALISATION.md).
 
-What is universal: the gap is rarely medicine — it is **awareness, access, and comfort**. Many women lack clear information, feel embarrassed to seek help, or simply do not know how to check themselves.
+What is universal: the gap is rarely medicine: it is **awareness, access, and comfort**. Many women lack clear information, feel embarrassed to seek help, or simply do not know how to check themselves.
 
 ### Our Solution
 
-**Brafie** turns a smartphone into a private, judgement-free health companion. It teaches women how to perform a monthly self-check, understand their risk, separate myth from fact, find a nearby doctor, and stay consistent — in **clear, everyday English**, with a structure ready for Ghanaian languages.
+**Brafie** turns a smartphone into a private, judgement-free health companion. It teaches women how to perform a monthly self-check, understand their risk, separate myth from fact, find a nearby doctor, and stay consistent, in **clear, everyday English**, with a structure ready for Ghanaian languages.
 
 ### Why It Matters
 
-- 🤝 **Culturally sensitive** — a warm, respectful tone, never clinical or shaming.
-- 🔒 **Privacy by design** — **no camera, no photos, no accounts, no sensitive data leaves the device.** Everything lives in the browser.
-- 📱 **Meets women where they are** — on the phone, in their language, on their terms.
+- 🤝 **Culturally sensitive**: a warm, respectful tone, never clinical or shaming.
+- 🔒 **Privacy by design**: **no camera, no photos, no accounts, no sensitive data leaves the device.** Everything lives in the browser.
+- 📱 **Meets women where they are**: on the phone, in their language, on their terms.
 
-> Brafie isn't a diagnosis tool. It's an **awareness and empowerment** tool — and it always points to a real doctor.
+> Brafie isn't a diagnosis tool. It's an **awareness and empowerment** tool, and it always points to a real doctor.
 
 ---
 
@@ -84,15 +84,15 @@ What is universal: the gap is rarely medicine — it is **awareness, access, and
 
 | | Feature | Description |
 |:---:|---|---|
-| 🌐 | **English-first, Ghana-ready** | Ships in clear, everyday English. The i18n layer is structured so Ghanaian languages (Twi, Ga, Ewe, Dagbani…) can be added one at a time, once each is fully translated and medically reviewed — never machine-translated. |
+| 🌐 | **English-first, Ghana-ready** | Ships in clear, everyday English. The i18n layer is structured so Ghanaian languages (Twi, Ga, Ewe, Dagbani…) can be added one at a time, once each is fully translated and medically reviewed, never machine-translated. |
 | 📚 | **Educational Hub** | Overview, symptoms, prevention, and a **30-myth** infinite-scroll flip-card wall that busts misconceptions one tap at a time. |
 | 🩺 | **Guided Self-Check** | Interactive **5-step** monthly self-exam with per-step timers and **voice guidance** in every language. |
-| 👩 | **Interactive Body Map** | Clickable symptom zones that explain what to look and feel for — visually, without a single photo. |
+| 👩 | **Interactive Body Map** | Clickable symptom zones that explain what to look and feel for, visually, without a single photo. |
 | 📊 | **AI Risk Assessment** | Weighted local scoring + a **personalized AI summary & recommendations**, exportable as a **branded PDF or JSON** report. |
-| 🤖 | **Context-Aware AI Chatbot** | Powered by **Llama 3.3 70B** — and aware of *your* journey (did you finish the self-check? set a reminder? take the risk test?) for genuinely personal answers. |
-| 🗺️ | **Worldwide Doctor Finder** | Real-time map with autocomplete location search and live distance calculation — find oncologists & clinics anywhere. |
+| 🤖 | **Context-Aware AI Chatbot** | Powered by **Llama 3.3 70B**, and aware of *your* journey (did you finish the self-check? set a reminder? take the risk test?) for genuinely personal answers. |
+| 🗺️ | **Worldwide Doctor Finder** | Real-time map with autocomplete location search and live distance calculation: find oncologists & clinics anywhere. |
 | 💬 | **Real Reminders** | Monthly **WhatsApp** reminders in the user's language **+** browser push notifications, so a self-check never gets forgotten. |
-| 📱 | **Progressive Web App** | Installable to the home screen and works **offline** — no app store required. |
+| 📱 | **Progressive Web App** | Installable to the home screen and works **offline**, no app store required. |
 | 🎗️ | **Prevention Tracker** | Habit checklist with an animated progress ring, a protection score, and a monthly challenge to build lasting habits. |
 
 ---
@@ -113,7 +113,7 @@ What is universal: the gap is rarely medicine — it is **awareness, access, and
 - jsPDF (branded report export)
 
 **🤖 AI**
-- Groq API — **Llama 3.3 70B** (`llama-3.3-70b-versatile`)
+- Groq API: **Llama 3.3 70B** (`llama-3.3-70b-versatile`)
 - Powers the chatbot **and** risk analysis
 - Graceful local knowledge-base fallback
 
@@ -132,7 +132,7 @@ What is universal: the gap is rarely medicine — it is **awareness, access, and
 
 **🗣️ Voice & Platform**
 - Web Speech API (`SpeechSynthesis`)
-- PWA — installable & offline
+- PWA: installable & offline
 - Deployed on **Vercel**
 
 </td>
@@ -169,7 +169,7 @@ What is universal: the gap is rarely medicine — it is **awareness, access, and
 
 ## 🏗 Architecture
 
-Brafie is **client-first**: a fast React PWA that talks directly to free, open, and best-in-class services — keeping the user's data on their device and the stack lightweight.
+Brafie is **client-first**: a fast React PWA that talks directly to free, open, and best-in-class services, keeping the user's data on their device and the stack lightweight.
 
 ```mermaid
 flowchart TD
@@ -190,8 +190,8 @@ flowchart TD
 ```
 
 **Design principles**
-- 🔐 Sensitive state (risk answers, chat history, progress) **never leaves the browser** — it lives in `localStorage`.
-- 🧠 The AI layer **degrades gracefully**: if Groq is unreachable, a built-in multilingual knowledge base answers instead — the app never breaks.
+- 🔐 Sensitive state (risk answers, chat history, progress) **never leaves the browser**; it lives in `localStorage`.
+- 🧠 The AI layer **degrades gracefully**: if Groq is unreachable, a built-in multilingual knowledge base answers instead, the app never breaks.
 - 🪶 Heavy dependencies (like the PDF engine) are **lazy-loaded** on demand to keep the initial bundle lean for slow connections.
 
 ---
@@ -235,7 +235,7 @@ npm run preview    # preview the production build locally
 
 | Variable | Required | Description |
 |---|:---:|---|
-| `VITE_GROQ_API_KEY` | ✅ | Groq API key (starts with `gsk_`) — powers the AI chat & risk analysis. |
+| `VITE_GROQ_API_KEY` | ✅ | Groq API key (starts with `gsk_`), powers the AI chat & risk analysis. |
 | `VITE_API_URL` | ⬜ | Optional backend base URL for content/reminder persistence. |
 | `VITE_USE_MOCK` | ⬜ | `true` to force the local mock/knowledge-base layer (offline demo). |
 
@@ -250,19 +250,19 @@ npm run preview    # preview the production build locally
 <td width="33%" valign="top">
 
 ### 🔒 Privacy-First
-No camera. No photos. No accounts. No personal data ever leaves the device — a deliberate, respectful design choice for a deeply personal topic.
+No camera. No photos. No accounts. No personal data ever leaves the device: a deliberate, respectful design choice for a deeply personal topic.
 
 </td>
 <td width="33%" valign="top">
 
 ### 🇬🇭 Adapted for Ghana
-Warm and non-judgmental, in **clear, everyday English** — written for the Ghanaian context, not translated into it.
+Warm and non-judgmental, in **clear, everyday English**, written for the Ghanaian context, not translated into it.
 
 </td>
 <td width="33%" valign="top">
 
 ### 🌐 Ready for Local Languages
-Ships in English today, with an i18n layer structured to add reviewed **Ghanaian languages** (Twi, Ga, Ewe, Dagbani…) — not a language switcher bolted on as an afterthought.
+Ships in English today, with an i18n layer structured to add reviewed **Ghanaian languages** (Twi, Ga, Ewe, Dagbani…), not a language switcher bolted on as an afterthought.
 
 </td>
 </tr>
@@ -270,19 +270,19 @@ Ships in English today, with an i18n layer structured to add reviewed **Ghanaian
 <td width="33%" valign="top">
 
 ### 📱 Works Offline
-A full **PWA** — installable to the home screen and functional without a connection.
+A full **PWA**: installable to the home screen and functional without a connection.
 
 </td>
 <td width="33%" valign="top">
 
 ### 🔗 Real Integrations
-Live **WhatsApp** reminders, real **maps & clinic data**, and a real **LLM** — not mockups.
+Live **WhatsApp** reminders, real **maps & clinic data**, and a real **LLM**, not mockups.
 
 </td>
 <td width="33%" valign="top">
 
 ### 🧠 Context-Aware AI
-The chatbot knows *your* progress and personalizes its guidance — a small detail that feels genuinely human.
+The chatbot knows *your* progress and personalizes its guidance, a small detail that feels genuinely human.
 
 </td>
 </tr>
@@ -321,14 +321,14 @@ English interface.
 
 ## 🙏 Acknowledgments
 
-- 💗 **The original Sahtek project and its contributors** — for the open-source foundation this Ghanaian adaptation builds on.
-- 💗 **The open-source community** — Brafie stands on the shoulders of:
+- 💗 **The original Sahtek project and its contributors**: for the open-source foundation this Ghanaian adaptation builds on.
+- 💗 **The open-source community**: Brafie stands on the shoulders of:
   - [React](https://react.dev), [Vite](https://vitejs.dev), [Tailwind CSS](https://tailwindcss.com), [Framer Motion](https://www.framer.com/motion/)
   - [Groq](https://groq.com) & [Meta Llama](https://llama.meta.com)
   - [MapLibre](https://maplibre.org), [OpenStreetMap](https://www.openstreetmap.org), [Overpass API](https://overpass-api.de), [Nominatim](https://nominatim.org)
   - [Lucide Icons](https://lucide.dev), [jsPDF](https://github.com/parallax/jsPDF)
 
-> 🎗️ And to every woman who checks herself this month — **this is for you.**
+> 🎗️ And to every woman who checks herself this month, **this is for you.**
 
 ---
 

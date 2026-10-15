@@ -41,7 +41,7 @@ export const overviewFacts: Record<Language, OverviewFact[]> = {
     { icon: '🎀', stat: '#1', title: 'Most common', text: 'Breast cancer is the most common cancer among women worldwide.' },
     { icon: '💪', stat: '99%', title: 'Highly treatable', text: 'Found early, survival reaches 99%. Early detection saves lives.' },
     { icon: '🧬', stat: '85%', title: 'No family history', text: '85% of affected women have no family history. Prevention is for everyone.' },
-    { icon: '🌍', stat: '1 in 8', title: 'A common cancer', text: 'About one woman in eight may face breast cancer in her lifetime — at any age.' },
+    { icon: '🌍', stat: '1 in 8', title: 'A common cancer', text: 'About one woman in eight may face breast cancer in her lifetime, at any age.' },
     { icon: '⏰', stat: '2 wks', title: 'Do not wait it out', text: 'If a change lasts longer than two weeks, book a visit. Regular checks change everything.' },
     { icon: '🩺', stat: '5 min', title: 'A simple exam', text: 'A self-check takes 5 minutes a month. A small habit, a big protection.' },
   ],

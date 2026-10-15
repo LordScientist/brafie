@@ -240,7 +240,7 @@ function ReminderScreen() {
 
       <div className="mt-3 flex items-start gap-1.5 rounded-2xl bg-sunken px-2.5 py-2 text-[7px] font-semibold text-muted">
         <ShieldCheck size={11} className="mt-px shrink-0 text-calm" />
-        <span>For awareness only — this is not a medical diagnosis. Always talk to a doctor.</span>
+        <span>For awareness only. This is not a medical diagnosis. Always talk to a doctor.</span>
       </div>
 
       <div className="mt-auto mb-1 grid h-8 place-items-center rounded-pill bg-brand-cta text-[9px] font-bold text-white shadow-petal">

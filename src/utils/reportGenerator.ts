@@ -164,7 +164,7 @@ export function downloadPDF(data: RiskReportData, lang: string) {
     doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
     data.riskFactors.forEach((f) => {
-      doc.text(`—  ${f}`, M + 2, y);
+      doc.text(`-  ${f}`, M + 2, y);
       y += 5;
     });
     y += 4;

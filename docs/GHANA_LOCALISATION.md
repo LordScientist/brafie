@@ -1,8 +1,8 @@
-# Brafie (Ghana) — adaptation notes, decisions and what still needs verification
+# Brafie (Ghana) · adaptation notes, decisions and what still needs verification
 
 This document records the localisation of the open-source **Sahtek** app into
-**Brafie**, an English-first breast health education app for users in Ghana, and —
-importantly — the content that was **removed or left unverified** rather than
+**Brafie**, an English-first breast health education app for users in Ghana, and,
+importantly, the content that was **removed or left unverified** rather than
 replaced with guesses.
 
 **Ghanaian adaptation and localisation by LordScientist.** Distributed under the
@@ -44,8 +44,8 @@ replaced with guesses.
 | 5 | **Canonical site origin / deployed domain** | **Still the original `https://sahtek.tech`.** Set `VITE_SITE_ORIGIN` (see `src/hooks/useDocumentMeta.ts`) or `SITE_ORIGIN` for the SEO build script, and the `whatsappService` / `calendarReminder` URLs, to the real Brafie origin before launch. | SEO tags, sitemap, WhatsApp + calendar links |
 | 6 | **Ghana health-service claims** | The Morocco "free mammography programme" line was **removed**, not replaced. No Ghanaian screening-coverage claim is made. | Learn → Overview facts |
 | 7 | **Screenshots with embedded Arabic** | **Resolved.** The Arabic raster captures were deleted and replaced with live English JSX mock screens. See section 4. | Home hero + self-check preview |
-| 8 | **Non-English bundled content still Morocco-flavoured** | **Needs localisation review — do not enable as-is.** The non-`en` blocks in `src/data/content.ts` (overview facts, myths, self-check guide) still name Morocco and its figures; the French block also has broken accents/mojibake (e.g. `l?gumes`, `m?decin`, and `'??'` where emoji were lost). These entries are unreachable while English is the only shipped locale, but each must be properly localised and reviewed before a non-English locale is ever enabled. | `src/data/content.ts` (non-`en` blocks) |
-| 9 | **US-derived survival / lifetime-risk figures shown in English** | **Needs qualifying — not Ghana-specific.** The English UI states `1 in 8` (lifetime risk) and `99%` (5-year survival when found early), plus `+90%`, with **no citation in the app** (`EVIDENCE_SOURCES` is empty). `1 in 8` ≈ US lifetime risk (~13%): ACS *Breast Cancer Facts & Figures 2024–2025*; NCI SEER. `99%` = US 5-year relative survival for **localized** breast cancer (SEER 2016–2022: localized 100.0%, all stages 91.9%). Neither is representative of Ghana. Global/African context (GLOBOCAN 2022): ~2.30M new cases worldwide; Africa ~198k new cases / 91k deaths. Recommended: add a "based on US/international data" qualifier or replace with GLOBOCAN figures — **pending approval, not yet edited.** | `src/i18n/en.ts` (homepage stats), `src/data/content.ts` (overview facts, myth m6) |
+| 8 | **Non-English bundled content still Morocco-flavoured** | **Needs localisation review. Do not enable as-is.** The non-`en` blocks in `src/data/content.ts` (overview facts, myths, self-check guide) still name Morocco and its figures; the French block also has broken accents/mojibake (e.g. `l?gumes`, `m?decin`, and `'??'` where emoji were lost). These entries are unreachable while English is the only shipped locale, but each must be properly localised and reviewed before a non-English locale is ever enabled. | `src/data/content.ts` (non-`en` blocks) |
+| 9 | **US-derived survival / lifetime-risk figures shown in English** | **Needs qualifying: not Ghana-specific.** The English UI states `1 in 8` (lifetime risk) and `99%` (5-year survival when found early), plus `+90%`, with **no citation in the app** (`EVIDENCE_SOURCES` is empty). `1 in 8` ≈ US lifetime risk (~13%): ACS *Breast Cancer Facts & Figures 2024–2025*; NCI SEER. `99%` = US 5-year relative survival for **localized** breast cancer (SEER 2016–2022: localized 100.0%, all stages 91.9%). Neither is representative of Ghana. Global/African context (GLOBOCAN 2022): ~2.30M new cases worldwide; Africa ~198k new cases / 91k deaths. Recommended: add a "based on US/international data" qualifier or replace with GLOBOCAN figures, **pending approval, not yet edited.** | `src/i18n/en.ts` (homepage stats), `src/data/content.ts` (overview facts, myth m6) |
 
 ---
 
@@ -64,14 +64,14 @@ would change an API contract or risk data loss:
   `src/utils/notificationScheduler.ts`, `src/data/chatKnowledge.ts`. Only the
   `en` entries are reachable now.
 - The `morocco` key in the `Statistics` type (`src/types/api.ts`) and the
-  `statistics` mock data (`src/data/content.ts`) — this mirrors the original
+  `statistics` mock data (`src/data/content.ts`): this mirrors the original
   backend API contract, which was **not** changed. Its English `awareness_note`
   was made country-neutral; its numeric fields are still the original Morocco
   figures and are unused by the interface.
 - `LANGUAGE_META.ar` in `src/config/constants.ts` (required by the `Language`
   union type, unused while English is the only supported language).
 - Storage keys and the API base URL keep their original identifiers
-  (`sahtek:*`, `sahtek-tech.onrender.com`) on purpose — they are not user-facing,
+  (`sahtek:*`, `sahtek-tech.onrender.com`) on purpose, they are not user-facing,
   and renaming them would risk losing saved data or breaking the API contract.
 - Code comments referring to the original Darija-first authoring approach.
 
@@ -81,12 +81,12 @@ would change an API contract or risk data loss:
 
 Per the brief, images are **not** edited to paint over embedded text. Instead:
 
-- **Phone screenshots — replaced by live English JSX.**
+- **Phone screenshots: replaced by live English JSX.**
   The Arabic raster captures (`public/assets/screens/self-check-intro.*`,
   `self-check-step.*`, `reminder.*`, which showed the header «صحّتك»,
   «الخطوة 1 من 5», Arabic step copy and Arabic bottom nav) have been **deleted**.
   The home hero and self-check preview now render
-  `src/components/home/PreviewScreen.tsx` — an English mini-UI drawn from the
+  `src/components/home/PreviewScreen.tsx`: an English mini-UI drawn from the
   app's own design tokens, inside the existing `PhoneMockup` (which was always
   documented to accept live JSX). This avoids shipping screenshots in the wrong
   language and cannot drift the way a bitmap does; the mock is decorative and
@@ -103,7 +103,7 @@ Per the brief, images are **not** edited to paint over embedded text. Instead:
   `method-flow.svg`, etc.) contain only Latin text and numerals (e.g. "01",
   "changes worth knowing"). No Arabic. No change needed.
 - **Logo mark** (`src/components/ui/RibbonMark.tsx`) is a plain pink-ribbon
-  geometry — no embedded Arabic. `favicon.svg` and `pwa-icon.svg` likewise
+  geometry, no embedded Arabic. `favicon.svg` and `pwa-icon.svg` likewise
   contain no text.
 - `public/assets/body-map-*.{avif,webp,png}` is a text-free illustration (a
   `HIGGSFIELD AI` watermark is visible), safe to keep.
@@ -112,27 +112,27 @@ Per the brief, images are **not** edited to paint over embedded text. Instead:
 
 ## 5. Files changed for this adaptation
 
-- `src/config/constants.ts` — app identity (`Brafie`), empty contact, English-only languages.
-- `src/i18n/index.ts` — loads English only; documents how to add Ghanaian locales.
-- `src/i18n/en.ts` — app name + Morocco/Darija references rewritten for Ghana; self-check title.
-- `src/data/chatKnowledge.ts`, `src/data/content.ts` — English copy localised.
-- `src/components/ui/LanguageSwitch.tsx` — hidden while one language is supported.
-- `src/hooks/useLanguage.ts` — clamps a legacy persisted language to English (no stray RTL).
-- `src/seo/routes.ts`, `scripts/generate-seo.mjs` — English/`en-GH` indexing.
-- `src/hooks/useDocumentMeta.ts` — configurable site origin; `en_GH` locale.
-- `index.html`, `vite.config.ts` — English `Brafie` metadata and PWA manifest.
-- `src/pages/SelfCheckPage.tsx` — breast self-check title + hierarchy.
-- `src/components/layout/BottomNav.tsx` — compact mobile labels.
-- `src/pages/ReminderPage.tsx`, `src/services/whatsappService.ts` — Ghana `+233`
+- `src/config/constants.ts`: app identity (`Brafie`), empty contact, English-only languages.
+- `src/i18n/index.ts`: loads English only; documents how to add Ghanaian locales.
+- `src/i18n/en.ts`: app name + Morocco/Darija references rewritten for Ghana; self-check title.
+- `src/data/chatKnowledge.ts`, `src/data/content.ts`: English copy localised.
+- `src/components/ui/LanguageSwitch.tsx`: hidden while one language is supported.
+- `src/hooks/useLanguage.ts`: clamps a legacy persisted language to English (no stray RTL).
+- `src/seo/routes.ts`, `scripts/generate-seo.mjs`: English/`en-GH` indexing.
+- `src/hooks/useDocumentMeta.ts`: configurable site origin; `en_GH` locale.
+- `index.html`, `vite.config.ts`: English `Brafie` metadata and PWA manifest.
+- `src/pages/SelfCheckPage.tsx`: breast self-check title + hierarchy.
+- `src/components/layout/BottomNav.tsx`: compact mobile labels.
+- `src/pages/ReminderPage.tsx`, `src/services/whatsappService.ts`: Ghana `+233`
   phone formatting and Brafie branding.
-- `src/utils/formatters.ts` — `en-GH` date/number formatting.
-- `src/components/home/PreviewScreen.tsx` — new: English live mock phone screens.
-- `src/components/home/SelfCheckPreview.tsx`, `src/pages/HomePage.tsx` — use the
+- `src/utils/formatters.ts`: `en-GH` date/number formatting.
+- `src/components/home/PreviewScreen.tsx`: new: English live mock phone screens.
+- `src/components/home/SelfCheckPreview.tsx`, `src/pages/HomePage.tsx`: use the
   live mock instead of Arabic screenshots; removed `public/assets/screens/`.
-- `src/components/ui/BrandImage.tsx` — removed the obsolete `AppScreenshot`.
-- `src/pages/AboutPage.tsx`, `src/components/layout/Footer.tsx` — LordScientist
+- `src/components/ui/BrandImage.tsx`: removed the obsolete `AppScreenshot`.
+- `src/pages/AboutPage.tsx`, `src/components/layout/Footer.tsx`: LordScientist
   attribution and a restrained Ghana accent.
-- `src/utils/reportGenerator.ts`, `src/components/learn/PreventionTracker.tsx` —
+- `src/utils/reportGenerator.ts`, `src/components/learn/PreventionTracker.tsx`:
   Brafie branding; removed the `sahtek.tech` domain from shared/exported content.
 - `README.md`, this document.
 

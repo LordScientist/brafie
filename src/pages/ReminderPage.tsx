@@ -40,7 +40,7 @@ const NOTIF_BADGE: Record<'granted' | 'denied' | 'unsupported', Record<string, s
   granted: {
     ar: '🔔 الإشعارات مفعّلة — غير فاش التطبيق محلول',
     fr: '🔔 Notifications activées — seulement si Sahtek est ouvert',
-    en: '🔔 Notifications on — only while Brafie is open',
+    en: '🔔 Notifications on, only while Brafie is open',
     es: '🔔 Notificaciones activadas — solo si Sahtek está abierto',
     de: '🔔 Benachrichtigungen aktiv — nur wenn Sahtek geöffnet ist',
     ru: '🔔 Уведомления включены — только когда Sahtek открыт',
@@ -104,7 +104,7 @@ const CAL_HINT: Record<string, string> = {
 const CAL_ADDED: Record<string, string> = {
   ar: '📅 تنزّل ملف الأجندة — زيديه للتقويم ديالك',
   fr: '📅 Fichier d’agenda téléchargé — ajoutez-le à votre calendrier',
-  en: '📅 Calendar file downloaded — add it to your calendar',
+  en: '📅 Calendar file downloaded. Add it to your calendar',
   es: '📅 Archivo de calendario descargado — añádelo a tu calendario',
   de: '📅 Kalenderdatei heruntergeladen — füge sie deinem Kalender hinzu',
   ru: '📅 Файл календаря загружен — добавьте его в свой календарь',
@@ -417,7 +417,7 @@ export function ReminderPage() {
     }
   };
 
-  const timeLabel = time ? `${r.times[time].label} — ${TIME_CLOCK[time]}` : '';
+  const timeLabel = time ? `${r.times[time].label} · ${TIME_CLOCK[time]}` : '';
 
   // --- Confirmed view -------------------------------------------------------
   if (mode === 'confirmed' && day != null && time != null) {
@@ -677,7 +677,7 @@ export function ReminderPage() {
                         <span className="text-3xl" aria-hidden>{emoji}</span>
                         <div className="min-w-0">
                           <p className="font-black text-ink">
-                            {r.times[key].label} — {TIME_CLOCK[key]}
+                            {r.times[key].label} · {TIME_CLOCK[key]}
                           </p>
                           <p className="text-sm font-medium text-muted">{r.times[key].hint}</p>
                         </div>
