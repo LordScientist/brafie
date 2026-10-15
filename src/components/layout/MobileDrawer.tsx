@@ -16,10 +16,16 @@ export interface DrawerLink {
   key: keyof Translation['nav'];
 }
 
+/** A titled cluster of links. `heading` is omitted for the leading Home group. */
+export interface DrawerGroup {
+  heading?: string;
+  links: DrawerLink[];
+}
+
 interface MobileDrawerProps {
   open: boolean;
   onClose: () => void;
-  links: DrawerLink[];
+  groups: DrawerGroup[];
 }
 
 /**
@@ -32,7 +38,7 @@ interface MobileDrawerProps {
  * backdrop tap, moves focus to the close button on open, and returns focus to
  * whatever opened it on close.
  */
-export function MobileDrawer({ open, onClose, links }: MobileDrawerProps) {
+export function MobileDrawer({ open, onClose, groups }: MobileDrawerProps) {
   const { t, isRTL } = useLanguage();
   const { resolved, toggle } = useTheme();
   const isDark = resolved === 'dark';
@@ -110,26 +116,36 @@ export function MobileDrawer({ open, onClose, links }: MobileDrawerProps) {
             </div>
 
             <nav aria-label={t.common.menu} className="flex-1 overflow-y-auto px-3 py-4">
-              <ul className="space-y-1">
-                {links.map(({ to, key }) => (
-                  <li key={to}>
-                    <NavLink
-                      to={to}
-                      onClick={onClose}
-                      className={({ isActive }) =>
-                        cn(
-                          'focus-ring flex min-h-12 items-center rounded-lg px-4 text-body font-bold transition',
-                          isActive
-                            ? 'bg-accent-soft text-accent-text'
-                            : 'text-muted hover:bg-sunken hover:text-ink',
-                        )
-                      }
-                    >
-                      {t.nav[key]}
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
+              {groups.map((group, i) => (
+                <div key={group.heading ?? `group-${i}`} className={cn(i > 0 && 'mt-5')}>
+                  {group.heading && (
+                    <p className="mb-1 px-4 text-overline font-bold uppercase tracking-wide text-muted">
+                      {group.heading}
+                    </p>
+                  )}
+                  <ul className="space-y-1">
+                    {group.links.map(({ to, key }) => (
+                      <li key={to}>
+                        <NavLink
+                          to={to}
+                          end={to === '/'}
+                          onClick={onClose}
+                          className={({ isActive }) =>
+                            cn(
+                              'focus-ring flex min-h-12 items-center rounded-lg px-4 text-body font-bold transition',
+                              isActive
+                                ? 'bg-accent-soft text-accent-text'
+                                : 'text-muted hover:bg-sunken hover:text-ink',
+                            )
+                          }
+                        >
+                          {t.nav[key]}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </nav>
 
             <div className="space-y-4 border-t border-line px-5 py-5">
