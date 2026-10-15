@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Bell, Bot, Gauge, HeartPulse, Home, LibraryBig, Lock, MapPin, ShieldCheck } from 'lucide-react';
+import { Bell, Bot, HeartPulse, Home, LibraryBig, Lock, ShieldCheck } from 'lucide-react';
 import { BrandImage } from '@/components/ui/BrandImage';
 import { RibbonMark } from '@/components/ui/RibbonMark';
 import { cn } from '@/utils/cn';
@@ -18,15 +18,15 @@ import { cn } from '@/utils/cn';
  */
 export type PreviewVariant = 'intro' | 'step' | 'reminder';
 
+/* Mirrors the real BottomNav: the four core destinations, with Self-check
+   active (these mocks all depict the self-check journey). */
 const NAV = [
   { icon: Home, label: 'Home' },
   { icon: LibraryBig, label: 'Learn' },
-  { icon: HeartPulse, label: 'Check' },
-  { icon: Gauge, label: 'Risk' },
   { icon: Bot, label: 'Chat' },
-  { icon: MapPin, label: 'Doctors' },
-  { icon: Bell, label: 'Remind' },
+  { icon: HeartPulse, label: 'Self-check' },
 ] as const;
+const NAV_ACTIVE = NAV.length - 1;
 
 const STEPS: readonly (readonly [string, string])[] = [
   ['Look in the mirror', '1:00'],
@@ -66,17 +66,17 @@ export function PreviewScreen({ variant }: { variant: PreviewVariant }) {
         {variant === 'reminder' && <ReminderScreen />}
       </div>
 
-      {/* Bottom navigation */}
-      <div className="grid grid-cols-7 gap-0.5 border-t border-line px-1 pb-1.5 pt-1">
+      {/* Bottom navigation — the current four-destination bar */}
+      <div className="grid grid-cols-4 gap-0.5 border-t border-line px-1 pb-1.5 pt-1">
         {NAV.map(({ icon: Icon, label }, i) => (
           <span
             key={label}
             className={cn(
-              'flex flex-col items-center gap-0.5 text-[6.5px] font-bold text-muted',
-              i === 2 && 'text-primary-700',
+              'flex flex-col items-center gap-0.5 rounded-lg py-1 text-[7px] font-bold text-muted',
+              i === NAV_ACTIVE && 'bg-primary-50 text-primary-700',
             )}
           >
-            <Icon size={12} strokeWidth={2.4} />
+            <Icon size={13} strokeWidth={2.4} />
             {label}
           </span>
         ))}
