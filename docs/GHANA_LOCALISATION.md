@@ -44,6 +44,7 @@ replaced with guesses.
 | 5 | **Canonical site origin / deployed domain** | **Still the original `https://sahtek.tech`.** Set `VITE_SITE_ORIGIN` (see `src/hooks/useDocumentMeta.ts`) or `SITE_ORIGIN` for the SEO build script, and the `whatsappService` / `calendarReminder` URLs, to the real Brafie origin before launch. | SEO tags, sitemap, WhatsApp + calendar links |
 | 6 | **Ghana health-service claims** | The Morocco "free mammography programme" line was **removed**, not replaced. No Ghanaian screening-coverage claim is made. | Learn → Overview facts |
 | 7 | **Screenshots with embedded Arabic** | **Resolved.** The Arabic raster captures were deleted and replaced with live English JSX mock screens. See section 4. | Home hero + self-check preview |
+| 8 | **Non-English bundled content still Morocco-flavoured** | **Needs localisation review — do not enable as-is.** The non-`en` blocks in `src/data/content.ts` (overview facts, myths, self-check guide) still name Morocco and its figures; the French block also has broken accents/mojibake (e.g. `l?gumes`, `m?decin`, and `'??'` where emoji were lost). These entries are unreachable while English is the only shipped locale, but each must be properly localised and reviewed before a non-English locale is ever enabled. | `src/data/content.ts` (non-`en` blocks) |
 
 ---
 

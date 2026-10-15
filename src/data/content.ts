@@ -8,6 +8,10 @@ import type { Language, ContentResponse, SelfCheckGuide, Statistics } from '@/ty
 //  Mirrors the GET /content, /self-check-guide and /statistics shapes.
 // ════════════════════════════════════════════════════════════════════
 
+// NOTE: the non-`en` blocks below still carry Morocco references and French
+// mojibake. They are unreachable while English is the only shipped locale, and
+// are flagged for localisation review in docs/GHANA_LOCALISATION.md (item 8).
+
 // ── Overview facts (Learn → Overview tab) ───────────────────────────
 export interface OverviewFact {
   icon: string;
