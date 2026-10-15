@@ -23,7 +23,7 @@ const NAME = {
 };
 
 /**
- * The Sahtek logo lockup: the ribbon mark on a brand tile + the wordmark.
+ * The Brafie logo lockup: the ribbon mark on a brand tile + the wordmark.
  *
  * The tile uses `bg-brand-cta` (not the decorative gradient) so the white
  * ribbon clears contrast. The mark is decorative — the accessible name comes

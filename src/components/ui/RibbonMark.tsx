@@ -14,7 +14,7 @@ interface RibbonMarkProps {
   tone?: 'gradient' | 'current';
 }
 
-/** The صحّتك pink-ribbon logo mark. */
+/** The Brafie pink-ribbon logo mark. */
 export function RibbonMark({ size = 40, className, animated, tone = 'gradient' }: RibbonMarkProps) {
   // useId keeps the gradient unique — two marks on one page would otherwise
   // share an id and the second would reference the first's def.

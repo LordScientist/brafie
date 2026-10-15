@@ -1,38 +1,38 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <meta name="theme-color" content="#D63384" />
-    <meta name="description" content="صحّتك - رفيقتك الرقمية للتوعية بسرطان الثدي. فحص ذاتي، تقييم المخاطر، ودردشة ذكية." />
+    <meta name="description" content="Brafie is a private, caring guide to breast health awareness for women in Ghana. Learn the signs, do a guided self-check, and know when to see a doctor." />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Sahtek" />
+    <meta name="apple-mobile-web-app-title" content="Brafie" />
 
     <!-- Fonts are self-hosted: see src/styles/fonts.css and public/fonts.
          They previously loaded from Google's font CDN on every page view, which
          disclosed each visitor's IP and User-Agent before she clicked anything.
          There are no external font requests. Do not add a font <link> here. -->
 
-    <!-- LCP: the hero <h1>. Default locale is Darija, so the heading paints in
-         IBM Plex Sans Arabic. Preloading the one face it needs turns a
-         three-hop discovery (html -> css -> font) into a single early fetch.
-         `crossorigin` is REQUIRED even same-origin: fonts are fetched in CORS
-         mode, and without it the browser downloads the file twice. -->
+    <!-- LCP: the hero <h1>. The default (and only) locale is English, so the
+         heading paints in Plus Jakarta Sans. Preloading the one face it needs
+         turns a three-hop discovery (html -> css -> font) into a single early
+         fetch. `crossorigin` is REQUIRED even same-origin: fonts are fetched in
+         CORS mode, and without it the browser downloads the file twice. -->
     <link
       rel="preload"
       as="font"
       type="font/woff2"
-      href="/fonts/ibm-plex-sans-arabic-700-normal-arabic.woff2"
+      href="/fonts/plus-jakarta-sans-800-normal-latin.woff2"
       crossorigin
     />
-    <title>صحّتك - Sahtek | التوعية بسرطان الثدي</title>
+    <title>Brafie — Breast Health Awareness for Ghana</title>
 
     <!-- Social sharing (Open Graph + Twitter).
 
          SCOPE — READ BEFORE RELYING ON THIS: these tags are STATIC and apply to
-         every URL. Sahtek is a client-rendered SPA, so /signs cannot serve its
+          every URL. Brafie is a client-rendered SPA, so /signs cannot serve its
          own og:title or og:image — the crawlers that build link previews
          (Facebook, WhatsApp, LinkedIn, iMessage) do not execute JavaScript, so
          anything React sets at runtime is invisible to them. A share of /signs
@@ -41,21 +41,21 @@
          by an edge function that injects the tags per-route. That is a build
          change, not a component change.
 
-         ASSET — /og/sahtek-og.png DOES NOT EXIST YET. See public/og/README.md
+         ASSET — /og/brafie-og.png DOES NOT EXIST YET. See public/og/README.md
          for the spec (1200x630). Until it is produced, shares render with no
          image, which is the honest failure: no broken picture, just no picture. -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Sahtek" />
-    <meta property="og:title" content="صحّتك - Sahtek | التوعية بسرطان الثدي" />
+    <meta property="og:site_name" content="Brafie" />
+    <meta property="og:title" content="Brafie — Breast Health Awareness for Ghana" />
     <meta
       property="og:description"
-      content="صحّتك - رفيقتك الرقمية للتوعية بسرطان الثدي. فحص ذاتي، تقييم المخاطر، ودردشة ذكية."
+      content="Brafie is a private, caring guide to breast health awareness for women in Ghana. Learn the signs, do a guided self-check, and know when to see a doctor."
     />
-    <meta property="og:image" content="/og/sahtek-og.png" />
+    <meta property="og:image" content="/og/brafie-og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="صحّتك — 12 تغيير فصحة الثدي خاصك تعرفيهم." />
-    <meta property="og:locale" content="ar_MA" />
+    <meta property="og:image:alt" content="Brafie — 12 breast changes worth knowing." />
+    <meta property="og:locale" content="en_GH" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Resolve the theme before first paint so dark users never see a white

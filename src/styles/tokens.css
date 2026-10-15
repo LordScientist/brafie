@@ -1,5 +1,5 @@
 /* ====================================================================
-   Sahtek.tech — Design Tokens
+   Brafie — Design Tokens
    THE single source of truth. Every colour, shadow, gradient, radius and
    type step in the product resolves back to a variable in this file.
    tailwind.config.js consumes these; never hardcode a hex in a component.
@@ -21,7 +21,7 @@
   --brand-200: 255 194 217;
   --brand-300: 255 148 186;
   --brand-400: 255 92 149;
-  --brand-500: 214 51 132; /* ← the Sahtek magenta */
+  --brand-500: 214 51 132; /* ← the Brafie magenta */
   --brand-600: 181 36 110;
   --brand-700: 140 26 85;
   --brand-800: 107 19 63;

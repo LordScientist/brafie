@@ -94,16 +94,16 @@ const TYPE_SAMPLES = [
   {
     cls: 'text-body-lg',
     token: 'body-lg',
-    sample: 'Sahtek helps you notice changes early, in your own language, in private.',
+    sample: 'Brafie helps you notice changes early, in your own language, in private.',
     body: true,
   },
   {
     cls: 'text-body',
     token: 'body',
-    sample: 'Sahtek helps you notice changes early, in your own language, in private.',
+    sample: 'Brafie helps you notice changes early, in your own language, in private.',
     body: true,
   },
-  { cls: 'text-body-sm', token: 'body-sm', sample: 'Educational guidance only. Sahtek does not diagnose.', body: true },
+  { cls: 'text-body-sm', token: 'body-sm', sample: 'Educational guidance only. Brafie does not diagnose.', body: true },
   { cls: 'text-caption', token: 'caption', sample: 'Your answers stay on this device.', body: true },
 ] as const;
 
@@ -163,7 +163,7 @@ export default function DesignSystemPage() {
     { name: '--warn-text', label: 'warn — soft caution', role: 'text' },
     { name: '--attention-text', label: 'attention — sparingly', role: 'text' },
     { name: '--info-text', label: 'info', role: 'text' },
-    { name: '--gold-text', label: 'gold — Moroccan warmth', role: 'text' },
+    { name: '--gold-text', label: 'gold — warm accent', role: 'text' },
   ];
 
   const surfaces = ['--canvas', '--card', '--elevated', '--sunken', '--line', '--line-strong'];
@@ -174,7 +174,7 @@ export default function DesignSystemPage() {
         {/* -- Header -- */}
         <header className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <span className="text-overline uppercase text-accent-text">Sahtek.tech</span>
+            <span className="text-overline uppercase text-accent-text">Brafie</span>
             <h1 className="mt-2 text-display text-ink">
               The <span className="text-gradient">design system</span>
             </h1>
@@ -336,7 +336,7 @@ export default function DesignSystemPage() {
         {/* -- Type scale -- */}
         <Section
           title="Type scale"
-          note="Fluid clamp() steps. Plus Jakarta Sans for Latin, IBM Plex Sans Arabic for Darija, Fraunces reserved for one editorial accent per page."
+          note="Fluid clamp() steps. Plus Jakarta Sans for Latin, IBM Plex Sans Arabic for additional scripts, Fraunces reserved for one editorial accent per page."
         >
           <div className="space-y-6 rounded-2xl border border-line bg-card p-8">
             {TYPE_SAMPLES.map(({ cls, token, sample, body }) => (
@@ -347,12 +347,10 @@ export default function DesignSystemPage() {
             ))}
 
             <div className="rounded-xl bg-sunken p-6">
-              <code className="text-overline uppercase text-muted">Arabic / Darija — font-arabic</code>
-              <p dir="rtl" className="mt-3 font-arabic text-h2 text-ink">
-                صحّتك — رفيقتك الرقمية
-              </p>
-              <p dir="rtl" className="mt-2 font-arabic text-body-lg text-muted">
-                صحّتك كتعاونك تعرفي التغييرات بدري، بلغتك، وفخصوصية تامة.
+              <code className="text-overline uppercase text-muted">Wordmark — font-display</code>
+              <p className="mt-3 font-display text-h2 text-ink">Brafie</p>
+              <p className="mt-2 font-display text-body-lg text-muted">
+                Brafie helps you notice changes early, in private, in clear English.
               </p>
             </div>
 
@@ -460,8 +458,8 @@ export default function DesignSystemPage() {
 
         {/* -- Zellige -- */}
         <Section
-          title="Moroccan accent — the khatam"
-          note="The eight-point star, built from two overlapping squares the way real zellige is. Accent, never theme: a corner, a divider, a whisper behind a hero."
+          title="Decorative accent — the khatam"
+          note="The eight-point star, built from two overlapping squares. Accent, never theme: a corner, a divider, a whisper behind a hero."
         >
           <div className="grid gap-4 md:grid-cols-3">
             <div className="relative overflow-hidden rounded-2xl border border-line bg-card p-6">
@@ -506,7 +504,7 @@ export default function DesignSystemPage() {
               <div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 <IconCard icon={HeartPulse} title="Self-check" description="Five guided minutes." tone="brand" />
                 <IconCard icon={Gauge} title="Risk factors" description="Awareness, not a verdict." tone="calm" />
-                <IconCard icon={Bot} title="Ask Sahtek" description="In Darija, any time." tone="info" />
+                <IconCard icon={Bot} title="Ask Brafie" description="In plain English, any time." tone="info" />
                 <IconCard icon={Bell} title="Reminders" description="A monthly nudge." tone="gold" />
               </div>
             </div>
@@ -519,7 +517,7 @@ export default function DesignSystemPage() {
                 </TrustPill>
                 <TrustPill tone="brand">No account needed</TrustPill>
                 <TrustPill tone="gold">Free</TrustPill>
-                <TrustPill tone="neutral">Darija, French, English</TrustPill>
+                <TrustPill tone="neutral">Clear, plain English</TrustPill>
               </div>
             </div>
 
@@ -541,7 +539,7 @@ export default function DesignSystemPage() {
                     },
                     {
                       id: 'private',
-                      question: 'Does Sahtek store my answers?',
+                      question: 'Does Brafie store my answers?',
                       answer: 'They stay on your device. No account, no tracking.',
                     },
                   ]}
@@ -594,7 +592,7 @@ export default function DesignSystemPage() {
 
         <div className="hairline mt-16" />
         <p className="py-8 text-center text-caption text-muted">
-          Sahtek.tech — tokens live in src/styles/tokens.css · surfaced by tailwind.config.js
+          Brafie — tokens live in src/styles/tokens.css · surfaced by tailwind.config.js
         </p>
       </div>
     </div>
