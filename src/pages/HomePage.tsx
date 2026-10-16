@@ -16,6 +16,7 @@ import { Companion } from '@/components/home/Companion';
 import { Credibility } from '@/components/home/Credibility';
 import { Faq } from '@/components/home/Faq';
 import { FinalCta } from '@/components/home/FinalCta';
+import { HeroHeadline } from '@/components/home/HeroHeadline';
 import { HowItWorks } from '@/components/home/HowItWorks';
 import { NextSteps } from '@/components/home/NextSteps';
 import { RiskFactors } from '@/components/home/RiskFactors';
@@ -106,9 +107,11 @@ export function HomePage() {
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <Eyebrow className="mb-5">{t.home.badge}</Eyebrow>
 
-          <h1 className="max-w-2xl text-balance text-display text-ink">
-            {t.home.heroTitle} <span className="text-accent-text">{t.home.heroHighlight}</span>
-          </h1>
+          <HeroHeadline
+            title={t.home.heroTitle}
+            highlight={t.home.heroHighlight}
+            className="max-w-2xl"
+          />
 
           <p className="mt-5 max-w-prose text-body-lg text-muted">{t.home.heroSubtitle}</p>
 

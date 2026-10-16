@@ -234,6 +234,10 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(12px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        caret: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
       },
       animation: {
         'ribbon-float': 'ribbon-float 6s ease-in-out infinite',
@@ -243,6 +247,7 @@ export default {
         'pulse-dot': 'pulse-dot 1.8s cubic-bezier(0.4,0,0.6,1) infinite',
         'gradient-pan': 'gradient-pan 8s ease infinite',
         'rise-in': 'rise-in var(--duration-slow) var(--ease-soft) both',
+        caret: 'caret 1s steps(1, end) infinite',
       },
     },
   },
