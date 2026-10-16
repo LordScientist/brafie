@@ -119,6 +119,28 @@
   font-family: var(--sans);
 }
 
+/* Mobile gutter *inside* the page ground.
+   The page's content column is 95vw on phones (see PageTransition), so the
+   ground's content sat flush against the panel edge and large headings read as
+   cramped. This gives the ground its own horizontal padding. It is physical
+   (not `padding-inline`) on purpose: the Tailwind `p*`/`px*` utilities are
+   emitted after this file, so they win the cascade and pages that already pad
+   their root (DoctorsPage, NotFound, the saved-reminder panel) are untouched.
+   `.ds-panel` is for a page whose visible panel is a full-width card (Risk,
+   Chat) — the card pads its own content, so padding the ground would shrink
+   the card away from the 95vw edge. */
+@media (max-width: 639.98px) {
+  .ds-scope {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .ds-scope.ds-panel {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 /* The page ground. Body sits outside `.ds-scope`, so its ambient rose
    blooms are switched off only while the home page is mounted. */
 body:has(.ds-scope) {
