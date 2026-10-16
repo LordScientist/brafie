@@ -19,7 +19,7 @@ interface NavArrowsProps {
 }
 
 const PILL =
-  'fixed bottom-[72px] z-[60] flex h-11 max-w-[120px] items-center gap-1.5 rounded-full border border-primary-200 bg-white/95 px-4 text-xs font-black text-primary-700 shadow-xl backdrop-blur-md transition-shadow hover:shadow-2xl md:bottom-6 md:max-w-[180px] md:text-sm';
+  'fixed bottom-[72px] z-[60] flex h-11 max-w-[120px] items-center gap-1.5 rounded-full border border-line bg-card/95 px-4 text-xs font-black text-accent-text shadow-xl backdrop-blur-md transition-shadow hover:shadow-2xl md:bottom-6 md:max-w-[180px] md:text-sm';
 
 /**
  * Two fixed corner pills for sequential navigation. The "previous" pill sits on

@@ -23,3 +23,12 @@ pnpm-debug.log*
 # Editor and OS files
 .DS_Store
 .vscode/
+
+# Local agent/tooling config (not part of the app)
+.agent/
+.agents/
+.claude/
+.codex/
+.gemini/
+.opencode/
+.impeccable/config.local.json
