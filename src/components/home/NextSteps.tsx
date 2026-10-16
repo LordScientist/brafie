@@ -14,11 +14,11 @@ import { VIEWPORT, staggerContainer, staggerItem } from '@/motion/motion';
  * no red lane: HARD RULE 3 rules out alarm framing, and a woman who has just
  * found something is the last person who should meet a red card. The most
  * urgent lane is `gold` — warm, attention-getting, calm. */
-const LANES: { icon: LucideIcon; tile: string; edge: string }[] = [
-  { icon: CircleCheck, tile: 'bg-calm-soft text-calm-text', edge: 'border-t-calm' },
-  { icon: Eye, tile: 'bg-accent-soft text-accent-text', edge: 'border-t-accent' },
-  { icon: CalendarClock, tile: 'bg-info-soft text-info-text', edge: 'border-t-info' },
-  { icon: Stethoscope, tile: 'bg-gold-soft text-gold-text', edge: 'border-t-gold' },
+const LANES: { icon: LucideIcon; tile: string }[] = [
+  { icon: CircleCheck, tile: 'bg-calm-soft text-calm-text' },
+  { icon: Eye, tile: 'bg-accent-soft text-accent-text' },
+  { icon: CalendarClock, tile: 'bg-info-soft text-info-text' },
+  { icon: Stethoscope, tile: 'bg-gold-soft text-gold-text' },
 ];
 
 /**
@@ -37,7 +37,7 @@ export function NextSteps() {
   const section = t.home.nextSteps;
 
   return (
-    <section className="py-12">
+    <section className="relative isolate py-12">
       <SectionHeading
         as="h2"
         size="h2"
@@ -47,6 +47,14 @@ export function NextSteps() {
         accent
       />
 
+      {/* Atmosphere behind the glass cards — this is what the cards blur, so
+          the frosted panels actually read as glass. Faint by design (§4.3). */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute start-2 top-24 h-64 w-64 rounded-full bg-primary-300/30 blur-3xl" />
+        <div className="absolute end-4 top-48 h-72 w-72 rounded-full bg-calm/15 blur-3xl" />
+        <div className="absolute bottom-0 start-1/3 h-56 w-56 rounded-full bg-info/10 blur-3xl" />
+      </div>
+
       <motion.ol
         className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
         variants={staggerContainer(0.07)}
@@ -55,12 +63,12 @@ export function NextSteps() {
         viewport={VIEWPORT}
       >
         {section.cards.map((card, i) => {
-          const { icon: Icon, tile, edge } = LANES[i];
+          const { icon: Icon, tile } = LANES[i];
           return (
             <motion.li
               key={card.state}
               variants={staggerItem}
-              className={`flex flex-col rounded-3xl border border-t-4 border-line bg-card p-5 shadow-petal ${edge}`}
+              className="glass-card flex flex-col p-5"
             >
               <span className={`grid h-11 w-11 place-items-center rounded-2xl ${tile}`}>
                 <Icon size={20} aria-hidden />
