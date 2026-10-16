@@ -76,12 +76,13 @@ export function RiskAssessmentPage() {
 
   return (
     <PageTransition>
+      <div className="ds-scope">
       {risk.stage === 'intro' && (
-        <section className="mx-auto max-w-2xl rounded-[2rem] border border-white/70 bg-card/85 p-6 shadow-petal-xl">
+        <section className="mx-auto max-w-2xl rounded-3xl border border-line bg-card/85 p-6 shadow-petal">
           <Gauge className="text-primary-500" size={42} />
           <h1 className="mt-4 text-4xl font-black text-ink">{t.risk.title}</h1>
           <p className="mt-3 text-lg font-medium leading-8 text-muted">{t.risk.subtitle}</p>
-          <p className="mt-5 rounded-3xl bg-primary-50 p-5 font-bold leading-7 text-primary-800">{t.risk.intro}</p>
+          <p className="mt-5 rounded-3xl bg-primary-50 p-5 font-bold leading-7 text-accent-text">{t.risk.intro}</p>
 
           {/* She is about to answer ten questions about her own body. She should
               know where those answers go BEFORE she answers them. */}
@@ -101,8 +102,8 @@ export function RiskAssessmentPage() {
           <div className="mb-4 h-3 overflow-hidden rounded-full bg-primary-100">
             <motion.div className="h-full bg-brand-cta" animate={{ width: `${((risk.index + 1) / risk.total) * 100}%` }} />
           </div>
-          <motion.div key={risk.current.id} initial={{ opacity: 0, x: 20 * risk.direction }} animate={{ opacity: 1, x: 0 }} className="rounded-[2rem] border border-white/70 bg-card/85 p-6 shadow-petal-xl">
-            <p className="font-black text-primary-700">{interpolate(t.risk.questionOf, { n: risk.index + 1, total: risk.total })}</p>
+          <motion.div key={risk.current.id} initial={{ opacity: 0, x: 20 * risk.direction }} animate={{ opacity: 1, x: 0 }} className="rounded-3xl border border-line bg-card/85 p-6 shadow-petal">
+            <p className="font-black text-accent-text">{interpolate(t.risk.questionOf, { n: risk.index + 1, total: risk.total })}</p>
             <h1 className="mt-3 text-3xl font-black leading-tight text-ink">{risk.current.question}</h1>
             {risk.current.hint && <p className="mt-2 font-medium text-muted">{risk.current.hint}</p>}
             <div className="mt-6 grid gap-3">
@@ -110,7 +111,7 @@ export function RiskAssessmentPage() {
                 <button
                   key={option.value}
                   onClick={() => risk.choose(option.value)}
-                  className={cn('flex min-h-16 items-center justify-between rounded-2xl border p-4 text-start text-base font-black transition', risk.selected === option.value ? 'border-primary-400 bg-primary-50 text-primary-800 shadow-glow' : 'border-line bg-white/55 text-ink')}
+                  className={cn('flex min-h-16 items-center justify-between rounded-2xl border p-4 text-start text-base font-black transition', risk.selected === option.value ? 'border-primary-400 bg-primary-50 text-accent-text shadow-glow' : 'border-line bg-card/55 text-ink')}
                 >
                   {option.label}
                   {risk.selected === option.value && <CheckCircle2 className="text-primary-500" />}
@@ -126,7 +127,7 @@ export function RiskAssessmentPage() {
       )}
 
       {risk.stage === 'analyzing' && (
-        <section className="mx-auto max-w-xl rounded-[2rem] border border-white/70 bg-card/85 p-8 text-center shadow-petal-xl">
+        <section className="mx-auto max-w-xl rounded-3xl border border-line bg-card/85 p-8 text-center shadow-petal">
           <div className="mx-auto h-14 w-14 animate-spin rounded-full border-4 border-primary-100 border-t-primary-500" />
           <h1 className="mt-5 text-2xl font-black text-ink">{t.risk.analyzing}</h1>
         </section>
@@ -134,11 +135,11 @@ export function RiskAssessmentPage() {
 
       {risk.stage === 'result' && risk.result && (
         <section className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="rounded-[2rem] border border-white/70 bg-card/85 p-6 text-center shadow-petal-xl">
+          <div className="rounded-3xl border border-line bg-card/85 p-6 text-center shadow-petal">
             <div className="relative mx-auto h-48 w-48">
               <svg className="-rotate-90" width="192" height="192">
-                <circle cx="96" cy="96" r="78" fill="none" stroke="rgba(214,51,132,0.12)" strokeWidth="18" />
-                <motion.circle cx="96" cy="96" r="78" fill="none" stroke="#D63384" strokeWidth="18" strokeLinecap="round" strokeDasharray={490} initial={{ strokeDashoffset: 490 }} animate={{ strokeDashoffset: 490 - (490 * pct) / 100 }} />
+                <circle cx="96" cy="96" r="78" fill="none" stroke="rgb(var(--line))" strokeWidth="18" />
+                <motion.circle cx="96" cy="96" r="78" fill="none" stroke="rgb(var(--pink))" strokeWidth="18" strokeLinecap="round" strokeDasharray={490} initial={{ strokeDashoffset: 490 }} animate={{ strokeDashoffset: 490 - (490 * pct) / 100 }} />
               </svg>
               {/* The number used to render as a bare "68%" directly above the
                   words "Risk level: Elevated". A frightened woman reads that as
@@ -158,20 +159,20 @@ export function RiskAssessmentPage() {
               {t.risk.notAProbability}
             </p>
           </div>
-          <div className="rounded-[2rem] border border-white/70 bg-card/85 p-6 shadow-petal-xl">
+          <div className="rounded-3xl border border-line bg-card/85 p-6 shadow-petal">
             <h1 className="text-3xl font-black text-ink">{t.risk.summary}</h1>
             <p className="mt-3 font-medium leading-7 text-muted">{summaryText}</p>
             <div className="mt-5 grid gap-3">
               {recommendations.map((action, index) => (
-                <div key={action} className="rounded-2xl bg-primary-50 p-4">
-                  <p className="text-xs font-black uppercase text-primary-700">{index === 0 ? t.risk.priorityHigh : t.risk.priorityMedium}</p>
+                <div key={action} className="rounded-2xl border border-line bg-primary-50 p-4">
+                  <p className="text-xs font-black uppercase text-accent-text">{index === 0 ? t.risk.priorityHigh : t.risk.priorityMedium}</p>
                   <p className="mt-1 font-bold text-ink">{action}</p>
                 </div>
               ))}
             </div>
             {(risk.result.risk_level === 'high' || risk.result.risk_level === 'moderate') && (
-              <div className="mt-5 rounded-2xl border border-primary-200 bg-rose-soft p-4">
-                <p className="font-black text-primary-800">{t.risk.doctorsCtaTitle}</p>
+              <div className="mt-5 rounded-2xl border border-line bg-rose-soft p-4">
+                <p className="font-black text-accent-text">{t.risk.doctorsCtaTitle}</p>
                 <Button
                   className="mt-3"
                   fullWidth
@@ -216,6 +217,7 @@ export function RiskAssessmentPage() {
           </div>
         </section>
       )}
+      </div>
     </PageTransition>
   );
 }
