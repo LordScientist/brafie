@@ -1,76 +1,57 @@
 # -*- coding: utf-8 -*-
-"""Subset Fraunces to the glyphs it actually renders, and drop dead font files.
+"""Subset Bitter to the Latin ranges it renders.
 
-FRAUNCES is the editorial serif, and it is used in exactly one way across the
-whole product: the numerals on the Care Cards (01-12), the How-It-Works steps and
-the self-check step counter. Every call site is `String(i + 1)` / `padStart` /
-`step_number` — digits, nothing else.
+BITTER is the display serif. It is used for headings, stat figures and the
+numerals on the Care Cards (01-12), the How-It-Works steps and the self-check
+step counter. Because it now sets headings, it ships the full Latin face
+(not a digit-only subset): letters and digits both need glyphs.
 
-We were shipping the full Latin face for that: 66 KB per weight, 132 KB on the
-home page alone, to draw twelve numbers.
-
-NOTO SANS is declared as a *fallback* in the Tailwind stack and is never the
-primary family for anything. Twenty files that no page ever fetches.
+Google Fonts already serves Bitter pre-split into latin and latin-ext woff2
+files; this script re-subsets each to exactly the ranges declared in
+src/styles/fonts.css, so a stray glyph can never pull in the wrong file.
 
 Run this when a font source changes; commit the output.
 """
-import io, os, re, subprocess, sys
+import os, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONTS = os.path.join(ROOT, 'public', 'fonts')
-CSS = os.path.join(ROOT, 'src', 'styles', 'fonts.css')
 
-# Digits, plus the separators a numeral string could ever contain.
-GLYPHS = '0123456789'
+# The two @font-face ranges from src/styles/fonts.css, keyed by file.
+RANGES = {
+    'bitter-normal-latin.woff2': (
+        'U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,'
+        'U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,'
+        'U+2212,U+2215,U+FEFF,U+FFFD'
+    ),
+    'bitter-normal-latin-ext.woff2': (
+        'U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,'
+        'U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,'
+        'U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF'
+    ),
+}
 
 def kb(path):
     return os.path.getsize(path) / 1024.0
 
 def main():
-    print('== Fraunces: subset to digits ==')
-    saved = 0.0
-    for f in sorted(os.listdir(FONTS)):
-        if not f.startswith('fraunces') or not f.endswith('.woff2'):
+    print('== Bitter: subset to the Latin ranges ==')
+    for name, unicodes in RANGES.items():
+        src = os.path.join(FONTS, name)
+        if not os.path.exists(src):
+            print('  skip (missing): %s' % name)
             continue
-        src = os.path.join(FONTS, f)
         before = kb(src)
         out = src + '.tmp'
         subprocess.run([
             sys.executable, '-m', 'fontTools.subset', src,
-            '--text=' + GLYPHS,
+            '--unicodes=' + unicodes,
             '--flavor=woff2',
-            '--layout-features=',      # no ligatures/kerning needed for digits
             '--desubroutinize',
             '--output-file=' + out,
         ], check=True, capture_output=True)
         os.replace(out, src)
-        after = kb(src)
-        saved += before - after
-        print('  %-38s %6.1f KB -> %5.1f KB' % (f, before, after))
-    print('  saved on disk: %.0f KB' % saved)
-
-    print('== Noto Sans: remove (fallback only, never the primary family) ==')
-    removed = 0
-    freed = 0.0
-    for f in sorted(os.listdir(FONTS)):
-        if f.startswith('noto-sans'):
-            p = os.path.join(FONTS, f)
-            freed += kb(p)
-            os.remove(p)
-            removed += 1
-    print('  removed %d files, %.0f KB' % (removed, freed))
-
-    # Strip the now-dangling @font-face rules.
-    css = io.open(CSS, encoding='utf-8').read()
-    blocks = re.findall(r'@font-face\s*\{[^}]*\}', css, re.S)
-    kept = [b for b in blocks if "'Noto Sans'" not in b]
-    dropped = len(blocks) - len(kept)
-    for b in blocks:
-        if "'Noto Sans'" in b:
-            css = css.replace(b, '')
-    css = re.sub(r'\n{3,}', '\n\n', css)
-    io.open(CSS, 'w', encoding='utf-8', newline='').write(css)
-    print('  dropped %d @font-face rules from fonts.css' % dropped)
+        print('  %-34s %6.1f KB -> %5.1f KB' % (name, before, kb(src)))
 
 if __name__ == '__main__':
     main()

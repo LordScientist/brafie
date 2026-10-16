@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-16T00:00:00Z",
+  "title": "Design System: Brafie",
+  "extensions": {
+    "colorMeta": {
+      "magenta": {
+        "role": "primary",
+        "displayName": "Brafie Magenta",
+        "canonical": "rgb(214 51 132)",
+        "tonalRamp": ["#2e0719", "#4a0d2c", "#6b133f", "#8c1a55", "#b5246e", "#d63384", "#ff5c95", "#ff94ba", "#ffc2d9", "#ffe0ec", "#fff0f6"]
+      },
+      "magenta-deep": {
+        "role": "primary",
+        "displayName": "Magenta Deep",
+        "canonical": "rgb(181 36 110)",
+        "tonalRamp": ["#2e0719", "#4a0d2c", "#6b133f", "#8c1a55", "#b5246e", "#d63384", "#ff5c95", "#ff94ba", "#ffc2d9", "#ffe0ec", "#fff0f6"]
+      },
+      "petal-soft": {
+        "role": "primary",
+        "displayName": "Petal Soft",
+        "canonical": "rgb(255 240 246)",
+        "tonalRamp": ["#3a0a24", "#5c1436", "#7d1d48", "#9e265a", "#bf2f6c", "#d63384", "#ff6ea1", "#ff9dbf", "#ffccdd", "#ffe6f0", "#fff0f6"]
+      },
+      "calm-teal": {
+        "role": "secondary",
+        "displayName": "Calm Teal",
+        "canonical": "rgb(20 184 166)",
+        "tonalRamp": ["#042f2e", "#115e59", "#0f766e", "#0d9488", "#14b8a6", "#2dd4bf", "#5eead4", "#99f6e4", "#ccfbf1", "#e6fffb", "#f0fdfa"]
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "Warm Gold",
+        "canonical": "rgb(224 164 88)",
+        "tonalRamp": ["#3d2405", "#6b3f0b", "#925e18", "#b87d2b", "#d99c45", "#e0a458", "#ecc07e", "#f2d3a4", "#f8e7c9", "#fdf3e3", "#fdf4e7"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "rgb(45 31 45)",
+        "tonalRamp": ["#1c0f1c", "#2d1f2d", "#3d2f3a", "#5a4854", "#7a6473", "#9a7f8f", "#c9b4bf", "#e5d3db", "#f3e4ea", "#faf1f4", "#fdf8f9"]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Plum",
+        "canonical": "rgb(122 100 115)",
+        "tonalRamp": ["#1c0f1c", "#2d1f2d", "#3d2f3a", "#5a4854", "#7a6473", "#9a7f8f", "#c9b4bf", "#e5d3db", "#f3e4ea", "#faf1f4", "#fdf8f9"]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Rose Canvas",
+        "canonical": "rgb(255 245 247)",
+        "tonalRamp": ["#3d1420", "#5e2333", "#83344a", "#a84963", "#c76680", "#e08aa0", "#f0b3c3", "#fad3dc", "#fde9ee", "#fff5f7", "#fffafb"]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Card White",
+        "canonical": "rgb(255 255 255)",
+        "tonalRamp": ["#2d1f2d", "#4a3a4a", "#6b5a6b", "#8c7a8c", "#b0a0b0", "#d4c8d4", "#e8e0e8", "#f4eef4", "#faf7fa", "#fdfcfd", "#ffffff"]
+      },
+      "sunken": {
+        "role": "neutral",
+        "displayName": "Sunken Sand",
+        "canonical": "rgb(250 241 244)",
+        "tonalRamp": ["#3d1f27", "#5e333d", "#834a57", "#a86272", "#c98797", "#e0aebb", "#efcdd6", "#f7e4ea", "#fbf1f4", "#fdf7f9", "#fefbfc"]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline Rose",
+        "canonical": "rgb(243 220 230)",
+        "tonalRamp": ["#3d1c28", "#5e2c3d", "#833f55", "#a8556e", "#c8778e", "#e09caf", "#efc2ce", "#f7dbe3", "#fbecf0", "#fdf4f6", "#fefafb"]
+      },
+      "control-line": {
+        "role": "neutral",
+        "displayName": "Control Line",
+        "canonical": "rgb(154 127 143)",
+        "tonalRamp": ["#1c0f1c", "#2d1f2d", "#3d2f3a", "#5a4854", "#7a6473", "#9a7f8f", "#c9b4bf", "#e5d3db", "#f3e4ea", "#faf1f4", "#fdf8f9"]
+      },
+      "info-blue": {
+        "role": "tertiary",
+        "displayName": "Info Blue",
+        "canonical": "rgb(59 130 246)",
+        "tonalRamp": ["#0b1e3f", "#12305e", "#1d4ed8", "#2563eb", "#3b82f6", "#60a5fa", "#93c5fd", "#bfdbfe", "#dbeafe", "#eff6ff", "#f8fbff"]
+      },
+      "warn-amber": {
+        "role": "tertiary",
+        "displayName": "Warn Amber",
+        "canonical": "rgb(217 119 6)",
+        "tonalRamp": ["#3d1e02", "#6b3a05", "#92400e", "#b45309", "#d97706", "#f59e0b", "#fbbf24", "#fcd34d", "#fde68a", "#fef3c7", "#fffbf0"]
+      },
+      "attention-red": {
+        "role": "tertiary",
+        "displayName": "Attention Red",
+        "canonical": "rgb(220 38 38)",
+        "tonalRamp": ["#3d0a0a", "#6b1010", "#991b1b", "#b91c1c", "#dc2626", "#ef4444", "#f87171", "#fca5a5", "#fecaca", "#fee2e2", "#fef5f5"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only; the largest, heaviest Hanken Grotesk." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings." },
+      "title": { "displayName": "Title", "purpose": "Card and sub-section titles." },
+      "body": { "displayName": "Body", "purpose": "All prose, held to a 68ch measure." },
+      "label": { "displayName": "Label", "purpose": "Eyebrows, overlines and small uppercase captions." },
+      "numeral": { "displayName": "Accent Numeral", "purpose": "Care-card numbers, step counters. Bitter, digits only." }
+    },
+    "shadows": [
+      { "name": "petal", "value": "0 4px 24px rgb(214 51 132 / 0.08)", "purpose": "The resting card shadow." },
+      { "name": "petal-lg", "value": "0 12px 40px rgb(214 51 132 / 0.14)", "purpose": "Hover lift and primary buttons." },
+      { "name": "petal-xl", "value": "0 24px 60px rgb(214 51 132 / 0.2)", "purpose": "The strongest hover, reserved." },
+      { "name": "overlay", "value": "0 32px 80px -12px rgb(46 7 25 / 0.28)", "purpose": "Modals and overlays." },
+      { "name": "glow-brand", "value": "0 0 28px -6px rgb(214 51 132 / 0.5)", "purpose": "A single soft bloom per view, at most." }
+    ],
+    "motion": [
+      { "name": "ease-soft", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Default easing for state transitions and entrances." },
+      { "name": "duration-fast", "value": "150ms", "purpose": "Micro-interactions (button lift, press)." },
+      { "name": "duration-base", "value": "250ms", "purpose": "Default state transitions." },
+      { "name": "duration-slow", "value": "450ms", "purpose": "Reveals and larger transitions." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main call to action; a brand-gradient pill with white text.",
+      "html": "<button class=\"ds-btn-primary\">Check myself</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 3rem; padding: 0 1.5rem; border: none; border-radius: 999px; background: linear-gradient(135deg, #d63384 0%, #c42c79 45%, #a81f63 100%); color: #ffffff; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: transform 150ms cubic-bezier(0.22,1,0.36,1), filter 150ms ease; } .ds-btn-primary:hover { transform: translateY(-1px); filter: brightness(1.05); } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgb(255 245 247), 0 0 0 5px rgb(214 51 132 / 0.55); } .ds-btn-primary:active { transform: scale(0.97); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A quiet companion action on a card surface.",
+      "html": "<button class=\"ds-btn-secondary\">Find a clinic</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 3rem; padding: 0 1.5rem; border: 1px solid rgb(243 220 230); border-radius: 999px; background: rgb(255 255 255); color: rgb(45 31 45); font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 0.9375rem; font-weight: 600; box-shadow: 0 4px 24px rgb(214 51 132 / 0.08); cursor: pointer; transition: transform 150ms cubic-bezier(0.22,1,0.36,1), border-color 150ms ease; } .ds-btn-secondary:hover { transform: translateY(-1px); border-color: rgb(255 194 217); } .ds-btn-secondary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgb(255 245 247), 0 0 0 5px rgb(214 51 132 / 0.55); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "A transparent pill with a brand border, for tertiary actions.",
+      "html": "<button class=\"ds-btn-outline\">Learn more</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; height: 3rem; padding: 0 1.5rem; border: 2px solid rgb(255 148 186); border-radius: 999px; background: transparent; color: rgb(181 36 110); font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: background 150ms ease; } .ds-btn-outline:hover { background: rgb(255 240 246); } .ds-btn-outline:focus-visible { outline: none; box-shadow: 0 0 0 3px rgb(255 245 247), 0 0 0 5px rgb(214 51 132 / 0.55); }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The soft, generously rounded surface that most of the UI is built from.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">A change that lasted two weeks</h3><p class=\"ds-card-body\">Worth showing to a doctor, calmly.</p></div>",
+      "css": ".ds-card { background: rgb(255 255 255); border: 1px solid rgb(243 220 230); border-radius: 2.5rem; padding: 1.25rem; box-shadow: 0 4px 24px rgb(214 51 132 / 0.08); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-card-title { margin: 0; font-size: 1.125rem; font-weight: 700; line-height: 1.4; color: rgb(45 31 45); } .ds-card-body { margin: 0.375rem 0 0; font-size: 0.875rem; line-height: 1.6; color: rgb(122 100 115); }"
+    },
+    {
+      "name": "Safety Note",
+      "kind": "custom",
+      "refersTo": "safety-note",
+      "description": "The recurring non-diagnostic / privacy note, present on every educating page.",
+      "html": "<div class=\"ds-safety-note\" role=\"note\"><span class=\"ds-safety-dot\"></span><p>Your answers stay on your device.</p></div>",
+      "css": ".ds-safety-note { display: flex; align-items: flex-start; gap: 0.75rem; background: rgb(255 240 246); border: 1px solid rgb(243 220 230); border-radius: 1.5rem; padding: 0.875rem 1rem; font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-safety-dot { flex: none; width: 0.75rem; height: 0.75rem; margin-top: 0.25rem; border-radius: 999px; background: rgb(20 184 166); } .ds-safety-note p { margin: 0; font-size: 0.8125rem; line-height: 1.625; color: rgb(122 100 115); }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "card",
+      "description": "A form field with a 3:1 control boundary and a brand focus ring.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Your answer\" />",
+      "css": ".ds-input { width: 100%; height: 3rem; padding: 0 1rem; background: rgb(255 255 255); border: 1px solid rgb(154 127 143); border-radius: 1rem; color: rgb(45 31 45); font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 1rem; } .ds-input::placeholder { color: rgb(122 100 115); opacity: 1; } .ds-input:focus-visible { outline: none; border-color: rgb(214 51 132); box-shadow: 0 0 0 3px rgb(255 245 247), 0 0 0 5px rgb(214 51 132 / 0.55); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Petal Garden",
+    "overview": "Brafie is a rose-tinted world built for one frightened person reading on her phone. Everything is soft and rounded, nothing is sharp, and no surface is ever a cold grey. The palette is a warm magenta on a warm neutral ground, chosen so that a page about breast health feels like care rather than a clinic. Depth is a blush, not a shadow: elevation is tinted rose, never black, so the page stays airy even when it is dense with guidance. The system refuses alarm. There is no red verdict anywhere: the most urgent state is gold, and escalation is carried by words, icons and timeframes rather than by danger colour. Emphasis comes from weight and size, never from decoration. The interface is deliberately quiet so the content can be trusted.",
+    "keyCharacteristics": [
+      "Warm rose-tinted neutrals; no cold grey anywhere in the system.",
+      "Softness as the brand: generous radii, no sharp corners.",
+      "Calm, never alarm: gold is the ceiling of urgency, red never appears as a verdict.",
+      "One editorial serif, used only for numerals.",
+      "On-device, private, honest: the visual language stays plain and non-diagnostic."
+    ],
+    "rules": [
+      { "name": "The No-Alarm Rule", "body": "Red is never a verdict. The most urgent awareness state is gold; a woman who has just found something must never meet a red card.", "section": "colors" },
+      { "name": "The One Magenta Rule", "body": "The brand fill covers at most a tenth of any screen. Its rarity is what makes the CTA land.", "section": "colors" },
+      { "name": "The Numerals-Only Rule", "body": "Bitter is loaded only for digits: care-card numbers, step counters, the self-check step. It is subset to 0123456789, so any word set in font-serif will fall back to Georgia by design.", "section": "typography" },
+      { "name": "The Warm-Elevation Rule", "body": "Shadows are rose-tinted, never grey. A neutral shadow is a bug, not a neutral.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do tint every neutral warm. Cold grey is off-world.",
+      "Do keep body copy at 1rem / 16px and within a 68ch measure.",
+      "Do carry emphasis with weight and size, not decoration.",
+      "Do reserve Bitter for digits, and keep the brand fill to roughly a tenth of a screen.",
+      "Do keep the minimum tap target at 44px."
+    ],
+    "donts": [
+      "Don't use red as a verdict or on an awareness result. The urgency ceiling is gold.",
+      "Don't use gradient text. Emphasis is weight or size.",
+      "Don't stack glass on glass.",
+      "Don't use a neutral (grey) shadow. Elevation is rose-tinted.",
+      "Don't set body text in Bitter; it ships digits only and will fall back.",
+      "Don't put the brand fill (4.2:1) on body text. Use Magenta Deep."
+    ]
+  }
+}

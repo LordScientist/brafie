@@ -139,9 +139,9 @@
   --gradient-text: linear-gradient(135deg, #c42c79 0%, #a81f63 100%);
 
   /* -- Typography ---------------------------------------------------- */
-  --font-display: 'Plus Jakarta Sans', 'Noto Sans', system-ui, sans-serif;
-  --font-arabic: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', sans-serif;
-  --font-serif: 'Fraunces', Georgia, serif;
+  --font-display: 'Hanken Grotesk', system-ui, sans-serif;
+  --font-arabic: 'IBM Plex Sans Arabic', 'Hanken Grotesk', sans-serif;
+  --font-serif: 'Bitter', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   /* Fluid type scale — 1.25 (major third) at the top, tightening down. */

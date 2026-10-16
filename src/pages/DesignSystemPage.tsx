@@ -336,7 +336,7 @@ export default function DesignSystemPage() {
         {/* -- Type scale -- */}
         <Section
           title="Type scale"
-          note="Fluid clamp() steps. Plus Jakarta Sans for Latin, IBM Plex Sans Arabic for additional scripts, Fraunces reserved for one editorial accent per page."
+          note="Fluid clamp() steps. Hanken Grotesk for Latin, IBM Plex Sans Arabic for additional scripts, Bitter reserved for the numerals."
         >
           <div className="space-y-6 rounded-2xl border border-line bg-card p-8">
             {TYPE_SAMPLES.map(({ cls, token, sample, body }) => (
@@ -355,8 +355,8 @@ export default function DesignSystemPage() {
             </div>
 
             <div className="rounded-xl bg-sunken p-6">
-              <code className="text-overline uppercase text-muted">font-serif — Fraunces, one accent per page</code>
-              <p className="mt-3 font-serif text-h2 text-ink">Early is everything.</p>
+              <code className="text-overline uppercase text-muted">font-serif — Bitter, numerals only</code>
+              <p className="mt-3 font-serif text-h2 text-ink">01 · 07 · 12</p>
             </div>
           </div>
         </Section>
