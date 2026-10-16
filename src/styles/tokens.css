@@ -220,6 +220,20 @@
   --info-text: 147 197 253;
   --gold-text: 231 189 138;
 
+  /* Status fills + soft tints. Same values the .ds-scope uses, so a chip
+     built outside the scope (the layout chrome) stays readable on dark
+     instead of falling back to its light tint. */
+  --calm: 74 222 128;
+  --calm-soft: 26 51 38;
+  --warn: 251 191 36;
+  --warn-soft: 58 44 24;
+  --attention: 248 113 113;
+  --attention-soft: 61 29 29;
+  --info: 96 165 250;
+  --info-soft: 30 41 66;
+  --gold: 224 86 155;
+  --gold-soft: 45 27 41;
+
   --risk-low-text: 134 239 172;
   --risk-moderate-text: 252 211 77;
   --risk-high-text: 252 165 165;

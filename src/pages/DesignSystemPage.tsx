@@ -291,6 +291,44 @@ export default function DesignSystemPage() {
           </div>
         </Section>
 
+        {/* -- Semantic fills -- */}
+        <Section
+          title="Semantic fills — text on its own tint"
+          note="Each status has a soft tint for chips and callouts, paired with its own -text token. The tint is built from the hue, never greyed, so the pairing stays legible in both themes."
+        >
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { soft: '--accent-soft', text: '--accent-text', label: 'accent' },
+              { soft: '--calm-soft', text: '--calm-text', label: 'calm' },
+              { soft: '--warn-soft', text: '--warn-text', label: 'warn' },
+              { soft: '--attention-soft', text: '--attention-text', label: 'attention' },
+              { soft: '--info-soft', text: '--info-text', label: 'info' },
+              { soft: '--gold-soft', text: '--gold-text', label: 'gold' },
+            ].map(({ soft, text, label }) => {
+              const bg = readToken(soft);
+              const fg = readToken(text);
+              return (
+                <div key={label} className="rounded-2xl border border-line p-5" style={{ background: rgbOf(bg) }}>
+                  <div className="flex items-baseline justify-between gap-2">
+                    <code className="text-caption font-bold" style={{ color: rgbOf(fg) }}>
+                      {soft}
+                    </code>
+                    <span className="text-caption font-bold" style={{ color: rgbOf(fg) }}>
+                      {contrast(fg, bg).toFixed(2)}:1
+                    </span>
+                  </div>
+                  <p className="mt-3 text-h4 font-bold" style={{ color: rgbOf(fg) }}>
+                    {text}
+                  </p>
+                  <p className="mt-1 text-caption" style={{ color: rgbOf(fg) }}>
+                    {label}: tint from the hue, never grey.
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </Section>
+
         {/* -- Surfaces -- */}
         <Section title="Surfaces" note="Theme-aware. These flip wholesale between light and berry-dark.">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
