@@ -30,11 +30,11 @@ import { VIEWPORT, staggerContainer, staggerItem } from '@/motion/motion';
  * cruel and (statistically) wrong. The most urgent level is gold: warm,
  * attention-getting, calm (HARD RULE 3).
  */
-const LEVELS: { icon: LucideIcon; tile: string; edge: string }[] = [
-  { icon: CircleCheck, tile: 'bg-calm-soft text-calm-text', edge: 'border-t-calm' },
-  { icon: Eye, tile: 'bg-accent-soft text-accent-text', edge: 'border-t-accent' },
-  { icon: CalendarClock, tile: 'bg-info-soft text-info-text', edge: 'border-t-info' },
-  { icon: Stethoscope, tile: 'bg-gold-soft text-gold-text', edge: 'border-t-gold' },
+const LEVELS: { icon: LucideIcon; tile: string }[] = [
+  { icon: CircleCheck, tile: 'bg-calm-soft text-calm-text' },
+  { icon: Eye, tile: 'bg-accent-soft text-accent-text' },
+  { icon: CalendarClock, tile: 'bg-info-soft text-info-text' },
+  { icon: Stethoscope, tile: 'bg-gold-soft text-gold-text' },
 ];
 
 /**
@@ -56,11 +56,12 @@ export function WhenToSeekHelpPage() {
 
   return (
     <PageTransition>
+      <div className="ds-scope">
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative isolate py-8 lg:py-12">
         <div aria-hidden className="pointer-events-none absolute -inset-x-6 -inset-y-4 -z-10">
           <div className="absolute -start-10 -top-10 h-72 w-72 rounded-full bg-primary-300/20 blur-3xl" />
-          <div className="absolute inset-0 overflow-hidden rounded-[2.5rem]">
+          <div className="absolute inset-0 overflow-hidden rounded-3xl">
             <ZelligeAccent variant="field" tone="brand" opacity={0.05} />
           </div>
         </div>
@@ -88,8 +89,16 @@ export function WhenToSeekHelpPage() {
       </section>
 
       {/* ── URGENCY LEVELS ───────────────────────────────────────────────── */}
-      <section className="py-10">
+      <section className="relative isolate py-10">
         <SectionHeading as="h2" size="h2" title={page.urgencyTitle} accent />
+
+        {/* Atmosphere behind the glass cards — what they blur, so the frosted
+            panels actually read as glass. Faint by design (§4.3). */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute start-2 top-24 h-64 w-64 rounded-full bg-primary-300/30 blur-3xl" />
+          <div className="absolute end-4 top-48 h-72 w-72 rounded-full bg-calm/15 blur-3xl" />
+          <div className="absolute bottom-0 start-1/3 h-56 w-56 rounded-full bg-info/10 blur-3xl" />
+        </div>
 
         <motion.ol
           className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
@@ -99,12 +108,12 @@ export function WhenToSeekHelpPage() {
         viewport={VIEWPORT}
         >
           {t.home.nextSteps.cards.map((card, i) => {
-            const { icon: Icon, tile, edge } = LEVELS[i];
+            const { icon: Icon, tile } = LEVELS[i];
             return (
               <motion.li
                 key={card.state}
                 variants={staggerItem}
-                className={`flex flex-col rounded-3xl border border-t-4 border-line bg-card p-5 shadow-petal ${edge}`}
+                className="glass-card flex flex-col p-5"
               >
                 <span className={`grid h-11 w-11 place-items-center rounded-2xl ${tile}`}>
                   <Icon size={20} aria-hidden />
@@ -176,7 +185,7 @@ export function WhenToSeekHelpPage() {
 
       {/* ── PREPARING FOR THE APPOINTMENT ────────────────────────────────── */}
       <section className="py-10">
-        <div className="rounded-[2rem] border border-line bg-sunken p-6 sm:p-8">
+        <div className="rounded-3xl border border-line bg-sunken p-6 sm:p-8">
           <h2 className="flex items-center gap-2.5 text-h3 text-ink">
             <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-accent-soft text-accent-text">
               <ClipboardList size={20} aria-hidden />
@@ -207,6 +216,7 @@ export function WhenToSeekHelpPage() {
             </Button>
         </div>
       </section>
+      </div>
     </PageTransition>
   );
 }
