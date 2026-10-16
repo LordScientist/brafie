@@ -42,11 +42,12 @@ export function CompanionPage() {
 
   return (
     <PageTransition>
+      <div className="ds-scope">
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative isolate grid gap-10 py-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-12">
         <div aria-hidden className="pointer-events-none absolute -inset-x-6 -inset-y-4 -z-10">
           <div className="absolute -start-10 -top-10 h-72 w-72 rounded-full bg-primary-300/20 blur-3xl" />
-          <div className="absolute inset-0 overflow-hidden rounded-[2.5rem]">
+          <div className="absolute inset-0 overflow-hidden rounded-3xl">
             <ZelligeAccent variant="field" tone="brand" opacity={0.05} />
           </div>
         </div>
@@ -114,7 +115,7 @@ export function CompanionPage() {
       <section className="py-10">
         <div className="grid gap-4 lg:grid-cols-2">
           <motion.div
-            className="rounded-[2rem] border border-line bg-card p-6 shadow-petal"
+            className="rounded-3xl border border-line bg-card p-6 shadow-petal"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
@@ -142,7 +143,7 @@ export function CompanionPage() {
           {/* Same size, same weight, same shadow as the column above. The
               refusals are not fine print. */}
           <motion.div
-            className="rounded-[2rem] border border-line bg-card p-6 shadow-petal"
+            className="rounded-3xl border border-line bg-card p-6 shadow-petal"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
@@ -234,7 +235,7 @@ export function CompanionPage() {
 
       {/* ── CTA ──────────────────────────────────────────────────────────── */}
       <section className="py-10">
-        <div className="relative isolate overflow-hidden rounded-[2rem] bg-brand-cta bg-[length:200%_200%] p-8 text-center shadow-petal-xl motion-safe:animate-gradient-pan sm:p-12">
+        <div className="cta-panel relative isolate overflow-hidden rounded-[2rem] bg-brand-cta bg-[length:200%_200%] p-8 text-center shadow-petal-xl motion-safe:animate-gradient-pan sm:p-12">
           <ZelligeAccent variant="field" tone="current" opacity={0.07} className="text-white" />
 
           <div className="relative mx-auto flex max-w-xl flex-col items-center">
@@ -255,6 +256,7 @@ export function CompanionPage() {
           </div>
         </div>
       </section>
+      </div>
     </PageTransition>
   );
 }
