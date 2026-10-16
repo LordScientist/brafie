@@ -27,12 +27,12 @@ const HOTSPOTS: Hotspot[] = [
   { id: 'skin', zone: 'skin', top: '38%', left: '48%', severity: 'medium' },
 ];
 
-const dotColor = (s: Severity) => (s === 'high' ? '#DC2626' : '#F59E0B');
+const dotColor = (s: Severity) => (s === 'high' ? 'rgb(var(--risk-high))' : 'rgb(var(--risk-moderate))');
 
 const SEVERITY_BADGE: Record<Severity, string> = {
   high: 'border-risk-high/30 bg-risk-high/10 text-risk-high',
   medium: 'border-risk-moderate/30 bg-risk-moderate/10 text-risk-moderate',
-  low: 'border-amber-300/40 bg-amber-50 text-amber-700',
+  low: 'border-warn/30 bg-warn/10 text-warn-text',
 };
 
 export function BodyMap() {
@@ -61,7 +61,7 @@ export function BodyMap() {
       <div className="grid gap-5 lg:grid-cols-5">
         {/* LEFT — image body map (40%) */}
         <div className="lg:col-span-2">
-          <div className="rounded-3xl border border-white/70 bg-gradient-to-b from-primary-100/50 to-primary-50 p-3 shadow-petal">
+          <div className="rounded-3xl border border-line bg-primary-50 p-3 shadow-petal">
             <div className="relative mx-auto w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[320px]">
               {/* The source PNG was 1536x2752 and 3.9 MB, painted at a maximum of
                   320 CSS px — a ~5x oversized image, and about forty seconds of
@@ -162,7 +162,7 @@ export function BodyMap() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: isRTL ? 32 : -32 }}
                 transition={{ duration: 0.28, ease: 'easeOut' }}
-                className="rounded-3xl border border-white/70 bg-card/80 p-6 shadow-petal"
+                className="rounded-3xl border border-line bg-card/80 p-6 shadow-petal"
               >
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <h3 className="text-xl font-black text-ink">{zone.name}</h3>
@@ -173,24 +173,24 @@ export function BodyMap() {
 
                 <ul className="mt-5 space-y-3">
                   {zone.symptoms.map((s) => (
-                    <li key={s.title} className="rounded-2xl border border-line bg-white/60 p-4">
+                    <li key={s.title} className="rounded-2xl border border-line bg-card/60 p-4">
                       <h4 className="text-sm font-black leading-6 text-ink">{s.title}</h4>
                       <p className="mt-1 text-sm font-medium leading-6 text-muted">{s.desc}</p>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-5 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4">
-                  <ShieldAlert className="mt-0.5 shrink-0 text-amber-600" size={20} />
+                <div className="mt-5 flex items-start gap-3 rounded-2xl border border-warn/30 bg-warn-soft p-4">
+                  <ShieldAlert className="mt-0.5 shrink-0 text-warn-text" size={20} />
                   <div>
-                    <p className="text-xs font-black uppercase tracking-wide text-amber-700">{bm.whenToWorryLabel}</p>
-                    <p className="mt-1 text-sm font-bold leading-6 text-amber-900">{zone.whenToWorry}</p>
+                    <p className="text-xs font-black uppercase tracking-wide text-warn-text">{bm.whenToWorryLabel}</p>
+                    <p className="mt-1 text-sm font-bold leading-6 text-warn-text">{zone.whenToWorry}</p>
                   </div>
                 </div>
 
                 <Link
                   to={severity === 'high' ? '/reminder' : '/self-check'}
-                  className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-primary-500 px-5 text-sm font-black text-white shadow-petal transition hover:bg-primary-600"
+                  className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-primary-600 px-5 text-sm font-black text-white shadow-petal transition hover:bg-primary-700"
                 >
                   <Stethoscope size={18} />
                   {severity === 'high' ? bm.ctaDoctor : bm.ctaCheck}
