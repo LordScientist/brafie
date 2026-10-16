@@ -71,11 +71,12 @@ export function SignsPage() {
 
   return (
     <PageTransition>
+      <div className="ds-scope">
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative isolate py-8 lg:py-14">
         <div aria-hidden className="pointer-events-none absolute -inset-x-6 -inset-y-4 -z-10">
           <div className="absolute -start-10 -top-10 h-72 w-72 rounded-full bg-primary-300/25 blur-3xl" />
-          <div className="absolute inset-0 overflow-hidden rounded-[2.5rem]">
+          <div className="absolute inset-0 overflow-hidden rounded-3xl">
             <ZelligeAccent variant="field" tone="brand" opacity={0.05} />
           </div>
         </div>
@@ -244,6 +245,7 @@ export function SignsPage() {
             stacked on top of each other read as boilerplate — which is exactly
             how a disclaimer stops being read. The hero carries the short one. */}
       </section>
+      </div>
     </PageTransition>
   );
 }
