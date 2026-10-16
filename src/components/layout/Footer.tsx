@@ -1,7 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import { Facebook, Instagram, Youtube, type LucideIcon } from 'lucide-react';
 import { Disclaimer } from '@/components/ui/Disclaimer';
-import { LanguageSwitch } from '@/components/ui/LanguageSwitch';
 import { LogoLockup } from '@/components/ui/LogoLockup';
 import { TrustPill } from '@/components/ui/TrustPill';
 import { ZelligeAccent } from '@/components/ui/ZelligeAccent';
@@ -157,7 +156,6 @@ export function Footer() {
               <span className="font-semibold text-ink">LordScientist</span> · MIT License
             </p>
           </div>
-          <LanguageSwitch variant="inline" className="justify-start sm:justify-end" />
         </div>
       </div>
     </footer>

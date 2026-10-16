@@ -50,7 +50,7 @@ export function LogoLockup({ size = 'sm', markOnly, showTagline, className }: Lo
         <span className="min-w-0">
           <span className={cn('block font-black leading-tight text-ink', NAME[size])}>{t.app.name}</span>
           {showTagline && (
-            <span className="block truncate text-caption font-semibold text-muted">{t.app.tagline}</span>
+            <span className="block text-caption font-semibold leading-snug text-muted">{t.app.tagline}</span>
           )}
         </span>
       )}

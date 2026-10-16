@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, Moon, Sun } from 'lucide-react';
 import { MobileDrawer, type DrawerGroup, type DrawerLink } from '@/components/layout/MobileDrawer';
-import { LanguageSwitch } from '@/components/ui/LanguageSwitch';
 import { LogoLockup } from '@/components/ui/LogoLockup';
 import { useLanguage } from '@/hooks/useLanguage';
 import { useTheme } from '@/hooks/useTheme';
@@ -68,7 +67,7 @@ export function Navbar() {
   return (
     <>
       <header className="glass sticky top-0 z-40 border-x-0 border-t-0 border-b border-line px-4 pt-safe">
-        <div className="mx-auto flex h-16 max-w-content items-center justify-between gap-3">
+        <div className="mx-auto flex min-h-16 max-w-content items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-2">
             {/* Mobile nav concept puts the menu trigger on the leading edge. */}
             <button
@@ -106,8 +105,6 @@ export function Navbar() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
-            <LanguageSwitch />
-
             <button
               type="button"
               onClick={toggle}

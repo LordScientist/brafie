@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom';
 import { NavLink } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Moon, Sun, X } from 'lucide-react';
-import { LanguageSwitch } from '@/components/ui/LanguageSwitch';
 import { LogoLockup } from '@/components/ui/LogoLockup';
 import { ZelligeAccent } from '@/components/ui/ZelligeAccent';
 import { useLanguage } from '@/hooks/useLanguage';
@@ -148,12 +147,7 @@ export function MobileDrawer({ open, onClose, groups }: MobileDrawerProps) {
               ))}
             </nav>
 
-            <div className="space-y-4 border-t border-line px-5 py-5">
-              <div>
-                <p className="mb-2 text-overline uppercase text-muted">{t.settings.language}</p>
-                <LanguageSwitch variant="inline" />
-              </div>
-
+            <div className="border-t border-line px-5 py-5">
               <button
                 type="button"
                 onClick={toggle}
