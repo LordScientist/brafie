@@ -22,8 +22,14 @@ export function PageTransition({ children }: { children: ReactNode }) {
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: DURATION.base, ease: EASE_SOFT }}
       /* The Footer owns the bottom-nav clearance (pb-28), so main only needs
-         breathing room before it. */
-      className="mx-auto w-full max-w-content px-6 pb-12 pt-6"
+         breathing room before it.
+
+         Mobile gutter: the pages' inner panel (`.ds-scope` / the page's top
+         card) is this column's content box, so its width IS the column width.
+         At 24px a side that panel was only ~87% of a phone and read as a narrow
+         slab. 2.5vw a side puts it at ~95% with balanced margins, while ≥sm
+         keeps the original 24px so the desktop layout is untouched. */
+      className="mx-auto w-full max-w-content px-[2.5vw] pb-12 pt-6 sm:px-6"
     >
       {children}
     </motion.main>
