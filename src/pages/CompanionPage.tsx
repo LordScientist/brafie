@@ -17,6 +17,7 @@ import { RibbonMark } from '@/components/ui/RibbonMark';
 import { SafetyNote } from '@/components/ui/SafetyNote';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ZelligeAccent } from '@/components/ui/ZelligeAccent';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { useLanguage } from '@/hooks/useLanguage';
 
 /**
@@ -189,7 +190,7 @@ export function CompanionPage() {
 
         <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {page.examples.map((question) => (
-            <li key={question}>
+            <ScrollItem as="li" key={question}>
               <Link
                 to="/chat"
                 className="focus-ring group flex min-h-14 w-full items-center gap-3 rounded-2xl border border-line bg-card p-4 text-start shadow-petal transition duration-base ease-soft hover:-translate-y-1 hover:shadow-petal-lg"
@@ -202,7 +203,7 @@ export function CompanionPage() {
                   aria-hidden
                 />
               </Link>
-            </li>
+            </ScrollItem>
           ))}
         </ul>
       </section>

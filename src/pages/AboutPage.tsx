@@ -5,6 +5,7 @@ import { Disclaimer } from '@/components/ui/Disclaimer';
 import { RibbonMark } from '@/components/ui/RibbonMark';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ZelligeAccent } from '@/components/ui/ZelligeAccent';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { useLanguage } from '@/hooks/useLanguage';
 
 /**
@@ -57,10 +58,10 @@ export function AboutPage() {
 
         <ul className="mt-8 grid gap-4 sm:grid-cols-3">
           {credibility.points.map((point) => (
-            <li key={point.title} className="rounded-3xl border border-line bg-card p-5 shadow-petal">
+            <ScrollItem as="li" key={point.title} className="rounded-3xl border border-line bg-card p-5 shadow-petal">
               <h3 className="text-h4 text-ink">{point.title}</h3>
               <p className="mt-1.5 text-body-sm text-muted">{point.desc}</p>
-            </li>
+            </ScrollItem>
           ))}
         </ul>
 

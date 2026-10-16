@@ -1,11 +1,10 @@
 
-import { motion } from 'framer-motion';
 import { BellRing, CalendarClock, CircleCheck, Eye, MapPin, Stethoscope, type LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { SafetyNote } from '@/components/ui/SafetyNote';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { useLanguage } from '@/hooks/useLanguage';
-import { VIEWPORT, staggerContainer, staggerItem } from '@/motion/motion';
 
 /* One lane per state, in i18n order: nothing unusual · a minor change · a
    change that lasted two weeks · a sign that needs prompt care.
@@ -55,19 +54,13 @@ export function NextSteps() {
         <div className="absolute bottom-0 start-1/3 h-56 w-56 rounded-full bg-info/10 blur-3xl" />
       </div>
 
-      <motion.ol
-        className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
-        variants={staggerContainer(0.07)}
-        initial="hidden"
-        whileInView="shown"
-        viewport={VIEWPORT}
-      >
+      <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {section.cards.map((card, i) => {
           const { icon: Icon, tile } = LANES[i];
           return (
-            <motion.li
+            <ScrollItem
+              as="li"
               key={card.state}
-              variants={staggerItem}
               className="glass-card flex flex-col p-5"
             >
               <span className={`grid h-11 w-11 place-items-center rounded-2xl ${tile}`}>
@@ -80,10 +73,10 @@ export function NextSteps() {
               <p className="mt-4 border-t border-line pt-3 text-body-sm font-semibold text-ink">
                 {card.action}
               </p>
-            </motion.li>
+            </ScrollItem>
           );
         })}
-      </motion.ol>
+      </ol>
 
       <SafetyNote variant="seeDoctor" className="mt-8">
         {section.note}

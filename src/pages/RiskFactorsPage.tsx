@@ -18,6 +18,7 @@ import { SafetyNote } from '@/components/ui/SafetyNote';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { TrustPill } from '@/components/ui/TrustPill';
 import { ZelligeAccent } from '@/components/ui/ZelligeAccent';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { useLanguage } from '@/hooks/useLanguage';
 
 /* The six groups, in the order of `riskFactorsPage.groups`.
@@ -147,13 +148,14 @@ export function RiskFactorsPage() {
                   column of short, scannable rows rather than a dense wall. */}
               <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                 {group.factors.map((factor) => (
-                  <li
+                  <ScrollItem
+                    as="li"
                     key={factor.title}
                     className="rounded-2xl border border-line bg-sunken p-4"
                   >
                     <h3 className="text-body-sm font-bold text-ink">{factor.title}</h3>
                     <p className="mt-1 text-caption leading-relaxed text-muted">{factor.desc}</p>
-                  </li>
+                  </ScrollItem>
                 ))}
               </ul>
             </motion.section>

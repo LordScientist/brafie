@@ -25,6 +25,7 @@ import { BrandImage } from '@/components/ui/BrandImage';
 import { CircularProgress, Progress } from '@/components/ui/Progress';
 import { SafetyNote } from '@/components/ui/SafetyNote';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { interpolate, useLanguage } from '@/hooks/useLanguage';
 import { useSelfCheck } from '@/hooks/useSelfCheck';
 import { useSpeech } from '@/hooks/useSpeech';
@@ -309,7 +310,8 @@ export function SelfCheckPage() {
               {t.home.nextSteps.cards.map((card, i) => {
                 const Icon = LANE_ICONS[i];
                 return (
-                  <li
+                  <ScrollItem
+                    as="li"
                     key={card.state}
                     className="glass-card flex flex-col p-5 text-start"
                   >
@@ -321,7 +323,7 @@ export function SelfCheckPage() {
                     <p className="mt-4 border-t border-line pt-3 text-body-sm font-semibold text-ink">
                       {card.action}
                     </p>
-                  </li>
+                  </ScrollItem>
                 );
               })}
             </ol>

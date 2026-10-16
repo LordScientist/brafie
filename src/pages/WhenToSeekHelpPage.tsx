@@ -1,5 +1,4 @@
 
-import { motion } from 'framer-motion';
 import {
   ArrowRight,
   BellRing,
@@ -18,8 +17,8 @@ import { PetalMark } from '@/components/ui/PetalMark';
 import { SafetyNote } from '@/components/ui/SafetyNote';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ZelligeAccent } from '@/components/ui/ZelligeAccent';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { useLanguage } from '@/hooks/useLanguage';
-import { VIEWPORT, staggerContainer, staggerItem } from '@/motion/motion';
 
 /* The four urgency levels, in the order of `home.nextSteps.cards`.
  *
@@ -100,19 +99,13 @@ export function WhenToSeekHelpPage() {
           <div className="absolute bottom-0 start-1/3 h-56 w-56 rounded-full bg-info/10 blur-3xl" />
         </div>
 
-        <motion.ol
-          className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
-          variants={staggerContainer(0.07)}
-        initial="hidden"
-        whileInView="shown"
-        viewport={VIEWPORT}
-        >
+        <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {t.home.nextSteps.cards.map((card, i) => {
             const { icon: Icon, tile } = LEVELS[i];
             return (
-              <motion.li
+              <ScrollItem
+                as="li"
                 key={card.state}
-                variants={staggerItem}
                 className="glass-card flex flex-col p-5"
               >
                 <span className={`grid h-11 w-11 place-items-center rounded-2xl ${tile}`}>
@@ -132,10 +125,10 @@ export function WhenToSeekHelpPage() {
                 <p className="mt-3 border-t border-line pt-3 text-body-sm font-semibold text-ink">
                   {card.action}
                 </p>
-              </motion.li>
+              </ScrollItem>
             );
           })}
-        </motion.ol>
+        </ol>
       </section>
 
       {/* ── CHANGES NOT TO IGNORE ────────────────────────────────────────── */}
@@ -148,17 +141,11 @@ export function WhenToSeekHelpPage() {
           accent
         />
 
-        <motion.ul
-          className="mt-8 grid gap-3 sm:grid-cols-2"
-          variants={staggerContainer(0.04)}
-        initial="hidden"
-        whileInView="shown"
-        viewport={VIEWPORT}
-        >
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
           {page.doNotIgnore.map((change, i) => (
-            <motion.li
+            <ScrollItem
+              as="li"
               key={change}
-              variants={staggerItem}
               className="flex items-center gap-4 rounded-2xl border border-line bg-card p-4 shadow-petal"
             >
               {/* The ceramic form, not a warning triangle. This is a list of
@@ -168,9 +155,9 @@ export function WhenToSeekHelpPage() {
                 <Eye size={16} className="relative text-accent-text" aria-hidden />
               </span>
               <span className="text-body-sm font-semibold text-ink">{change}</span>
-            </motion.li>
+            </ScrollItem>
           ))}
-        </motion.ul>
+        </ul>
 
         <div className="mt-6 flex justify-center">
           <Button to="/signs"

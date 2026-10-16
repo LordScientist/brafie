@@ -8,6 +8,7 @@ import { NavArrows } from '@/components/layout/NavArrows';
 import { PreventionTracker } from '@/components/learn/PreventionTracker';
 import { MythsWall } from '@/components/learn/MythsWall';
 import { BodyMap } from '@/components/learn/BodyMap';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { useLanguage } from '@/hooks/useLanguage';
 import { usePersistedState } from '@/hooks/usePersistedState';
 import { cn } from '@/utils/cn';
@@ -70,14 +71,14 @@ export function LearnPage() {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-8">
           <section className="grid gap-4 md:grid-cols-3">
             {t.learn.overviewStats.map(({ stat, text, statLabel }) => (
-              <div key={stat} className="rounded-3xl border border-line bg-card/80 p-6 shadow-petal">
+              <ScrollItem key={stat} className="rounded-3xl border border-line bg-card/80 p-6 shadow-petal">
                 <Heart className="mb-5 text-primary-500" size={28} />
                 <div className="text-3xl font-black text-accent-text">
                   <span className="sr-only">{statLabel}: </span>
                   {stat}
                 </div>
                 <p className="mt-2 font-medium leading-7 text-muted">{text}</p>
-              </div>
+              </ScrollItem>
             ))}
           </section>
 
@@ -87,10 +88,10 @@ export function LearnPage() {
             <p className="mt-3 max-w-3xl font-medium leading-8 text-muted">{t.learn.overview.whatBody}</p>
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
               {t.learn.overview.whatStats.map(({ value, label }) => (
-                <div key={label} className="rounded-2xl border border-primary-100 bg-primary-50 p-4 text-center">
+                <ScrollItem key={label} className="rounded-2xl border border-primary-100 bg-primary-50 p-4 text-center">
                   <div className="text-2xl font-black text-accent-text">{value}</div>
                   <p className="mt-1 text-xs font-bold leading-5 text-primary-800">{label}</p>
-                </div>
+                </ScrollItem>
               ))}
             </div>
           </section>
@@ -134,11 +135,11 @@ export function LearnPage() {
                 const icons = [Calendar, Users, Scale, Cigarette, Clock, Baby, Pill];
                 const Icon = icons[i] ?? Calendar;
                 return (
-                  <div key={title} className="rounded-2xl border border-line bg-card/60 p-4 shadow-petal">
+                  <ScrollItem key={title} className="rounded-2xl border border-line bg-card/60 p-4 shadow-petal">
                     <Icon className="mb-2 text-primary-500" size={22} />
                     <h3 className="text-sm font-black leading-6 text-ink">{title}</h3>
                     <p className="mt-1 text-xs font-medium leading-5 text-muted">{desc}</p>
-                  </div>
+                  </ScrollItem>
                 );
               })}
             </div>
@@ -150,14 +151,14 @@ export function LearnPage() {
             <p className="mt-2 max-w-3xl font-medium leading-7 text-muted">{t.learn.overview.defenseIntro}</p>
             <div className="mt-5 grid gap-4 md:grid-cols-3">
               {t.learn.overview.defenseSteps.map(({ title, age, desc }, i) => (
-                <div key={title} className="relative rounded-2xl border border-primary-100 bg-primary-50 p-5">
+                <ScrollItem key={title} className="relative rounded-2xl border border-primary-100 bg-primary-50 p-5">
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary-600 text-base font-black text-white shadow-petal">
                     {i + 1}
                   </span>
                   <h3 className="mt-3 text-lg font-black leading-7 text-ink">{title}</h3>
                   <p className="mt-1 text-xs font-black uppercase tracking-wide text-primary-700">{age}</p>
                   <p className="mt-2 text-sm font-medium leading-6 text-muted">{desc}</p>
-                </div>
+                </ScrollItem>
               ))}
             </div>
           </section>

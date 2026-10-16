@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Disclaimer } from '@/components/ui/Disclaimer';
@@ -8,9 +7,9 @@ import { Modal } from '@/components/ui/Modal';
 import { PetalMark } from '@/components/ui/PetalMark';
 import { SafetyNote } from '@/components/ui/SafetyNote';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { SIGN_ICONS } from '@/data/signs';
 import { useLanguage } from '@/hooks/useLanguage';
-import { VIEWPORT, staggerContainer, staggerItem } from '@/motion/motion';
 
 /**
  * The 12 signs — "Care Cards".
@@ -41,21 +40,11 @@ export function TwelveSigns() {
         accent
       />
 
-      <motion.ul
-        className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4"
-        variants={staggerContainer(0.04)}
-        initial="hidden"
-        whileInView="shown"
-        viewport={VIEWPORT}
-      >
+      <ul className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
         {signs.items.map((sign, i) => {
           const Icon = SIGN_ICONS[i];
           return (
-            <motion.li
-              key={sign.label}
-              variants={staggerItem}
-              className="flex"
-            >
+            <ScrollItem as="li" key={sign.label} className="flex">
               <button
                 type="button"
                 onClick={() => setOpenSign(i)}
@@ -84,10 +73,10 @@ export function TwelveSigns() {
                   <ArrowRight size={13} className={isRTL ? 'rotate-180' : undefined} aria-hidden />
                 </span>
               </button>
-            </motion.li>
+            </ScrollItem>
           );
         })}
-      </motion.ul>
+      </ul>
 
       <div className="mt-8 flex justify-center">
         <Button to="/signs"

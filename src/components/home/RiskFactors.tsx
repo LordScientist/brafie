@@ -1,12 +1,11 @@
 
-import { motion } from 'framer-motion';
 import { ArrowRight, Baby, Cigarette, Clock, Pill, Scale, UserRound, Users, type LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { BrandImage } from '@/components/ui/BrandImage';
 import { SafetyNote } from '@/components/ui/SafetyNote';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { useLanguage } from '@/hooks/useLanguage';
-import { VIEWPORT, staggerContainer, staggerItem } from '@/motion/motion';
 
 /* In the order of `learn.overview.riskFactors`: age · family history · weight
    and inactivity · smoking and alcohol · early periods or late menopause ·
@@ -42,19 +41,13 @@ export function RiskFactors() {
         accent
       />
 
-      <motion.ul
-        className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-        variants={staggerContainer(0.05)}
-        initial="hidden"
-        whileInView="shown"
-        viewport={VIEWPORT}
-      >
+      <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {factors.map((factor, i) => {
           const Icon = FACTOR_ICONS[i] ?? UserRound;
           return (
-            <motion.li
+            <ScrollItem
+              as="li"
               key={factor.title}
-              variants={staggerItem}
               className="flex gap-4 rounded-3xl border border-line bg-card p-5 shadow-petal"
             >
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-accent-soft text-accent-text">
@@ -64,10 +57,10 @@ export function RiskFactors() {
                 <h3 className="text-h4 text-ink">{factor.title}</h3>
                 <p className="mt-1.5 text-body-sm text-muted">{factor.desc}</p>
               </div>
-            </motion.li>
+            </ScrollItem>
           );
         })}
-      </motion.ul>
+      </ul>
 
       {/* The soft infographic block. Reserved at 16:9 so the grid above does
           not reflow when the real artwork lands. The alt is already written and

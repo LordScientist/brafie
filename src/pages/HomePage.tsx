@@ -23,6 +23,7 @@ import { PreviewScreen } from '@/components/home/PreviewScreen';
 import { SelfCheckPreview } from '@/components/home/SelfCheckPreview';
 import { TwelveSigns } from '@/components/home/TwelveSigns';
 import { PageTransition } from '@/components/layout/PageTransition';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { Button } from '@/components/ui/Button';
 import { Disclaimer } from '@/components/ui/Disclaimer';
 import { IconCard } from '@/components/ui/IconCard';
@@ -175,7 +176,7 @@ export function HomePage() {
 
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {t.home.helps.map((help, i) => (
-            <li key={help.title} className="flex">
+            <ScrollItem as="li" key={help.title} className="flex">
               <IconCard
                 icon={HELPS[i].icon}
                 to={HELPS[i].to}
@@ -184,7 +185,7 @@ export function HomePage() {
                 description={help.desc}
                 className="w-full"
               />
-            </li>
+            </ScrollItem>
           ))}
         </ul>
 

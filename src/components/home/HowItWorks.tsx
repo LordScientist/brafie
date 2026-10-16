@@ -1,8 +1,7 @@
-import { motion } from 'framer-motion';
 import { BrandImage } from '@/components/ui/BrandImage';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { useLanguage } from '@/hooks/useLanguage';
-import { VIEWPORT, staggerContainer, staggerItem } from '@/motion/motion';
 
 /**
  * How it works — discover → check → understand → act.
@@ -31,13 +30,7 @@ export function HowItWorks() {
         accent
       />
 
-      <motion.ol
-        className="relative mt-10 grid gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4"
-        variants={staggerContainer(0.08)}
-        initial="hidden"
-        whileInView="shown"
-        viewport={VIEWPORT}
-      >
+      <ol className="relative mt-10 grid gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
         {/* The rail. Decorative, so it is hidden from assistive tech — the
             <ol> already says "these are ordered steps". */}
         <span
@@ -46,11 +39,7 @@ export function HowItWorks() {
         />
 
         {section.steps.map((step, i) => (
-          <motion.li
-            key={step.title}
-            variants={staggerItem}
-            className="relative flex flex-col"
-          >
+          <ScrollItem as="li" key={step.title} className="relative flex flex-col">
             <span className="relative z-10 grid h-12 w-12 place-items-center rounded-full border border-line bg-card font-serif text-h4 text-gold-text shadow-petal">
               {i + 1}
             </span>
@@ -63,9 +52,9 @@ export function HowItWorks() {
               <h3 className="mt-4 text-h4 text-ink">{step.title}</h3>
               <p className="mt-1.5 text-body-sm text-muted">{step.desc}</p>
             </div>
-          </motion.li>
+          </ScrollItem>
         ))}
-      </motion.ol>
+      </ol>
     </section>
   );
 }

@@ -1,11 +1,10 @@
-import { motion } from 'framer-motion';
 import { BookOpenCheck, ExternalLink, LockKeyhole, Languages, ShieldCheck, type LucideIcon } from 'lucide-react';
 import { BrandImage } from '@/components/ui/BrandImage';
 import { SafetyNote } from '@/components/ui/SafetyNote';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { EVIDENCE_SOURCES, MEDICAL_REVIEW } from '@/config/constants';
 import { useLanguage } from '@/hooks/useLanguage';
-import { VIEWPORT, staggerContainer, staggerItem } from '@/motion/motion';
 
 /* In the order of `home.credibility.points`. */
 const POINT_ICONS: LucideIcon[] = [ShieldCheck, LockKeyhole, Languages];
@@ -40,19 +39,13 @@ export function Credibility() {
         accent
       />
 
-      <motion.ul
-        className="mt-10 grid gap-4 sm:grid-cols-3"
-        variants={staggerContainer(0.06)}
-        initial="hidden"
-        whileInView="shown"
-        viewport={VIEWPORT}
-      >
+      <ul className="mt-10 grid gap-4 sm:grid-cols-3">
         {section.points.map((point, i) => {
           const Icon = POINT_ICONS[i] ?? ShieldCheck;
           return (
-            <motion.li
+            <ScrollItem
+              as="li"
               key={point.title}
-              variants={staggerItem}
               className="rounded-3xl border border-line bg-card p-5 shadow-petal"
             >
               <span className="grid h-11 w-11 place-items-center rounded-2xl bg-accent-soft text-accent-text">
@@ -60,10 +53,10 @@ export function Credibility() {
               </span>
               <h3 className="mt-4 text-h4 text-ink">{point.title}</h3>
               <p className="mt-1.5 text-body-sm text-muted">{point.desc}</p>
-            </motion.li>
+            </ScrollItem>
           );
         })}
-      </motion.ul>
+      </ul>
 
       {/* The method. This is the "how it is made" block — it is the honest
           version of an expert badge, and every line of it is true today. */}

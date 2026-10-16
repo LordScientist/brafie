@@ -11,9 +11,9 @@ import { SafetyNote } from '@/components/ui/SafetyNote';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ZelligeAccent } from '@/components/ui/ZelligeAccent';
 import { useToast } from '@/components/ui/toastStore';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { SIGN_ICONS } from '@/data/signs';
 import { interpolate, useLanguage } from '@/hooks/useLanguage';
-import { VIEWPORT, staggerContainer, staggerItem } from '@/motion/motion';
 
 /** Anchor id for a sign. Stable and 1-based, so /signs#sign-3 is shareable. */
 const signAnchor = (index: number) => `sign-${index + 1}`;
@@ -124,21 +124,11 @@ export function SignsPage() {
       <section className="py-8">
         <SectionHeading as="h2" size="h3" title={page.jumpTitle} />
 
-        <motion.ul
-          className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4"
-          variants={staggerContainer(0.03)}
-        initial="hidden"
-        whileInView="shown"
-        viewport={VIEWPORT}
-        >
+        <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
           {signs.items.map((sign, i) => {
             const Icon = SIGN_ICONS[i];
             return (
-              <motion.li
-                key={sign.label}
-                variants={staggerItem}
-                className="flex"
-              >
+              <ScrollItem as="li" key={sign.label} className="flex">
                 <a
                   href={`#${signAnchor(i)}`}
                   className="focus-ring group relative flex w-full flex-col items-center overflow-hidden rounded-3xl border border-line bg-card p-4 text-center shadow-petal transition duration-base ease-soft hover:-translate-y-1 hover:shadow-petal-lg"
@@ -158,10 +148,10 @@ export function SignsPage() {
 
                   <span className="mt-3 text-body-sm font-bold leading-snug text-ink">{sign.label}</span>
                 </a>
-              </motion.li>
+              </ScrollItem>
             );
           })}
-        </motion.ul>
+        </ul>
       </section>
 
       {/* ── THE 12, IN DETAIL ────────────────────────────────────────────── */}
