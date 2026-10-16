@@ -8,7 +8,7 @@ export function NotFoundPage() {
   const { t } = useLanguage();
   return (
     <PageTransition>
-      <section className="mx-auto max-w-xl rounded-[2rem] border border-white/70 bg-card/85 p-8 text-center shadow-petal-xl">
+      <section className="ds-scope mx-auto max-w-xl rounded-3xl border border-line bg-card/85 p-8 text-center shadow-petal-xl">
         <h1 className="text-5xl font-black text-gradient">404</h1>
         <h2 className="mt-3 text-3xl font-black text-ink">{t.notFound.title}</h2>
         <p className="mt-3 font-medium text-muted">{t.notFound.text}</p>
