@@ -11,12 +11,12 @@ interface BadgeProps {
 }
 
 const TONES: Record<Tone, string> = {
-  primary: 'bg-primary-100 text-primary-700 dark:bg-primary-500/15 dark:text-primary-200',
-  high: 'bg-red-100 text-risk-high dark:bg-red-500/15 dark:text-red-300',
-  medium: 'bg-amber-100 text-risk-moderate dark:bg-amber-500/15 dark:text-amber-300',
-  low: 'bg-green-100 text-risk-low dark:bg-green-500/15 dark:text-green-300',
-  info: 'bg-blue-100 text-accent-blue dark:bg-blue-500/15 dark:text-blue-300',
-  neutral: 'bg-line text-muted',
+  primary: 'bg-accent-soft text-accent-text',
+  high: 'bg-attention-soft text-attention-text',
+  medium: 'bg-warn-soft text-warn-text',
+  low: 'bg-calm-soft text-calm-text',
+  info: 'bg-info-soft text-info-text',
+  neutral: 'bg-sunken text-muted',
 };
 
 /** Small status pill. */

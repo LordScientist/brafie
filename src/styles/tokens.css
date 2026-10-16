@@ -133,10 +133,6 @@
   --gradient-aurora:
     radial-gradient(60% 40% at 85% 0%, rgb(214 51 132 / 0.1), transparent 70%),
     radial-gradient(50% 35% at 0% 100%, rgb(255 92 149 / 0.1), transparent 70%);
-  /* Text gradient (`.text-gradient`). Unlike --gradient-brand — whose light
-     end is only 1.9:1 on the canvas — every stop here clears 4.5:1 on both
-     --canvas and --card (4.9:1 → 6.9:1), so a highlighted word stays legible. */
-  --gradient-text: linear-gradient(135deg, #c42c79 0%, #a81f63 100%);
 
   /* -- Typography ---------------------------------------------------- */
   --font-display: 'Hanken Grotesk', system-ui, sans-serif;
@@ -242,8 +238,6 @@
   --ring-brand: 0 0 0 4px rgb(255 92 149 / 0.16);
 
   --gradient-soft: linear-gradient(135deg, #2e0719 0%, #4a0d2c 100%);
-  /* Light pink stops so highlighted text stays legible on the dark canvas. */
-  --gradient-text: linear-gradient(135deg, #ff94ba 0%, #ff5c95 100%);
   --gradient-aurora:
     radial-gradient(60% 40% at 85% 0%, rgb(214 51 132 / 0.22), transparent 70%),
     radial-gradient(50% 35% at 0% 100%, rgb(140 26 85 / 0.3), transparent 70%);

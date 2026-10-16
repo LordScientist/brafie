@@ -153,7 +153,7 @@ export function RiskAssessmentPage() {
             </div>
             <p className="mt-2 text-caption font-bold text-muted">{t.risk.scoreCaption}</p>
             <p className="mt-3 text-caption font-black text-muted">{t.risk.riskLevelLabel}</p>
-            <h2 className="text-3xl font-black text-gradient">{levelLabel}</h2>
+            <h2 className="text-3xl font-black text-accent-text">{levelLabel}</h2>
 
             <p className="mt-4 rounded-2xl bg-sunken p-3 text-caption leading-relaxed text-muted">
               {t.risk.notAProbability}

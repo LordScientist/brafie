@@ -141,22 +141,6 @@ h3 {
     background-image: var(--gradient-soft);
   }
 
-  /* Gradient text for a single highlighted word. Falls back to a solid
-     AA-safe brand tone where background-clip is unsupported. */
-  .text-gradient {
-    color: rgb(var(--accent-text));
-  }
-  @supports (background-clip: text) or (-webkit-background-clip: text) {
-    .text-gradient {
-      /* --gradient-text, not --gradient-brand: the decorative gradient's light
-         end (1.9:1 on canvas) is unreadable behind text. This one is AA-safe. */
-      background: var(--gradient-text);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-  }
-
   /* Hairline divider — warm, never a grey rule. */
   .hairline {
     height: 1px;

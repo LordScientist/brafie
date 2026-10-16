@@ -72,7 +72,7 @@ export function LearnPage() {
             {t.learn.overviewStats.map(({ stat, text, statLabel }) => (
               <div key={stat} className="rounded-3xl border border-line bg-card/80 p-6 shadow-petal">
                 <Heart className="mb-5 text-primary-500" size={28} />
-                <div className="text-3xl font-black text-gradient">
+                <div className="text-3xl font-black text-accent-text">
                   <span className="sr-only">{statLabel}: </span>
                   {stat}
                 </div>
@@ -88,7 +88,7 @@ export function LearnPage() {
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
               {t.learn.overview.whatStats.map(({ value, label }) => (
                 <div key={label} className="rounded-2xl border border-primary-100 bg-primary-50 p-4 text-center">
-                  <div className="text-2xl font-black text-gradient">{value}</div>
+                  <div className="text-2xl font-black text-accent-text">{value}</div>
                   <p className="mt-1 text-xs font-bold leading-5 text-primary-800">{label}</p>
                 </div>
               ))}

@@ -176,7 +176,7 @@ export default function DesignSystemPage() {
           <div>
             <span className="text-overline uppercase text-accent-text">Brafie</span>
             <h1 className="mt-2 text-display text-ink">
-              The <span className="text-gradient">design system</span>
+              The <span className="text-accent-text">design system</span>
             </h1>
             <p className="mt-4 max-w-prose text-body-lg text-muted">
               One source of truth: <code className="text-body-sm text-accent-text">src/styles/tokens.css</code>. Every

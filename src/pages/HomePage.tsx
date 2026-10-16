@@ -108,7 +108,7 @@ export function HomePage() {
           </span>
 
           <h1 className="max-w-2xl text-balance text-display text-ink">
-            {t.home.heroTitle} <span className="text-gradient">{t.home.heroHighlight}</span>
+            {t.home.heroTitle} <span className="text-accent-text">{t.home.heroHighlight}</span>
           </h1>
 
           <p className="mt-5 max-w-prose text-body-lg text-muted">{t.home.heroSubtitle}</p>

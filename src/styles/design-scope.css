@@ -111,7 +111,6 @@
   --gradient-cta: linear-gradient(135deg, #b8337a 0%, #b8337a 100%);
   --gradient-brand: linear-gradient(135deg, #e0569b 0%, #e0569b 100%);
   --gradient-soft: linear-gradient(135deg, #fde8f2 0%, #fde8f2 100%);
-  --gradient-text: linear-gradient(135deg, #b8337a 0%, #b8337a 100%);
   --gradient-berry: linear-gradient(160deg, #121a33 0%, #121a33 100%);
   --gradient-aurora: none;
 
@@ -336,7 +335,6 @@ body:has(.ds-scope) {
   --gradient-cta: linear-gradient(135deg, #b8337a 0%, #b8337a 100%);
   --gradient-brand: linear-gradient(135deg, #e0569b 0%, #e0569b 100%);
   --gradient-soft: linear-gradient(135deg, #2d1b29 0%, #2d1b29 100%);
-  --gradient-text: linear-gradient(135deg, #f27fb5 0%, #f27fb5 100%);
   --gradient-berry: linear-gradient(160deg, #15131a 0%, #15131a 100%);
   --gradient-aurora: none;
 }
@@ -365,7 +363,6 @@ body:has(.ds-scope) {
    statistics read as urgent. Scoped to this page's root, so nothing else
    changes. 5.8:1 on the tinted card [AA]. */
 .dark .ds-scope.learn-page {
-  --gradient-text: linear-gradient(135deg, #f87171 0%, #f87171 100%);
   --brand-700: 248 113 113;
   --brand-800: 248 113 113;
 }
