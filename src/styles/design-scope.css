@@ -119,25 +119,39 @@
   font-family: var(--sans);
 }
 
-/* Mobile gutter *inside* the page ground.
+/* Layout chrome, so a page can subtract it from the viewport height.
+   Mirrors `min-h-16` (+ 1px border, + safe-area) on the sticky Navbar and the
+   fixed BottomNav. Kept here rather than hard-coded in a calc so the two stay
+   readable together. */
+:root {
+  --navbar-h: calc(4rem + 1px + env(safe-area-inset-top, 0px));
+  --bottomnav-h: calc(4.5rem + 1px + env(safe-area-inset-bottom, 0px));
+}
+
+/* Mobile gutter + fill *inside* the page ground.
    The page's content column is 95vw on phones (see PageTransition), so the
    ground's content sat flush against the panel edge and large headings read as
-   cramped. This gives the ground its own horizontal padding. It is physical
-   (not `padding-inline`) on purpose: the Tailwind `p*`/`px*` utilities are
-   emitted after this file, so they win the cascade and pages that already pad
-   their root (DoctorsPage, NotFound, the saved-reminder panel) are untouched.
-   `.ds-panel` is for a page whose visible panel is a full-width card (Risk,
-   Chat) — the card pads its own content, so padding the ground would shrink
-   the card away from the 95vw edge. */
+   cramped. This gives the ground its own padding: 1rem a side, plus 1.5rem of
+   breathing room top and bottom so the content never touches the panel edge.
+   It is physical (not `padding-inline`) on purpose: the Tailwind `p*`/`px*`
+   utilities are emitted after this file, so they win the cascade and pages that
+   already pad their root (DoctorsPage, NotFound, the saved-reminder panel) are
+   untouched. `.ds-panel` is for a page whose visible panel is a full-width card
+   (Risk, Chat) — the card pads its own content, so padding the ground would
+   shrink the card away from the 95vw edge.
+
+   The `min-height` makes the ground stretch to the bottom bar: the viewport
+   minus the navbar and the bottom bar, minus the 2vh breathing space top and
+   bottom (PageTransition supplies both 2vh, hence 4vh here). A short page then
+   reads as a full panel instead of a slab floating mid-screen. */
 @media (max-width: 639.98px) {
   .ds-scope {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    min-height: calc(100dvh - var(--navbar-h) - var(--bottomnav-h) - 4vh);
+    padding: 1.5rem 1rem;
   }
 
   .ds-scope.ds-panel {
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
   }
 }
 
