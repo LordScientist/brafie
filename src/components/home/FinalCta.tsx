@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion';
 import { ArrowRight, LockKeyhole } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { RibbonMark } from '@/components/ui/RibbonMark';
 import { ZelligeAccent } from '@/components/ui/ZelligeAccent';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { useLanguage } from '@/hooks/useLanguage';
 
 /**
@@ -19,13 +19,7 @@ export function FinalCta() {
 
   return (
     <section className="py-12">
-      <motion.div
-        className="cta-panel relative isolate overflow-hidden rounded-[2rem] bg-brand-cta bg-[length:200%_200%] p-8 text-center shadow-petal-xl motion-safe:animate-gradient-pan sm:p-14"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.55, ease: 'easeOut' }}
-      >
+      <ScrollItem className="cta-panel relative isolate overflow-hidden rounded-[2rem] bg-brand-cta bg-[length:200%_200%] p-8 text-center shadow-petal-xl motion-safe:animate-gradient-pan sm:p-14">
         <ZelligeAccent variant="field" tone="current" opacity={0.07} className="text-white" />
 
         <div className="relative mx-auto flex max-w-2xl flex-col items-center">
@@ -62,7 +56,7 @@ export function FinalCta() {
 
           <p className="mt-3 text-caption text-white">{cta.note}</p>
         </div>
-      </motion.div>
+      </ScrollItem>
     </section>
   );
 }

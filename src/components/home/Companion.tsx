@@ -1,11 +1,11 @@
 
-import { motion } from 'framer-motion';
 import { ArrowRight, Check, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { PhoneMockup } from '@/components/ui/PhoneMockup';
 import { RibbonMark } from '@/components/ui/RibbonMark';
 import { SafetyNote } from '@/components/ui/SafetyNote';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { useLanguage } from '@/hooks/useLanguage';
 
 /**
@@ -36,12 +36,7 @@ export function Companion() {
       />
 
       <div className="mt-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-        >
+        <ScrollItem>
           <h3 className="text-overline uppercase text-accent-text">{companion.helpsWithTitle}</h3>
           <ul className="mt-3 flex flex-col gap-2.5">
             {companion.helpsWith.map((item) => (
@@ -81,14 +76,9 @@ export function Companion() {
                 {companion.cta}
               </Button>
           </div>
-        </motion.div>
+        </ScrollItem>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
-        >
+        <ScrollItem>
           <PhoneMockup glow>
             <div className="flex h-full flex-col bg-canvas">
               <div className="flex items-center gap-2 border-b border-line px-4 pb-3 pt-9">
@@ -114,7 +104,7 @@ export function Companion() {
               </div>
             </div>
           </PhoneMockup>
-        </motion.div>
+        </ScrollItem>
       </div>
     </section>
   );

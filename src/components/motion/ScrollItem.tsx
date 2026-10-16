@@ -16,6 +16,8 @@ interface ScrollItemProps {
   className?: string;
   /** The element to render. Use `li` inside a `ul`/`ol` to keep list semantics. */
   as?: ScrollItemTag;
+  /** Anchor id, for items that are deep-linked to (e.g. `#sign-3`). */
+  id?: string;
 }
 
 /**
@@ -33,7 +35,7 @@ interface ScrollItemProps {
  * prefers-reduced-motion is handled here directly: the item then renders
  * statically at full size. Once fully faded it is taken out of hit-testing.
  */
-export function ScrollItem({ children, className, as = 'div' }: ScrollItemProps) {
+export function ScrollItem({ children, className, as = 'div', id }: ScrollItemProps) {
   const ref = useRef<HTMLElement>(null);
   const prefersReduced = useReducedMotion();
 
@@ -58,12 +60,14 @@ export function ScrollItem({ children, className, as = 'div' }: ScrollItemProps)
     ref?: Ref<HTMLElement>;
     className?: string;
     style?: MotionStyle;
+    id?: string;
     children?: ReactNode;
   }>;
 
   return (
     <Tag
       ref={ref}
+      id={id}
       className={cn(className)}
       style={prefersReduced ? undefined : { scale, opacity, transformOrigin, pointerEvents }}
     >

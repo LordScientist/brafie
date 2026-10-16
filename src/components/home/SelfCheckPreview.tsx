@@ -1,10 +1,10 @@
 
-import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { PreviewScreen, type PreviewVariant } from '@/components/home/PreviewScreen';
 import { PhoneMockup } from '@/components/ui/PhoneMockup';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { ScrollItem } from '@/components/motion/ScrollItem';
 import { useLanguage } from '@/hooks/useLanguage';
 
 /**
@@ -38,13 +38,10 @@ export function SelfCheckPreview() {
           const deviceFirst = i % 2 === 1;
 
           return (
-            <motion.li
+            <ScrollItem
+              as="li"
               key={step.title}
               className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
             >
               <div className={deviceFirst ? 'lg:order-2' : undefined}>
                 <span className="font-serif text-h3 text-gold-text">
@@ -59,7 +56,7 @@ export function SelfCheckPreview() {
                   <PreviewScreen variant={PREVIEW_SCREENS[i]} />
                 </PhoneMockup>
               </div>
-            </motion.li>
+            </ScrollItem>
           );
         })}
       </ol>

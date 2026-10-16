@@ -115,13 +115,7 @@ export function CompanionPage() {
       {/* ── CAN / CANNOT ─────────────────────────────────────────────────── */}
       <section className="py-10">
         <div className="grid gap-4 lg:grid-cols-2">
-          <motion.div
-            className="rounded-3xl border border-line bg-card p-6 shadow-petal"
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.45, ease: 'easeOut' }}
-          >
+          <ScrollItem className="rounded-3xl border border-line bg-card p-6 shadow-petal">
             <h2 className="flex items-center gap-2.5 text-h3 text-ink">
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-calm-soft text-calm-text">
                 <Check size={20} aria-hidden />
@@ -139,17 +133,11 @@ export function CompanionPage() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </ScrollItem>
 
           {/* Same size, same weight, same shadow as the column above. The
               refusals are not fine print. */}
-          <motion.div
-            className="rounded-3xl border border-line bg-card p-6 shadow-petal"
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.45, delay: 0.05, ease: 'easeOut' }}
-          >
+          <ScrollItem className="rounded-3xl border border-line bg-card p-6 shadow-petal">
             <h2 className="flex items-center gap-2.5 text-h3 text-ink">
               {/* gold, not red: this is a boundary, not an alarm (HARD RULE 3). */}
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-gold-soft text-gold-text">
@@ -168,7 +156,7 @@ export function CompanionPage() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </ScrollItem>
         </div>
       </section>
 
@@ -216,21 +204,21 @@ export function CompanionPage() {
             device; the microphone does. Collapsing these into one reassuring
             sentence would be the easiest lie on the whole site. */}
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-3xl border border-line bg-calm-soft p-5">
+          <ScrollItem className="rounded-3xl border border-line bg-calm-soft p-5">
             <h3 className="flex items-center gap-2 text-h4 text-ink">
               <Keyboard size={18} className="text-calm-text" aria-hidden />
               {page.typedLabel}
             </h3>
             <p className="mt-2 text-body-sm text-muted">{page.privacyTyped}</p>
-          </div>
+          </ScrollItem>
 
-          <div className="rounded-3xl border border-line bg-gold-soft p-5">
+          <ScrollItem className="rounded-3xl border border-line bg-gold-soft p-5">
             <h3 className="flex items-center gap-2 text-h4 text-ink">
               <Mic size={18} className="text-gold-text" aria-hidden />
               {t.chat.voiceLabel}
             </h3>
             <p className="mt-2 text-body-sm text-muted">{page.privacyVoice}</p>
-          </div>
+          </ScrollItem>
         </div>
       </section>
 

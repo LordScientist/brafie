@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
 
-import { motion } from 'framer-motion';
 import { ArrowRight, BellRing, Link2, MapPin, Share2, Stethoscope } from 'lucide-react';
 import { PageTransition } from '@/components/layout/PageTransition';
 import { Button } from '@/components/ui/Button';
@@ -161,16 +160,13 @@ export function SignsPage() {
           const imageFirst = i % 2 === 1;
 
           return (
-            <motion.article
+            <ScrollItem
+              as="article"
               key={sign.label}
               id={signAnchor(i)}
               /* scroll-mt keeps the heading clear of the sticky navbar when the
                  anchor is followed or a deep link is opened. */
               className="grid scroll-mt-24 items-center gap-8 lg:grid-cols-2 lg:gap-14"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
             >
               <div className={imageFirst ? 'lg:order-2' : undefined}>
                 <div className="flex items-center gap-3">
@@ -208,7 +204,7 @@ export function SignsPage() {
                   />
                 </div>
               </div>
-            </motion.article>
+            </ScrollItem>
           );
         })}
       </div>
