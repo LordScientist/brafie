@@ -41,10 +41,10 @@ export function ScrollItem({ children, className, as = 'div', id }: ScrollItemPr
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    // Extends past the viewport on both sides (1.5 viewports of travel) so the
-    // grow/shrink is spread over more scroll — a slower, calmer rate than the
-    // default `['start end', 'end start']`.
-    offset: ['start 1.25', 'end -0.25'],
+    // Extends past the viewport on both sides (2 viewports of travel) so the
+    // grow/shrink is spread over more scroll — a slow, calm rate. Widen the
+    // numbers (e.g. 1.75 / -0.75) to slow it further.
+    offset: ['start 1.5', 'end -0.5'],
   });
 
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3], { ease: easeOut });
