@@ -155,11 +155,11 @@ export function PreventionTracker() {
       <p className="font-medium leading-7 text-muted">{t.learn.preventionIntro}</p>
 
       {/* Progress ring */}
-      <section className="relative flex flex-col items-center rounded-[2rem] border border-white/70 bg-card/85 p-6 text-center shadow-petal-xl">
+      <section className="relative flex flex-col items-center rounded-3xl border border-line bg-card/85 p-6 text-center shadow-petal">
         <div className="relative h-[140px] w-[140px]">
           <AnimatePresence>{count === TOTAL && !reduce && <Confetti />}</AnimatePresence>
           <svg width={140} height={140} className="-rotate-90">
-            <circle cx={70} cy={70} r={RADIUS} fill="none" stroke="rgba(214,51,132,0.12)" strokeWidth={12} />
+            <circle cx={70} cy={70} r={RADIUS} fill="none" stroke="rgba(224,86,155,0.15)" strokeWidth={12} />
             <motion.circle
               cx={70}
               cy={70}
@@ -200,7 +200,7 @@ export function PreventionTracker() {
                 aria-pressed={active}
                 className={cn(
                   'flex w-full min-h-14 items-center gap-3 rounded-2xl border p-4 text-start font-bold transition',
-                  active ? 'border-calm-text bg-accent-teal/10 text-ink' : 'border-line bg-white/55 text-muted',
+                  active ? 'border-calm-text bg-accent-teal/10 text-ink' : 'border-line bg-card/55 text-muted',
                 )}
               >
                 <motion.span
@@ -254,7 +254,7 @@ export function PreventionTracker() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
-            className="rounded-3xl border border-white/70 bg-card/85 p-5 shadow-petal"
+            className="rounded-3xl border border-line bg-card/85 p-5 shadow-petal"
           >
             <div className="mb-3 flex items-center justify-between">
               <span className="font-black text-ink">{p.scoreLabel}</span>
@@ -281,7 +281,7 @@ export function PreventionTracker() {
             exit={{ opacity: 0, y: 14 }}
             className="space-y-3"
           >
-            <div className="overflow-hidden rounded-[1.75rem] bg-brand-cta p-6 text-center text-white shadow-petal-xl">
+            <div className="overflow-hidden rounded-2xl bg-brand-cta p-6 text-center text-white shadow-petal">
               <Trophy className="mx-auto" size={40} />
               <p className="mt-3 text-lg font-black">{p.shareCardLine1}</p>
               <p className="mt-1 text-2xl font-black">{p.shareCardLine2}</p>
@@ -296,7 +296,7 @@ export function PreventionTracker() {
       </AnimatePresence>
 
       {/* Monthly challenge tracker */}
-      <section className="rounded-3xl border border-white/70 bg-card/85 p-5 shadow-petal">
+      <section className="rounded-3xl border border-line bg-card/85 p-5 shadow-petal">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h3 className="text-lg font-black text-ink">{p.challengeTitle}</h3>
           <span className="rounded-full bg-accent-teal/10 px-3 py-1 text-sm font-black text-calm-text tabular-nums">
