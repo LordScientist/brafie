@@ -20,9 +20,9 @@ type Method = 'calendar' | 'push' | 'email' | 'whatsapp';
 
 const TIME_CLOCK: Record<ReminderTime, string> = { morning: '8:00', afternoon: '14:00', evening: '20:00' };
 const TIME_META: { key: ReminderTime; emoji: string; ring: string }[] = [
-  { key: 'morning', emoji: '☀️', ring: 'border-amber-200' },
-  { key: 'afternoon', emoji: '🌤️', ring: 'border-orange-200' },
-  { key: 'evening', emoji: '🌙', ring: 'border-indigo-200' },
+  { key: 'morning', emoji: '☀️', ring: 'border-line' },
+  { key: 'afternoon', emoji: '🌤️', ring: 'border-line' },
+  { key: 'evening', emoji: '🌙', ring: 'border-line' },
 ];
 // Calendar + push in the top row. Email and WhatsApp are full-width cards below,
 // both disabled: neither actually delivers anything yet (see the notes below).
@@ -67,9 +67,9 @@ const NOTIF_BADGE: Record<'granted' | 'denied' | 'unsupported', Record<string, s
 };
 
 const NOTIF_BADGE_STYLE: Record<'granted' | 'denied' | 'unsupported', { bg: string; fg: string; border: string }> = {
-  granted: { bg: '#ECFDF5', fg: '#16A34A', border: '#BBF7D0' },
-  denied: { bg: '#FFF7ED', fg: '#EA580C', border: '#FED7AA' },
-  unsupported: { bg: '#F3F4F6', fg: '#6B7280', border: '#E5E7EB' },
+  granted: { bg: 'rgb(var(--calm-soft))', fg: 'rgb(var(--calm-text))', border: 'rgb(var(--calm) / 0.35)' },
+  denied: { bg: 'rgb(var(--warn-soft))', fg: 'rgb(var(--warn-text))', border: 'rgb(var(--warn) / 0.35)' },
+  unsupported: { bg: 'rgb(var(--sunken))', fg: 'rgb(var(--muted))', border: 'rgb(var(--line))' },
 };
 
 const TEST_BTN_LABEL: Record<string, string> = {
@@ -256,7 +256,7 @@ function DrawnCheck() {
         cy="26"
         r="24"
         fill="none"
-        stroke="#16A34A"
+        stroke="rgb(var(--calm))"
         strokeWidth="3"
         variants={{ hidden: { pathLength: 0 }, visible: { pathLength: 1 } }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -264,7 +264,7 @@ function DrawnCheck() {
       <motion.path
         d="M15 27 l8 8 l15 -17"
         fill="none"
-        stroke="#16A34A"
+        stroke="rgb(var(--calm))"
         strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -423,17 +423,17 @@ export function ReminderPage() {
   if (mode === 'confirmed' && day != null && time != null) {
     return (
       <PageTransition>
-        <section className="relative mx-auto max-w-xl overflow-hidden rounded-[2rem] border border-white/70 bg-card/85 p-6 text-center shadow-petal-xl">
+        <section className="ds-scope relative mx-auto max-w-xl overflow-hidden rounded-3xl border border-line bg-card/85 p-6 text-center shadow-petal">
           {confetti && <Confetti />}
           <DrawnCheck />
           <h1 className="mt-4 text-3xl font-black text-ink">{r.confirmTitle}</h1>
-          <p className="mt-3 text-lg font-bold leading-8 text-primary-800">
+          <p className="mt-3 text-lg font-bold leading-8 text-accent-text">
             {interpolate(r.confirmSummary, { day, time: timeLabel })}
           </p>
 
           <div className="mt-5 rounded-3xl bg-primary-50 p-4">
             <p className="text-sm font-black text-muted">{r.nextReminderLabel}</p>
-            <p className="mt-1 text-xl font-black text-primary-800">{formatDate(nextReminderDate(day), lang)}</p>
+            <p className="mt-1 text-xl font-black text-accent-text">{formatDate(nextReminderDate(day), lang)}</p>
           </div>
 
           {/* Active notification methods, with inline edit for email + WhatsApp. */}
@@ -443,13 +443,13 @@ export function ReminderPage() {
               {methods.includes('calendar') && (
                 <div className="flex items-center justify-between gap-2 rounded-2xl bg-primary-50 px-4 py-3">
                   <span className="min-w-0">
-                    <span className="block font-bold text-primary-800">📅 {tr(CAL_LABEL, lang)}</span>
+                    <span className="block font-bold text-accent-text">📅 {tr(CAL_LABEL, lang)}</span>
                     <span className="block text-xs font-bold text-muted">{tr(CAL_HINT, lang)}</span>
                   </span>
                   <button
                     type="button"
                     onClick={() => downloadReminderIcs(day, time, lang)}
-                    className="shrink-0 rounded-full border border-primary-200 px-3 py-1.5 text-xs font-black text-primary-700"
+                    className="shrink-0 rounded-full border border-line px-3 py-1.5 text-xs font-black text-accent-text"
                   >
                     {tr(CAL_REDOWNLOAD, lang)}
                   </button>
@@ -459,10 +459,10 @@ export function ReminderPage() {
               {methods.includes('push') && (
                 <div className="flex items-center justify-between gap-2 rounded-2xl bg-primary-50 px-4 py-3">
                   <span className="min-w-0">
-                    <span className="block font-bold text-primary-800">🔔 {r.methods.push.label}</span>
+                    <span className="block font-bold text-accent-text">🔔 {r.methods.push.label}</span>
                     <span className="block text-xs font-bold text-muted">{tr(PUSH_HINT, lang)}</span>
                   </span>
-                  <span className="shrink-0 text-sm font-black text-green-600">{tr(ENABLED_LABEL, lang)}</span>
+                  <span className="shrink-0 text-sm font-black text-calm-text">{tr(ENABLED_LABEL, lang)}</span>
                 </div>
               )}
 
@@ -477,14 +477,14 @@ export function ReminderPage() {
                         value={draft}
                         onChange={(e) => setDraft(e.target.value)}
                         placeholder={r.emailPlaceholder}
-                        className="min-h-11 w-full rounded-xl border border-line-control bg-white px-3 font-bold text-ink outline-none focus:border-primary-500"
+                        className="min-h-11 w-full rounded-xl border border-line-control bg-card px-3 font-bold text-ink outline-none focus:border-primary-500"
                       />
                       <div className="mt-2 flex gap-2">
                         <button
                           type="button"
                           onClick={saveEdit}
                           disabled={!isEmail(draft)}
-                          className="rounded-full bg-primary-500 px-4 py-1.5 text-sm font-black text-white disabled:opacity-50"
+                          className="rounded-full bg-primary-600 px-4 py-1.5 text-sm font-black text-white disabled:opacity-50"
                         >
                           {tr(SAVE_LABEL, lang)}
                         </button>
@@ -499,11 +499,11 @@ export function ReminderPage() {
                     </div>
                   ) : (
                     <div className="flex items-center justify-between gap-2">
-                      <span className="min-w-0 truncate font-bold text-primary-800">📧 {email || r.methods.email.label}</span>
+                      <span className="min-w-0 truncate font-bold text-accent-text">📧 {email || r.methods.email.label}</span>
                       <button
                         type="button"
                         onClick={() => startEdit('email')}
-                        className="shrink-0 rounded-full border border-primary-200 px-3 py-1 text-xs font-black text-primary-700"
+                        className="shrink-0 rounded-full border border-line px-3 py-1 text-xs font-black text-accent-text"
                       >
                         ✏️ {tr(EDIT_LABEL, lang)}
                       </button>
@@ -516,8 +516,8 @@ export function ReminderPage() {
                 <div className="rounded-2xl bg-primary-50 px-4 py-3">
                   {editingField === 'whatsapp' ? (
                     <div>
-                      <div className="flex min-h-11 items-center overflow-hidden rounded-xl border border-line-control bg-white focus-within:border-primary-500" dir="ltr">
-                        <span className="grid h-11 place-items-center bg-primary-100 px-3 font-black text-primary-700">+233</span>
+                      <div className="flex min-h-11 items-center overflow-hidden rounded-xl border border-line-control bg-card focus-within:border-primary-500" dir="ltr">
+                        <span className="grid h-11 place-items-center bg-primary-100 px-3 font-black text-accent-text">+233</span>
                         <input
                           type="tel"
                           inputMode="tel"
@@ -533,7 +533,7 @@ export function ReminderPage() {
                           type="button"
                           onClick={saveEdit}
                           disabled={draft.length < 9}
-                          className="rounded-full bg-primary-500 px-4 py-1.5 text-sm font-black text-white disabled:opacity-50"
+                          className="rounded-full bg-primary-600 px-4 py-1.5 text-sm font-black text-white disabled:opacity-50"
                         >
                           {tr(SAVE_LABEL, lang)}
                         </button>
@@ -548,13 +548,13 @@ export function ReminderPage() {
                     </div>
                   ) : (
                     <div className="flex items-center justify-between gap-2">
-                      <span className="min-w-0 truncate font-bold text-primary-800" dir="ltr">
+                      <span className="min-w-0 truncate font-bold text-accent-text" dir="ltr">
                         💬 +233 {whatsappNumber}
                       </span>
                       <button
                         type="button"
                         onClick={() => startEdit('whatsapp')}
-                        className="shrink-0 rounded-full border border-primary-200 px-3 py-1 text-xs font-black text-primary-700"
+                        className="shrink-0 rounded-full border border-line px-3 py-1 text-xs font-black text-accent-text"
                       >
                         ✏️ {tr(EDIT_LABEL, lang)}
                       </button>
@@ -567,7 +567,7 @@ export function ReminderPage() {
 
           {/* WhatsApp confirmation delivered — tell the user to check their phone. */}
           {whatsappSent && methods.includes('whatsapp') && (
-            <div className="mt-4 rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-sm font-bold leading-6 text-green-700">
+            <div className="mt-4 rounded-2xl border border-calm/30 bg-calm-soft px-4 py-3 text-sm font-bold leading-6 text-calm-text">
               {tr(WA_CONFIRMATION_SENT, lang)}
             </div>
           )}
@@ -598,8 +598,8 @@ export function ReminderPage() {
                 onClick={() => showNotification(lang)}
                 style={{
                   background: 'none',
-                  border: '1px solid #D63384',
-                  color: '#D63384',
+                  border: '1px solid rgb(var(--accent-text))',
+                  color: 'rgb(var(--accent-text))',
                   borderRadius: 999,
                   padding: '6px 16px',
                   fontSize: 12,
@@ -636,7 +636,7 @@ export function ReminderPage() {
   // --- Setup wizard ---------------------------------------------------------
   return (
     <PageTransition>
-      <div className="mx-auto max-w-xl space-y-6">
+      <div className="ds-scope mx-auto max-w-xl space-y-6">
         {/* Step 1 — Day */}
         <section>
           <h1 className="text-2xl font-black text-ink sm:text-3xl">{r.stepDayTitle}</h1>
@@ -711,7 +711,7 @@ export function ReminderPage() {
                       aria-pressed={selected}
                       className={cn(
                         'relative flex min-h-[104px] flex-col items-center justify-center gap-1 rounded-2xl border-2 p-3 text-center text-sm font-black transition',
-                        selected ? 'border-primary-500 bg-primary-50 text-primary-700' : 'border-line bg-white/55 text-muted',
+                        selected ? 'border-primary-500 bg-primary-50 text-accent-text' : 'border-line bg-card/55 text-muted',
                       )}
                     >
                       {selected && <CheckCircle2 className="absolute end-2 top-2 text-primary-500" size={18} />}
@@ -747,8 +747,8 @@ export function ReminderPage() {
                   !whatsappAvailable
                     ? 'cursor-not-allowed border-line bg-sunken text-muted'
                     : methods.includes('whatsapp')
-                      ? 'border-primary-500 bg-primary-50 text-primary-700'
-                      : 'border-line bg-white/55 text-muted',
+                      ? 'border-primary-500 bg-primary-50 text-accent-text'
+                      : 'border-line bg-card/55 text-muted',
                 )}
               >
                 {whatsappAvailable && methods.includes('whatsapp') && (
@@ -775,7 +775,7 @@ export function ReminderPage() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder={r.emailPlaceholder}
-                        className="mt-2 min-h-12 w-full rounded-2xl border border-line-control bg-white/70 px-4 font-bold text-ink outline-none focus:border-primary-500"
+                        className="mt-2 min-h-12 w-full rounded-2xl border border-line-control bg-card/70 px-4 font-bold text-ink outline-none focus:border-primary-500"
                       />
                       {!emailOk && email.length > 0 && <p className="mt-1.5 text-sm font-bold text-risk-high">{r.emailInvalid}</p>}
                     </div>
@@ -789,8 +789,8 @@ export function ReminderPage() {
                   <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
                     <div className="mt-4">
                       <label htmlFor="reminder-wa" className="text-sm font-black text-muted">{r.phoneLabel}</label>
-                      <div className="mt-2 flex min-h-12 items-center overflow-hidden rounded-2xl border border-line-control bg-white/70 focus-within:border-primary-500" dir="ltr">
-                        <span className="grid h-12 place-items-center bg-primary-50 px-3 font-black text-primary-700">+233</span>
+                      <div className="mt-2 flex min-h-12 items-center overflow-hidden rounded-2xl border border-line-control bg-card/70 focus-within:border-primary-500" dir="ltr">
+                        <span className="grid h-12 place-items-center bg-primary-50 px-3 font-black text-accent-text">+233</span>
                         <input
                           id="reminder-wa"
                           type="tel"

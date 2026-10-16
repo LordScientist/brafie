@@ -40,14 +40,14 @@ export function GlassCalendar({ selectedDate, onDateSelect, isRTL, months, weekd
   return (
     <div
       dir={isRTL ? 'rtl' : 'ltr'}
-      className="rounded-[2rem] border border-primary-200 bg-white/80 p-5 shadow-petal-xl backdrop-blur-xl"
+      className="rounded-3xl border border-line bg-card/80 p-5 shadow-petal backdrop-blur-xl"
     >
       <div className="flex items-center justify-between">
         <button
           type="button"
           onClick={() => setViewDate((d) => addMonths(d, -1))}
           aria-label={t.common.prevMonth}
-          className="focus-ring grid h-11 w-11 place-items-center rounded-full bg-primary-50 text-primary-600 transition hover:bg-primary-100"
+          className="focus-ring grid h-11 w-11 place-items-center rounded-full bg-primary-50 text-accent-text transition hover:bg-primary-100"
         >
           <ChevronLeft size={20} className="rtl:-scale-x-100" />
         </button>
@@ -68,7 +68,7 @@ export function GlassCalendar({ selectedDate, onDateSelect, isRTL, months, weekd
           type="button"
           onClick={() => setViewDate((d) => addMonths(d, 1))}
           aria-label={t.common.nextMonth}
-          className="focus-ring grid h-11 w-11 place-items-center rounded-full bg-primary-50 text-primary-600 transition hover:bg-primary-100"
+          className="focus-ring grid h-11 w-11 place-items-center rounded-full bg-primary-50 text-accent-text transition hover:bg-primary-100"
         >
           <ChevronRight size={20} className="rtl:-scale-x-100" />
         </button>
@@ -101,7 +101,7 @@ export function GlassCalendar({ selectedDate, onDateSelect, isRTL, months, weekd
                 {date.getDate()}
               </motion.span>
               {today && !selected && (
-                <span className="absolute bottom-1 h-1.5 w-1.5 rounded-full bg-pink-400" />
+                <span className="absolute bottom-1 h-1.5 w-1.5 rounded-full bg-primary-400" />
               )}
             </button>
           );
