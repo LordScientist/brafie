@@ -42,28 +42,28 @@ function MythCard({ myth, truth, mythLabel, truthLabel, cardId, onFlip, isMobile
         <div style={{
           position: 'absolute', inset: 0,
           backfaceVisibility: 'hidden',
-          borderRadius: 16, background: '#FFF0F6', border: '1px solid #FFD0E8',
+          borderRadius: 6, background: 'rgb(var(--pink-soft))', border: '1px solid rgb(var(--line))',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           padding: isMobile ? 14 : 20, textAlign: 'center',
         }}>
-          <span style={{ position: 'absolute', top: 8, right: 12, fontSize: isMobile ? 9 : 11, color: '#DC2626', fontWeight: 700 }}>
+          <span style={{ position: 'absolute', top: 8, right: 12, fontSize: isMobile ? 9 : 11, color: 'rgb(var(--error))', fontWeight: 700 }}>
             ❌ {mythLabel}
           </span>
-          <p style={{ fontSize: isMobile ? 11 : 13, fontWeight: 600, color: '#2D1F2D', lineHeight: 1.6, margin: 0 }}>{myth}</p>
+          <p style={{ fontSize: isMobile ? 11 : 13, fontWeight: 600, color: 'rgb(var(--ink))', lineHeight: 1.6, margin: 0 }}>{myth}</p>
         </div>
         {/* Back — Truth */}
         <div style={{
           position: 'absolute', inset: 0,
           backfaceVisibility: 'hidden',
-          borderRadius: 16, background: '#F0FFF4', border: '1px solid #BBF7D0',
+          borderRadius: 6, background: 'rgb(var(--calm-soft))', border: '1px solid rgb(var(--line))',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           padding: isMobile ? 14 : 20, textAlign: 'center',
           transform: 'rotateY(180deg)',
         }}>
-          <span style={{ position: 'absolute', top: 8, right: 12, fontSize: isMobile ? 9 : 11, color: '#16A34A', fontWeight: 700 }}>
+          <span style={{ position: 'absolute', top: 8, right: 12, fontSize: isMobile ? 9 : 11, color: 'rgb(var(--ok))', fontWeight: 700 }}>
             ✅ {truthLabel}
           </span>
-          <p style={{ fontSize: isMobile ? 11 : 13, fontWeight: 600, color: '#2D1F2D', lineHeight: 1.6, margin: 0 }}>{truth}</p>
+          <p style={{ fontSize: isMobile ? 11 : 13, fontWeight: 600, color: 'rgb(var(--ink))', lineHeight: 1.6, margin: 0 }}>{truth}</p>
         </div>
       </div>
     </div>
