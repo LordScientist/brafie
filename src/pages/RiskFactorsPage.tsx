@@ -56,11 +56,12 @@ export function RiskFactorsPage() {
 
   return (
     <PageTransition>
+      <div className="ds-scope">
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative isolate py-8 lg:py-12">
         <div aria-hidden className="pointer-events-none absolute -inset-x-6 -inset-y-4 -z-10">
           <div className="absolute -start-10 -top-10 h-72 w-72 rounded-full bg-primary-300/20 blur-3xl" />
-          <div className="absolute inset-0 overflow-hidden rounded-[2.5rem]">
+          <div className="absolute inset-0 overflow-hidden rounded-3xl">
             <ZelligeAccent variant="field" tone="brand" opacity={0.05} />
           </div>
         </div>
@@ -115,7 +116,7 @@ export function RiskFactorsPage() {
             <motion.section
               key={group.title}
               id={groupAnchor(i)}
-              className="scroll-mt-24 rounded-[2rem] border border-line bg-card p-5 shadow-petal sm:p-7"
+              className="scroll-mt-24 rounded-3xl border border-line bg-card p-5 shadow-petal sm:p-7"
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
@@ -181,6 +182,7 @@ export function RiskFactorsPage() {
             </Button>
         </div>
       </section>
+      </div>
     </PageTransition>
   );
 }
