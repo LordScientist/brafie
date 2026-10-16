@@ -26,6 +26,7 @@ import { PageTransition } from '@/components/layout/PageTransition';
 import { ScrollItem } from '@/components/motion/ScrollItem';
 import { Button } from '@/components/ui/Button';
 import { Disclaimer } from '@/components/ui/Disclaimer';
+import { Eyebrow } from '@/components/ui/Eyebrow';
 import { IconCard } from '@/components/ui/IconCard';
 import { PhoneMockup } from '@/components/ui/PhoneMockup';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -103,10 +104,7 @@ export function HomePage() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <span className="mb-5 inline-flex items-center gap-2 rounded-pill border border-line bg-card/70 px-4 py-2 text-caption font-bold text-accent-text shadow-petal backdrop-blur-xl">
-            <span className="h-2 w-2 rounded-full bg-calm" />
-            {t.home.badge}
-          </span>
+          <Eyebrow className="mb-5">{t.home.badge}</Eyebrow>
 
           <h1 className="max-w-2xl text-balance text-display text-ink">
             {t.home.heroTitle} <span className="text-accent-text">{t.home.heroHighlight}</span>

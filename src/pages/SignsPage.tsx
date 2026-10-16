@@ -4,6 +4,7 @@ import { ArrowRight, BellRing, Link2, MapPin, Share2, Stethoscope } from 'lucide
 import { PageTransition } from '@/components/layout/PageTransition';
 import { Button } from '@/components/ui/Button';
 import { Disclaimer } from '@/components/ui/Disclaimer';
+import { Eyebrow } from '@/components/ui/Eyebrow';
 import { BrandImage } from '@/components/ui/BrandImage';
 import { PetalMark } from '@/components/ui/PetalMark';
 import { SafetyNote } from '@/components/ui/SafetyNote';
@@ -81,10 +82,7 @@ export function SignsPage() {
         </div>
 
         <div className="max-w-prose">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-pill border border-line bg-card/70 px-4 py-2 text-caption font-bold text-accent-text shadow-petal backdrop-blur-xl">
-            <span className="h-2 w-2 rounded-full bg-calm" />
-            {page.eyebrow}
-          </span>
+          <Eyebrow className="mb-4">{page.eyebrow}</Eyebrow>
 
           <h1 className="text-balance text-display text-ink">{page.title}</h1>
           <p className="mt-5 text-body-lg text-muted">{page.intro}</p>

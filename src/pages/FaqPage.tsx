@@ -3,6 +3,7 @@ import { PageTransition } from '@/components/layout/PageTransition';
 import { Accordion } from '@/components/ui/Accordion';
 import { Button } from '@/components/ui/Button';
 import { Disclaimer } from '@/components/ui/Disclaimer';
+import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ZelligeAccent } from '@/components/ui/ZelligeAccent';
 import { useLanguage } from '@/hooks/useLanguage';
@@ -36,10 +37,7 @@ export function FaqPage() {
         </div>
 
         <div className="max-w-prose">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-pill border border-line bg-card/70 px-4 py-2 text-caption font-bold text-accent-text shadow-petal backdrop-blur-xl">
-            <span className="h-2 w-2 rounded-full bg-calm" />
-            {faq.eyebrow}
-          </span>
+          <Eyebrow className="mb-4">{faq.eyebrow}</Eyebrow>
 
           <h1 className="text-balance text-display text-ink">{faq.title}</h1>
 

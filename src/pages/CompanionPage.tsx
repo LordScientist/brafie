@@ -12,6 +12,7 @@ import {
 import { PageTransition } from '@/components/layout/PageTransition';
 import { Button } from '@/components/ui/Button';
 import { Disclaimer } from '@/components/ui/Disclaimer';
+import { Eyebrow } from '@/components/ui/Eyebrow';
 import { PhoneMockup } from '@/components/ui/PhoneMockup';
 import { RibbonMark } from '@/components/ui/RibbonMark';
 import { SafetyNote } from '@/components/ui/SafetyNote';
@@ -54,10 +55,7 @@ export function CompanionPage() {
         </div>
 
         <div>
-          <span className="mb-4 inline-flex items-center gap-2 rounded-pill border border-line bg-card/70 px-4 py-2 text-caption font-bold text-accent-text shadow-petal backdrop-blur-xl">
-            <span className="h-2 w-2 rounded-full bg-calm" />
-            {page.eyebrow}
-          </span>
+          <Eyebrow className="mb-4">{page.eyebrow}</Eyebrow>
 
           <h1 className="text-balance text-display text-ink">{page.title}</h1>
           <p className="mt-5 max-w-prose text-body-lg text-muted">{page.intro}</p>
