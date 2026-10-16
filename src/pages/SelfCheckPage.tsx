@@ -121,6 +121,7 @@ export function SelfCheckPage() {
 
   return (
     <PageTransition>
+      <div className="ds-scope">
       {/* ── INTRO ────────────────────────────────────────────────────────── */}
       {check.stage === 'intro' && (
         <section className="mx-auto max-w-2xl">
@@ -197,7 +198,7 @@ export function SelfCheckPage() {
               key={check.index}
               {...stepMotion}
               transition={{ duration: reduceMotion ? 0.15 : 0.3, ease: 'easeOut' }}
-              className="rounded-[2rem] border border-line bg-card p-5 text-center shadow-petal-xl sm:p-7"
+              className="rounded-3xl border border-line bg-card p-5 text-center shadow-petal sm:p-7"
             >
               <h2 className="text-h2 text-ink">{check.current.title}</h2>
 
@@ -282,7 +283,7 @@ export function SelfCheckPage() {
       {/* ── DONE ─────────────────────────────────────────────────────────── */}
       {check.stage === 'done' && (
         <section className="mx-auto max-w-3xl">
-          <div className="relative overflow-hidden rounded-[2rem] border border-line bg-card p-6 text-center shadow-petal-xl sm:p-8">
+          <div className="relative overflow-hidden rounded-3xl border border-line bg-card p-6 text-center shadow-petal sm:p-8">
             {/* Confetti already no-ops under prefers-reduced-motion. */}
             <Confetti />
             <CircleCheck size={52} className="mx-auto text-calm" aria-hidden />
@@ -294,8 +295,15 @@ export function SelfCheckPage() {
               of anything — the question she actually has is "so what now?", and
               this is the same four-lane logic the homepage teaches. No score, no
               verdict: the lane is chosen by HER, from what she noticed. */}
-          <div className="mt-10">
+          <div className="relative isolate mt-10">
             <SectionHeading as="h2" size="h2" title={t.selfCheck.nextStepsTitle} accent />
+
+            {/* Same atmosphere as the home next-steps, so the glass reads. */}
+            <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+              <div className="absolute start-2 top-24 h-64 w-64 rounded-full bg-primary-300/30 blur-3xl" />
+              <div className="absolute end-4 top-48 h-72 w-72 rounded-full bg-calm/15 blur-3xl" />
+              <div className="absolute bottom-0 start-1/3 h-56 w-56 rounded-full bg-info/10 blur-3xl" />
+            </div>
 
             <ol className="mt-6 grid gap-4 sm:grid-cols-2">
               {t.home.nextSteps.cards.map((card, i) => {
@@ -303,7 +311,7 @@ export function SelfCheckPage() {
                 return (
                   <li
                     key={card.state}
-                    className="flex flex-col rounded-3xl border border-line bg-card p-5 text-start shadow-petal"
+                    className="glass-card flex flex-col p-5 text-start"
                   >
                     <span className={`grid h-11 w-11 place-items-center rounded-2xl ${LANE_TILES[i]}`}>
                       <Icon size={20} aria-hidden />
@@ -339,7 +347,7 @@ export function SelfCheckPage() {
                 animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
                 exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
                 transition={{ duration: 0.45, ease: 'easeOut' }}
-                className="mt-8 rounded-[2rem] bg-brand-cta p-6 text-start text-white shadow-petal-xl"
+                className="mt-8 rounded-3xl bg-brand-cta p-6 text-start text-white shadow-petal"
               >
                 <div className="flex items-center gap-2">
                   <BellRing size={22} aria-hidden />
@@ -374,6 +382,7 @@ export function SelfCheckPage() {
           <Disclaimer className="mt-6" />
         </section>
       )}
+      </div>
     </PageTransition>
   );
 }
