@@ -55,7 +55,7 @@ export function PreviewScreen({ variant }: { variant: PreviewVariant }) {
           </span>
           <span className="text-[11px] font-black leading-none">Brafie</span>
         </div>
-        <span className="grid h-6 w-6 place-items-center rounded-full bg-primary-100 text-[9px] font-bold text-primary-700">
+        <span className="grid h-6 w-6 place-items-center rounded-full bg-accent-soft text-[9px] font-bold text-accent-text">
           GH
         </span>
       </div>
@@ -73,7 +73,7 @@ export function PreviewScreen({ variant }: { variant: PreviewVariant }) {
             key={label}
             className={cn(
               'flex flex-col items-center gap-0.5 rounded-lg py-1 text-[7px] font-bold text-muted',
-              i === NAV_ACTIVE && 'bg-primary-50 text-primary-700',
+              i === NAV_ACTIVE && 'bg-accent-soft text-accent-text',
             )}
           >
             <Icon size={13} strokeWidth={2.4} />
@@ -155,7 +155,7 @@ function StepScreen() {
     <div className="flex h-full flex-col">
       <p className="text-[6.5px] font-bold uppercase tracking-wide text-accent-text">Breast self-check</p>
       <p className="mt-0.5 text-[7.5px] font-bold text-muted">Step 1 of 5</p>
-      <div className="mt-1 h-1.5 overflow-hidden rounded-pill bg-primary-100">
+      <div className="mt-1 h-1.5 overflow-hidden rounded-pill bg-line">
         <div className="h-full w-1/5 rounded-pill bg-brand-cta" />
       </div>
 
@@ -175,7 +175,7 @@ function StepScreen() {
         </p>
 
         <div className="mt-2 flex justify-center">
-          <span className="grid h-16 w-16 place-items-center rounded-full border-[5px] border-primary-200 border-t-brand-cta text-[11px] font-black">
+          <span className="grid h-16 w-16 place-items-center rounded-full border-[5px] border-line border-t-brand-cta text-[11px] font-black">
             0:55
           </span>
         </div>
