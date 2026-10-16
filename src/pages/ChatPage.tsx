@@ -176,7 +176,7 @@ export function ChatPage() {
 
   return (
     <PageTransition>
-      <div className="ds-scope ds-panel">
+      <div className="ds-scope">
       <section className="mx-auto flex min-h-[calc(100vh-12rem)] max-w-3xl flex-col overflow-hidden rounded-3xl border border-line bg-card/85 shadow-petal">
         <header className="border-b border-line p-5">
           <div className="flex items-center justify-between gap-3">

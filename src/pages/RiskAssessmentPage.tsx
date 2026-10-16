@@ -77,7 +77,7 @@ export function RiskAssessmentPage() {
 
   return (
     <PageTransition>
-      <div className="ds-scope ds-panel">
+      <div className="ds-scope">
       {risk.stage === 'intro' && (
         <section className="mx-auto max-w-2xl rounded-3xl border border-line bg-card/85 p-6 shadow-petal">
           <Gauge className="text-primary-500" size={42} />

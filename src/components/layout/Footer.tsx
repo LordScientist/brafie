@@ -47,7 +47,7 @@ export function Footer() {
   const socials = SOCIAL_LINKS.filter((social) => social.url);
 
   return (
-    <footer className="relative mt-0 overflow-hidden border-t border-line bg-card/70 pb-28 pt-12 sm:mt-16 lg:pb-12">
+    <footer className="relative mt-16 overflow-hidden border-t border-line bg-card/70 pb-28 pt-12 lg:pb-12">
       <ZelligeAccent
         variant="corner"
         tone="gold"
