@@ -62,7 +62,7 @@ export function TwelveSigns() {
                 aria-haspopup="dialog"
                 className="focus-ring group relative flex w-full flex-col items-center overflow-hidden rounded-3xl border border-line bg-card p-4 text-center shadow-petal transition duration-base ease-soft hover:-translate-y-1 hover:shadow-petal-lg active:translate-y-0"
               >
-                {/* The collectible's number. Fraunces — the one editorial lever
+                {/* The collectible's number. Bitter — the one editorial lever
                     we have, and the reason the serif is loaded at all. */}
                 <span className="absolute start-3 top-2 font-serif text-body-sm font-semibold text-gold-text">
                   {String(i + 1).padStart(2, '0')}
@@ -99,7 +99,7 @@ export function TwelveSigns() {
           </Button>
       </div>
 
-      <Modal open={active !== null} onClose={() => setOpenSign(null)} title={active?.label}>
+      <Modal open={active !== null} onClose={() => setOpenSign(null)} title={active?.label} className="home-page">
         {active && (
           <div className="flex flex-col gap-4">
             <div className="flex justify-center">

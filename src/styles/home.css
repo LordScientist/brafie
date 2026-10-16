@@ -1,0 +1,327 @@
+/* ====================================================================
+   Brafie — HOME PAGE theme (scoped)
+
+   This file adapts the home page to the newer design system in
+   `src/styles/DESIGN.md` + `src/styles/brafie-tokens.css` WITHOUT
+   deleting the existing one. Everything here is scoped under
+   `.home-page`, so no other page is touched.
+
+   How it works: the product's Tailwind utilities resolve to RGB-triplet
+   variables from `tokens.css` (`text-ink` -> `rgb(var(--ink))`). By
+   re-declaring those same variables on `.home-page`, every existing
+   utility inside the home page adopts the new palette, radii, elevation
+   and type steps automatically. The old values remain in `:root`, so
+   the rest of the app is unchanged.
+
+   New token names from `brafie-tokens.css` (`--pink-deep`, `--display`,
+   `--paper`, `--radius-card`, ...) are also exposed here so new markup
+   can use them directly.
+   ==================================================================== */
+
+.home-page {
+  color-scheme: light;
+
+  /* -- New palette, in the RGB-triplet format Tailwind consumes ------- */
+  --white: 255 255 255;
+  --paper: 250 246 248; /* #faf6f8 */
+
+  --ink: 18 26 51; /* #121a33 — 16:1 on paper */
+  --muted: 93 102 128; /* #5d6680 */
+  --line: 230 221 227; /* #e6dde3 */
+
+  --pink: 224 86 155; /* #e0569b — large text / decoration only */
+  --pink-deep: 184 51 122; /* #b8337a — buttons, links, small text */
+  --pink-ink: 156 42 104; /* #9c2a68 — hover / pressed */
+  --pink-soft: 253 232 242; /* #fde8f2 — flat bands */
+
+  --ok: 29 107 58; /* #1d6b3a */
+  --error: 180 35 24; /* #b42318 */
+
+  /* -- Remap the existing semantic tokens onto the new palette -------- */
+  --canvas: 250 246 248;
+  --card: 255 255 255;
+  --elevated: 255 255 255;
+  --sunken: 245 240 243;
+  --line-strong: 209 197 204;
+  --line-control: 140 148 165; /* ~3:1 control boundary */
+
+  --faint: 140 148 165;
+  --on-brand: 255 255 255;
+
+  --accent: 224 86 155;
+  --accent-hover: 156 42 104;
+  --accent-text: 184 51 122;
+  --accent-soft: 253 232 242;
+  --accent-ring: 184 51 122;
+
+  /* Brand scale, so `primary-*` / `brand-*` utilities land on the rose. */
+  --brand-50: 253 240 246;
+  --brand-100: 253 232 242;
+  --brand-200: 250 214 229;
+  --brand-300: 224 86 155;
+  --brand-400: 224 86 155;
+  --brand-500: 224 86 155;
+  --brand-600: 156 42 104;
+  --brand-700: 156 42 104;
+  --brand-800: 156 42 104;
+
+  /* One accent: the teal "trust" family becomes the new --ok green, and
+     the decorative gold becomes rose. Info/warn/attention stay, because
+     they carry meaning (a status is not decoration). */
+  --calm: 29 107 58;
+  --calm-text: 29 107 58;
+  --calm-soft: 226 243 232;
+  --gold: 224 86 155;
+  --gold-text: 184 51 122;
+  --gold-soft: 253 232 242;
+
+  /* -- Fonts ---------------------------------------------------------- */
+  --sans: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --display: 'Bitter', Georgia, serif;
+  --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+
+  /* -- Type scale (from DESIGN.md) ------------------------------------ */
+  --text-display: clamp(2.4rem, 6vw, 4.5rem);
+  --text-h1: clamp(2.4rem, 6vw, 4.5rem);
+  --text-h2: clamp(1.8rem, 4vw, 3rem);
+  --text-h3: clamp(1.3rem, 2.4vw, 1.75rem);
+  --text-stat: clamp(2.6rem, 6vw, 4.5rem);
+
+  /* -- Shape: sharp, not soft ----------------------------------------- */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 6px;
+  --radius-3xl: 6px;
+  --radius-btn: 2px;
+  --radius-card: 6px;
+  --radius-pill: 999px;
+
+  /* -- Elevation: thin borders instead of shadows --------------------- */
+  --shadow-1: 0 0 #0000;
+  --shadow-2: 0 0 #0000;
+  --shadow-3: 0 0 #0000;
+  --shadow-4: 0 0 #0000;
+
+  /* -- Gradients: flattened. `bg-brand-cta` etc. still work, but land as
+        a solid tone (a gradient of one colour), so no visual gradient. -- */
+  --gradient-cta: linear-gradient(135deg, #b8337a 0%, #b8337a 100%);
+  --gradient-brand: linear-gradient(135deg, #e0569b 0%, #e0569b 100%);
+  --gradient-soft: linear-gradient(135deg, #fde8f2 0%, #fde8f2 100%);
+  --gradient-text: linear-gradient(135deg, #b8337a 0%, #b8337a 100%);
+  --gradient-berry: linear-gradient(160deg, #121a33 0%, #121a33 100%);
+  --gradient-aurora: none;
+
+  background-color: rgb(var(--canvas));
+  color: rgb(var(--ink));
+  font-family: var(--sans);
+}
+
+/* The page ground. Body sits outside `.home-page`, so its ambient rose
+   blooms are switched off only while the home page is mounted. */
+body:has(.home-page) {
+  background-color: #faf6f8;
+  background-image: none;
+}
+
+/* -- Headings switch to the display serif ---------------------------- */
+.home-page :is(h1, h2, h3) {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+/* -- Buttons: the pill becomes a 2px-cornered rectangle -------------- */
+.home-page .ui-btn {
+  border-radius: var(--radius-btn);
+}
+
+/* The closing CTA panel uses an arbitrary radius; match it to the card. */
+.home-page .home-cta-panel {
+  border-radius: var(--radius-card);
+}
+
+/* -- New semantic classes, available to home markup ------------------ */
+.home-page .eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(var(--accent-text));
+}
+
+.home-page .card {
+  background: rgb(var(--card));
+  border: 1px solid rgb(var(--line));
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+}
+
+.home-page .card:hover {
+  border-color: rgb(var(--accent-text));
+}
+
+.home-page .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 1rem 1.4rem;
+  border-radius: var(--radius-btn);
+  font: 600 0.9rem/1 var(--sans);
+  letter-spacing: 0.02em;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.home-page .btn-primary {
+  background: rgb(var(--pink-deep));
+  color: #fff;
+  border: 1.5px solid rgb(var(--pink-deep));
+}
+
+.home-page .btn-primary:hover {
+  background: rgb(var(--pink-ink));
+  border-color: rgb(var(--pink-ink));
+}
+
+.home-page .btn-outline {
+  background: transparent;
+  color: rgb(var(--ink));
+  border: 1.5px solid rgb(var(--line));
+}
+
+.home-page .btn-outline:hover {
+  border-color: rgb(var(--accent-text));
+  color: rgb(var(--accent-text));
+}
+
+.home-page .band-soft {
+  background: rgb(var(--pink-soft));
+}
+
+.home-page .step-num {
+  font: 600 var(--text-h3)/1 var(--mono);
+  color: rgb(var(--pink));
+}
+
+.home-page .stat-figure {
+  font: 600 var(--text-stat)/1 var(--display);
+  color: rgb(var(--pink));
+}
+
+/* ====================================================================
+   Dark theme for the home page only.
+
+   The app flips dark by adding `.dark` to <html> (see useTheme). Because
+   `.home-page` re-declares the tokens that `tokens.css` also sets under
+   `.dark`, and both selectors have the same specificity, the light
+   `.home-page` block would win in dark mode. `.dark .home-page` (higher
+   specificity) re-declares them with the dark palette.
+
+   The palette is NOT an inversion: it is the same rose identity on a
+   near-black plum ground (#15131a), with the pink kept as the single
+   accent. All text pairs below were measured against WCAG 2.1.
+   ==================================================================== */
+.dark .home-page {
+  color-scheme: dark;
+
+  /* -- Palette ------------------------------------------------------- */
+  --paper: 21 19 26; /* #15131a */
+
+  --ink: 243 238 242; /* #f3eef2 — 16.1:1 on bg  [AAA] */
+  --muted: 180 172 184; /* #b4acb8 —  8.4:1 on bg  [AA]  */
+  --line: 52 47 61; /* #342f3d — hairline, decoration only */
+
+  --pink: 224 86 155; /* #e0569b — numerals, large decoration */
+  --pink-deep: 184 51 122; /* #b8337a — button FILL (white text 5.5:1) */
+  --pink-soft: 45 27 41; /* #2d1b29 — pink ~12% over bg: highlight bands */
+
+  --ok: 74 222 128; /* #4ade80 */
+  --error: 248 113 113; /* #f87171 */
+
+  /* -- Surfaces ------------------------------------------------------ */
+  --canvas: 21 19 26; /* #15131a — page background */
+  --card: 30 27 36; /* #1e1b24 — default surface */
+  --elevated: 30 27 36;
+  --sunken: 16 14 20; /* #100e14 — wells, inset areas */
+  --line-strong: 70 63 81; /* #463f51 */
+  --line-control: 138 131 146; /* #8a8392 — 4.6:1 on surface [UI 3:1] */
+  --faint: 138 131 146; /* icons / hairlines only */
+  --on-brand: 255 255 255;
+
+  /* -- Accent -------------------------------------------------------- */
+  --accent: 224 86 155;
+  --accent-hover: 242 127 181;
+  --accent-text: 242 127 181; /* #f27fb5 — 7.4:1 on bg [AA]: the pink TEXT */
+  --accent-soft: 53 34 50; /* #352232 — pink ~12% over the surface */
+  --accent-ring: 242 127 181;
+
+  /* -- Brand scale (primary-* follows) ------------------------------- */
+  --brand-50: 45 27 41;
+  --brand-100: 61 36 55;
+  --brand-200: 92 48 78;
+  --brand-300: 242 127 181;
+  --brand-400: 242 127 181;
+  --brand-500: 224 86 155;
+  --brand-600: 184 51 122;
+  --brand-700: 184 51 122;
+  --brand-800: 156 42 104;
+
+  /* -- Status colours, tinted from their own hue (never grey) -------- */
+  --calm: 74 222 128;
+  --calm-text: 74 222 128;
+  --calm-soft: 26 51 38;
+  --gold: 224 86 155;
+  --gold-text: 242 127 181;
+  --gold-soft: 45 27 41;
+  --info: 96 165 250;
+  --info-text: 147 197 253;
+  --info-soft: 30 41 66;
+  --warn: 251 191 36;
+  --warn-text: 252 211 77;
+  --warn-soft: 58 44 24;
+  --attention: 248 113 113;
+  --attention-text: 252 165 165;
+  --attention-soft: 61 29 29;
+  --risk-low: 74 222 128;
+  --risk-low-text: 134 239 172;
+  --risk-moderate: 251 191 36;
+  --risk-moderate-text: 252 211 77;
+  --risk-high: 248 113 113;
+  --risk-high-text: 252 165 165;
+
+  /* Urgency ladder for the ordered "what to do next" list. On the dark
+     ground the deeper berry steps disappear, so every numeral is the one
+     brand pink; the level is still carried by the row tint + text label.
+     (Pairs with the --urgency-1..4 light tokens in the pending list change.) */
+  --urgency-1: 224 86 155;
+  --urgency-2: 224 86 155;
+  --urgency-3: 224 86 155;
+  --urgency-4: 224 86 155;
+
+  /* -- Elevation reads as depth, not pink haze ----------------------- */
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-2: 0 4px 24px rgb(0 0 0 / 0.35);
+  --shadow-3: 0 12px 40px rgb(0 0 0 / 0.45);
+  --shadow-4: 0 24px 60px rgb(0 0 0 / 0.55);
+
+  /* -- Gradients flatten to the AA-safe CTA fill --------------------- */
+  --gradient-cta: linear-gradient(135deg, #b8337a 0%, #b8337a 100%);
+  --gradient-brand: linear-gradient(135deg, #e0569b 0%, #e0569b 100%);
+  --gradient-soft: linear-gradient(135deg, #2d1b29 0%, #2d1b29 100%);
+  --gradient-text: linear-gradient(135deg, #f27fb5 0%, #f27fb5 100%);
+  --gradient-berry: linear-gradient(160deg, #15131a 0%, #15131a 100%);
+  --gradient-aurora: none;
+}
+
+/* The page ground. Body sits outside `.home-page`, so it is repainted
+   only while the home page is mounted. */
+.dark body:has(.home-page) {
+  background-color: #15131a;
+  background-image: none;
+}

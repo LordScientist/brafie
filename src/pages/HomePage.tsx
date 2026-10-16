@@ -64,6 +64,10 @@ export function HomePage() {
 
   return (
     <PageTransition>
+      {/* Home-page theme scope. Every token remap in src/styles/home.css is
+          scoped under `.home-page`, so the newer design system applies here
+          and nowhere else. */}
+      <div className="home-page">
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section
         ref={parallax.ref}
@@ -217,6 +221,7 @@ export function HomePage() {
 
       {/* The shared <Footer /> is rendered by <Layout />, so it is already
           below this — it carries the full disclaimer and the privacy pill. */}
+      </div>
     </PageTransition>
   );
 }

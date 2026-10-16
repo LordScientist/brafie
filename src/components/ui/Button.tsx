@@ -62,7 +62,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   ref,
 ) {
   const classes = cn(
-    'focus-ring relative inline-flex select-none items-center justify-center rounded-full font-semibold',
+    'ui-btn focus-ring relative inline-flex select-none items-center justify-center rounded-full font-semibold',
     /* Microinteraction: a 1px lift on hover, a 3% press on tap. Both are
        CSS transforms — composited, and neutralised by the reduced-motion
        block in index.css, so they need no JS guard. The press is the one
