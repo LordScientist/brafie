@@ -23,7 +23,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
       transition={{ duration: DURATION.base, ease: EASE_SOFT }}
       /* The Footer owns the bottom-nav clearance (pb-28), so main only needs
          breathing room before it. */
-      className="mx-auto w-full max-w-content px-4 pb-12 pt-6 sm:px-6"
+      className="mx-auto w-full max-w-content px-6 pb-12 pt-6"
     >
       {children}
     </motion.main>

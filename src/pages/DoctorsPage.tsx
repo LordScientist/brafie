@@ -490,7 +490,7 @@ export default function DoctorsPage() {
   ];
 
   return (
-    <div className="ds-scope mx-auto w-full max-w-6xl px-4 pb-24 pt-6">
+    <div className="ds-scope mx-auto w-full max-w-6xl px-6 pb-24 pt-6">
       {/* Header */}
       <h1 className="text-center text-h2 font-bold text-accent-text">
         🩺 {t('title')}

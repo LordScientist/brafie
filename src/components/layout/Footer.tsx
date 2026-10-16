@@ -56,7 +56,7 @@ export function Footer() {
         className="pointer-events-none absolute end-0 top-0 rotate-90"
       />
 
-      <div className="relative mx-auto max-w-content px-4 sm:px-6">
+      <div className="relative mx-auto max-w-content px-6">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr]">
           {/* Brand */}
           <div>

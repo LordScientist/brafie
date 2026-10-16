@@ -101,7 +101,7 @@ export function MobileDrawer({ open, onClose, groups }: MobileDrawerProps) {
               className="pointer-events-none absolute end-0 top-0 rotate-90"
             />
 
-            <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-4">
+            <div className="flex items-center justify-between gap-3 border-b border-line px-6 py-4">
               <LogoLockup />
               <button
                 ref={closeRef}
@@ -118,7 +118,7 @@ export function MobileDrawer({ open, onClose, groups }: MobileDrawerProps) {
               {groups.map((group, i) => (
                 <div key={group.heading ?? `group-${i}`} className={cn(i > 0 && 'mt-5')}>
                   {group.heading && (
-                    <p className="mb-1 px-4 text-overline font-bold uppercase tracking-wide text-muted">
+                    <p className="mb-1 px-3 text-overline font-bold uppercase tracking-wide text-muted">
                       {group.heading}
                     </p>
                   )}
@@ -131,7 +131,7 @@ export function MobileDrawer({ open, onClose, groups }: MobileDrawerProps) {
                           onClick={onClose}
                           className={({ isActive }) =>
                             cn(
-                              'focus-ring flex min-h-12 items-center rounded-lg px-4 text-body font-bold transition',
+                              'focus-ring flex min-h-12 items-center rounded-lg px-3 text-body font-bold transition',
                               isActive
                                 ? 'bg-accent-soft text-accent-text'
                                 : 'text-muted hover:bg-sunken hover:text-ink',
@@ -147,7 +147,7 @@ export function MobileDrawer({ open, onClose, groups }: MobileDrawerProps) {
               ))}
             </nav>
 
-            <div className="border-t border-line px-5 py-5">
+            <div className="border-t border-line px-6 py-5">
               <button
                 type="button"
                 onClick={toggle}
