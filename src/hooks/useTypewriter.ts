@@ -15,6 +15,8 @@ interface UseTypewriterOptions {
   typeMs?: number;
   /** Per-grapheme delay while erasing, in ms. */
   eraseMs?: number;
+  /** Extra pause after each sentence while typing, in ms. */
+  sentencePauseMs?: number;
 }
 
 /**
@@ -46,6 +48,15 @@ export function segmentGraphemes(text: string): string[] {
   return Array.from(text);
 }
 
+function segmentSentences(text: string): string[] {
+  const Segmenter = (Intl as unknown as { Segmenter?: SegmenterCtor }).Segmenter;
+  if (typeof Segmenter === 'function') {
+    const segmenter = new Segmenter(undefined, { granularity: 'sentence' });
+    return Array.from(segmenter.segment(text), (part) => part.segment);
+  }
+  return [text];
+}
+
 /**
  * The typewriter state machine.
  *
@@ -67,9 +78,20 @@ export function useTypewriter({
   holdMs = 4000,
   typeMs = 55,
   eraseMs = 26,
+  sentencePauseMs = 600,
 }: UseTypewriterOptions) {
   const graphemes = useMemo(() => segmentGraphemes(text), [text]);
   const total = graphemes.length;
+
+  const sentenceEnds = useMemo(() => {
+    const ends = new Set<number>();
+    let acc = 0;
+    for (const sentence of segmentSentences(text)) {
+      acc += segmentGraphemes(sentence).length;
+      ends.add(acc);
+    }
+    return ends;
+  }, [text]);
 
   const [count, setCount] = useState(enabled ? 0 : total);
   const [done, setDone] = useState(!enabled);
@@ -102,7 +124,8 @@ export function useTypewriter({
         if (shown < total) {
           shown += 1;
           setCount(shown);
-          schedule(typeMs);
+          const pause = shown < total && sentenceEnds.has(shown) ? sentencePauseMs : typeMs;
+          schedule(pause);
         } else {
           phase = 'holding';
           schedule(holdMs);
@@ -141,7 +164,7 @@ export function useTypewriter({
       alive = false;
       window.clearTimeout(timer);
     };
-  }, [enabled, total, cycles, holdMs, typeMs, eraseMs]);
+  }, [enabled, total, cycles, holdMs, typeMs, eraseMs, sentencePauseMs, sentenceEnds]);
 
   return { count, total, graphemes, done };
 }

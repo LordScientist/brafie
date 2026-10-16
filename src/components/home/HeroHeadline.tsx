@@ -13,12 +13,16 @@ interface HeroHeadlineProps {
 /**
  * The home hero headline, typed out by a typewriter effect.
  *
+ * The text never reflows while typing: every grapheme is rendered from the first
+ * paint and the unrevealed ones are simply `invisible`, so they still occupy
+ * their final space and the line breaks are fixed. The caret is taken out of
+ * flow and pinned to the end of the last revealed grapheme, so it travels along
+ * the finished lines instead of pushing the text around.
+ *
  * Three rules keep it honest:
  * - The complete headline lives once in the DOM for screen readers (`sr-only`);
- *   every animated copy is `aria-hidden`, so assistive tech never hears it
+ *   the animated copy is `aria-hidden`, so assistive tech never hears it
  *   re-typing.
- * - An invisible copy of the full headline reserves its height from the first
- *   paint, so the typing never shifts the layout.
  * - Reduced motion skips the effect entirely: the static headline, no caret.
  *
  * Returning to the page remounts this component, so the animation restarts.
@@ -30,25 +34,35 @@ export function HeroHeadline({ title, highlight, className }: HeroHeadlineProps)
 
   // The grapheme index where the accent-coloured half begins.
   const split = segmentGraphemes(`${title} `).length;
-  const lead = graphemes.slice(0, Math.min(count, split)).join('');
-  const tail = count > split ? graphemes.slice(split, count).join('') : '';
+  const showCaret = !done && !prefersReduced;
 
   return (
-    <h1 className={cn('relative text-balance text-display text-ink', className)}>
+    <h1 className={cn('text-balance text-display text-ink', className)}>
       <span className="sr-only">{full}</span>
 
-      {/* Reserves the full height so the typing never moves the page. */}
-      <span aria-hidden className="invisible">
-        {title} <span className="text-accent-text">{highlight}</span>
-      </span>
-
-      {/* The visible copy, overlaid on the reserved space. */}
-      <span aria-hidden className="absolute inset-0">
-        {lead}
-        <span className="text-accent-text">{tail}</span>
-        {!done && !prefersReduced && (
-          <span className="ms-0.5 inline-block h-[0.85em] w-[3px] -translate-y-[0.06em] rounded-full bg-accent-text align-middle motion-safe:animate-caret" />
+      <span aria-hidden>
+        {showCaret && count === 0 && (
+          <span className="me-0.5 inline-block h-[0.85em] w-[3px] -translate-y-[0.06em] rounded-full bg-accent-text align-middle motion-safe:animate-caret" />
         )}
+
+        {graphemes.map((grapheme, i) => {
+          const isLast = i === count - 1;
+          return (
+            <span
+              key={i}
+              className={cn(
+                i >= split && 'text-accent-text',
+                i >= count && 'invisible',
+                isLast && 'relative',
+              )}
+            >
+              {grapheme}
+              {showCaret && isLast && (
+                <span className="pointer-events-none absolute start-full top-1/2 h-[0.85em] w-[3px] -translate-y-1/2 rounded-full bg-accent-text motion-safe:animate-caret" />
+              )}
+            </span>
+          );
+        })}
       </span>
     </h1>
   );
