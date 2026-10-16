@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { Disclaimer } from '@/components/ui/Disclaimer';
 import { SafetyNote } from '@/components/ui/SafetyNote';
 import { useLanguage } from '@/hooks/useLanguage';
+import { cn } from '@/utils/cn';
 import { Map as MlMap, Marker, Popup, NavigationControl } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
@@ -122,11 +123,11 @@ const T: Record<string, Record<string, string>> = {
 
 // ── Facility type colors ──
 const TYPE_COLORS: Record<string, string> = {
-  hospital: '#B41F18',
-  clinic: '#B5246E',
-  doctor: '#1D4ED8',
-  pharmacy: '#15803D',
-  laboratory: '#6D28D9',
+  hospital: 'rgb(var(--risk-high))',
+  clinic: 'rgb(var(--accent))',
+  doctor: 'rgb(var(--info))',
+  pharmacy: 'rgb(var(--calm))',
+  laboratory: 'rgb(var(--warn))',
 };
 
 const TYPE_ICONS: Record<string, string> = {
@@ -426,7 +427,7 @@ export default function DoctorsPage() {
       el.style.width = '32px';
       el.style.height = '32px';
       el.style.borderRadius = '50%';
-      el.style.background = TYPE_COLORS[fac.type] || '#B5246E';
+      el.style.background = TYPE_COLORS[fac.type] || 'rgb(var(--accent))';
       el.style.border = '3px solid white';
       el.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
       el.style.display = 'flex';
@@ -439,11 +440,11 @@ export default function DoctorsPage() {
 
       const popup = new Popup({ offset: 20, closeButton: false }).setHTML(`
         <div style="padding:8px;font-family:inherit;min-width:180px">
-          <strong style="font-size:14px;color:#2D1F2D">${fac.name}</strong><br/>
+          <strong style="font-size:14px;color:rgb(var(--ink))">${fac.name}</strong><br/>
           <span style="font-size:11px;color:${TYPE_COLORS[fac.type]};font-weight:600">${TYPE_ICONS[fac.type]} ${fac.type}${fac.specialty ? ' · ' + fac.specialty : ''}</span><br/>
-          <span style="font-size:11px;color:#7A6473">${fac.distance} ${t('km')}</span>
-          ${fac.address ? `<br/><span style="font-size:11px;color:#666">📍 ${fac.address}</span>` : ''}
-          ${fac.phone ? `<br/><a href="tel:${fac.phone}" style="font-size:12px;color:#B5246E;font-weight:600">📞 ${fac.phone}</a>` : ''}
+          <span style="font-size:11px;color:rgb(var(--muted))">${fac.distance} ${t('km')}</span>
+          ${fac.address ? `<br/><span style="font-size:11px;color:rgb(var(--muted))">📍 ${fac.address}</span>` : ''}
+          ${fac.phone ? `<br/><a href="tel:${fac.phone}" style="font-size:12px;color:rgb(var(--accent-text));font-weight:600">📞 ${fac.phone}</a>` : ''}
         </div>
       `);
 
@@ -488,38 +489,33 @@ export default function DoctorsPage() {
   ];
 
   return (
-    <div style={{ padding: '24px 16px 100px', maxWidth: 1200, margin: '0 auto' }}>
+    <div className="ds-scope mx-auto w-full max-w-6xl px-4 pb-24 pt-6">
       {/* Header */}
-      <h1 style={{ fontSize: 26, fontWeight: 700, color: '#B5246E', textAlign: 'center', marginBottom: 4 }}>
+      <h1 className="text-center text-h2 font-bold text-accent-text">
         🩺 {t('title')}
       </h1>
-      <p style={{ textAlign: 'center', color: '#7A6473', marginBottom: 20, fontSize: 14 }}>
+      <p className="mb-5 mt-1 text-center text-caption text-muted">
         {t('subtitle')}
       </p>
 
       {/* These listings are unvetted OpenStreetMap data. Presenting a list of
           named doctors with no caveat reads as a vetted referral — a claim we
           have not earned and cannot stand behind. Say so, above the results. */}
-      <div style={{ marginBottom: 16 }}>
+      <div className="mb-4">
         <SafetyNote variant="care">{tr.doctors.notVerified}</SafetyNote>
       </div>
 
       {/* Location bar */}
-      <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
+      <div className="mb-4 flex flex-wrap gap-2">
         <button
           type="button"
           onClick={detectLocation}
-          style={{
-            background: '#B5246E', color: 'white', border: 'none',
-            borderRadius: 12, padding: '10px 16px', fontSize: 13,
-            fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
-            whiteSpace: 'nowrap',
-          }}
+          className="shrink-0 whitespace-nowrap rounded-xl bg-primary-600 px-4 py-2.5 text-caption font-semibold text-white"
         >
           {t('detectLocation')}
         </button>
-        <div style={{ flex: 1, position: 'relative', minWidth: 200 }} onClick={(e) => e.stopPropagation()}>
-          <div style={{ display: 'flex', gap: 0 }}>
+        <div className="relative min-w-[200px] flex-1" onClick={(e) => e.stopPropagation()}>
+          <div className="flex">
             <input
               value={searchQuery}
               onChange={(e) => handleSearchInput(e.target.value)}
@@ -527,21 +523,13 @@ export default function DoctorsPage() {
               onKeyDown={(e) => { if (e.key === 'Enter') { setShowSuggestions(false); handleCitySearch(); } }}
               placeholder={t('searchPlaceholder')}
               aria-label={t('searchPlaceholder')}
-              style={{
-                flex: 1, padding: '10px 14px', borderRadius: '12px 0 0 12px',
-                border: '2px solid #9A7F8F', fontSize: 13, outline: 'none',
-                fontFamily: 'inherit',
-              }}
+              className="min-w-0 flex-1 rounded-l-xl border-2 border-line-control bg-card px-3.5 py-2.5 text-caption text-ink outline-none"
             />
             <button
               type="button"
               onClick={handleCitySearch}
               aria-label={t('searchPlaceholder')}
-              style={{
-                background: '#F0F0F0', border: '2px solid #9A7F8F', borderLeft: 'none',
-                borderRadius: '0 12px 12px 0', padding: '10px 14px', cursor: 'pointer',
-                fontSize: 16,
-              }}
+              className="rounded-r-xl border-2 border-l-0 border-line-control bg-sunken px-3.5 py-2.5 text-base"
             >
               🔍
             </button>
@@ -549,13 +537,7 @@ export default function DoctorsPage() {
 
           {/* Autocomplete dropdown */}
           {showSuggestions && suggestions.length > 0 && (
-            <div style={{
-              position: 'absolute', top: '100%', left: 0, right: 0,
-              background: 'white', borderRadius: '0 0 12px 12px',
-              boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
-              zIndex: 100, maxHeight: 300, overflowY: 'auto',
-              border: '1px solid #9A7F8F', borderTop: 'none',
-            }}>
+            <div className="absolute left-0 right-0 top-full z-[100] max-h-[300px] overflow-y-auto rounded-b-xl border border-t-0 border-line-control bg-card shadow-petal-lg">
               {suggestions.map((s, i) => {
                 const parts = s.display_name.split(',');
                 const mainName = parts[0]?.trim();
@@ -567,22 +549,16 @@ export default function DoctorsPage() {
                   <div
                     key={i}
                     onClick={() => selectSuggestion(s)}
-                    style={{
-                      padding: '10px 14px', cursor: 'pointer',
-                      borderBottom: i < suggestions.length - 1 ? '1px solid #F5F5F5' : 'none',
-                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = '#FFF0F5')}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = 'white')}
+                    className="flex cursor-pointer items-center justify-between border-b border-line px-3.5 py-2.5 last:border-b-0 hover:bg-accent-soft"
                   >
                     <div>
-                      <div style={{ fontSize: 14, fontWeight: 600, color: '#2D1F2D' }}>
+                      <div className="text-sm font-semibold text-ink">
                         📍 {mainName}
                       </div>
-                      <div style={{ fontSize: 11, color: '#7A6473' }}>{subName}</div>
+                      <div className="text-[11px] text-muted">{subName}</div>
                     </div>
                     {dist !== null && (
-                      <span style={{ fontSize: 11, color: '#B5246E', fontWeight: 600, flexShrink: 0 }}>
+                      <span className="shrink-0 text-[11px] font-semibold text-accent-text">
                         ~{dist} {t('km')}
                       </span>
                     )}
@@ -596,24 +572,23 @@ export default function DoctorsPage() {
 
       {/* City name + radius */}
       {cityName && (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 8 }}>
-          <span style={{ fontSize: 15, fontWeight: 600, color: '#2D1F2D' }}>
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+          <span className="text-body-sm font-semibold text-ink">
             📍 {cityName} · {filteredFacilities.length} {t('found')}
           </span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ fontSize: 12, color: '#7A6473' }}>{t('radius')}:</span>
+          <div className="flex items-center gap-2">
+            <span className="text-[12px] text-muted">{t('radius')}:</span>
             {[5, 10, 20, 50].map((rad) => (
               <button
                 type="button"
                 key={rad}
                 onClick={() => handleRadiusChange(rad)}
-                style={{
-                  background: radius === rad ? '#B5246E' : 'white',
-                  color: radius === rad ? 'white' : '#666',
-                  border: radius === rad ? 'none' : '1px solid #9A7F8F',
-                  borderRadius: 8, padding: '4px 10px', fontSize: 12,
-                  fontWeight: 600, cursor: 'pointer',
-                }}
+                className={cn(
+                  'rounded-lg px-2.5 py-1 text-[12px] font-semibold',
+                  radius === rad
+                    ? 'bg-primary-600 text-white'
+                    : 'border border-line-control bg-card text-muted',
+                )}
               >
                 {rad}{t('km')}
               </button>
@@ -623,20 +598,18 @@ export default function DoctorsPage() {
       )}
 
       {/* Filters */}
-      <div style={{ display: 'flex', gap: 8, marginBottom: 16, overflowX: 'auto' }}>
+      <div className="mb-4 flex gap-2 overflow-x-auto">
         {filters.map((f) => (
           <button
             type="button"
             key={f.key}
             onClick={() => setActiveFilter(f.key)}
-            style={{
-              background: activeFilter === f.key ? '#B5246E' : 'white',
-              color: activeFilter === f.key ? 'white' : '#666',
-              border: activeFilter === f.key ? 'none' : '1px solid #9A7F8F',
-              borderRadius: 20, padding: '8px 16px', fontSize: 12,
-              fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap',
-              fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 4,
-            }}
+            className={cn(
+              'flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full px-4 py-2 text-[12px] font-semibold',
+              activeFilter === f.key
+                ? 'bg-primary-600 text-white'
+                : 'border border-line-control bg-card text-muted',
+            )}
           >
             {f.icon} {f.label}
           </button>
@@ -645,14 +618,14 @@ export default function DoctorsPage() {
 
       {/* Error */}
       {locationError && (
-        <div style={{ background: '#FDECEA', border: '1px solid #F5C6C6', borderRadius: 12, padding: '10px 16px', marginBottom: 12, color: '#B41F18', fontSize: 13 }}>
+        <div className="mb-3 rounded-xl border border-attention/30 bg-attention-soft px-4 py-2.5 text-caption text-attention-text">
           {locationError}
         </div>
       )}
 
       {/* Loading */}
       {loading && (
-        <div style={{ textAlign: 'center', padding: 20, color: '#B5246E', fontSize: 14 }}>
+        <div className="py-5 text-center text-caption text-accent-text">
           {t('loading')}
         </div>
       )}
@@ -662,22 +635,18 @@ export default function DoctorsPage() {
         ref={mapContainer}
         role="region"
         aria-label={t('title')}
-        style={{
-          width: '100%', height: '55vh', borderRadius: 20,
-          boxShadow: '0 4px 24px rgba(214,51,132,0.1)',
-          border: '2px solid #FFE0EC', marginBottom: 20,
-        }}
+        className="mb-5 h-[55vh] w-full overflow-hidden rounded-2xl border-2 border-line shadow-petal"
       />
 
       {/* No results */}
       {!loading && facilities.length === 0 && userLocation && (
-        <div style={{ textAlign: 'center', padding: 24, color: '#7A6473', fontSize: 14 }}>
+        <div className="py-6 text-center text-caption text-muted">
           {t('noResults')}
         </div>
       )}
 
       {/* Facility cards list */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <div className="flex flex-col gap-3">
         {filteredFacilities.slice(0, 20).map((fac) => (
           <div
             key={fac.id}
@@ -685,51 +654,41 @@ export default function DoctorsPage() {
               setSelectedFacility(fac);
               mapRef.current?.flyTo({ center: [fac.lng, fac.lat], zoom: 16 });
             }}
-            style={{
-              display: 'flex', alignItems: 'center', gap: 14,
-              background: selectedFacility?.id === fac.id ? '#FFF0F5' : 'white',
-              borderRadius: 16, padding: '14px 16px',
-              border: selectedFacility?.id === fac.id ? '2px solid #B5246E' : '1px solid #F0E0EC',
-              cursor: 'pointer', boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-              transition: 'all 0.2s',
-            }}
+            className={cn(
+              'flex cursor-pointer items-center gap-3.5 rounded-2xl px-4 py-3.5 transition',
+              selectedFacility?.id === fac.id
+                ? 'border-2 border-primary-500 bg-accent-soft'
+                : 'border border-line bg-card shadow-petal',
+            )}
           >
             {/* Type icon */}
-            <div style={{
-              width: 44, height: 44, borderRadius: '50%',
-              background: (TYPE_COLORS[fac.type] || '#B5246E') + '15',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 22, flexShrink: 0,
-            }}>
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-sunken text-[22px]">
               {TYPE_ICONS[fac.type]}
             </div>
 
             {/* Info */}
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 14, fontWeight: 600, color: '#2D1F2D', marginBottom: 2 }}>
+            <div className="min-w-0 flex-1">
+              <div className="mb-0.5 text-sm font-semibold text-ink">
                 {fac.name}
               </div>
-              <div style={{ fontSize: 11, color: TYPE_COLORS[fac.type], fontWeight: 600 }}>
+              <div className="text-[11px] font-semibold" style={{ color: TYPE_COLORS[fac.type] }}>
                 {fac.type}{fac.specialty ? ' · ' + fac.specialty : ''}
               </div>
               {fac.address && (
-                <div style={{ fontSize: 11, color: '#7A6473', marginTop: 2 }}>📍 {fac.address}</div>
+                <div className="mt-0.5 text-[11px] text-muted">📍 {fac.address}</div>
               )}
             </div>
 
             {/* Distance + call */}
-            <div style={{ textAlign: 'center', flexShrink: 0 }}>
-              <div style={{ fontSize: 14, fontWeight: 700, color: '#B5246E' }}>
+            <div className="shrink-0 text-center">
+              <div className="text-sm font-bold text-accent-text">
                 {fac.distance} {t('km')}
               </div>
               {fac.phone && (
                 <a
                   href={`tel:${fac.phone}`}
                   onClick={(e) => e.stopPropagation()}
-                  style={{
-                    fontSize: 11, color: '#15803D', fontWeight: 600,
-                    textDecoration: 'none', display: 'block', marginTop: 4,
-                  }}
+                  className="mt-1 block text-[11px] font-semibold text-calm-text no-underline"
                 >
                   {t('call')}
                 </a>
@@ -740,7 +699,7 @@ export default function DoctorsPage() {
       </div>
 
       {/* HARD RULE 2: this page routes a woman toward care. */}
-      <div style={{ marginTop: 24 }}>
+      <div className="mt-6">
         <Disclaimer />
       </div>
     </div>
