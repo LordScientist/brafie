@@ -1,5 +1,5 @@
-import { useEffect, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useMemo, useRef } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Baby, Calendar, Cigarette, Clock, Heart, Pill, Scale, Users } from 'lucide-react';
 import { PageTransition } from '@/components/layout/PageTransition';
@@ -23,6 +23,24 @@ export function LearnPage() {
   useEffect(() => {
     if (!tabs.some(([key]) => key === tab)) setTab(tabs[0][0]);
   }, [tabs, tab, setTab]);
+
+  // Bring the active tab into view whenever it changes. The pill bar scrolls
+  // past the edge on a narrow phone, so a tab reached via the arrows (or
+  // restored from storage) could otherwise be off-screen. Centre it in the
+  // bar; skip the glide under prefers-reduced-motion.
+  const tabBarRef = useRef<HTMLDivElement>(null);
+  const activeTabRef = useRef<HTMLButtonElement>(null);
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    const bar = tabBarRef.current;
+    const btn = activeTabRef.current;
+    if (!bar || !btn) return;
+    const btnLeft =
+      btn.getBoundingClientRect().left - bar.getBoundingClientRect().left + bar.scrollLeft;
+    const target = btnLeft - (bar.clientWidth - btn.clientWidth) / 2;
+    bar.scrollTo({ left: Math.max(0, target), behavior: reduce ? 'auto' : 'smooth' });
+  }, [tab, reduce]);
 
   const currentIndex = tabs.findIndex(([key]) => key === tab);
   const prevTab = currentIndex > 0 ? tabs[currentIndex - 1] : null;
@@ -55,10 +73,11 @@ export function LearnPage() {
         <h1 className="text-4xl font-black text-ink">{t.learn.title}</h1>
         <p className="mt-2 max-w-2xl text-lg font-medium text-muted">{t.learn.subtitle}</p>
       </div>
-      <div className="hide-scrollbar mb-6 flex gap-2 overflow-x-auto rounded-full border border-line bg-card/80 p-1 shadow-petal">
+      <div ref={tabBarRef} className="hide-scrollbar mb-6 flex gap-2 overflow-x-auto rounded-full border border-line bg-card/80 p-1 shadow-petal">
         {tabs.map(([key, label]) => (
           <button
             key={key}
+            ref={tab === key ? activeTabRef : undefined}
             onClick={() => setTab(key)}
             className={cn('min-h-11 shrink-0 rounded-full px-5 text-sm font-black text-muted transition', tab === key && 'bg-primary-600 text-white shadow-petal')}
           >
