@@ -99,7 +99,7 @@ export function TwelveSigns() {
           </Button>
       </div>
 
-      <Modal open={active !== null} onClose={() => setOpenSign(null)} title={active?.label} className="home-page">
+      <Modal open={active !== null} onClose={() => setOpenSign(null)} title={active?.label} className="ds-scope">
         {active && (
           <div className="flex flex-col gap-4">
             <div className="flex justify-center">

@@ -1,6 +1,6 @@
 @import './styles/fonts.css';
 @import './styles/tokens.css';
-@import './styles/home.css';
+@import './styles/design-scope.css';
 
 @tailwind base;
 @tailwind components;

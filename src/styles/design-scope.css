@@ -1,24 +1,25 @@
 /* ====================================================================
-   Brafie — HOME PAGE theme (scoped)
+   Brafie — DESIGN-SYSTEM SCOPE (opt-in, per page)
 
-   This file adapts the home page to the newer design system in
+   This file adapts a page to the newer design system in
    `src/styles/DESIGN.md` + `src/styles/brafie-tokens.css` WITHOUT
    deleting the existing one. Everything here is scoped under
-   `.home-page`, so no other page is touched.
+   `.ds-scope`; a page opts in by putting that class on its root, so no
+   other page is touched.
 
    How it works: the product's Tailwind utilities resolve to RGB-triplet
    variables from `tokens.css` (`text-ink` -> `rgb(var(--ink))`). By
-   re-declaring those same variables on `.home-page`, every existing
-   utility inside the home page adopts the new palette, radii, elevation
-   and type steps automatically. The old values remain in `:root`, so
-   the rest of the app is unchanged.
+   re-declaring those same variables on `.ds-scope`, every existing
+   utility inside the scoped page adopts the new palette, radii,
+   elevation and type steps automatically. The old values remain in
+   `:root`, so unscoped pages are unchanged.
 
    New token names from `brafie-tokens.css` (`--pink-deep`, `--display`,
    `--paper`, `--radius-card`, ...) are also exposed here so new markup
    can use them directly.
    ==================================================================== */
 
-.home-page {
+.ds-scope {
   color-scheme: light;
 
   /* -- New palette, in the RGB-triplet format Tailwind consumes ------- */
@@ -119,15 +120,15 @@
   font-family: var(--sans);
 }
 
-/* The page ground. Body sits outside `.home-page`, so its ambient rose
+/* The page ground. Body sits outside `.ds-scope`, so its ambient rose
    blooms are switched off only while the home page is mounted. */
-body:has(.home-page) {
+body:has(.ds-scope) {
   background-color: #faf6f8;
   background-image: none;
 }
 
 /* -- Headings switch to the display serif ---------------------------- */
-.home-page :is(h1, h2, h3) {
+.ds-scope :is(h1, h2, h3) {
   font-family: var(--display);
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -135,17 +136,17 @@ body:has(.home-page) {
 }
 
 /* -- Buttons: the pill becomes a 2px-cornered rectangle -------------- */
-.home-page .ui-btn {
+.ds-scope .ui-btn {
   border-radius: var(--radius-btn);
 }
 
 /* The closing CTA panel uses an arbitrary radius; match it to the card. */
-.home-page .home-cta-panel {
+.ds-scope .cta-panel {
   border-radius: var(--radius-card);
 }
 
 /* -- New semantic classes, available to home markup ------------------ */
-.home-page .eyebrow {
+.ds-scope .eyebrow {
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -153,14 +154,14 @@ body:has(.home-page) {
   color: rgb(var(--accent-text));
 }
 
-.home-page .card {
+.ds-scope .card {
   background: rgb(var(--card));
   border: 1px solid rgb(var(--line));
   border-radius: var(--radius-card);
   padding: 1.5rem;
 }
 
-.home-page .card:hover {
+.ds-scope .card:hover {
   border-color: rgb(var(--accent-text));
 }
 
@@ -168,7 +169,7 @@ body:has(.home-page) {
    A frosted panel: a translucent gradient of the surface colour, a blur
    of whatever sits behind it, and a bright inner top edge for the glass
    sheen. Used by the "what to do next" cards. */
-.home-page .glass-card {
+.ds-scope .glass-card {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-card);
@@ -185,7 +186,7 @@ body:has(.home-page) {
     0 14px 44px rgb(18 26 51 / 0.08);
 }
 
-.home-page .btn {
+.ds-scope .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -199,38 +200,38 @@ body:has(.home-page) {
   transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-.home-page .btn-primary {
+.ds-scope .btn-primary {
   background: rgb(var(--pink-deep));
   color: #fff;
   border: 1.5px solid rgb(var(--pink-deep));
 }
 
-.home-page .btn-primary:hover {
+.ds-scope .btn-primary:hover {
   background: rgb(var(--pink-ink));
   border-color: rgb(var(--pink-ink));
 }
 
-.home-page .btn-outline {
+.ds-scope .btn-outline {
   background: transparent;
   color: rgb(var(--ink));
   border: 1.5px solid rgb(var(--line));
 }
 
-.home-page .btn-outline:hover {
+.ds-scope .btn-outline:hover {
   border-color: rgb(var(--accent-text));
   color: rgb(var(--accent-text));
 }
 
-.home-page .band-soft {
+.ds-scope .band-soft {
   background: rgb(var(--pink-soft));
 }
 
-.home-page .step-num {
+.ds-scope .step-num {
   font: 600 var(--text-h3)/1 var(--mono);
   color: rgb(var(--pink));
 }
 
-.home-page .stat-figure {
+.ds-scope .stat-figure {
   font: 600 var(--text-stat)/1 var(--display);
   color: rgb(var(--pink));
 }
@@ -239,16 +240,16 @@ body:has(.home-page) {
    Dark theme for the home page only.
 
    The app flips dark by adding `.dark` to <html> (see useTheme). Because
-   `.home-page` re-declares the tokens that `tokens.css` also sets under
+   `.ds-scope` re-declares the tokens that `tokens.css` also sets under
    `.dark`, and both selectors have the same specificity, the light
-   `.home-page` block would win in dark mode. `.dark .home-page` (higher
+   `.ds-scope` block would win in dark mode. `.dark .ds-scope` (higher
    specificity) re-declares them with the dark palette.
 
    The palette is NOT an inversion: it is the same rose identity on a
    near-black plum ground (#15131a), with the pink kept as the single
    accent. All text pairs below were measured against WCAG 2.1.
    ==================================================================== */
-.dark .home-page {
+.dark .ds-scope {
   color-scheme: dark;
 
   /* -- Palette ------------------------------------------------------- */
@@ -340,15 +341,15 @@ body:has(.home-page) {
   --gradient-aurora: none;
 }
 
-/* The page ground. Body sits outside `.home-page`, so it is repainted
+/* The page ground. Body sits outside `.ds-scope`, so it is repainted
    only while the home page is mounted. */
-.dark body:has(.home-page) {
+.dark body:has(.ds-scope) {
   background-color: #15131a;
   background-image: none;
 }
 
 /* Glass on the dark ground: a lighter frosted panel with a faint top sheen. */
-.dark .home-page .glass-card {
+.dark .ds-scope .glass-card {
   background: linear-gradient(
     150deg,
     rgb(var(--card) / 0.62),

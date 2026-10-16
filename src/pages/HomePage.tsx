@@ -64,10 +64,10 @@ export function HomePage() {
 
   return (
     <PageTransition>
-      {/* Home-page theme scope. Every token remap in src/styles/home.css is
-          scoped under `.home-page`, so the newer design system applies here
+      {/* Design-system scope. Every token remap in src/styles/design-scope.css
+          is scoped under `.ds-scope`, so the newer design system applies here
           and nowhere else. */}
-      <div className="home-page">
+      <div className="ds-scope">
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section
         ref={parallax.ref}

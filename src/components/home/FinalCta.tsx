@@ -20,7 +20,7 @@ export function FinalCta() {
   return (
     <section className="py-12">
       <motion.div
-        className="home-cta-panel relative isolate overflow-hidden rounded-[2rem] bg-brand-cta bg-[length:200%_200%] p-8 text-center shadow-petal-xl motion-safe:animate-gradient-pan sm:p-14"
+        className="cta-panel relative isolate overflow-hidden rounded-[2rem] bg-brand-cta bg-[length:200%_200%] p-8 text-center shadow-petal-xl motion-safe:animate-gradient-pan sm:p-14"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
