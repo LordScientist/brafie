@@ -5,6 +5,7 @@ import {
   Apple,
   Check,
   CigaretteOff,
+  Flame,
   Footprints,
   HandHeart,
   Moon,
@@ -299,8 +300,8 @@ export function PreventionTracker() {
       <section className="rounded-3xl border border-line bg-card/85 p-5 shadow-petal">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h3 className="text-lg font-black text-ink">{p.challengeTitle}</h3>
-          <span className="rounded-full bg-accent-teal/10 px-3 py-1 text-sm font-black text-calm-text tabular-nums">
-            🔥 {streak} {p.streakLabel}
+          <span className="inline-flex items-center gap-1 rounded-full bg-accent-teal/10 px-3 py-1 text-sm font-black text-calm-text tabular-nums">
+            <Flame size={14} aria-hidden /> {streak} {p.streakLabel}
           </span>
         </div>
         <p className="mt-2 text-sm font-medium leading-6 text-muted">{p.challengeDesc}</p>

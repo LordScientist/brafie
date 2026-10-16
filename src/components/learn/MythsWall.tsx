@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Check, X } from 'lucide-react';
 import { InfiniteSlider } from '@/components/ui/infinite-slider';
 import { CircularProgress } from '@/components/ui/Progress';
 import { interpolate, useLanguage } from '@/hooks/useLanguage';
@@ -46,8 +47,8 @@ function MythCard({ myth, truth, mythLabel, truthLabel, cardId, onFlip, isMobile
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           padding: isMobile ? 14 : 20, textAlign: 'center',
         }}>
-          <span style={{ position: 'absolute', top: 8, right: 12, fontSize: isMobile ? 9 : 11, color: 'rgb(var(--error))', fontWeight: 700 }}>
-            ❌ {mythLabel}
+          <span style={{ position: 'absolute', top: 8, right: 12, display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: isMobile ? 9 : 11, color: 'rgb(var(--error))', fontWeight: 700 }}>
+            <X size={isMobile ? 10 : 12} aria-hidden /> {mythLabel}
           </span>
           <p style={{ fontSize: isMobile ? 11 : 13, fontWeight: 600, color: 'rgb(var(--ink))', lineHeight: 1.6, margin: 0 }}>{myth}</p>
         </div>
@@ -60,8 +61,8 @@ function MythCard({ myth, truth, mythLabel, truthLabel, cardId, onFlip, isMobile
           padding: isMobile ? 14 : 20, textAlign: 'center',
           transform: 'rotateY(180deg)',
         }}>
-          <span style={{ position: 'absolute', top: 8, right: 12, fontSize: isMobile ? 9 : 11, color: 'rgb(var(--ok))', fontWeight: 700 }}>
-            ✅ {truthLabel}
+          <span style={{ position: 'absolute', top: 8, right: 12, display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: isMobile ? 9 : 11, color: 'rgb(var(--ok))', fontWeight: 700 }}>
+            <Check size={isMobile ? 10 : 12} aria-hidden /> {truthLabel}
           </span>
           <p style={{ fontSize: isMobile ? 11 : 13, fontWeight: 600, color: 'rgb(var(--ink))', lineHeight: 1.6, margin: 0 }}>{truth}</p>
         </div>

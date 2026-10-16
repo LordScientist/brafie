@@ -1,6 +1,17 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Bell, CheckCircle2, Pencil } from 'lucide-react';
+import {
+  Bell,
+  Calendar,
+  CheckCircle2,
+  CloudSun,
+  Mail,
+  MessageCircle,
+  Moon,
+  Pencil,
+  Sun,
+  type LucideIcon,
+} from 'lucide-react';
 import { PageTransition } from '@/components/layout/PageTransition';
 import { Disclaimer } from '@/components/ui/Disclaimer';
 import { Button } from '@/components/ui/Button';
@@ -19,16 +30,16 @@ type ReminderTime = 'morning' | 'afternoon' | 'evening';
 type Method = 'calendar' | 'push' | 'email' | 'whatsapp';
 
 const TIME_CLOCK: Record<ReminderTime, string> = { morning: '8:00', afternoon: '14:00', evening: '20:00' };
-const TIME_META: { key: ReminderTime; emoji: string; ring: string }[] = [
-  { key: 'morning', emoji: '☀️', ring: 'border-line' },
-  { key: 'afternoon', emoji: '🌤️', ring: 'border-line' },
-  { key: 'evening', emoji: '🌙', ring: 'border-line' },
+const TIME_META: { key: ReminderTime; icon: LucideIcon; ring: string }[] = [
+  { key: 'morning', icon: Sun, ring: 'border-line' },
+  { key: 'afternoon', icon: CloudSun, ring: 'border-line' },
+  { key: 'evening', icon: Moon, ring: 'border-line' },
 ];
 // Calendar + push in the top row. Email and WhatsApp are full-width cards below,
 // both disabled: neither actually delivers anything yet (see the notes below).
-const METHOD_META: { key: 'calendar' | 'push'; emoji: string }[] = [
-  { key: 'calendar', emoji: '📅' },
-  { key: 'push', emoji: '🔔' },
+const METHOD_META: { key: 'calendar' | 'push'; icon: LucideIcon }[] = [
+  { key: 'calendar', icon: Calendar },
+  { key: 'push', icon: Bell },
 ];
 
 const STORAGE_KEY = REMINDER_STORAGE_KEY;
@@ -443,7 +454,9 @@ export function ReminderPage() {
               {methods.includes('calendar') && (
                 <div className="flex items-center justify-between gap-2 rounded-2xl bg-primary-50 px-4 py-3">
                   <span className="min-w-0">
-                    <span className="block font-bold text-accent-text">📅 {tr(CAL_LABEL, lang)}</span>
+                    <span className="flex items-center gap-1.5 font-bold text-accent-text">
+                      <Calendar size={16} aria-hidden /> {tr(CAL_LABEL, lang)}
+                    </span>
                     <span className="block text-xs font-bold text-muted">{tr(CAL_HINT, lang)}</span>
                   </span>
                   <button
@@ -459,7 +472,9 @@ export function ReminderPage() {
               {methods.includes('push') && (
                 <div className="flex items-center justify-between gap-2 rounded-2xl bg-primary-50 px-4 py-3">
                   <span className="min-w-0">
-                    <span className="block font-bold text-accent-text">🔔 {r.methods.push.label}</span>
+                    <span className="flex items-center gap-1.5 font-bold text-accent-text">
+                      <Bell size={16} aria-hidden /> {r.methods.push.label}
+                    </span>
                     <span className="block text-xs font-bold text-muted">{tr(PUSH_HINT, lang)}</span>
                   </span>
                   <span className="shrink-0 text-sm font-black text-calm-text">{tr(ENABLED_LABEL, lang)}</span>
@@ -499,13 +514,16 @@ export function ReminderPage() {
                     </div>
                   ) : (
                     <div className="flex items-center justify-between gap-2">
-                      <span className="min-w-0 truncate font-bold text-accent-text">📧 {email || r.methods.email.label}</span>
+                      <span className="flex min-w-0 items-center gap-1.5 font-bold text-accent-text">
+                        <Mail size={16} className="shrink-0" aria-hidden />
+                        <span className="truncate">{email || r.methods.email.label}</span>
+                      </span>
                       <button
                         type="button"
                         onClick={() => startEdit('email')}
-                        className="shrink-0 rounded-full border border-line px-3 py-1 text-xs font-black text-accent-text"
+                        className="inline-flex shrink-0 items-center gap-1 rounded-full border border-line px-3 py-1 text-xs font-black text-accent-text"
                       >
-                        ✏️ {tr(EDIT_LABEL, lang)}
+                        <Pencil size={12} aria-hidden /> {tr(EDIT_LABEL, lang)}
                       </button>
                     </div>
                   )}
@@ -548,15 +566,16 @@ export function ReminderPage() {
                     </div>
                   ) : (
                     <div className="flex items-center justify-between gap-2">
-                      <span className="min-w-0 truncate font-bold text-accent-text" dir="ltr">
-                        💬 +233 {whatsappNumber}
+                      <span className="flex min-w-0 items-center gap-1.5 font-bold text-accent-text" dir="ltr">
+                        <MessageCircle size={16} className="shrink-0" aria-hidden />
+                        <span className="truncate">+233 {whatsappNumber}</span>
                       </span>
                       <button
                         type="button"
                         onClick={() => startEdit('whatsapp')}
-                        className="shrink-0 rounded-full border border-line px-3 py-1 text-xs font-black text-accent-text"
+                        className="inline-flex shrink-0 items-center gap-1 rounded-full border border-line px-3 py-1 text-xs font-black text-accent-text"
                       >
-                        ✏️ {tr(EDIT_LABEL, lang)}
+                        <Pencil size={12} aria-hidden /> {tr(EDIT_LABEL, lang)}
                       </button>
                     </div>
                   )}
@@ -658,7 +677,7 @@ export function ReminderPage() {
             <StepCard>
               <h2 className="text-xl font-black text-ink">{r.stepTimeTitle}</h2>
               <div className="mt-4 space-y-3">
-                {TIME_META.map(({ key, emoji, ring }) => {
+                {TIME_META.map(({ key, icon: Icon, ring }) => {
                   const selected = time === key;
                   return (
                     <motion.button
@@ -674,7 +693,7 @@ export function ReminderPage() {
                       )}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-3xl" aria-hidden>{emoji}</span>
+                        <Icon size={26} className="shrink-0 text-accent-text" aria-hidden />
                         <div className="min-w-0">
                           <p className="font-black text-ink">
                             {r.times[key].label} · {TIME_CLOCK[key]}
@@ -699,7 +718,7 @@ export function ReminderPage() {
 
               {/* Top row: Calendar + Browser notification (equal width) */}
               <div className="mt-4 grid grid-cols-2 gap-2">
-                {METHOD_META.map(({ key, emoji }) => {
+                {METHOD_META.map(({ key, icon: Icon }) => {
                   const selected = methods.includes(key);
                   const label = key === 'calendar' ? tr(CAL_LABEL, lang) : r.methods.push.label;
                   const hint = key === 'calendar' ? tr(CAL_HINT, lang) : tr(PUSH_HINT, lang);
@@ -715,7 +734,7 @@ export function ReminderPage() {
                       )}
                     >
                       {selected && <CheckCircle2 className="absolute end-2 top-2 text-primary-500" size={18} />}
-                      <span className="text-2xl" aria-hidden>{emoji}</span>
+                      <Icon size={24} aria-hidden />
                       {label}
                       {/* Say plainly what each one can actually do. */}
                       <span className="text-[11px] font-bold leading-tight text-muted">{hint}</span>
@@ -731,7 +750,7 @@ export function ReminderPage() {
                 disabled
                 className="relative mt-2 flex min-h-[88px] w-full cursor-not-allowed flex-col items-center justify-center gap-1 rounded-2xl border-2 border-line bg-sunken p-4 text-center text-base font-black text-muted"
               >
-                <span className="text-3xl" aria-hidden>📧</span>
+                <Mail size={28} aria-hidden />
                 {tr(EMAIL_LABEL, lang)}
                 <span className="text-xs font-bold text-muted">{tr(SOON_LABEL, lang)}</span>
               </button>
@@ -754,7 +773,7 @@ export function ReminderPage() {
                 {whatsappAvailable && methods.includes('whatsapp') && (
                   <CheckCircle2 className="absolute end-2 top-2 text-primary-500" size={20} />
                 )}
-                <span className="text-3xl" aria-hidden>💬</span>
+                <MessageCircle size={28} aria-hidden />
                 {tr(WA_LABEL, lang)}
                 {!whatsappAvailable && (
                   <span className="text-xs font-bold text-muted">{tr(WA_UNAVAILABLE, lang)}</span>

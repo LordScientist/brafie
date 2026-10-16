@@ -1,6 +1,18 @@
 // Full rebuild — no Leaflet, pure MapLibre (mapcn pattern)
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { createElement, useState, useEffect, useCallback, useRef } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import {
+  FlaskConical,
+  Hospital,
+  MapPin,
+  Phone,
+  Pill,
+  Search,
+  Stethoscope,
+  UserRound,
+  type LucideIcon,
+} from 'lucide-react';
 import { Disclaimer } from '@/components/ui/Disclaimer';
 import { SafetyNote } from '@/components/ui/SafetyNote';
 import { Skeleton } from '@/components/ui/Skeleton';
@@ -131,13 +143,28 @@ const TYPE_COLORS: Record<string, string> = {
   laboratory: 'rgb(var(--warn))',
 };
 
-const TYPE_ICONS: Record<string, string> = {
-  hospital: '🏥',
-  clinic: '🩺',
-  doctor: '👩‍⚕️',
-  pharmacy: '💊',
-  laboratory: '🔬',
+const FACILITY_ICONS: Record<MedicalFacility['type'], LucideIcon> = {
+  hospital: Hospital,
+  clinic: Stethoscope,
+  doctor: UserRound,
+  pharmacy: Pill,
+  laboratory: FlaskConical,
 };
+
+/** A lucide icon as an SVG string, for the DOM-string map marker and popup. */
+function iconMarkup(Icon: LucideIcon, size: number) {
+  return renderToStaticMarkup(createElement(Icon, { size }));
+}
+
+function facilityIconMarkup(type: string, size: number) {
+  return iconMarkup(FACILITY_ICONS[type as MedicalFacility['type']] ?? Stethoscope, size);
+}
+
+/** The facility-type icon, for React-rendered surfaces. */
+function FacilityIcon({ type, size = 20, className }: { type: string; size?: number; className?: string }) {
+  const Icon = FACILITY_ICONS[type as MedicalFacility['type']] ?? Stethoscope;
+  return <Icon size={size} className={className} aria-hidden />;
+}
 
 // ── Overpass API: find medical facilities ──
 async function searchMedicalFacilities(
@@ -254,9 +281,9 @@ export default function DoctorsPage() {
       return;
     }
     const el = document.createElement('div');
-    el.innerHTML = '📍';
-    el.style.fontSize = '28px';
+    el.style.color = 'rgb(var(--accent-text))';
     el.style.cursor = 'pointer';
+    el.innerHTML = iconMarkup(MapPin, 28);
     el.setAttribute('aria-label', 'Your location');
     userMarkerRef.current = new Marker({ element: el }).setLngLat([loc.lng, loc.lat]).addTo(mapRef.current);
   }, []);
@@ -434,18 +461,19 @@ export default function DoctorsPage() {
       el.style.display = 'flex';
       el.style.alignItems = 'center';
       el.style.justifyContent = 'center';
-      el.style.fontSize = '16px';
+      el.style.color = '#fff';
       el.style.cursor = 'pointer';
-      el.textContent = TYPE_ICONS[fac.type] || '🩺';
+      el.innerHTML = facilityIconMarkup(fac.type, 18);
       el.setAttribute('aria-label', fac.name);
 
+      const typeIcon = facilityIconMarkup(fac.type, 11);
       const popup = new Popup({ offset: 20, closeButton: false }).setHTML(`
         <div style="padding:8px;font-family:inherit;min-width:180px">
           <strong style="font-size:14px;color:rgb(var(--ink))">${fac.name}</strong><br/>
-          <span style="font-size:11px;color:${TYPE_COLORS[fac.type]};font-weight:600">${TYPE_ICONS[fac.type]} ${fac.type}${fac.specialty ? ' · ' + fac.specialty : ''}</span><br/>
+          <span style="font-size:11px;color:${TYPE_COLORS[fac.type]};font-weight:600"><span style="vertical-align:-2px">${typeIcon}</span> ${fac.type}${fac.specialty ? ' · ' + fac.specialty : ''}</span><br/>
           <span style="font-size:11px;color:rgb(var(--muted))">${fac.distance} ${t('km')}</span>
-          ${fac.address ? `<br/><span style="font-size:11px;color:rgb(var(--muted))">📍 ${fac.address}</span>` : ''}
-          ${fac.phone ? `<br/><a href="tel:${fac.phone}" style="font-size:12px;color:rgb(var(--accent-text));font-weight:600">📞 ${fac.phone}</a>` : ''}
+          ${fac.address ? `<br/><span style="font-size:11px;color:rgb(var(--muted))"><span style="vertical-align:-2px">${iconMarkup(MapPin, 11)}</span> ${fac.address}</span>` : ''}
+          ${fac.phone ? `<br/><a href="tel:${fac.phone}" style="font-size:12px;color:rgb(var(--accent-text));font-weight:600"><span style="vertical-align:-2px">${iconMarkup(Phone, 11)}</span> ${fac.phone}</a>` : ''}
         </div>
       `);
 
@@ -481,19 +509,20 @@ export default function DoctorsPage() {
     }
   };
 
-  const filters = [
-    { key: 'all', label: t('filterAll'), icon: '🏥' },
-    { key: 'hospital', label: t('filterHospital'), icon: '🏥' },
-    { key: 'clinic', label: t('filterClinic'), icon: '🩺' },
-    { key: 'doctor', label: t('filterDoctor'), icon: '👩‍⚕️' },
-    { key: 'pharmacy', label: t('filterPharmacy'), icon: '💊' },
+  const filters: { key: string; label: string; icon: LucideIcon }[] = [
+    { key: 'all', label: t('filterAll'), icon: Hospital },
+    { key: 'hospital', label: t('filterHospital'), icon: Hospital },
+    { key: 'clinic', label: t('filterClinic'), icon: Stethoscope },
+    { key: 'doctor', label: t('filterDoctor'), icon: UserRound },
+    { key: 'pharmacy', label: t('filterPharmacy'), icon: Pill },
   ];
 
   return (
     <div className="ds-scope mx-auto w-full max-w-6xl px-6 pb-24 pt-6">
       {/* Header */}
-      <h1 className="text-center text-h2 font-bold text-accent-text">
-        🩺 {t('title')}
+      <h1 className="flex items-center justify-center gap-2 text-center text-h2 font-bold text-accent-text">
+        <Stethoscope size={26} aria-hidden />
+        {t('title')}
       </h1>
       <p className="mb-5 mt-1 text-center text-caption text-muted">
         {t('subtitle')}
@@ -532,7 +561,7 @@ export default function DoctorsPage() {
               aria-label={t('searchPlaceholder')}
               className="rounded-r-xl border-2 border-l-0 border-line-control bg-sunken px-3.5 py-2.5 text-base"
             >
-              🔍
+              <Search size={18} aria-hidden />
             </button>
           </div>
 
@@ -553,8 +582,8 @@ export default function DoctorsPage() {
                     className="flex cursor-pointer items-center justify-between border-b border-line px-3.5 py-2.5 last:border-b-0 hover:bg-accent-soft"
                   >
                     <div>
-                      <div className="text-sm font-semibold text-ink">
-                        📍 {mainName}
+                      <div className="flex items-center gap-1.5 text-sm font-semibold text-ink">
+                        <MapPin size={14} className="shrink-0 text-accent-text" aria-hidden /> {mainName}
                       </div>
                       <div className="text-[11px] text-muted">{subName}</div>
                     </div>
@@ -574,8 +603,8 @@ export default function DoctorsPage() {
       {/* City name + radius */}
       {cityName && (
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-          <span className="text-body-sm font-semibold text-ink">
-            📍 {cityName} · {filteredFacilities.length} {t('found')}
+          <span className="flex items-center gap-1.5 text-body-sm font-semibold text-ink">
+            <MapPin size={14} className="shrink-0 text-accent-text" aria-hidden /> {cityName} · {filteredFacilities.length} {t('found')}
           </span>
           <div className="flex items-center gap-2">
             <span className="text-[12px] text-muted">{t('radius')}:</span>
@@ -612,7 +641,8 @@ export default function DoctorsPage() {
                 : 'border border-line-control bg-card text-muted',
             )}
           >
-            {f.icon} {f.label}
+            {f.icon && <f.icon size={14} aria-hidden />}
+            {f.label}
           </button>
         ))}
       </div>
@@ -677,8 +707,8 @@ export default function DoctorsPage() {
             )}
           >
             {/* Type icon */}
-            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-sunken text-[22px]">
-              {TYPE_ICONS[fac.type]}
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-sunken">
+              <FacilityIcon type={fac.type} size={20} />
             </div>
 
             {/* Info */}
@@ -690,7 +720,9 @@ export default function DoctorsPage() {
                 {fac.type}{fac.specialty ? ' · ' + fac.specialty : ''}
               </div>
               {fac.address && (
-                <div className="mt-0.5 text-[11px] text-muted">📍 {fac.address}</div>
+                <div className="mt-0.5 flex items-center gap-1 text-[11px] text-muted">
+                  <MapPin size={12} className="shrink-0" aria-hidden /> {fac.address}
+                </div>
               )}
             </div>
 
