@@ -176,24 +176,25 @@ export function ChatPage() {
 
   return (
     <PageTransition>
-      <section className="mx-auto flex min-h-[calc(100vh-12rem)] max-w-3xl flex-col overflow-hidden rounded-[2rem] border border-white/70 bg-card/85 shadow-petal-xl">
+      <div className="ds-scope">
+      <section className="mx-auto flex min-h-[calc(100vh-12rem)] max-w-3xl flex-col overflow-hidden rounded-3xl border border-line bg-card/85 shadow-petal">
         <header className="border-b border-line p-5">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-cta text-white"><Bot /></span>
               <div><h1 className="text-2xl font-black text-ink">{t.chat.title}</h1><p className="text-sm font-bold text-muted">{t.chat.online}</p></div>
             </div>
-            <button onClick={() => setMessages([])} className="grid h-11 w-11 place-items-center rounded-full bg-primary-50 text-primary-700" aria-label={t.chat.clear}><Trash2 size={18} /></button>
+            <button onClick={() => setMessages([])} className="grid h-11 w-11 place-items-center rounded-full bg-primary-50 text-accent-text" aria-label={t.chat.clear}><Trash2 size={18} /></button>
           </div>
           <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
-            {quickReplies.map((reply) => <button key={reply} onClick={() => void send(reply)} className="focus-ring min-h-11 shrink-0 rounded-full bg-white/70 px-4 py-2 text-sm font-bold text-primary-700 shadow-petal">{reply}</button>)}
+            {quickReplies.map((reply) => <button key={reply} onClick={() => void send(reply)} className="focus-ring min-h-11 shrink-0 rounded-full bg-card/70 px-4 py-2 text-sm font-bold text-accent-text shadow-petal">{reply}</button>)}
           </div>
         </header>
         <div className="flex-1 space-y-4 overflow-y-auto p-4">
           {messages.map((message, index) => (
             <div key={`${message.timestamp}-${index}`} className={`flex gap-2 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              {message.role === 'assistant' && <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary-100 text-primary-700"><Sparkles size={16} /></span>}
-              <div className={`max-w-[82%] rounded-3xl p-4 shadow-petal ${message.role === 'user' ? 'bg-brand-cta text-white' : 'bg-white/80 text-ink'}`}>
+              {message.role === 'assistant' && <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary-100 text-accent-text"><Sparkles size={16} /></span>}
+              <div className={`max-w-[82%] rounded-3xl p-4 shadow-petal ${message.role === 'user' ? 'bg-brand-cta text-white' : 'bg-card/80 text-ink'}`}>
                 <p className="whitespace-pre-wrap font-medium leading-7">{renderMarkdownBold(message.content)}</p>
                 {/* opacity-70 put the timestamp at 2.9:1 on the bubble. Use a solid
                     tone per bubble instead — muted on light, white on brand. */}
@@ -204,12 +205,12 @@ export function ChatPage() {
               {message.role === 'user' && <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent-teal/15 text-calm-text"><UserRound size={16} /></span>}
             </div>
           ))}
-          {typing && <div className="rounded-full bg-white/80 px-4 py-3 text-sm font-bold text-muted shadow-petal">{t.chat.typing}</div>}
+          {typing && <div className="rounded-full bg-card/80 px-4 py-3 text-sm font-bold text-muted shadow-petal">{t.chat.typing}</div>}
           <div ref={endRef} />
         </div>
         <form onSubmit={submit} className="border-t border-line p-3">
           {voice.listening && (
-            <div className="mb-2 flex items-center justify-center gap-2 rounded-full bg-primary-50 px-4 py-2 text-sm font-black text-primary-700">
+            <div className="mb-2 flex items-center justify-center gap-2 rounded-full bg-primary-50 px-4 py-2 text-sm font-black text-accent-text">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-400 opacity-75" />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary-500" />
@@ -217,7 +218,7 @@ export function ChatPage() {
               {t.chat.listening}
             </div>
           )}
-          <div className="flex gap-2 rounded-full border border-line-control bg-white/80 p-2 shadow-inner">
+          <div className="flex gap-2 rounded-full border border-line-control bg-card/80 p-2 shadow-inner">
             <input
               value={text}
               onChange={(e) => setText(e.target.value)}
@@ -240,13 +241,13 @@ export function ChatPage() {
                   'relative grid h-12 w-12 place-items-center rounded-full transition-all duration-200 active:scale-95',
                   voice.listening
                     ? 'bg-brand-cta text-white shadow-petal-lg'
-                    : 'bg-primary-50 text-primary-600 hover:bg-primary-100',
+                    : 'bg-primary-50 text-accent-text hover:bg-primary-100',
                 )}
               >
                 <Mic size={18} />
               </button>
             </div>
-            <Button type="submit" disabled={!text.trim()} aria-label={t.common.send}><Send size={18} /></Button>
+            <Button type="submit" disabled={!text.trim()} aria-label={t.common.send} className="h-12 w-12 shrink-0 !rounded-full p-0"><Send size={18} /></Button>
           </div>
         </form>
       </section>
@@ -257,7 +258,7 @@ export function ChatPage() {
           is not a disclaimer. This one is pinned to the page. */}
       <Disclaimer className="mt-4" />
 
-      <Modal open={micNoticeOpen} onClose={() => setMicNoticeOpen(false)} title={t.chat.micNoticeTitle}>
+      <Modal open={micNoticeOpen} onClose={() => setMicNoticeOpen(false)} title={t.chat.micNoticeTitle} className="ds-scope">
         <SafetyNote variant="privacy" title={t.chat.micNoticeTitle}>
           {t.chat.micNoticeBody}
         </SafetyNote>
@@ -270,6 +271,7 @@ export function ChatPage() {
           </Button>
         </div>
       </Modal>
+      </div>
     </PageTransition>
   );
 }
