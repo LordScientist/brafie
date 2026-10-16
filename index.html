@@ -64,7 +64,7 @@
       (function () {
         try {
           var saved = localStorage.getItem('sahtek:user');
-          var theme = saved ? JSON.parse(saved).state.theme : 'system';
+          var theme = saved ? JSON.parse(saved).state.theme : 'light';
           var isDark =
             theme === 'dark' ||
             ((!theme || theme === 'system') &&

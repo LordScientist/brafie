@@ -33,7 +33,7 @@ interface UserState {
 export const useUserStore = create<UserState>()(
   persist(
     (set) => ({
-      theme: 'system',
+      theme: 'light',
       onboarded: false,
       preventionChecklist: [],
       selfCheckLog: [],
@@ -61,9 +61,9 @@ export const useUserStore = create<UserState>()(
       version: 1,
       migrate: (persisted, version) => {
         const state = persisted as UserState;
-        // v0 defaulted to 'light', but no toggle existed then — nobody actually
-        // chose it. Treat it as "never picked" so the OS preference wins.
-        if (version === 0 && state) state.theme = 'system';
+        // v0 predates the theme toggle, so its value was never a real choice.
+        // Reset it to the current default (light) rather than trusting it.
+        if (version === 0 && state) state.theme = 'light';
         return state;
       },
     },
