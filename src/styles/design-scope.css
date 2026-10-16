@@ -360,3 +360,12 @@ body:has(.ds-scope) {
     inset 0 1px 0 rgb(255 255 255 / 0.12),
     0 14px 44px rgb(0 0 0 / 0.45);
 }
+
+/* /learn only: in dark mode the accent text turns RED, not pink, so the
+   statistics read as urgent. Scoped to this page's root, so nothing else
+   changes. 5.8:1 on the tinted card [AA]. */
+.dark .ds-scope.learn-page {
+  --gradient-text: linear-gradient(135deg, #f87171 0%, #f87171 100%);
+  --brand-700: 248 113 113;
+  --brand-800: 248 113 113;
+}
