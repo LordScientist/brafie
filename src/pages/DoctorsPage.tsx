@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Disclaimer } from '@/components/ui/Disclaimer';
 import { SafetyNote } from '@/components/ui/SafetyNote';
+import { Skeleton } from '@/components/ui/Skeleton';
 import { useLanguage } from '@/hooks/useLanguage';
 import { cn } from '@/utils/cn';
 import { Map as MlMap, Marker, Popup, NavigationControl } from 'maplibre-gl';
@@ -623,10 +624,24 @@ export default function DoctorsPage() {
         </div>
       )}
 
-      {/* Loading */}
+      {/* Loading — mirror the result-card shape so the list does not jump in. */}
       {loading && (
-        <div className="py-5 text-center text-caption text-accent-text">
-          {t('loading')}
+        <div className="mb-4 flex flex-col gap-3" role="status">
+          <span className="sr-only">{t('loading')}</span>
+          {[0, 1, 2].map((i) => (
+            <div
+              key={i}
+              aria-hidden
+              className="flex items-center gap-3.5 rounded-2xl border border-line bg-card px-4 py-3.5 shadow-petal"
+            >
+              <Skeleton className="h-11 w-11 shrink-0" rounded="rounded-full" />
+              <div className="min-w-0 flex-1 space-y-2">
+                <Skeleton className="h-3.5 w-1/2" rounded="rounded-full" />
+                <Skeleton className="h-3 w-1/3" rounded="rounded-full" />
+              </div>
+              <Skeleton className="h-3.5 w-12 shrink-0" rounded="rounded-full" />
+            </div>
+          ))}
         </div>
       )}
 

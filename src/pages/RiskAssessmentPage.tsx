@@ -6,6 +6,7 @@ import { PageTransition } from '@/components/layout/PageTransition';
 import { Button } from '@/components/ui/Button';
 import { Disclaimer } from '@/components/ui/Disclaimer';
 import { SafetyNote } from '@/components/ui/SafetyNote';
+import { Skeleton } from '@/components/ui/Skeleton';
 import { useLanguage, interpolate } from '@/hooks/useLanguage';
 import { useRiskAssessment } from '@/hooks/useRiskAssessment';
 import type { RiskReportData } from '@/utils/reportGenerator';
@@ -128,7 +129,8 @@ export function RiskAssessmentPage() {
 
       {risk.stage === 'analyzing' && (
         <section className="mx-auto max-w-xl rounded-3xl border border-line bg-card/85 p-8 text-center shadow-petal">
-          <div className="mx-auto h-14 w-14 animate-spin rounded-full border-4 border-primary-100 border-t-primary-500" />
+          <Skeleton className="mx-auto h-32 w-32" rounded="rounded-full" aria-hidden />
+          <Skeleton className="mx-auto mt-5 h-7 w-48 max-w-full" rounded="rounded-full" aria-hidden />
           <h1 className="mt-5 text-2xl font-black text-ink">{t.risk.analyzing}</h1>
         </section>
       )}

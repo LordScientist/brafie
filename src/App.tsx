@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { AnimatePresence, MotionConfig } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
+import { Skeleton } from '@/components/ui/Skeleton';
 import { useTheme } from '@/hooks/useTheme';
 import { REMINDER_STORAGE_KEY, scheduleNotificationCheck } from '@/utils/notificationScheduler';
 import { HomePage } from '@/pages/HomePage';
@@ -26,11 +27,15 @@ const DesignSystemPage = lazy(() => import('@/pages/DesignSystemPage'));
 
 function RouteFallback() {
   return (
-    <div className="grid min-h-[60vh] place-items-center">
-      <span
-        className="h-10 w-10 animate-spin rounded-full border-4 border-primary-100 border-t-primary-500"
-        aria-hidden
-      />
+    <div className="mx-auto w-full max-w-3xl px-4 py-12">
+      <div role="status" aria-label="Loading">
+        <Skeleton className="h-8 w-1/2" rounded="rounded-xl" />
+        <Skeleton className="mt-3 h-4 w-3/4" rounded="rounded-full" />
+        <div className="mt-8 space-y-3">
+          <Skeleton className="h-24 w-full" rounded="rounded-2xl" />
+          <Skeleton className="h-24 w-full" rounded="rounded-2xl" />
+        </div>
+      </div>
     </div>
   );
 }
